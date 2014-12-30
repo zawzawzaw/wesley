@@ -49,7 +49,7 @@
 			                      <td>{{ $list->id }}</td>
 			                      <td>{{ $list->type }}</td>
 			                      <td>{{ $list->company_name }}</td>
-			                      <td>{{ $list->logo }}</td>
+			                      <td>@if(!empty($list->logo)) {{ HTML::image('uploads/profile_photos/'.$list->logo) }} @endif</td>
 			                      <td>{{ $list->category }}</td>
 			                      <td>{{ $list->subcategory }}</td>
 			                      <td>{{ $list->address_1 }}</td>
@@ -69,12 +69,12 @@
 			                      <td>{{ $list->market_interested }}</td>
 			                      <td>{{ $list->number_of_offices_worldwide }}</td>
 			                      <td>{{ $list->links_to_related_companies }}</td>
-			                      <td>{{ $list->upload_video }}</td>
+			                      <td><a href="/uploads/videos/{{ $list->upload_video }}" download="{{ $list->upload_video }}">{{ $list->upload_video }}</a></td>
 			                      <td>{{ $list->major_facilities }}</td>
 			                      <td>{{ $list->major_customers }}</td>
 			                      <td>{{ date("Y-m-d",strtotime($list->created_at)) }}</td>
 			                      <td class="table-action">
-			                        <a href="{{ '/admin/lists/'.$list->id }}"><i class="fa fa-pencil"></i></a>
+			                        <a href="{{ '/admin/list/'.$list->id }}"><i class="fa fa-pencil"></i></a>
 			                      </td>
 			                    </tr>
 		                  	@endforeach

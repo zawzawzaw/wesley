@@ -20,9 +20,10 @@ Route::post('generic/uploadfiles', array(
   'as' => 'generic.uploadfiles'
 ));
 
-
 // admin
 Route::get('admin', array(
   'uses' => 'AdminController@index',
   'as' => 'admin'
 ));
+
+Route::resource('admin/list', 'ListController', array('only' => array('show')));

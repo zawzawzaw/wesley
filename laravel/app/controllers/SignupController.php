@@ -10,17 +10,19 @@ class SignupController extends \BaseController {
 	# set template
 	protected $layout = "layouts.master";
 
+	public function __construct() {
+	    $this->beforeFilter('csrf', array('on'=>'post'));
+	}
+
 	public function index()
 	{
 		//
 		if (Auth::check())
 		{
-		    $username = Auth::user()->username;
-		}else {
-			$username = '';
+		    return Redirect::intended('/')->with('message', 'You are now logged in!');
 		}
 
-		$this->layout->content = View::make('signup.index')->with('username', $username);		
+		$this->layout->content = View::make('signup.index');
 
 	}
 

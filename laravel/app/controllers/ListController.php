@@ -147,6 +147,11 @@ class ListController extends \BaseController {
 	public function show($id)
 	{
 		//
+		$list = Lists::with(array('tags','keyproduct','productcatalog'))->where('id', $id)->orderBy('created_at','DESC')->first();
+
+        // return $list;
+
+        $this->layout->content = View::make('list.show')->with('list', $list)->with('id', $id);
 	}
 
 
