@@ -28,7 +28,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-10 col-xs-10">
-        <a href="index.html" class="logo_wesley hidden-sm hidden-xs"><h1>Wesley</h1></a>
+        <a href="/" class="logo_wesley hidden-sm hidden-xs"><h1>Wesley</h1></a>
       </div>
       <div class="col-md-9 col-sm-2 col-xs-2">        
         <nav id="main-menu">

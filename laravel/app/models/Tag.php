@@ -15,8 +15,8 @@ class Tag extends Eloquent {
 	    'name'=>'required'
     );
 
-	// public function lists() {
-	// 	return $this->hasMany('Lst');
-	// }
+	public function lists() {
+		return $this->hasMany('Lists');
+	}
 
 }

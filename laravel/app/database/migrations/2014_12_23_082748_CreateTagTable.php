@@ -16,7 +16,7 @@ class CreateTagTable extends Migration {
 		Schema::create('tags', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer("list_id")->unsigned();
+			$table->integer("lists_id")->unsigned();
 			$table->string('name');			
 			
 			$table->timestamps();
@@ -24,7 +24,7 @@ class CreateTagTable extends Migration {
 		});
 
 		Schema::table('tags', function($table) {
-		    $table->foreign('list_id')->references('id')->on('lists');
+		    $table->foreign('lists_id')->references('id')->on('lists');
 		});
 	}
 

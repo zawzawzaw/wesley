@@ -82,7 +82,7 @@ class SignupController extends \BaseController {
 			//     $message->to(Input::get('email'), Input::get('username'))->subject('Account Created On Wesley!');
 			// });
 		 
-		    return Redirect::to('/')->with('signup_message', 'Thanks for signing up! You may now login.');
+		    return Redirect::to('/')->with('signup_message', 'Thanks for signing up!');
 
 	    } else {
 	        # validation has failed, display error messages

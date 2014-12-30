@@ -16,7 +16,7 @@ class CreateKeyProductTable extends Migration {
 		Schema::create('key_products', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer("list_id")->unsigned();
+			$table->integer("lists_id")->unsigned();
 			$table->string('category');			
 			$table->string('subcategory');			
 			$table->string('product_name');			
@@ -27,7 +27,7 @@ class CreateKeyProductTable extends Migration {
 		});
 
 		Schema::table('key_products', function($table) {
-		    $table->foreign('list_id')->references('id')->on('lists');
+		    $table->foreign('lists_id')->references('id')->on('lists');
 		});
 	}
 

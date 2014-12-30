@@ -22,12 +22,12 @@ class HomeController extends BaseController {
 	{
 		if (Auth::check())
 		{
-		    $username = Auth::user()->username;
+		    $name = Auth::user()->first_name;
 		}else {
-			$username = '';
+			$name = '';
 		}
 
-		$this->layout->content = View::make('home.index')->with('username', $username);				
+		$this->layout->content = View::make('home.index')->with('name', $name);				
 	}
 
 }

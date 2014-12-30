@@ -2,6 +2,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+			@if(!empty($name))
+      		<p>Welcome {{ $name }}
+			{{ Form::open(array('route' => array('login.destroy', 0), 'method' => 'delete')) }}
+			    <button type="submit" >Log Out</button>
+			{{ Form::close() }}
+			@endif
+			
+			@if(Session::has('message'))
+			    <p class="alert">{{ Session::get('message') }}</p>
+			@endif
 			@if(Session::has('signup_message'))
 			    <p class="alert">{{ Session::get('signup_message') }}</p>
 			@endif

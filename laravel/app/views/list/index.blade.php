@@ -62,7 +62,7 @@
 					</div>
 
 					<div class="inputs">
-					{{ Form::label('address_2', 'Address 2 *') }}
+					{{ Form::label('address_2', 'Address 2') }}
 					{{ Form::text('address_2', null, array('class'=>'text-input', 'placeholder'=>'Address 2')) }}
 					</div>
 
@@ -170,7 +170,8 @@
 					<h1>List - Key Products</h1>
 					<h5>Non-compulsory</h5>
 					
-
+					{{ Form::hidden('key_product_count', null, array('class'=>'text-input', 'id'=>'key_product_count')) }}
+					{{ Form::hidden('key_product_ids', null, array('class'=>'text-input', 'id'=>'key_product_ids')) }}
 					<div class="row">
 						<div class="col-md-6">
 							<div class="inputs">
@@ -184,14 +185,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_1', 'Product Name') }}
-								{{ Form::text('product_name_1', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_1', 'Product Name') }}
+								{{ Form::text('key_product_name_1', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_1', 'Image') }}
-								{{ Form::text('product_image_1', null, array('id'=>'product_image_1')); }}
-								{{ Form::file('image_1', null, array('id'=>'image_1')); }}
+								{{ Form::text('key_product_image_1', null, array('id'=>'key_product_image_1')); }}
+								{{ Form::file('image_1', array('class'=>'image_upload','id'=>'image_1')); }}
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -206,14 +207,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_2', 'Product Name') }}
-								{{ Form::text('product_name_2', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_2', 'Product Name') }}
+								{{ Form::text('key_product_name_2', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_2', 'Image') }}
-								{{ Form::text('product_image_2', null, array('id'=>'product_image_2')); }}
-								{{ Form::file('image_2', null, array('id'=>'image_2')); }}
+								{{ Form::text('key_product_image_2', null, array('id'=>'key_product_image_2')); }}
+								{{ Form::file('image_2', array('class'=>'image_upload','id'=>'image_2')); }}
 							</div>
 						</div>
 					</div>
@@ -237,14 +238,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_3', 'Product Name') }}
-								{{ Form::text('product_name_3', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_3', 'Product Name') }}
+								{{ Form::text('key_product_name_3', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_3', 'Image') }}
-								{{ Form::text('product_image_3', null, array('id'=>'product_image_3')); }}
-								{{ Form::file('image_3', null, array('id'=>'image_3')); }}
+								{{ Form::text('key_product_image_3', null, array('id'=>'key_product_image_3')); }}
+								{{ Form::file('image_3', array('class'=>'image_upload','id'=>'image_3')); }}
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -259,14 +260,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_4', 'Product Name') }}
-								{{ Form::text('product_name_4', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_4', 'Product Name') }}
+								{{ Form::text('key_product_name_4', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_4', 'Image') }}
-								{{ Form::text('product_image_4', null, array('id'=>'product_image_4')); }}
-								{{ Form::file('image_4', null, array('id'=>'image_4')); }}
+								{{ Form::text('key_product_image_4', null, array('id'=>'key_product_image_4')); }}
+								{{ Form::file('image_4', array('class'=>'image_upload','id'=>'image_4')); }}
 							</div>
 						</div>
 					</div>
@@ -290,14 +291,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_5', 'Product Name') }}
-								{{ Form::text('product_name_5', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_5', 'Product Name') }}
+								{{ Form::text('key_product_name_5', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_5', 'Image') }}
-								{{ Form::text('product_image_5', null, array('id'=>'product_image_5')); }}
-								{{ Form::file('image_5', null, array('id'=>'image_5')); }}
+								{{ Form::text('key_product_image_5', null, array('id'=>'key_product_image_5')); }}
+								{{ Form::file('image_5', array('class'=>'image_upload','id'=>'image_5')); }}
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -312,14 +313,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_6', 'Product Name') }}
-								{{ Form::text('product_name_6', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_6', 'Product Name') }}
+								{{ Form::text('key_product_name_6', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_6', 'Image') }}
-								{{ Form::text('product_image_6', null, array('id'=>'product_image_6')); }}
-								{{ Form::file('image_6', null, array('id'=>'image_6')); }}
+								{{ Form::text('key_product_image_6', null, array('id'=>'key_product_image_6')); }}
+								{{ Form::file('image_6', array('class'=>'image_upload','id'=>'image_6')); }}
 							</div>
 						</div>
 					</div>
@@ -343,14 +344,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_7', 'Product Name') }}
-								{{ Form::text('product_name_7', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_7', 'Product Name') }}
+								{{ Form::text('key_product_name_7', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_7', 'Image') }}
-								{{ Form::text('product_image_7', null, array('id'=>'product_image_7')); }}
-								{{ Form::file('image_7', null, array('id'=>'image_7')); }}
+								{{ Form::text('key_product_image_7', null, array('id'=>'key_product_image_7')); }}
+								{{ Form::file('image_7', array('class'=>'image_upload','id'=>'image_7')); }}
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -365,14 +366,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_8', 'Product Name') }}
-								{{ Form::text('product_name_8', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_8', 'Product Name') }}
+								{{ Form::text('key_product_name_8', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_8', 'Image') }}
-								{{ Form::text('product_image_8', null, array('id'=>'product_image_8')); }}
-								{{ Form::file('image_8', null, array('id'=>'image_8')); }}
+								{{ Form::text('key_product_image_8', null, array('id'=>'key_product_image_8')); }}
+								{{ Form::file('image_8', array('class'=>'image_upload','id'=>'image_8')); }}
 							</div>
 						</div>
 					</div>
@@ -396,14 +397,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_9', 'Product Name') }}
-								{{ Form::text('product_name_9', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_9', 'Product Name') }}
+								{{ Form::text('key_product_name_9', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_9', 'Image') }}
-								{{ Form::text('product_image_9', null, array('id'=>'product_image_9')); }}
-								{{ Form::file('image_9', null, array('id'=>'image_9')); }}
+								{{ Form::text('key_product_image_9', null, array('id'=>'key_product_image_9')); }}
+								{{ Form::file('image_9', array('class'=>'image_upload','id'=>'image_9')); }}
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -418,14 +419,14 @@
 							</div>
 
 							<div class="inputs">
-								{{ Form::label('product_name_10', 'Product Name') }}
-								{{ Form::text('product_name_10', null, array('class'=>'text-input', 'placeholder'=>'Product Name')) }}
+								{{ Form::label('key_product_name_10', 'Product Name') }}
+								{{ Form::text('key_product_name_10', null, array('class'=>'product_name text-input', 'placeholder'=>'Product Name')) }}
 							</div>
 
 							<div class="inputs">
 								{{ Form::label('image_10', 'Image') }}
-								{{ Form::text('product_image_10', null, array('id'=>'product_image_10')); }}
-								{{ Form::file('image_10', null, array('id'=>'image_10')); }}
+								{{ Form::text('key_product_image_10', null, array('id'=>'key_product_image_10')); }}
+								{{ Form::file('image_10', array('class'=>'image_upload','id'=>'image_10')); }}
 							</div>
 						</div>
 					</div>
@@ -437,43 +438,21 @@
 	    		<div class="col-md-12">
 	    			
 					<h1>Product Catalogs</h1>
-
+					{{ Form::hidden('product_catalog_count', null, array('class'=>'text-input', 'id'=>'product_catalog_count')) }}
+					{{ Form::hidden('product_catalog_ids', null, array('class'=>'text-input', 'id'=>'product_catalog_ids')) }}
 					<div class="row">
 						<div class="col-md-6">
 							<div class="inputs">
-								{{ Form::label('catalog_1', 'Image') }}
-								{{ Form::text('product_catalog_1', null, array('id'=>'product_catalog_1')); }}
-								{{ Form::file('catalog_1', null, array('id'=>'catalog_1')); }}
+								{{ Form::label('catalog_1', 'Catalog File') }}
+								{{ Form::text('product_catalog_1', null, array('class'=>'product_catalog','id'=>'product_catalog_1')); }}
+								{{ Form::file('catalog_1', array('class'=>'catalog_upload','id'=>'catalog_1')); }}
 							</div>	
 						</div>
 						<div class="col-md-6">
 							<div class="inputs">
-								{{ Form::label('catalog_2', 'Image') }}
-								{{ Form::text('product_catalog_2', null, array('id'=>'product_catalog_2')); }}
-								{{ Form::file('catalog_2', null, array('id'=>'catalog_2')); }}
-							</div>	
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="space20"></div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6">
-							<div class="inputs">
-								{{ Form::label('catalog_3', 'Image') }}
-								{{ Form::text('product_catalog_3', null, array('id'=>'product_catalog_3')); }}
-								{{ Form::file('catalog_3', null, array('id'=>'catalog_3')); }}
-							</div>	
-						</div>
-						<div class="col-md-6">
-							<div class="inputs">
-								{{ Form::label('catalog_4', 'Image') }}
-								{{ Form::text('product_catalog_4', null, array('id'=>'product_catalog_4')); }}
-								{{ Form::file('catalog_4', null, array('id'=>'catalog_4')); }}
+								{{ Form::label('catalog_2', 'Catalog File') }}
+								{{ Form::text('product_catalog_2', null, array('class'=>'product_catalog','id'=>'product_catalog_2')); }}
+								{{ Form::file('catalog_2', array('class'=>'catalog_upload','id'=>'catalog_2')); }}
 							</div>	
 						</div>
 					</div>
@@ -487,16 +466,39 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="inputs">
-								{{ Form::label('catalog_5', 'Image') }}
-								{{ Form::text('product_catalog_5', null, array('id'=>'product_catalog_5')); }}
-								{{ Form::file('catalog_5', null, array('id'=>'catalog_5')); }}
+								{{ Form::label('catalog_3', 'Catalog File') }}
+								{{ Form::text('product_catalog_3', null, array('class'=>'product_catalog','id'=>'product_catalog_3')); }}
+								{{ Form::file('catalog_3', array('class'=>'catalog_upload','id'=>'catalog_3')); }}
 							</div>	
 						</div>
 						<div class="col-md-6">
 							<div class="inputs">
-								{{ Form::label('catalog_6', 'Image') }}
-								{{ Form::text('product_catalog_6', null, array('id'=>'product_catalog_6')); }}
-								{{ Form::file('catalog_6', null, array('id'=>'catalog_6')); }}
+								{{ Form::label('catalog_4', 'Catalog File') }}
+								{{ Form::text('product_catalog_4', null, array('class'=>'product_catalog','id'=>'product_catalog_4')); }}
+								{{ Form::file('catalog_4', array('class'=>'catalog_upload','id'=>'catalog_4')); }}
+							</div>	
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="space20"></div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="inputs">
+								{{ Form::label('catalog_5', 'Catalog File') }}
+								{{ Form::text('product_catalog_5', null, array('class'=>'product_catalog','id'=>'product_catalog_5')); }}
+								{{ Form::file('catalog_5', array('class'=>'catalog_upload','id'=>'catalog_5')); }}
+							</div>	
+						</div>
+						<div class="col-md-6">
+							<div class="inputs">
+								{{ Form::label('catalog_6', 'Catalog File') }}
+								{{ Form::text('product_catalog_6', null, array('class'=>'product_catalog','id'=>'product_catalog_6')); }}
+								{{ Form::file('catalog_6', array('class'=>'catalog_upload','id'=>'catalog_6')); }}
 							</div>	
 						</div>
 					</div>
@@ -506,8 +508,9 @@
 
 			<div class="row">
 				<div class="col-md-12">
+					<button id="prev" class="btn btn-large">Prev</button>
 					<button id="add_more" class="btn btn-large">Add More</button>
-					{{ Form::submit('Save', array('class'=>'btn btn-large')) }}
+					{{ Form::submit('Save', array('id'=>'form-submit','class'=>'btn btn-large')) }}
 				</div>
 			</div>
 	    </div>
@@ -520,6 +523,42 @@
     	e.preventDefault();
     	$('#list-2').show();
     	$('#list-1').hide();
+    });
+    $('#prev').on('click', function(e){
+    	e.preventDefault();
+    	$('#list-2').hide();
+    	$('#list-1').show();
+    });
+
+    $('#form-submit').on('click', function(e){
+    	e.preventDefault();
+    	var key_product_count = $('.product_name').filter(function(){
+		    return $(this).val();
+		}).length;
+		var product_catalog_count = $('.product_catalog').filter(function(){
+		    return $(this).val();
+		}).length;
+
+    	$('#key_product_count').val(key_product_count);
+    	$('#product_catalog_count').val(product_catalog_count);
+
+    	var key_product_ids = [];
+		$('.product_name').each(function(index, each_input){
+			if($(each_input).val()!=='') {
+				key_product_ids.push(index+1);
+				$('#key_product_ids').val(key_product_ids.join());
+			}
+		});
+
+		var product_catalog_ids = [];
+		$('.product_catalog').each(function(index, each_catalog){
+			if($(each_catalog).val()!=='') {
+				product_catalog_ids.push(index+1);
+				$('#product_catalog_ids').val(product_catalog_ids.join());
+			}
+		});
+
+		$(this).closest('form').submit();
     });
 
     var tags = [];
@@ -592,6 +631,72 @@
 
         }
     });
+
+    $('#add_more').on('click', function(e){
+    	e.preventDefault();
+    	
+    });
+    
+    $('.image_upload').each(function(index, each_product_upload) {
+    	$(each_product_upload).uploadifive({
+	        'auto'      : true,
+	        'fileType'     : 'image/*',
+	        'fileSizeLimit' : '5MB',
+	        'buttonText'   : 'Upload',
+	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+	        'formData'         : {'type' : 'key_product'},
+	        'onError'      : function(errorType) {
+	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+	            // $uploadResponse.text(errorType).css('color','red');
+	        },
+	        'onUploadComplete' : function(file, data) {
+	            console.log(data);
+
+	            var data = data.split("||").concat();
+
+	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+	            console.log(data[0])
+	            console.log(data[1])
+	            console.log(shortText)
+
+	            var id = index + 1;
+
+	            $('input[name=key_product_image_'+id+']').val(data[0]);
+
+	        }
+	    });
+    });
+
+	$('.catalog_upload').each(function(index, each_catalog_upload) {
+		$(each_catalog_upload).uploadifive({
+	        'auto'      : true,
+	        'fileType'     : false,
+	        'fileSizeLimit' : '5MB',
+	        'buttonText'   : 'Upload',
+	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+	        'formData'         : {'type' : 'product_catalog'},
+	        'onError'      : function(errorType) {
+	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+	            // $uploadResponse.text(errorType).css('color','red');
+	        },
+	        'onUploadComplete' : function(file, data) {
+	            console.log(data);
+
+	            var data = data.split("||").concat();
+
+	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+	            console.log(data[0])
+	            console.log(data[1])
+	            console.log(shortText)
+
+	            var id = index + 1;
+
+	            $('input[name=product_catalog_'+id+']').val(data[0]);
+
+	        }
+	    });
+	});
+
   });
 </script>
 @stop

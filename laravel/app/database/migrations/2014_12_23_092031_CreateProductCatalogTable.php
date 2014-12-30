@@ -13,18 +13,18 @@ class CreateProductCatalogTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('product_catalog', function(Blueprint $table)
+		Schema::create('product_catalogs', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer("list_id")->unsigned();	
-			$table->string('image');			
+			$table->integer("lists_id")->unsigned();	
+			$table->string('file');			
 			
 			$table->timestamps();
 			$table->softDeletes();
 		});
 
-		Schema::table('product_catalog', function($table) {
-		    $table->foreign('list_id')->references('id')->on('lists');
+		Schema::table('product_catalogs', function($table) {
+		    $table->foreign('lists_id')->references('id')->on('lists');
 		});
 	}
 
@@ -36,7 +36,7 @@ class CreateProductCatalogTable extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('product_catalog');
+		Schema::drop('product_catalogs');
 	}
 
 }

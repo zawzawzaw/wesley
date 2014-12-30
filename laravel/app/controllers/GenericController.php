@@ -27,6 +27,10 @@ class GenericController extends \BaseController {
                 $destinationPath = public_path() . "/uploads/company_logos/";
             else if($type=='video')
                 $destinationPath = public_path() . "/uploads/videos/";
+            else if($type=='key_product')
+                $destinationPath = public_path() . "/uploads/key_products/";
+            else if($type=='product_catalog')
+                $destinationPath = public_path() . "/uploads/product_catalogs/";
             else
                 $destinationPath = public_path() . "/uploads/";
 
