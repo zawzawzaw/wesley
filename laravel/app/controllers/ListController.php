@@ -57,6 +57,7 @@ class ListController extends \BaseController {
 	        # validation has passed, save list in DB
 
 	    	$lists = new Lists;
+		    $lists->user_id = Auth::user()->id;
 		    $lists->type = Input::get('type');
 		    $lists->company_name = Input::get('company_name');
 		    $lists->logo = Input::get('logo');
@@ -64,8 +65,10 @@ class ListController extends \BaseController {
 		    $lists->subcategory = Input::get('subcategory');
 		    $lists->address_1 = Input::get('address_1');
 		    $lists->address_2 = Input::get('address_2');
+		    $lists->city = Input::get('city');
 		    $lists->post_code = Input::get('post_code');
-		    $lists->location = Input::get('location');
+		    $lists->state = Input::get('state');
+		    $lists->country = Input::get('country');
 		    $lists->origin_country = Input::get('origin_country');
 		    $lists->business_nature = Input::get('business_nature');
 		    $lists->year_established = Input::get('year_established');
@@ -73,6 +76,7 @@ class ListController extends \BaseController {
 		    $lists->paid_up_capital = Input::get('paid_up_capital');
 		    $lists->no_of_employees = Input::get('no_of_employees');
 		    $lists->quality_certification = Input::get('quality_certification');
+		    $lists->production_capability = Input::get('production_capability');
 		    $lists->bankers = Input::get('bankers');
 		    $lists->market_established = Input::get('market_established');
 		    $lists->main_shareholders = is_null(Input::get('main_shareholders')) ? 'no' : Input::get('main_shareholders');
@@ -109,6 +113,7 @@ class ListController extends \BaseController {
 			    		$key_product->category = Input::get('key_product_category_'.$key_product_id);
 			    		$key_product->subcategory = Input::get('key_product_subcategory_'.$key_product_id);
 			    		$key_product->product_name = Input::get('key_product_name_'.$key_product_id);
+			    		$key_product->product_specifics = Input::get('key_product_specifics_'.$key_product_id);
 			    		$key_product->image = Input::get('key_product_image_'.$key_product_id);
 			    		$key_product->save();
 			    	}	
@@ -123,6 +128,7 @@ class ListController extends \BaseController {
 		    		foreach ($product_catalog_ids_arr as $key => $product_catalog_id) {
 			    		$product_catalog = new ProductCatalog;
 			    		$product_catalog->lists_id = $lists->id;
+			    		$product_catalog->title = Input::get('product_catalog_title_'.$product_catalog_id);
 			    		$product_catalog->file = Input::get('product_catalog_'.$product_catalog_id);
 			    		$product_catalog->save();
 			    	}	
@@ -149,9 +155,9 @@ class ListController extends \BaseController {
 		//
 		$list = Lists::with(array('tags','keyproduct','productcatalog'))->where('id', $id)->orderBy('created_at','DESC')->first();
 
-        // return $list;
+        return $list;
 
-        $this->layout->content = View::make('list.show')->with('list', $list)->with('id', $id);
+        // $this->layout->content = View::make('list.show')->with('list', $list)->with('id', $id);
 	}
 
 

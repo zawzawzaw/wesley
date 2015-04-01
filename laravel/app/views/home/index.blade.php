@@ -3,7 +3,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			@if(!empty($name))
-      		<p>Welcome {{ $name }}
+      		<p>Welcome {{ $name }}</p>
+      		
 			{{ Form::open(array('route' => array('login.destroy', 0), 'method' => 'delete')) }}
 			    <button type="submit" >Log Out</button>
 			{{ Form::close() }}

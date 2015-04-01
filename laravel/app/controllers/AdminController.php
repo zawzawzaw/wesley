@@ -23,7 +23,7 @@ class AdminController extends BaseController {
             $name = '';
         }
 
-        $lists = Lists::with(array('tags','keyproduct','productcatalog'))->orderBy('created_at','DESC')->paginate(8);
+        $lists = Lists::with(array('tags','keyproduct','productcatalog'))->orderBy('created_at','DESC')->paginate(3);
 
         $lists_total = $lists->getTotal();
 

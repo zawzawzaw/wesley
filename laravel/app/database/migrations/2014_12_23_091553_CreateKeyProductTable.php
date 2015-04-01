@@ -20,6 +20,7 @@ class CreateKeyProductTable extends Migration {
 			$table->string('category');			
 			$table->string('subcategory');			
 			$table->string('product_name');			
+			$table->string('product_specifics');			
 			$table->string('image');			
 			
 			$table->timestamps();

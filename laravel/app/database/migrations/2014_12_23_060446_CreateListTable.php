@@ -16,6 +16,7 @@ class CreateListTable extends Migration {
 		Schema::create('lists', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer("user_id")->unsigned();
 			$table->string('type');
 			$table->string('company_name');
 			$table->string('logo');
@@ -23,8 +24,10 @@ class CreateListTable extends Migration {
 			$table->string('subcategory');
 			$table->string('address_1');
 			$table->string('address_2');
+			$table->string('city');
 			$table->string('post_code');
-			$table->string('location');
+			$table->string('state');
+			$table->string('country');
 			$table->string('origin_country');
 			$table->string('business_nature');
 			$table->string('year_established');
@@ -32,6 +35,7 @@ class CreateListTable extends Migration {
 			$table->string('paid_up_capital');
 			$table->string('no_of_employees');
 			$table->string('quality_certification');
+			$table->string('production_capability');
 			$table->string('bankers');
 			$table->string('market_established');
 			$table->string('main_shareholders');
@@ -44,6 +48,10 @@ class CreateListTable extends Migration {
 			
 			$table->timestamps();
 			$table->softDeletes();
+		});
+
+		Schema::table('lists', function($table) {
+		    $table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 

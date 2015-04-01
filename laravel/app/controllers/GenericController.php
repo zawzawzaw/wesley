@@ -34,15 +34,23 @@ class GenericController extends \BaseController {
             else
                 $destinationPath = public_path() . "/uploads/";
 
-            $orgFilename        = $file->getClientOriginalName();
+            $orgFilename     = $file->getClientOriginalName();
             $filename        = str_random(6) . '_' . $file->getClientOriginalName();
             $uploadSuccess   = $file->move($destinationPath, $filename);
         }
 
-        if(!empty($uploadSuccess))
+        if(!empty($uploadSuccess)) {
+            error_log("Destination: $destinationPath");
+            error_log("Filename: $filename");
+            error_log("Extension: ".$file->getClientOriginalExtension());
+            error_log("Original name: ".$file->getClientOriginalName());
+            error_log("Real path: ".$file->getRealPath());
             return $filename . '||' . $orgFilename;
-        else
+        }
+        else {
+            error_log("Error moving file: ".$file->getClientOriginalName());
             return 'Erorr on ';
+        }            
     }
 
 

@@ -28,17 +28,22 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-10 col-xs-10">
-        <a href="/" class="logo_wesley hidden-sm hidden-xs"><h1>Wesley</h1></a>
+        <a href="{{ URL::to('/') }}" class="logo_wesley hidden-sm hidden-xs"><h1>Wesley</h1></a>
       </div>
       <div class="col-md-9 col-sm-2 col-xs-2">        
         <nav id="main-menu">
           <ul>
-            <li><a href="#">Search</a></li>
+            <li><a href="{{ route('search.index') }}">Search</a></li>
             <li><a href="{{ route('list.index') }}">List</a></li>
             <li><a href="#">Advertise</a></li>
             <li><a href="{{ route('sign-up.index') }}">Sign Up</a></li>
-            <li><a href="#">Account</a></li>
+            <li><a href="{{ route('login.index') }}">Account</a></li>
             <li><a href="#">Contact</a></li>
+            @if(Auth::check())
+              @if(Auth::user()->admin==1)
+                <li><a href="{{ route('admin') }}">Admin</a></li>
+              @endif
+            @endif
           </ul>
         </nav>
       </div>

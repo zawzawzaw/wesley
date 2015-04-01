@@ -12,20 +12,22 @@ class Lists extends Eloquent {
 
 	public static $rules = array(
 	    'type'=>'required',
-	    'company_name'=>'required|alpha_num',
+	    'company_name'=>'required',
 	    'category'=>'required',
 	    'subcategory'=>'required',
 	    'address_1'=>'required',
 	    'post_code'=>'required',
-	    'location'=>'required',
-	    'origin_country'=>'required|alpha',
+	    'state'=>'required',
+	    'country'=>'required',
+	    'origin_country'=>'required',
 	    'business_nature'=>'required',
 	    'year_established'=>'required|numeric',
 	    'company_background_info'=>'required',
 	    'no_of_employees'=>'required|numeric',
 	    'quality_certification'=>'required',
-	    'bankers'=>'required',
-	    'market_established'=>'required'
+	    'production_capability'=>'required',
+	    'major_facilities'=>'required',    
+	    'major_customers'=>'required'	    
     );
 
 	public function tags() {
@@ -38,6 +40,10 @@ class Lists extends Eloquent {
 
 	public function keyproduct() {
 		return $this->hasMany('KeyProduct');
+	}
+
+	public function users() {
+		return $this->belongsTo('User', 'user_id');
 	}
 
 }

@@ -17,6 +17,7 @@ class CreateProductCatalogTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer("lists_id")->unsigned();	
+			$table->string('title');			
 			$table->string('file');			
 			
 			$table->timestamps();

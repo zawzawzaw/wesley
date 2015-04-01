@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::resource('sign-up', 'SignupController', array('only' => array('index', 'store')));
 Route::resource('login', 'LoginController', array('only' => array('index', 'store', 'destroy')));
 Route::resource('list', 'ListController', array('only' => array('index', 'store')));
+Route::resource('search', 'SearchController');
 Route::post('generic/uploadfiles', array(
   'uses' => 'GenericController@uploadfiles',
   'as' => 'generic.uploadfiles'
