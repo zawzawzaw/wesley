@@ -39,7 +39,10 @@ class SearchController extends \BaseController {
 		//
 		$text_search = Input::get('text_search');
 		$filter = Input::get('text_search_filter');
-		$form_type = Input::get('form_type');		
+		$form_type = Input::get('form_type');
+
+		// return $text_search;
+		// return $form_type;
 
 		if($form_type=='smart') {
 
@@ -91,8 +94,8 @@ class SearchController extends \BaseController {
 
 			}
 
-			$lists = $query->get();
-			$premium_lists = $premium_query->get();
+			$lists = $query->paginate(2);
+			$premium_lists = $premium_query->paginate(2);
 
 			// if no result found
 			if($lists->isEmpty()) {
@@ -113,39 +116,39 @@ class SearchController extends \BaseController {
 
 				if($filter == 'company_name') {
 
-					$lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->orderBy('created_at','DESC')->get();
+					$lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->orderBy('created_at','DESC')->paginate(2);
 
 					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->whereHas('users', function($premium_query) {
 						$premium_query->where('type', '=', 'Paid');
-					})->orderBy('created_at','DESC')->get();
+					})->orderBy('created_at','DESC')->paginate(2);
 
 					// return $premium_lists;
 
 				}else if($filter == 'product') {
 
-					$lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('productcatalog', function($query) use( &$text_search) {
-						$query->where('title', 'like', '%'.$text_search.'%');
-					})->orderBy('created_at','DESC')->get();
+					$lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($query) use( &$text_search) {
+						$query->where('product_name', 'like', '%'.$text_search.'%');
+					})->orderBy('created_at','DESC')->paginate(2);
 
-					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('productcatalog', function($premium_query) use( &$text_search) {
-						$premium_query->where('title', 'like', '%'.$text_search.'%');
+					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($premium_query) use( &$text_search) {
+						$premium_query->where('product_name', 'like', '%'.$text_search.'%');
 					})->whereHas('users', function($premium_query) {
 						$premium_query->where('type', '=', 'Paid');
-					})->orderBy('created_at','DESC')->get();
+					})->orderBy('created_at','DESC')->paginate(2);
 
 					// return $premium_lists;
 
 				}else if($filter == 'tags') {
 
 					$lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('tags' , function($query) use( &$text_search) {
-						$query->where('name', 'like', $text_search);
-					})->orderBy('created_at','DESC')->get();
+						$query->where('name', 'like', '%'.$text_search.'%');
+					})->orderBy('created_at','DESC')->paginate(2);
 
 					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('tags', function($premium_query) use( &$text_search) {
 						$premium_query->where('name', 'like', '%'.$text_search.'%');
 					})->whereHas('users', function($premium_query) {
 						$premium_query->where('type', '=', 'Paid');
-					})->orderBy('created_at','DESC')->get();
+					})->orderBy('created_at','DESC')->paginate(2);
 
 					// return $premium_lists;
 
@@ -165,12 +168,12 @@ class SearchController extends \BaseController {
 		// $queries = DB::getQueryLog();
 		// $last_query = end($queries);
 		// print_r($last_query); exit();
-		// return $lists;
+		// return $lists;	
 		
 		if($form_type=='text' && $filter == 'product') {			
 			$this->layout->content = View::make('search.result_product')
 									->with('lists', $lists)
-									->with('premium_lists', $premium_lists);
+									->with('premium_lists', $premium_lists);									
 		}else {
 			$this->layout->content = View::make('search.result')
 									->with('lists', $lists)
@@ -230,6 +233,20 @@ class SearchController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	/**
+	 * Custom function for company product by product id
+	 */
+	public function company($id)
+	{
+		//
+		$list = Lists::with(array('tags','keyproduct','productcatalog'))->where('id', $id)->orderBy('created_at','DESC')->first();
+
+		// return $list;
+
+        $this->layout->content = View::make('search.show_company_product')->with('list', $list)->with('id', $id);
+
 	}
 
 

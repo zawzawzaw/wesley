@@ -1,7 +1,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		{{ Form::open(array('url'=>'search', 'class'=>'form-list')) }}
+		{{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
 			<div class="col-md-3">			
 				<h1>Smart Search:</h1>	
 				{{ Form::label('smart_search', 'Select one or more:') }}

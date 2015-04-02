@@ -1,7 +1,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			{{ Form::open(array('url'=>'search', 'class'=>'form-list')) }}
+			{{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
 				<div class="col-md-3">
 					<div class="smart-search">
 						<h1>Smart Search:</h1>	
@@ -568,41 +568,47 @@
 				
 				<div class="details">
 					<h2>Company Details:</h2>				
-					<h5>{{ $list->company_name }}</h5>
+					<h5>Company Name: {{ $list->company_name }}</h5>
 					<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
+					<br>
 					<ul>
-						<li><a href="#">{{ $list->category }}</a></li>
-						<li><p>{{ $list->subcategory }}</p></li>
-						<li><p>{{ $list->address_1 }}</p></li>
-						<li><p>{{ $list->address_2 }}</p></li>
-						<li><p>{{ $list->post_code }}</p></li>
-						<li><p>{{ $list->country }}</p></li>
-						<li><p>{{ $list->origin_country }}</p></li>
-						<li><p>{{ $list->business_nature }}</p></li>
-						<li><p>{{ $list->company_background_info }}</p></li>
-						<li><p>{{ $list->year_established }}</p></li>
-						<li><p>{{ $list->paid_up_capital }}</p></li>
-						<li><p>{{ $list->no_of_employees }}</p></li>
-						<li><p>{{ $list->quality_certification }}</p></li>
-						<li><p>{{ $list->bankers }}</p></li>
-						<li><p>{{ $list->market_established }}</p></li>
-						<li><p>{{ $list->market_interested }}</p></li>
-						<li><p>{{ $list->number_of_offices_worldwide }}</p></li>
-						<li><p>{{ $list->links_to_related_companies }}</p></li>
-						<li><p>{{ $list->upload_video }}</p></li>
+						<li><p>Category: <a href="#">{{ $list->category }}</a></p></li>
+						<li><p>Sub Category: {{ $list->subcategory }}</p></li>
+						<li><p>Address 1: {{ $list->address_1 }}</p></li>
+						<li><p>Address 2: {{ $list->address_2 }}</p></li>
+						<li><p>Post Code: {{ $list->post_code }}</p></li>
+						<li><p>Country: {{ $list->country }}</p></li>
+						<li><p>Country of origin: {{ $list->origin_country }}</p></li>
+						<li><p>Nature of business: {{ $list->business_nature }}</p></li>
+						<li><p>Company Background / Information: {{ $list->company_background_info }}</p></li>
+						<li><p>Year Established: {{ $list->year_established }}</p></li>
+						<li><p>Paid Up Capital: {{ $list->paid_up_capital }}</p></li>
+						<li><p>No. of Employees: {{ $list->no_of_employees }}</p></li>
+						<li><p>Quality Certification: {{ $list->quality_certification }}</p></li>
+						<li><p>Bankers: {{ $list->bankers }}</p></li>
+						<li><p>Market/s Established: {{ $list->market_established }}</p></li>
+						<li><p>Market/s Interested: {{ $list->market_interested }}</p></li>
+						<li><p>Number of offices worldwide: {{ $list->number_of_offices_worldwide }}</p></li>
+						<li><p>Links to related Companies: {{ $list->links_to_related_companies }}</p></li>
+						<li><p>Uploaded Video: {{ $list->upload_video }}</p></li>						
+					</ul>
 
-						<a href="#">See Company's Product</a>
+					<hr>
 
-						<div class="full-info">
-							<ul>
-								<li><p>{{ $list->major_facilities }}</p></li>
-								<li><p>{{ $list->major_customers }}</p></li>
-							</ul>
-						</div>
+					<a href="{{ route('search.company', $list->id) }}">See Company's Product</a>
 
+					<hr>
 
-						<a href="javascript:window.history.back();">Back to search results</a>
-					</ul>						               
+					<div class="full-info">
+						<ul>
+							<li><p>Major Facilities / Equipment: {{ $list->major_facilities }}</p></li>
+							<li><p>Major Customers / Project History: {{ $list->major_customers }}</p></li>
+						</ul>
+					</div>
+
+					<a href="javascript:window.history.back();">Back to search results</a>
+					
+					<hr>
                 </div>
                 
 			</div>

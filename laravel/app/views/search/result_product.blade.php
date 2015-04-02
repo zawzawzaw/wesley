@@ -1,7 +1,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			{{ Form::open(array('url'=>'search', 'class'=>'form-list')) }}
+			{{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
 				<div class="col-md-3">
 					<div class="smart-search">
 						<h1>Smart Search:</h1>	
@@ -568,7 +568,7 @@
 				<h1>Result (Product)</h1>
 	
 				@if(Input::has('text_search'))
-					<p>You searched for {{ Input::get('text_search', null) }}</p>
+					<p>You searched for "{{ Input::get('text_search', null) }}"</p>
 				@endif
 				
 				@if($premium_lists->count() > 0)
@@ -576,18 +576,18 @@
 						<h2>Premium Listings:</h2>					
 						<div class="all-premium-list">					
 		                  	@foreach($premium_lists as $k => $premium_list)			                  	
-	                  			@foreach($premium_list->productcatalog as $pk => $premium_product_list)
+	                  			@foreach($premium_list->keyproduct as $pk => $premium_product_list)
 		                  			<div class="row">
 				                  		<div class="col-md-6">
-											<p>Product Name: {{ $premium_product_list->title }}</p>
+											<p>Product Name: {{ $premium_product_list->product_name }}</p>
 				                  		</div>
 				                  		<div class="col-md-6">
-				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $premium_product_list->file }}" alt="">
+				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $premium_product_list->image }}" alt="">
 				                  		</div>
 			                  		</div>
 			                  		<div class="row">
 				                  		<div class="col-md-6">
-											<a href="{{ route('search.show', $premium_list->id) }}">{{ $premium_list->company_name }}</a>
+											<p>Company Name: <a href="{{ route('search.show', $premium_list->id) }}">{{ $premium_list->company_name }}</a></p>
 											<p>Category: {{ $premium_list->category }}</p>
 											<p>Address: {{ $premium_list->address_1 }}{{ $premium_list->address_2 }}</p>
 											<p>Country of origin: {{ $premium_list->origin_country }}</p>
@@ -596,8 +596,25 @@
 											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" alt="">
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<hr>
+										</div>
+									</div>
 		                  		@endforeach
-		                  	@endforeach	                
+		                  	@endforeach	 
+
+		                  	<?php $search_params = array(
+			                  		'text_search' => Input::get('text_search', null),
+			                  		'text_search_filter' => Input::get('text_search_filter', null),
+			                  		'form_type' => Input::get('form_type', null),
+			                  		'category' => Input::get('category', null),
+			                  		'subcategory' => Input::get('subcategory', null),
+			                  		'location' => Input::get('location', null),
+			                  		'country' => Input::get('country', null)			                  		
+			                  		); ?>
+
+		                  	{{ $premium_lists->appends($search_params)->links() }}               
 		                </div>	                
 	                </div>
                 @endif
@@ -608,18 +625,18 @@
 						<h2>All Listings ({{ $lists->count() }}):</h2>					
 						<div class="all-list">					
 		                  	@foreach($lists as $k => $list)
-		                  		@foreach($list->productcatalog as $pk => $product_list)
+		                  		@foreach($list->keyproduct as $pk => $product_list)
 									<div class="row">
 				                  		<div class="col-md-6">
-											<p>Product Name: {{ $product_list->title }}</p>
+											<p>Product Name: {{ $product_list->product_name }}</p>
 				                  		</div>
 				                  		<div class="col-md-6">
-				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product_list->file }}" alt="">
+				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product_list->image }}" alt="">
 				                  		</div>
 			                  		</div>
 		                  			<div class="row">
 				                  		<div class="col-md-6">
-											<a href="{{ route('search.show', $list->id) }}">{{ $list->company_name }}</a>
+											<p>Company Name: <a href="{{ route('search.show', $list->id) }}">{{ $list->company_name }}</a></p>
 											<p>Category: {{ $list->category }}</p>
 											<p>Address: {{ $list->address_1 }}{{ $list->address_2 }}</p>
 											<p>Country of origin: {{ $list->origin_country }}</p>
@@ -628,8 +645,25 @@
 											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<hr>
+										</div>
+									</div>
 		                  		@endforeach			                  
-		                  	@endforeach	                
+		                  	@endforeach	    
+
+		                  	<?php $search_params = array(
+			                  		'text_search' => Input::get('text_search', null),
+			                  		'text_search_filter' => Input::get('text_search_filter', null),
+			                  		'form_type' => Input::get('form_type', null),
+			                  		'category' => Input::get('category', null),
+			                  		'subcategory' => Input::get('subcategory', null),
+			                  		'location' => Input::get('location', null),
+			                  		'country' => Input::get('country', null)			                  		
+			                  		); ?>
+
+		                  	{{ $lists->appends($search_params)->links() }}                     
 		                </div>	                
 	                </div>
                 @endif

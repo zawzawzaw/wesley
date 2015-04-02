@@ -10,7 +10,7 @@
 				        	<p class="alert">{{ Session::get('smart_search_message') }}</p>
 				        @endif				
 						<div class="inputs">
-							{{ 
+							{{
 								Form::select('category', array(							
 									'Oil & Gas' => 'Oil & Gas', 
 									'Chemicals' => 'Chemicals', 
@@ -565,116 +565,66 @@
 				</div>
 			{{ Form::close() }}
 			<div class="col-md-6">
-				<h1>Result</h1>
-	
-				@if(Input::has('text_search'))
-					<p>You searched for {{ Input::get('text_search', null) }}</p>
-				@endif
-				
-				@if($premium_lists->count() > 0)
-					<div class="premium">
-						<h2>Premium Listings:</h2>					
-						<div class="all-premium-list">					
-		                  	@foreach($premium_lists as $k => $premium_list)
-			                  	<div class="each-premium-list row">
-			                  		<div class="list-info col-md-6">
-										<p>Company Name: <a href="{{ route('search.show', $premium_list->id) }}">{{ $premium_list->company_name }}</a></p>
-										<p>Category: {{ $premium_list->category }}</p>
-										<p>Address: {{ $premium_list->address_1 }}{{ $premium_list->address_2 }}</p>
-										<p>Country of origin: {{ $premium_list->origin_country }}</p>
-									</div>
-									<div class="list-img col-md-6">
-										<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" alt="">
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<hr>
-									</div>
-								</div>
-		                  	@endforeach		                  	
+				<h1>Company Details - Key Products</h1>									
+				<div class="key-products">					
+					@foreach($list->keyproduct as $pk => $key_product_list)	
+						<div class="each-key-product">
+							<ul>
+								<li><h5>Category Name: {{ $key_product_list->category }}</h5></li>						
+								<li>
+									<ul>
+										<li><h5>Sub Category Name: {{ $key_product_list->subcategory }}</h5></li>
+										<li>
+											<ul>
+												<li>Product Name: {{ $key_product_list->product_name }}</li>
+												<li>Product Specifics: {{ $key_product_list->product_specifics }}</li>
+												<li>Product Image: <img src="{{ URL::to('/') }}/uploads/key_products/{{ $key_product_list->image }}" alt=""></li>
+											</ul>
+										</li>
+									</ul>
+								</li>								
+							</ul>
+						</div>
+						<hr>
+					@endforeach					
+				</div>
+				<div class="catalogs">					
+					@foreach($list->productcatalog as $pck => $product_catalog_list)	
+						<div class="each-catalog">
+							<ul>
+								<li><p>Catalog Name: {{ $product_catalog_list->title }}</p></li>					
+								<li><p>Catalog File: <a href="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product_catalog_list->file }}">{{ $product_catalog_list->file }}</a></p></li>									
+							</ul>
+						</div>
+						<hr>
+					@endforeach					
+				</div>
 
-		                  	<?php 
-		                  		$search_params = array(
-			                  		'text_search' => Input::get('text_search', null),
-			                  		'text_search_filter' => Input::get('text_search_filter', null),
-			                  		'form_type' => Input::get('form_type', null),
-			                  		'category' => Input::get('category', null),
-			                  		'subcategory' => Input::get('subcategory', null),
-			                  		'location' => Input::get('location', null),
-			                  		'country' => Input::get('country', null)			                  		
-		                  		); 
-		                  	?>
-
-		                  	
-		                  	{{ $premium_lists->appends(array_except(Request::query(), 'premium_page'))->links() }}              
-		                </div>	                
-	                </div>
-                @endif
-
-
-                @if($lists->count() > 0)
-					<div class="free">
-						<h2>All Listings ({{ $lists->count() }}):</h2>
-
-						@if(Auth::user()->plan == 'free')
-							<p>There are a total of {{ $lists->count() }} listings that match your search.</p>
-							<p>Please log in or sign up for an account to see these listings.</p>
-						@else
-							<div class="all-list">					
-			                  	@foreach($lists as $k => $list)
-				                  	<div class="each-list row">
-				                  		<div class="list-info col-md-6">
-											<p>Company Name: <a href="{{ route('search.show', $list->id) }}">{{ $list->company_name }}</a></p>
-											<p>Category: {{ $list->category }}</p>
-											<p>Address: {{ $list->address_1 }}{{ $list->address_2 }}</p>
-											<p>Country of origin: {{ $list->origin_country }}</p>
-										</div>
-										<div class="list-img col-md-6">
-											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<hr>
-										</div>
-									</div>
-			                  	@endforeach
-
-			                  	<?php $search_params = array(
-			                  		'text_search' => Input::get('text_search', null),
-			                  		'text_search_filter' => Input::get('text_search_filter', null),
-			                  		'form_type' => Input::get('form_type', null),
-			                  		'category' => Input::get('category', null),
-			                  		'subcategory' => Input::get('subcategory', null),
-			                  		'location' => Input::get('location', null),
-			                  		'country' => Input::get('country', null)			                  		
-			                  		); ?>
-
-			                  	{{ $lists->appends($search_params)->links() }}
-			                </div>
-		                @endif	                
-	                </div>
-                @endif
+				<a href="javascript:window.history.back();">Back to company listing</a>
+				<hr>
 			</div>
 			<div class="col-md-3">
-				<a href="#">Save Search</a>
+				<h2>Send Message</h2>
+				{{ Form::open(array('url'=>'message', 'class'=>'form-list')) }}			
+					{{ Form::textarea('message') }}
+					<div class="each-input">
+					{{ Form::radio('message_subject', 'sales enquiry', true) }}
+					{{ Form::label('message_subject', 'Sales Enquiry') }}
+					</div>
+					<div class="each-input">
+					{{ Form::radio('message_subject', 'purchasing enquiry', false) }}
+					{{ Form::label('message_subject', 'Purchasing Enquiry') }}
+					</div>
+					{{ Form::button('Go', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'form-submit','class'=>'btn btn-large')) }}
+				{{ Form::close() }}
 
-				<div class="ad">
-					<p>advert here</p>
-				</div>
-			</div>			
+				<ul>
+					<li><a href="#">Request for quote</a></li>
+					<li><a href="#">Add to favourites</a></li>
+					<li><a href="#">Download PDF</a></li>
+					<li><a href="#">Request for more info</a></li>
+				</ul>
+			</div>	
 		</div>
 	</div>
-	<script>
-		$(document).ready(function(){
-			var old_category = '{{ Input::get("category", null) }}';
-			var sub_category = '{{ Input::get("subcategory", null) }}';
-
-			if(old_category) {
-				$("#category").val(old_category).trigger('change');
-				$('#subcategory').val(sub_category);
-			}
-		});
-	</script>
 @stop
