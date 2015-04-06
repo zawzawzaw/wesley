@@ -571,37 +571,37 @@
 					<p>You searched for "{{ Input::get('text_search', null) }}"</p>
 				@endif
 				
-				@if($premium_lists->count() > 0)
+				@if($premium_products->getTotal() > 0)
 					<div class="premium">
 						<h2>Premium Listings:</h2>					
 						<div class="all-premium-list">					
-		                  	@foreach($premium_lists as $k => $premium_list)			                  	
-	                  			@foreach($premium_list->keyproduct as $pk => $premium_product_list)
-		                  			<div class="row">
-				                  		<div class="col-md-6">
-											<p>Product Name: {{ $premium_product_list->product_name }}</p>
-				                  		</div>
-				                  		<div class="col-md-6">
-				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $premium_product_list->image }}" alt="">
-				                  		</div>
+		                  	@foreach($premium_products as $k => $premium_product)	                  			
+	                  			<div class="row">
+			                  		<div class="col-md-6">
+										<p>Product Name: {{ $premium_product->product_name }}</p>
 			                  		</div>
-			                  		<div class="row">
-				                  		<div class="col-md-6">
-											<p>Company Name: <a href="{{ route('search.show', $premium_list->id) }}">{{ $premium_list->company_name }}</a></p>
-											<p>Category: {{ $premium_list->category }}</p>
-											<p>Address: {{ $premium_list->address_1 }}{{ $premium_list->address_2 }}</p>
-											<p>Country of origin: {{ $premium_list->origin_country }}</p>
-										</div>
-										<div class="col-md-6">
-											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" alt="">
-										</div>
+			                  		<div class="col-md-6">
+			                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $premium_product->image }}" alt="">
+			                  		</div>
+		                  		</div>
+		                  		
+		                  		<div class="row">
+			                  		<div class="col-md-6">
+										<p>Company Name: <a href="{{ route('search.show', $premium_product->lists->id) }}">{{ $premium_product->lists->company_name }}</a></p>
+										<p>Category: {{ $premium_product->lists->category }}</p>
+										<p>Address: {{ $premium_product->lists->address_1 }}{{ $premium_product->lists->address_2 }}</p>
+										<p>Country of origin: {{ $premium_product->lists->origin_country }}</p>
 									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<hr>
-										</div>
+									<div class="col-md-6">
+										<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_product->lists->logo }}" alt="">
 									</div>
-		                  		@endforeach
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<hr>
+									</div>
+								</div>		                  		
 		                  	@endforeach	 
 
 		                  	<?php $search_params = array(
@@ -613,60 +613,68 @@
 			                  		'location' => Input::get('location', null),
 			                  		'country' => Input::get('country', null)			                  		
 			                  		); ?>
-
-		                  	{{ $premium_lists->appends($search_params)->links() }}               
+							
+							{{ Paginator::setPageName('premium_page'); }}
+		                  	{{ $premium_products->appends($search_params)->links() }}               
 		                </div>	                
 	                </div>
                 @endif
 
-
-                @if($lists->count() > 0)
+				@if($products->getTotal() > 0)
 					<div class="free">
-						<h2>All Listings ({{ $lists->count() }}):</h2>					
-						<div class="all-list">					
-		                  	@foreach($lists as $k => $list)
-		                  		@foreach($list->keyproduct as $pk => $product_list)
+						<h2>All Listings ({{ $products->getTotal() }}):</h2>
+
+						@if(Auth::user()->plan == 'free')
+							<p>There are a total of {{ $products->getTotal() }} listings that match your search.</p>
+							<p>Please log in or sign up for an account to see these listings.</p>
+						@else				
+							<div class="all-list">					
+			                  	@foreach($products as $k => $product)			                  		
 									<div class="row">
 				                  		<div class="col-md-6">
-											<p>Product Name: {{ $product_list->product_name }}</p>
+											<p>Product Name: {{ $product->product_name }}</p>
 				                  		</div>
 				                  		<div class="col-md-6">
-				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product_list->image }}" alt="">
+				                  			<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product->image }}" alt="">
 				                  		</div>
 			                  		</div>
+			                  		
 		                  			<div class="row">
 				                  		<div class="col-md-6">
-											<p>Company Name: <a href="{{ route('search.show', $list->id) }}">{{ $list->company_name }}</a></p>
-											<p>Category: {{ $list->category }}</p>
-											<p>Address: {{ $list->address_1 }}{{ $list->address_2 }}</p>
-											<p>Country of origin: {{ $list->origin_country }}</p>
+											<p>Company Name: <a href="{{ route('search.show', $product->lists->id) }}">{{ $product->lists->company_name }}</a></p>
+											<p>Category: {{ $product->lists->category }}</p>
+											<p>Address: {{ $product->lists->address_1 }}{{ $product->lists->address_2 }}</p>
+											<p>Country of origin: {{ $product->lists->origin_country }}</p>
 										</div>
 										<div class="col-md-6">
-											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
+											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $product->lists->logo }}" alt="">
 										</div>
 									</div>
+									
 									<div class="row">
 										<div class="col-md-12">
 											<hr>
 										</div>
 									</div>
-		                  		@endforeach			                  
-		                  	@endforeach	    
+			                  	@endforeach
 
-		                  	<?php $search_params = array(
-			                  		'text_search' => Input::get('text_search', null),
-			                  		'text_search_filter' => Input::get('text_search_filter', null),
-			                  		'form_type' => Input::get('form_type', null),
-			                  		'category' => Input::get('category', null),
-			                  		'subcategory' => Input::get('subcategory', null),
-			                  		'location' => Input::get('location', null),
-			                  		'country' => Input::get('country', null)			                  		
-			                  		); ?>
-
-		                  	{{ $lists->appends($search_params)->links() }}                     
-		                </div>	                
+			                  	<?php $search_params = array(
+				                  		'text_search' => Input::get('text_search', null),
+				                  		'text_search_filter' => Input::get('text_search_filter', null),
+				                  		'form_type' => Input::get('form_type', null),
+				                  		'category' => Input::get('category', null),
+				                  		'subcategory' => Input::get('subcategory', null),
+				                  		'location' => Input::get('location', null),
+				                  		'country' => Input::get('country', null)			                  		
+				                  		); ?>
+								
+								{{ Paginator::setPageName('list_page'); }}
+			                  	{{ $products->appends($search_params)->links() }}                     
+			                </div>	   
+		                @endif             
 	                </div>
                 @endif
+                
 			</div>
 			<div class="col-md-3">
 				<a href="#">Save Search</a>

@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Tzookb\TBMsg\TBMsgServiceProvider',
 
 	),
 
@@ -189,6 +190,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Collection'      	=> 'Illuminate\Database\Eloquent\Collection',
+		'TBMsg' 			=> 'Tzookb\TBMsg\Facade\TBMsg',
 
 	),
 

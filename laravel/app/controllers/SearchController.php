@@ -55,9 +55,7 @@ class SearchController extends \BaseController {
 				$query = $query->where('category', '=', Input::get('category'));
 
 				// paid listings
-				$premium_query = $premium_query->where('category', '=', Input::get('category'))->whereHas('users', function($premium_query) {
-					$premium_query->where('type', '=', 'Paid');
-				});
+				$premium_query = $premium_query->where('category', '=', Input::get('category'))->where('type', '=', 'Paid');
 				
 			}
 			if(Input::has('subcategory')) {
@@ -66,9 +64,7 @@ class SearchController extends \BaseController {
 				$query = $query->where('subcategory', '=', Input::get('subcategory'));
 
 				// paid listings
-				$premium_query = $premium_query->where('subcategory', '=', Input::get('subcategory'))->whereHas('users', function($premium_query) {
-					$premium_query->where('type', '=', 'Paid');
-				});
+				$premium_query = $premium_query->where('subcategory', '=', Input::get('subcategory'))->where('type', '=', 'Paid');
 
 			}
 			if(Input::has('location')) {
@@ -77,9 +73,7 @@ class SearchController extends \BaseController {
 				$query = $query->where('location', '=', Input::get('location'));
 
 				// paid listings
-				$premium_query = $premium_query->where('location', '=', Input::get('location'))->whereHas('users', function($premium_query) {
-					$premium_query->where('type', '=', 'Paid');
-				});			
+				$premium_query = $premium_query->where('location', '=', Input::get('location'))->where('type', '=', 'Paid');	
 
 			}
 			if(Input::has('country')) {
@@ -88,13 +82,14 @@ class SearchController extends \BaseController {
 				$query = $query->where('country', '=', Input::get('country'));
 
 				// paid listings
-				$premium_query = $premium_query->where('country', '=', Input::get('country'))->whereHas('users', function($premium_query) {
-					$premium_query->where('type', '=', 'Paid');
-				});
+				$premium_query = $premium_query->where('country', '=', Input::get('country'))->where('type', '=', 'Paid');
 
 			}
 
+			Paginator::setPageName('list_page');
 			$lists = $query->paginate(2);
+
+			Paginator::setPageName('premium_page');
 			$premium_lists = $premium_query->paginate(2);
 
 			// if no result found
@@ -116,48 +111,62 @@ class SearchController extends \BaseController {
 
 				if($filter == 'company_name') {
 
-					$lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->orderBy('created_at','DESC')->paginate(2);
+					Paginator::setPageName('list_page');
+					$lists = Lists::with(['tags','keyproduct','productcatalog'])
+							->where('company_name', 'like', '%'.$text_search.'%')
+							->orderBy('created_at','DESC')
+							->paginate(2);
 
-					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->whereHas('users', function($premium_query) {
-						$premium_query->where('type', '=', 'Paid');
-					})->orderBy('created_at','DESC')->paginate(2);
-
-					// return $premium_lists;
+					Paginator::setPageName('premium_page');
+					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->where('type', '=', 'Paid')->orderBy('created_at','DESC')->paginate(2);
 
 				}else if($filter == 'product') {
 
-					$lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($query) use( &$text_search) {
-						$query->where('product_name', 'like', '%'.$text_search.'%');
-					})->orderBy('created_at','DESC')->paginate(2);
+					// $lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($query) use( &$text_search) {
+					// 	$query->where('product_name', 'like', '%'.$text_search.'%');
+					// })->orderBy('created_at','DESC')->paginate(2);
 
-					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($premium_query) use( &$text_search) {
-						$premium_query->where('product_name', 'like', '%'.$text_search.'%');
-					})->whereHas('users', function($premium_query) {
-						$premium_query->where('type', '=', 'Paid');
-					})->orderBy('created_at','DESC')->paginate(2);
+					// $premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($premium_query) use( &$text_search) {
+					// 	$premium_query->where('product_name', 'like', '%'.$text_search.'%');
+					// })->whereHas('users', function($premium_query) {
+					// 	$premium_query->where('type', '=', 'Paid');
+					// })->orderBy('created_at','DESC')->paginate(2);
 
-					// return $premium_lists;
+					Paginator::setPageName('list_page');
+					$products = KeyProduct::with(['lists'])
+								->where('product_name', 'like', '%'.$text_search.'%')
+								->paginate(2);
+
+					Paginator::setPageName('premium_page');
+					$premium_products = KeyProduct::with(['lists'])
+										->where('product_name', 'like', '%'.$text_search.'%')
+										->whereHas('lists', function($premium_query) {
+											$premium_query->where('type', '=', 'Paid');
+										})->paginate(2);					
 
 				}else if($filter == 'tags') {
 
+					Paginator::setPageName('list_page');
 					$lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('tags' , function($query) use( &$text_search) {
 						$query->where('name', 'like', '%'.$text_search.'%');
 					})->orderBy('created_at','DESC')->paginate(2);
 
+					Paginator::setPageName('premium_page');
 					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('tags', function($premium_query) use( &$text_search) {
 						$premium_query->where('name', 'like', '%'.$text_search.'%');
-					})->whereHas('users', function($premium_query) {
-						$premium_query->where('type', '=', 'Paid');
-					})->orderBy('created_at','DESC')->paginate(2);
-
-					// return $premium_lists;
-
+					})->where('type', '=', 'Paid')->orderBy('created_at','DESC')->paginate(2);
+					
 				}
 
 				// if no result found
-				if($lists->isEmpty()) {
+				if(isset($lists) && $lists->isEmpty()) {
 					return Redirect::to('/search')
 			        	->with('text_search_message', 'No list was found!')->withInput();
+				}
+
+				if(isset($products) && $products->isEmpty()) {
+					return Redirect::to('/search')
+			        	->with('text_search_message', 'No product was found!')->withInput();
 				}
 
 			} else return Redirect::to('/search')->with('text_search_message', 'The following errors occurred:')->withErrors($validator)->withInput();			
@@ -167,14 +176,21 @@ class SearchController extends \BaseController {
 		// debug
 		// $queries = DB::getQueryLog();
 		// $last_query = end($queries);
-		// print_r($last_query); exit();
-		// return $lists;	
+		// print_r($last_query); exit();		
 		
-		if($form_type=='text' && $filter == 'product') {			
+		if($form_type=='text' && $filter == 'product') {
+			// debug
+			// return $products;
+			// return $premium_products;
+
 			$this->layout->content = View::make('search.result_product')
-									->with('lists', $lists)
-									->with('premium_lists', $premium_lists);									
+									->with('products', $products)
+									->with('premium_products', $premium_products);									
 		}else {
+			// debug
+			// return $lists;
+			// return $premium_lists;	
+
 			$this->layout->content = View::make('search.result')
 									->with('lists', $lists)
 									->with('premium_lists', $premium_lists);

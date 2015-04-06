@@ -571,7 +571,7 @@
 					<p>You searched for {{ Input::get('text_search', null) }}</p>
 				@endif
 				
-				@if($premium_lists->count() > 0)
+				@if($premium_lists->getTotal() > 0)
 					<div class="premium">
 						<h2>Premium Listings:</h2>					
 						<div class="all-premium-list">					
@@ -606,19 +606,19 @@
 		                  		); 
 		                  	?>
 
-		                  	
-		                  	{{ $premium_lists->appends(array_except(Request::query(), 'premium_page'))->links() }}              
+		                  	{{ Paginator::setPageName('premium_page'); }}
+		                  	{{ $premium_lists->appends($search_params)->links() }}              
 		                </div>	                
 	                </div>
                 @endif
 
 
-                @if($lists->count() > 0)
+                @if($lists->getTotal() > 0)
 					<div class="free">
-						<h2>All Listings ({{ $lists->count() }}):</h2>
+						<h2>All Listings ({{ $lists->getTotal() }}):</h2>
 
 						@if(Auth::user()->plan == 'free')
-							<p>There are a total of {{ $lists->count() }} listings that match your search.</p>
+							<p>There are a total of {{ $lists->getTotal() }} listings that match your search.</p>
 							<p>Please log in or sign up for an account to see these listings.</p>
 						@else
 							<div class="all-list">					
@@ -650,7 +650,8 @@
 			                  		'location' => Input::get('location', null),
 			                  		'country' => Input::get('country', null)			                  		
 			                  		); ?>
-
+								
+								{{ Paginator::setPageName('list_page'); }}
 			                  	{{ $lists->appends($search_params)->links() }}
 			                </div>
 		                @endif	                

@@ -624,6 +624,8 @@
 					{{ Form::radio('message_subject', 'purchasing enquiry', false) }}
 					{{ Form::label('message_subject', 'Purchasing Enquiry') }}
 					</div>
+
+					{{ Form::hidden('list_user_id', $list->user_id) }}
 					{{ Form::button('Go', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'form-submit','class'=>'btn btn-large')) }}
 				{{ Form::close() }}
 
