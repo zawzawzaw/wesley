@@ -624,7 +624,7 @@
 					<div class="free">
 						<h2>All Listings ({{ $products->getTotal() }}):</h2>
 
-						@if(Auth::user()->plan == 'free')
+						@if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free'))
 							<p>There are a total of {{ $products->getTotal() }} listings that match your search.</p>
 							<p>Please log in or sign up for an account to see these listings.</p>
 						@else				

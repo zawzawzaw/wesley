@@ -142,7 +142,7 @@ class SearchController extends \BaseController {
 										->where('product_name', 'like', '%'.$text_search.'%')
 										->whereHas('lists', function($premium_query) {
 											$premium_query->where('type', '=', 'Paid');
-										})->paginate(2);					
+										})->paginate(2);				
 
 				}else if($filter == 'tags') {
 

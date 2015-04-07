@@ -1,0 +1,38 @@
+{
+    "name": "tzookb/tbmsg",
+    "type": "library",
+    "description": "users messaging system",
+    "keywords": ["laravel", "php", "messaging", "message-system"],
+    "homepage": "https://github.com/tzookb/tbmsg",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tzookb",
+            "email": "tzookb@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "illuminate/events": "*",
+        "illuminate/database": "4.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master",
+        "phpunit/phpunit": "4.3.*",
+        "illuminate/filesystem": "4.*",
+        "league/factory-muffin": "~2.0"
+    },
+    "require-all": true,
+
+    "autoload": {    
+        "psr-0": {
+            "Tzookb\\TBMsg": "src/"
+        },
+        "classmap": [
+            "tests/TestCaseDb.php",
+            "src/migrations/"
+        ]
+    },    
+    "minimum-stability": "dev"    
+}

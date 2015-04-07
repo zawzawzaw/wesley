@@ -10,6 +10,21 @@ class MessageController extends \BaseController {
 	public function index()
 	{
 		//
+		// $current_user = Auth::user();
+		// $convs = TBMsg::getUserConversations($current_user->id);		
+
+		// foreach ( $convs as $conv ) {
+                    
+  //           $conv_msgs = TBMsg::getConversationMessages($conv->getId(), $current_user->id);            
+
+  //           foreach ($conv_msgs->getAllMessages() as $key => $msg) {
+  //           	echo $msg->getSender() . "<br>";
+		// 		echo $msg->getContent() . "<br>";
+		// 		echo $msg->getStatus() . "<br><br>";
+  //           }
+
+  //       }
+
 	}
 
 
@@ -32,36 +47,66 @@ class MessageController extends \BaseController {
 	public function store()
 	{
 		//
+		/*
 		$current_user = Auth::user();
-
 		$list_user_id = Input::get('list_user_id');
 
-		$conv = TBMsg::getConversationByTwoUsers($current_user->id, $list_user_id);		
+		// current conv
+		$conv_id = TBMsg::getConversationByTwoUsers($current_user->id, $list_user_id);		
 
-		// return Input::get('message');
+		// if no conv
+		if($conv_id == -1) {
 
-		if($conv == -1) {
-			$users_ids = array(3, 1);
+			// echo 'new';
+			// create new conv
+			$data = TBMsg::createConversation([$current_user->id, $list_user_id]);
+			$conv_id = $data->id;
 
-			$conv = TBMsg::createConversation($users_ids);		
+		}		
 
-			$conv = TBMsg::addMessageToConversation($conv, $current_user->id, Input::get('message'));
+		// adding message
+		TBMsg::addMessageToConversation($conv_id, $current_user->id, Input::get('message'));
 
-			$convs = TBMsg::getUserConversations( $current_user->id );
+		$conv = TBMsg::getConversationMessages($conv_id, $current_user->id);			
 
-			return $convs;
+		foreach ( $conv->getAllMessages() as $msg ) {
 
-		}else {
-			$users_ids = array(3, 1);
+			echo $msg->getSender() . "<br>";
+			echo $msg->getContent() . "<br>";
+			echo $msg->getStatus() . "<br><br>";
 
-			$conv = TBMsg::createConversation($users_ids);
-
-			$conv = TBMsg::addMessageToConversation($conv, $current_user->id, "test");
-
-			$convs = TBMsg::getUserConversations( $current_user->id );
-
-			return $convs;
 		}
+		*/
+
+		// $current_user_id = Auth::user()->id;
+		// $list_user_id = Input::get('list_user_id');
+
+		// $conversations = Conversation::whereHas('conversation_users', function($q) use(&$current_user_id){
+		// 	$q->where('user_id', '='. $current_user_id);
+		// })->get();
+
+		// // ->where('user_id', '=', $current_user_id)->get();
+
+		// // return $conversations;
+
+		// $queries = DB::getQueryLog();
+		// $last_query = end($queries);
+		// print_r($last_query); exit();	
+
+		// $c1 = new Conversation;
+	 //    $c1->name = "Some Conversation";
+	 //    $c1->save();
+
+	 //    $c1->users()->attach([$current_user->id, $list_user_id]);
+
+		$current_user = Auth::user();
+		$list_user_id = Input::get('list_user_id');
+
+		$conv = new Conversation;
+		$conv->name = Input::get('message_subject');
+		$conv->save();
+
+		// $conv->conversation_users()->attach([ $current_user->id, $list_user_id ]);		
 
 	}
 
