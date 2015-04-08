@@ -15,16 +15,45 @@ class MessageController extends \BaseController {
 
 		// foreach ( $convs as $conv ) {
                     
-  //           $conv_msgs = TBMsg::getConversationMessages($conv->getId(), $current_user->id);            
+  		//     $conv_msgs = TBMsg::getConversationMessages($conv->getId(), $current_user->id);            
 
-  //           foreach ($conv_msgs->getAllMessages() as $key => $msg) {
-  //           	echo $msg->getSender() . "<br>";
-		// 		echo $msg->getContent() . "<br>";
-		// 		echo $msg->getStatus() . "<br><br>";
-  //           }
+		//     foreach ($conv_msgs->getAllMessages() as $key => $msg) {
+  		//        	echo $msg->getSender() . "<br>";
+		// 			echo $msg->getContent() . "<br>";
+		// 			echo $msg->getStatus() . "<br><br>";
+  		//     }
 
-  //       }
+  		// }
 
+		// SELECT 
+		// msg.conv_id as conv_id, msg.created_at, msg.id msgId, msg.content, mst.status, mst.self, us.'.$this->usersTableKey.' userId
+		// FROM messages msg
+		// INNER JOIN (
+		//     SELECT MAX(created_at) created_at
+		//     FROM messages
+		//     GROUP BY conv_id
+		// ) m2 ON msg.created_at = m2.created_at
+		// INNER JOIN messages_status mst ON msg.id=mst.msg_id
+		// INNER JOIN '.$this->usersTable.' us ON msg.sender_id=us.'.$this->usersTableKey.'
+		// WHERE mst.user_id = ? AND mst.status NOT IN (?, ?)
+		// ORDER BY msg.created_at DESC
+
+		$current_user_id = Auth::user()->id;
+		$convs = Conversation::with(['users','messages'])->whereHas('users', function($q) use(&$current_user_id) {
+						$q->where('user_id', '=', $current_user_id);
+					})->get();
+
+					// $conversations = Conversation::whereHas('conversation_users', function($q) use(&$current_user_id){
+					// 	$q->where('user_id', '='. $current_user_id);
+					// })->get();
+
+		// debug
+		// $convs = DB::getQueryLog();
+		// $last_query = end($convs);
+		// print_r($convs); exit();	
+
+		return $convs;
+		
 	}
 
 
@@ -94,19 +123,49 @@ class MessageController extends \BaseController {
 		// print_r($last_query); exit();	
 
 		// $c1 = new Conversation;
-	 //    $c1->name = "Some Conversation";
-	 //    $c1->save();
+	 	// $c1->name = "Some Conversation";
+	 	// $c1->save();
 
-	 //    $c1->users()->attach([$current_user->id, $list_user_id]);
+	 	// $c1->users()->attach([$current_user->id, $list_user_id]);
 
+		// SELECT cu.conv_id
+		// FROM conv_users cu
+  		// WHERE cu.user_id=? OR cu.user_id=?
+  		// GROUP BY cu.conv_id
+  		// HAVING COUNT(cu.conv_id)=2
 		$current_user = Auth::user();
 		$list_user_id = Input::get('list_user_id');
 
-		$conv = new Conversation;
-		$conv->name = Input::get('message_subject');
-		$conv->save();
+		// getting two users's conversation
+		$conv = UserConversation::where('user_id', '=', $current_user->id)
+				->orWhere('user_id', '=', $list_user_id)
+				->groupBy('conversation_id')
+				->havingRaw('count(conversation_id) = 2')
+				->first();
 
-		// $conv->conversation_users()->attach([ $current_user->id, $list_user_id ]);		
+		if($conv && $conv->conversation_id) {
+
+			$last_coversation_id = $conv->conversation_id;
+
+		} else {
+
+			$conv = new Conversation;
+			$conv->name = Input::get('message_subject');
+			$conv->save();
+			$last_coversation_id = $conv->id;
+
+			$conv->users()->attach([ $current_user->id, $list_user_id ]);
+
+		}	
+
+		$msg = new Message;
+		$msg->conversation_id = $last_coversation_id;
+		$msg->user_id = $current_user->id;
+		$msg->content = Input::get('message');
+		$msg->status = 1;
+		$msg->save();
+
+		return Response::json('success', 200);
 
 	}
 

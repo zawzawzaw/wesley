@@ -14,8 +14,8 @@ class Message extends Eloquent {
 	    'content'=>'required'
     );
 
-    public function conversation_users() {
-		return $this->belongsTo('ConversationUser', 'conversation_user_id');
+    public function users() {
+		return $this->belongsTo('User', 'user_id');
 	}
 
 	public function conversations() {

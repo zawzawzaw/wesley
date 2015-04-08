@@ -18,7 +18,7 @@ class Conversation extends Eloquent {
 		return $this->hasMany('Message');
 	}
 
-	public function conversation_users() {
-		return $this->belongsToMany('ConversationUser');
+	public function users() {
+		return $this->belongsToMany('User', 'user_conversations');
 	}
 }

@@ -614,7 +614,7 @@
 			</div>
 			<div class="col-md-3">
 				<h2>Send Message</h2>
-				{{ Form::open(array('url'=>'message', 'class'=>'form-list')) }}			
+				{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}			
 					{{ Form::textarea('message') }}
 					<div class="each-input">
 					{{ Form::radio('message_subject', 'sales enquiry', true) }}
@@ -626,7 +626,7 @@
 					</div>
 
 					{{ Form::hidden('list_user_id', $list->user_id) }}
-					{{ Form::button('Go', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'form-submit','class'=>'btn btn-large')) }}
+					{{ Form::button('Go', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'send_msg','class'=>'btn btn-large')) }}
 				{{ Form::close() }}
 
 				<ul>
@@ -647,6 +647,59 @@
 				$("#category").val(old_category).trigger('change');
 				$('#subcategory').val(sub_category);
 			}
+
+			var makeRequest = function(Data, URL, Method) {
+
+		        var request = $.ajax({
+					url: URL,
+					type: Method,
+					data: Data,
+					dataType: "JSON",
+					// processData: false,
+					success: function(response) {
+					  // if success remove current item
+					  // console.log(response);
+					},
+					error: function( error ){
+					  // Log any error.
+					  console.log( "ERROR:", error );
+					}
+		      });
+
+		      return request;
+		    };
+
+		    var request;
+			$('#send_msg').on('click', function(e){
+				e.preventDefault();
+				console.log('hi');
+
+				var frm = $('#message'),
+					formData = frm.serialize(),
+			        url = frm.attr( "action"),
+			        method = frm.attr( "method" );
+
+				// abort any pending request
+				if (request) {
+				  	request.abort();
+				}
+
+		        request = makeRequest(formData, url , method);
+
+				request.done(function(){
+					var result = $.parseJSON(request.responseText);
+					
+					// if(result) {
+						console.log(result);
+
+						frm.prepend('<p id="flash">Your message has been sent.</p>')
+
+						$('#flash').css('color', 'red').delay(500).fadeIn('normal', function() {
+					      $(this).delay(2500).fadeOut();
+					   	});
+					// }
+				});
+			});
 		});
 	</script>	
 @stop
