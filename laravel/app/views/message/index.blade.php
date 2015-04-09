@@ -9,19 +9,19 @@
 				@else
 					@foreach($convs as $conv)			
 						@foreach($conv->messages as $message)
-						<div class="each-coversation" style="border: 1px solid #ccc; margin-bottom: 10px;">
 							@if($message->user_id != Auth::user()->id)
-							<p>User: {{ User::find($message->user_id)->first_name }}</p>
-							<p>Subject : {{ $conv->name }}</p>
-							<p>Date: {{ $message->created_at }}</p>
-							<p>Message: {{ $message->content }}</p>						
-							{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}			
-								{{ Form::textarea('message') }}							
-								{{ Form::hidden('reply_to_conv_id', $conv->id) }}
-								{{ Form::button('Reply', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'reply_msg','class'=>'reply_msg btn btn-large')) }}
-							{{ Form::close() }}
+								<div class="each-coversation" style="border: 1px solid #ccc; margin-bottom: 10px;">
+									<p>User: {{ User::find($message->user_id)->first_name }}</p>
+									<p>Subject : {{ $conv->name }}</p>
+									<p>Date: {{ $message->created_at }}</p>
+									<p>Message: {{ $message->content }}</p>						
+									{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}			
+										{{ Form::textarea('message') }}							
+										{{ Form::hidden('reply_to_conv_id', $conv->id) }}
+										{{ Form::button('Reply', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'reply_msg','class'=>'reply_msg btn btn-large')) }}
+									{{ Form::close() }}							
+								</div>
 							@endif
-						</div>
 						@endforeach				
 					@endforeach
 				@endif
