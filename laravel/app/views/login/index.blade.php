@@ -3,7 +3,10 @@
     <div class="row">
       <div class="col-md-7">
       	@if(!empty($name))
-      		<p>Welcome {{ $name }}
+      		<p>Welcome {{ $name }},
+
+          <a href="{{ route('message.index') }}">Inbox</a>
+
 			{{ Form::open(array('route' => array('login.destroy', 0), 'method' => 'delete')) }}
 			    <button type="submit" >Log Out</button>
 			{{ Form::close() }}

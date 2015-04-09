@@ -2,6 +2,14 @@
 
 class MessageController extends \BaseController {
 
+	# set template
+	protected $layout = "layouts.master";
+
+	public function __construct() {
+	    $this->beforeFilter('csrf', array('on'=>'post'));
+	    $this->beforeFilter('auth');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -39,9 +47,15 @@ class MessageController extends \BaseController {
 		// ORDER BY msg.created_at DESC
 
 		$current_user_id = Auth::user()->id;
-		$convs = Conversation::with(['users','messages'])->whereHas('users', function($q) use(&$current_user_id) {
+
+		// for inbox message
+		$convs = Conversation::with(['messages'])->whereHas('users', function($q) use(&$current_user_id) {
 						$q->where('user_id', '=', $current_user_id);
-					})->get();
+					})->whereHas('messages', function($q) use(&$current_user_id) {
+						$q->where('user_id','!=',$current_user_id);
+					})->get();	
+
+		// return $convs;	
 
 					// $conversations = Conversation::whereHas('conversation_users', function($q) use(&$current_user_id){
 					// 	$q->where('user_id', '='. $current_user_id);
@@ -52,7 +66,11 @@ class MessageController extends \BaseController {
 		// $last_query = end($convs);
 		// print_r($convs); exit();	
 
-		return $convs;
+
+		// return $convs;
+
+
+		$this->layout->content = View::make('message.index')->with('convs', $convs);
 		
 	}
 
@@ -135,28 +153,41 @@ class MessageController extends \BaseController {
   		// HAVING COUNT(cu.conv_id)=2
 		$current_user = Auth::user();
 		$list_user_id = Input::get('list_user_id');
+		$subject = Input::get('message_subject');
+		
+		if(Input::has('reply_to_conv_id')) {
+			$last_coversation_id = Input::get('reply_to_conv_id');
+		}
 
-		// getting two users's conversation
-		$conv = UserConversation::where('user_id', '=', $current_user->id)
-				->orWhere('user_id', '=', $list_user_id)
-				->groupBy('conversation_id')
-				->havingRaw('count(conversation_id) = 2')
-				->first();
+		if(empty($last_coversation_id)) {
 
-		if($conv && $conv->conversation_id) {
+			// getting two users's conversation
+			$conv = UserConversation::where('user_id', '=', $current_user->id)
+					->orWhere('user_id', '=', $list_user_id)
+					->groupBy('conversation_id')
+					->havingRaw('count(conversation_id) = 2')
+					->first();
 
-			$last_coversation_id = $conv->conversation_id;
+			// check if existing conversation between two has same subject if not create new conversation
+			// $existing_subject = Conversation::find($conv->conversation_id)->name;
 
-		} else {
+			if($conv && $conv->conversation_id) {
 
-			$conv = new Conversation;
-			$conv->name = Input::get('message_subject');
-			$conv->save();
-			$last_coversation_id = $conv->id;
+				$last_coversation_id = $conv->conversation_id;
 
-			$conv->users()->attach([ $current_user->id, $list_user_id ]);
+			} else {
 
-		}	
+				// new conversation
+				$conv = new Conversation;
+				$conv->name = $subject;
+				$conv->save();
+				$last_coversation_id = $conv->id;
+
+				$conv->users()->attach([ $current_user->id, $list_user_id ]);
+
+			}	
+
+		}
 
 		$msg = new Message;
 		$msg->conversation_id = $last_coversation_id;

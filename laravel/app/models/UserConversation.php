@@ -18,7 +18,7 @@ class UserConversation extends Eloquent {
 	// 	return $this->hasOne('User', 'user_id');
 	// }
 
-	// public function conversations() {
-	// 	return $this->hasMany('Conversation', 'conversation_id');
-	// }	
+	public function conversations() {
+		return $this->hasMany('Conversation', 'conversation_id');
+	}	
 }
