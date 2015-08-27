@@ -11,21 +11,166 @@
 <!--#include virtual="inc/header-inside.html" -->
 
 <!--#include virtual="inc/advanced-search.html" -->
-  
-  	<div id="list" class="container">
-		<div class="row">
-			<div class="col-md-9">
-				<div class="header">
-					<h3>LISTING DETAILS</h3>
-					<a href="#" class="edit-btn">EDIT</a>
-				</div>
-				<div class="content">
-					
+
+  	<div id="list">
+  		<div class="bg"></div>
+	  	<div class="container">
+			
+			<div class="listing-details">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3 class="pull-left">LISTING DETAILS</h3>
+							<a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+						</div>
+						<div class="content">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="each-input">
+										<label for="type" id="lbl_type">Type</label>
+										<div class="each-type">
+											<input checked="checked" name="type" type="radio" value="Free" id="type">
+											<label for="type" id="type_free"><span></span><p>Free</p></label>
+										</div>
+										<div class="each-type">
+											<input name="type" type="radio" value="Paid" id="type">		    		
+											<label for="type" id="type_paid"><span></span><p>Paid</p></label>
+										</div>
+									</div>
+									<div class="each-input">
+										<label for="company_name">Company Name</label>
+										<input name="company_name" type="text" />
+									</div>
+									<div class="each-input">
+										<label for="address_1">Address 1</label>
+										<input name="address_1" type="text" />
+									</div>
+									<div class="each-input">
+										<label for="location">Location</label>
+										<input name="location" type="text" />
+									</div>
+									<div class="each-input">
+										<label for="nature_of_business">Nature of Buiness</label>
+										<input name="nature_of_business" type="text" />
+									</div>
+									<div class="each-input">
+										<label for="staff_strength">Staff Strength</label>
+										<input name="staff_strength" type="text" />
+									</div>
+								</div>
+								<div class="col-md-4 second-col">
+									<div class="each-input">
+										<label for="upload">Upload Company Logo</label>								
+										<input type="text" name="upload">
+									</div>
+									<div class="each-input">
+										<label for="category">Category</label>								
+										<input type="text" name="category">
+									</div>
+									<div class="each-input">
+										<label for="address_2">Address 2</label>								
+										<input type="text" name="address_2">
+									</div>
+									<div class="each-input">
+										<label for="country_of_origin">Country of origin</label>								
+										<input type="text" name="country_of_origin">
+									</div>
+									<div class="each-input">
+										<label for="year_established">Year Established</label>								
+										<input type="text" name="year_established">
+									</div>
+									<div class="each-input">
+										<label for="key_personnel">Key Personnel</label>			
+										<input type="text" name="key_personnel">
+									</div>
+
+								</div>
+								<div class="col-md-4 last-col">
+									<div class="preview">
+										<label for="preview">Logo Preview</label>
+									
+										<img src="images/contents/company-logo-preview.png" alt="company logo">
+									</div>
+
+									<div class="each-input">
+										<label for="post_code">Post code</label>			
+										<input type="text" name="post_code">
+									</div>
+
+									<div class="each-input">
+										<label for="paid_up_capital">Paid Up Capital</label>			
+										<input type="text" name="paid_up_capital">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="each-input">
+										<label for="main_shareholders">Main shareholders/parent company</label>			
+										<input type="text" name="main_shareholders" id="main_shareholders">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="each-input">
+										<label for="links">Links to related companies</label>			
+										<input type="text" name="links" id="links">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="each-input">
+										<label for="upload_video">Upload video</label>			
+										<input type="text" name="upload_video" id="upload_video">
+									</div>
+								</div>								
+							</div>
+						</div>
+						<div class="extra-content">
+							<input type="submit" name="submit" value="Save changes" class="pull-right">
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-3">
+		
+			<div class="sidebar">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3>FOR PAID LISTINGS</h3>
+						</div>			
+						<div class="content">
+							<p>The following administrators have access to this listing to edit information.</p>
+							<ul>
+								<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
+								<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
+								<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
+								<li><span>David McClure</span><a href="#" class="remove">Remove</a></li>								
+							</ul>
+							<div class="clear"></div>
+						</div>
+						<div class="extra-content">
+							<a href="#" class="edit-admins">Edit Admins</a>
+							<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3>Add Tags</h3>
+						</div>			
+						<div class="content">
+							<p>Currently there is no tagg added, please add tags from below.</p>							
+						</div>
+						<div class="extra-content">
+							<input type="text" name="tag" id="tag" />
+							<a href="#" class="add_tag">Add Tag</a>
+						</div>
+					</div>
+				</div>
+			</div>		
 				
-			</div>
 		</div>
 	</div>
 
