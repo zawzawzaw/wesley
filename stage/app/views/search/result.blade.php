@@ -617,6 +617,8 @@
 					<div class="free">
 						<h2>All Listings ({{ $lists->getTotal() }}):</h2>
 
+						{{ Auth::user()->plan }}
+
 						@if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free'))
 							<p>There are a total of {{ $lists->getTotal() }} listings that match your search.</p>
 							<p>Please log in or sign up for an account to see these listings.</p>

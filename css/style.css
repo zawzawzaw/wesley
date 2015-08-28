@@ -827,7 +827,7 @@ input[type="radio"]:checked + label span {
 }
 #wesley-header .logo.middle {
   vertical-align: middle;
-  margin-right: 5px;
+  margin-right: 15px;
 }
 #wesley-header .logo h1 {
   font-family: 'alright_sansmedium', Verdana, sans-serif;
@@ -995,7 +995,7 @@ input[type="radio"]:checked + label span {
 #wesley-header .logged-in-menu {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 30px;
+  margin-left: 34px;
 }
 #wesley-header .logged-in-menu ul li {
   display: inline-block;
@@ -1054,7 +1054,10 @@ input[type="radio"]:checked + label span {
 }
 #advanced-search .dropdown {
   width: 15%;
-  margin-right: 18px;
+  margin-right: 23px;
+}
+#advanced-search .dropdown:last-child {
+  margin-right: 0px;
 }
 #advanced-search .dropdown select {
   width: 100%;
@@ -2083,4 +2086,643 @@ input[type="radio"]:checked + label span {
   line-height: 48px;
   color: #959595;
   text-transform: uppercase;
+}
+#my-search {
+  padding-top: 189px;
+  padding-bottom: 150px;
+}
+#my-search .favourite-companies .header {
+  padding-top: 55px;
+}
+#my-search .header {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 15px;
+}
+#my-search .header h3 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#my-search .header a.edit-btn {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #959595;
+}
+#my-search .header a.edit-btn i.edit-icon {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: url(../images/icons/edit.png) no-repeat;
+  vertical-align: middle;
+}
+#my-search .header a.edit-btn span {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+#my-search .header a.edit-btn:hover {
+  color: #00c7de;
+  text-decoration: none;
+}
+#my-search .header a.edit-btn:hover i.edit-icon {
+  background: url(../images/icons/edit.png) no-repeat 0 -12px;
+}
+#my-search .content .favourite-companies-table {
+  margin-bottom: 100px;
+}
+#my-search .content .favourite-companies-table ul.table-head {
+  background-color: #fbfbfb;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+}
+#my-search .content .favourite-companies-table ul.table-head h5 {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #959595;
+  text-transform: uppercase;
+}
+#my-search .content .favourite-companies-table ul.table-content {
+  max-height: 484px;
+  overflow-y: scroll;
+}
+#my-search .content .favourite-companies-table ul.table-content > li {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d9d9d9;
+}
+#my-search .content .favourite-companies-table ul li .each-col {
+  display: inline-block;
+  vertical-align: middle;
+}
+#my-search .content .favourite-companies-table ul li .each-col:first-child {
+  width: 8%;
+  text-align: center;
+}
+#my-search .content .favourite-companies-table ul li .each-col:first-child .category {
+  display: inline-block;
+  width: 22px;
+  height: 17px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:first-child .category.category-1 {
+  background: url(../images/icons/category-1.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:first-child .category.category-2 {
+  background: url(../images/icons/category-2.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:first-child .category.category-3 {
+  background: url(../images/icons/category-3.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(2) {
+  width: 6%;
+  text-align: center;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(2) i.country {
+  display: inline-block;
+  width: 23px;
+  height: 15px;
+  vertical-align: middle;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(2) i.country.sg {
+  background: url(../images/icons/sg-flag-small.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(2) i.country.th {
+  background: url(../images/icons/th-flag-small.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(2) i.country.my {
+  background: url(../images/icons/my-flag-small.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(2) i.country.id {
+  background: url(../images/icons/id-flag-small.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(3) {
+  width: 25%;
+  padding-left: 15px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(3) p {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #555555;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(4) {
+  width: 41%;
+  padding-left: 25px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(4) p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #555555;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) {
+  width: 18%;
+  padding-left: 25px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li {
+  display: inline-block;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  color: #959595;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a i {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a i.view-details {
+  background: url(../images/icons/view-details.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a i.download-pdf {
+  background: url(../images/icons/download-pdf.png) no-repeat;
+  height: 15px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a i.view-pdf {
+  background: url(../images/icons/view-pdf.png) no-repeat;
+  height: 15px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a i.messages {
+  background: url(../images/icons/send-message.png) no-repeat;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a span {
+  vertical-align: middle;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a:hover {
+  color: #00c7de;
+  text-decoration: none;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a:hover i.view-details {
+  background: url(../images/icons/view-details.png) no-repeat 0px -12px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a:hover i.download-pdf {
+  background: url(../images/icons/download-pdf.png) no-repeat 0px -15px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a:hover i.view-pdf {
+  background: url(../images/icons/view-pdf.png) no-repeat 0px -15px;
+}
+#my-search .content .favourite-companies-table ul li .each-col:nth-child(5) .ctas li a:hover i.messages {
+  background: url(../images/icons/send-message.png) no-repeat 0px -12px;
+}
+#my-search .content .save-search-table {
+  margin-bottom: 100px;
+}
+#my-search .content .save-search-table ul.table-head {
+  background-color: #fbfbfb;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+}
+#my-search .content .save-search-table ul.table-head h5 {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #959595;
+  text-transform: uppercase;
+}
+#my-search .content .save-search-table ul.table-content {
+  max-height: 432px;
+  overflow-y: scroll;
+}
+#my-search .content .save-search-table ul.table-content > li {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d9d9d9;
+}
+#my-search .content .save-search-table ul li .each-col {
+  display: inline-block;
+  vertical-align: middle;
+}
+#my-search .content .save-search-table ul li .each-col:first-child {
+  width: 8%;
+  padding-left: 15px;
+}
+#my-search .content .save-search-table ul li .each-col:first-child span.date {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #555555;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(2) {
+  width: 28%;
+  padding-left: 10px;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(2) p {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #555555;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(3) {
+  width: 45%;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(3) p.keywords {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #555555;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) {
+  width: 15%;
+  padding-left: 15px;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) a {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  color: #959595;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) a i {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) a i.view-pdf {
+  background: url(../images/icons/view-pdf.png) no-repeat;
+  height: 15px;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) a span {
+  vertical-align: middle;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) a:hover {
+  color: #00c7de;
+  text-decoration: none;
+}
+#my-search .content .save-search-table ul li .each-col:nth-child(4) a:hover i.view-pdf {
+  background: url(../images/icons/view-pdf.png) no-repeat 0px -15px;
+}
+#my-search .content .recommended-table {
+  margin-bottom: 50px;
+}
+#my-search .content .recommended-table ul.table-head {
+  background-color: #fbfbfb;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+}
+#my-search .content .recommended-table ul.table-head p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  color: #555555;
+}
+#my-search .content .recommended-table ul.table-head p .keyword {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  color: #555555;
+}
+#my-search .content .recommended-table ul.table-head p .keyword-2 {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  color: #959595;
+}
+#my-search .content .recommended-table ul.table-content {
+  padding-left: 12px;
+}
+#my-search .content .recommended-table ul.table-content > li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+  margin-right: 30px;
+}
+#my-search .content .recommended-table ul.table-content > li a {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 40px;
+  color: #555555;
+  text-transform: uppercase;
+}
+#my-search .content .recommended-table ul.table-content > li a:hover {
+  color: #363636;
+  text-decoration: none;
+}
+#my-search .content .recommended-table ul.table-content > li a i.no {
+  background-color: #00c7de;
+  border-radius: 50px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 13px;
+  text-align: center;
+  color: #fff;
+}
+#my-search .content .recommended-table ul.table-content > li a span {
+  vertical-align: middle;
+  margin-left: 6px;
+  display: inline-block;
+}
+#my-account {
+  padding-top: 189px;
+  padding-bottom: 200px;
+  position: relative;
+}
+#my-account .bg {
+  width: 35.5%;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  background-color: #f4f5f6;
+  z-index: 0;
+  top: 0px;
+}
+#my-account .account-details {
+  display: inline-block;
+  width: 74%;
+  vertical-align: top;
+  padding-right: 75px;
+}
+#my-account .account-details .header {
+  border-bottom: 1px solid #dbdbdb;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 6px;
+  padding-top: 55px;
+  margin-bottom: 10px;
+}
+#my-account .account-details .header h3 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#my-account .account-details .header a.edit-btn {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #959595;
+}
+#my-account .account-details .header a.edit-btn i.edit-icon {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: url(../images/icons/edit.png) no-repeat;
+  vertical-align: middle;
+}
+#my-account .account-details .header a.edit-btn span {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+#my-account .account-details .header a.edit-btn:hover {
+  color: #00c7de;
+  text-decoration: none;
+}
+#my-account .account-details .header a.edit-btn:hover i.edit-icon {
+  background: url(../images/icons/edit.png) no-repeat 0 -12px;
+}
+#my-account .account-details .content {
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+#my-account .account-details .content .seperator {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#my-account .account-details .content .second-col {
+  padding-left: 30px;
+  padding-right: 0px;
+}
+#my-account .account-details .content .last-col {
+  padding-right: 0px;
+  padding-left: 55px;
+}
+#my-account .account-details .content .last-col .each-input input[type=text] {
+  width: 93%;
+}
+#my-account .account-details .content .last-col .each-input .dropdown {
+  width: 93%;
+}
+#my-account .account-details .content .last-col p {
+  width: 93%;
+}
+#my-account .account-details .content label {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  color: #959595;
+  text-transform: uppercase;
+}
+#my-account .account-details .content label[for="country"] {
+  display: block;
+}
+#my-account .account-details .content p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #959595;
+  padding-top: 33px;
+}
+#my-account .account-details .content .newsletter-container {
+  margin-top: 30px;
+}
+#my-account .account-details .content .newsletter-container .each-input {
+  height: auto;
+}
+#my-account .account-details .content .newsletter-container .each-input #newsletter {
+  width: 12px;
+  height: 12px;
+  margin: 0px;
+  margin-right: 10px;
+}
+#my-account .account-details .content .each-input {
+  height: 80px;
+}
+#my-account .account-details .content .each-input .dropdown {
+  width: 100%;
+}
+#my-account .account-details .content .each-input .dropdown:before {
+  background: url(../images/icons/dropdown-2.png) no-repeat 0px 0px;
+  height: 37px;
+}
+#my-account .account-details .content .each-input .dropdown select {
+  background-color: #f9f9f9;
+  border: 1px solid #d6d6d6;
+  height: 37px;
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+  color: #555555;
+}
+#my-account .account-details .content .each-input input[type=text] {
+  background-color: #f9f9f9;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  min-height: 35px;
+  padding-left: 13px;
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+  color: #555555;
+  display: block;
+  width: 100%;
+}
+#my-account .account-details .content .each-input img {
+  border: 1px solid #d7d7d7;
+}
+#my-account .account-details .content .each-input label {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+  color: #555555;
+  text-transform: none;
+}
+#my-account .account-details .extra-content p.disclaimer {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #959595;
+  width: 52%;
+}
+#my-account .account-details .extra-content input[type=submit] {
+  border: none;
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #f1f2f2;
+  text-transform: uppercase;
+  padding: 6px 24px;
+  text-decoration: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00c7dd), to(#00a3c4));
+  background-image: -webkit-linear-gradient(top, #00c7dd, #00a3c4);
+  background-image: -moz-linear-gradient(top, #00c7dd, #00a3c4);
+  background-image: -o-linear-gradient(top, #00c7dd, #00a3c4);
+  background-image: linear-gradient(to bottom, #00c7dd, #00a3c4);
+  background-color: #00c7dd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00c7dd), to(#00a3c4));
+  background: -webkit-linear-gradient(top, #00c7dd, #00a3c4);
+  background: -moz-linear-gradient(top, #00c7dd, #00a3c4);
+  background: -ms-linear-gradient(top, #00c7dd, #00a3c4);
+  background: -o-linear-gradient(top, #00c7dd, #00a3c4);
+  border-radius: 5px;
+}
+#my-account .sidebar {
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  padding-left: 20px;
+  background-color: #f4f5f6;
+}
+#my-account .sidebar .header {
+  border-bottom: 1px solid #dbdbdb;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 6px;
+  padding-top: 55px;
+  padding-left: 10px;
+}
+#my-account .sidebar .header h3 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#my-account .sidebar .content {
+  padding-left: 10px;
+}
+#my-account .sidebar .content .extra-info {
+  margin-bottom: 30px;
+}
+#my-account .sidebar .content .extra-info .updated-date-time {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: #668ec4;
+}
+#my-account .sidebar .content .account-info {
+  margin-bottom: 30px;
+}
+#my-account .sidebar .content .account-info h5 {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #959595;
+  text-transform: uppercase;
+}
+#my-account .sidebar .content .account-info p {
+  font-family: 'proxima_novasemibold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: #555555;
 }
