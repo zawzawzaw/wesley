@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'alright_sansbold';
+  src: url('../fonts/alrightsans-bold-v3-webfont.eot');
+  src: url('../fonts/alrightsans-bold-v3-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/alrightsans-bold-v3-webfont.woff2') format('woff2'), url('../fonts/alrightsans-bold-v3-webfont.woff') format('woff'), url('../fonts/alrightsans-bold-v3-webfont.ttf') format('truetype'), url('../fonts/alrightsans-bold-v3-webfont.svg#alright_sansbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'alright_sanslight';
+  src: url('../fonts/alrightsans-light-v3-webfont.eot');
+  src: url('../fonts/alrightsans-light-v3-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/alrightsans-light-v3-webfont.woff2') format('woff2'), url('../fonts/alrightsans-light-v3-webfont.woff') format('woff'), url('../fonts/alrightsans-light-v3-webfont.ttf') format('truetype'), url('../fonts/alrightsans-light-v3-webfont.svg#alright_sanslight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'alright_sansmedium';
+  src: url('../fonts/alrightsans-medium-v3-webfont.eot');
+  src: url('../fonts/alrightsans-medium-v3-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/alrightsans-medium-v3-webfont.woff2') format('woff2'), url('../fonts/alrightsans-medium-v3-webfont.woff') format('woff'), url('../fonts/alrightsans-medium-v3-webfont.ttf') format('truetype'), url('../fonts/alrightsans-medium-v3-webfont.svg#alright_sansmedium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'alright_sansregular';
+  src: url('../fonts/alrightsans-regular-v3-webfont.eot');
+  src: url('../fonts/alrightsans-regular-v3-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/alrightsans-regular-v3-webfont.woff2') format('woff2'), url('../fonts/alrightsans-regular-v3-webfont.woff') format('woff'), url('../fonts/alrightsans-regular-v3-webfont.ttf') format('truetype'), url('../fonts/alrightsans-regular-v3-webfont.svg#alright_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'proxima_novasemibold';
+  src: url('../fonts/proxima_nova_sbold-webfont.eot');
+  src: url('../fonts/proxima_nova_sbold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proxima_nova_sbold-webfont.woff2') format('woff2'), url('../fonts/proxima_nova_sbold-webfont.woff') format('woff'), url('../fonts/proxima_nova_sbold-webfont.ttf') format('truetype'), url('../fonts/proxima_nova_sbold-webfont.svg#proxima_novasemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.alright-sans-regular {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+.alright-sans-medium {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+.alright-sans-bold {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+.alright-sans-light {
+  font-family: 'alright_sanslight', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+.proxima_nova-semibold {
+  font-family: 'proxima_novasemibold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+.body-font {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+}
+.header-font {
+  font-family: 'alright_sanslight', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 43px;
+  line-height: 96px;
+}

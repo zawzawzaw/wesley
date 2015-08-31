@@ -19,7 +19,7 @@
 
 		&.middle {
 			vertical-align: middle;
-			margin-right: 15px;
+			margin-right: 35px;
 		} 	
 		h1 {
 			.alright-sans-medium;
@@ -84,71 +84,74 @@
 			}
 		}
 	}
-
-	.search-input {
+	
+	.form-list {
 		display: inline-block;
-		vertical-align: middle;
-		position: relative;
-		input.input-box {
-			width: 300px;
-			height: 35px;
-			border: 0px;
-			border-radius: 5px;
-			.placeholder(@dark-grey-2);
-			background: @white;
-			.alright-sans-light;
-			font-size: 16px;
-			letter-spacing: 0.03em;
-			color: @dark-grey-2;
-			padding-left: 20px;
-		}
-		button.search {
-			.alright-sans-bold;
-			font-size: 14px;
-			letter-spacing: 0.05em;
-			color: @white;	
-			text-transform: uppercase;
-			padding: 9px 12px;
-			.gradient(#00c7dd, #00a3c4);
-			border: 0px;
-			border-radius: 6px;
-			margin-left: 21-4px;
-		}
-		.switch-advance-search {
-			display: block;
-			.alright-sans-regular;
-			font-size: 11px;
-			letter-spacing: 0.05em;
-			color: #c4ced4;
-			text-transform: uppercase;
+	    vertical-align: middle;
+	    position: relative;
+	    .search-input {
+			display: inline-block;
 			vertical-align: middle;
-			position: absolute;
-    		top: 40px;
-
-			&:hover {
-				color: @white;
-				text-decoration: none;
-			}
-			span {
-				vertical-align: middle;	
-			}
-			i.plus {
+			position: relative;
+			input.input-box {
+				width: 300px;
+				height: 35px;
+				border: 0px;
+				border-radius: 5px;
+				.placeholder(@dark-grey-2);
+				background: @white;
+				.alright-sans-light;
+				font-size: 16px;
+				letter-spacing: 0.03em;
+				color: @dark-grey-2;
+				padding-left: 20px;				
+			}	
+			#form-submit {
 				display: inline-block;
-				width: 12px;
-				height: 12px;
-				background: url(../images/icons/plus-sign.png) no-repeat;
-				vertical-align: middle;
-			}
-			i.minus {
+				width: 15px;
+				height: 15px;
+				background: url(../images/icons/magnifying-glass-small.png) no-repeat;
+				position: absolute;
+			    top: 10px;
+			    right: 10px;
+			    padding: 0;
+			    margin: 0px;
+			    border: 0px;
+			    border-radius: 0px;
+			}	
+		}
 
+		.search-filters {
+			.each-filters {
+				position: relative;
+				display: inline-block;
+				input {
+
+				}
+				label {
+					.alright-sans-regular;
+					font-size: 12px;
+					letter-spacing: 0.05em;
+					color: #c4ced4;
+					text-transform: uppercase;	
+					padding-top: 6px;
+					p {
+						display: inline-block;
+						vertical-align: middle;
+					    padding-left: 5px;
+					    padding-right: 10px;
+					    padding-top: 2px;
+					}
+				}
 			}
 		}
-	}
 
+	}
+	
 	.logged-in-menu {
 		display: inline-block;
 		vertical-align: middle;
-		margin-left: 34px;
+		margin-left: 120px;
 		ul {
 			li {
 				display: inline-block;				

@@ -1,0 +1,254 @@
+#my-account {
+	padding-top: 98+91px;
+    padding-bottom: 200px;
+	position: relative;
+	.bg {		
+		width: 35.5%;
+	    height: 100%;
+	    position: absolute;
+	    right: 0px;
+	    background-color: #f4f5f6;
+	    z-index: 0;
+	    top: 0px;
+	}
+
+	.account-details {
+		display: inline-block;
+		width: 74%;
+		vertical-align: top;
+		padding-right: 75px;
+
+		.header {
+			border-bottom: 1px solid #dbdbdb;
+			display: inline-block;
+		    width: 100%;
+		    padding-bottom: 6px;
+		    padding-top: 55px;
+		    margin-bottom: 10px;
+			h3 {
+				.alright-sans-bold;
+				font-size: 15px;
+				letter-spacing: 0.05em;
+				color: @dark-grey-2;	
+				text-transform: uppercase;		
+			}
+			a.edit-btn {
+				.alright-sans-medium;
+				font-size: 13px;
+				letter-spacing: 0.05em;
+				color: @new-grey;
+
+				i.edit-icon {
+					width: 12px;
+					height: 12px;
+					display: inline-block;
+					background: url(../images/icons/edit.png) no-repeat;
+					vertical-align: middle;
+				}
+				span {
+					vertical-align: middle;
+					margin-left: 5px;
+				}
+				&:hover {
+					color: @light-blue;
+					text-decoration: none;
+					i.edit-icon {					
+						background: url(../images/icons/edit.png) no-repeat 0 -12px;				
+					}
+				}
+			}
+		}
+
+		.content {
+			border-bottom: 1px solid #dbdbdb;
+			padding-bottom: 10px;
+			margin-bottom: 30px;
+
+			.seperator {
+				margin-top: 20px;				
+				margin-bottom: 20px;				
+			}
+
+			.second-col {
+				padding-left: 30px;
+    			padding-right: 0px;
+			}
+			.last-col {
+				padding-right: 0px;
+				padding-left: 55px;		
+
+				.each-input {	
+					input[type=text] {
+						width: 93%;
+					}	
+					.dropdown {
+						width: 93%;
+					}
+				}
+				p {
+					width: 93%;
+				}
+			}
+
+			label {
+				.alright-sans-medium;
+				font-size: 11px;
+				line-height: 30px;
+				letter-spacing: 0.05em;
+				color: @new-grey;
+				text-transform: uppercase;				
+			}
+
+			label[for="country"] {
+				display: block;
+			}
+
+			p {
+				.alright-sans-regular;
+				font-size: 12px;
+				line-height: 16px;
+				color: @new-grey;
+				padding-top: 33px;
+			}
+
+			.newsletter-container {
+				margin-top: 30px;
+				.each-input {
+					height: auto;
+					#newsletter {
+						width: 12px;
+	    				height: 12px;
+	    				margin: 0px;
+	    				margin-right: 10px;
+					}
+				}	
+			}
+
+			.each-input {
+				height: 80px;
+
+				.dropdown {
+					width: 100%;
+					&:before {
+						background:url(../images/icons/dropdown-2.png) no-repeat 0px 0px;
+						height: 37px;
+					}
+					select {
+						background-color: #f9f9f9;
+						border: 1px solid #d6d6d6;
+						height: 37px;
+						.alright-sans-regular;
+						font-size: 14px;
+						line-height: 36px;
+						letter-spacing: 0.01em;
+						color: @dark-grey-2;
+					}
+				}
+				
+				input[type=text] {
+					background-color: #f9f9f9;
+					border: 1px solid #d6d6d6;
+					border-radius: 5px;
+					min-height: 35px;
+					padding-left: 13px;
+					.alright-sans-regular;
+					font-size: 14px;
+					line-height: 36px;
+					letter-spacing: 0.01em;
+					color: @dark-grey-2;
+					display: block;
+					width: 100%;
+				}
+
+				img {
+					border: 1px solid #d7d7d7;
+				}				
+
+				label {
+					.alright-sans-regular;
+					font-size: 14px;
+					line-height: 36px;
+					letter-spacing: 0.01em;
+					color: @dark-grey-2;
+					text-transform: none;
+				}
+			}				
+		}
+
+		.extra-content {
+			p.disclaimer {
+				.alright-sans-regular;
+				font-size: 12px;
+				line-height: 16px;
+				color: @new-grey;
+				width: 52%;
+			}
+			input[type=submit] {
+				border: none;
+				.alright-sans-medium;
+				font-size: 14px;
+				letter-spacing: 0.05em;
+				color: @milky-white;	
+				text-transform: uppercase;
+				padding: 6px 24px;
+				text-decoration: none;
+				.gradient(#00c7dd, #00a3c4);
+				border-radius: 5px;										
+			}
+		}
+	}
+	.sidebar {
+		display: inline-block;
+		width: 25%;
+		vertical-align: top;
+		padding-left: 20px;
+		background-color: #f4f5f6;
+		.header {
+			border-bottom: 1px solid #dbdbdb;
+			display: inline-block;
+		    width: 100%;
+		    padding-bottom: 6px;
+		    padding-top: 55px;
+		    padding-left: 10px;
+			h3 {
+				.alright-sans-bold;
+				font-size: 15px;
+				letter-spacing: 0.05em;
+				color: @dark-grey-2;	
+				text-transform: uppercase;	
+			}
+		}
+		.content {
+			padding-left: 10px;
+			.extra-info {
+				margin-bottom: 30px;
+				.updated-date-time {
+					.alright-sans-regular;
+					font-size: 11px;
+					line-height: 18px;
+					letter-spacing: 0.01em;
+					color: #668ec4;
+				}
+			}
+
+			.account-info {
+				margin-bottom: 30px;
+				h5 {
+					.alright-sans-medium;
+					font-size: 11px;
+					// line-height: 40px;
+					letter-spacing: 0.05em;
+					color: @new-grey;
+					text-transform: uppercase;
+				}
+				p {
+					.proxima_nova-semibold;
+					font-size: 14px;
+					line-height: 20px;
+					letter-spacing: 0.01em;
+					color: @dark-grey-2;
+				}
+			}
+		}
+	}
+}
