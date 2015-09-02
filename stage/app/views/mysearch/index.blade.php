@@ -1,0 +1,455 @@
+@section('content')
+<div id="my-search">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="favourite-companies">
+					<div class="header">
+						<h3 class="pull-left">favourite companies</h3>
+						<a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+					</div>
+					<div class="content">					
+						<div class="favourite-companies-table">
+							<ul class="table-head">
+								<li>
+									<div class="each-col">
+										<h5>Category</h5>
+									</div>
+									<div class="each-col">
+										<h5>Country</h5>
+									</div>
+									<div class="each-col">
+										<h5>Company <a href="#" class="sort"></a></h5>
+									</div>
+									<div class="each-col">
+										<h5>Key Products/ Services</h5>					
+									</div>
+									<div class="each-col">
+										<h5>Shortcut</h5>
+									</div>
+								</li>
+							</ul>
+							<ul class="table-content">
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-1"></a>
+									</div>
+									<div class="each-col">
+										<i class="country sg"></i>
+									</div>
+									<div class="each-col">
+										<p>Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>A part of distribution copper tube and aluminium goods in trading.</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-2"></a>
+									</div>
+									<div class="each-col">
+										<i class="country th"></i>
+									</div>
+									<div class="each-col">
+										<p>Asahi Kokusai Techneion Pte. Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>System Engineering Kokusai Keiso is ready to meet all your requirements with our competent system engineers.</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-3"></a>
+									</div>
+									<div class="each-col">
+										<i class="country sg"></i>
+									</div>
+									<div class="each-col">
+										<p>ARRK Malaysia Sdn. Bhd.</p>									
+									</div>
+									<div class="each-col">
+										<p>Manufacturing of aluminium parts for automobile & motorcycle and aluminium wheel for automobile & motorcycle.</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-1"></a>
+									</div>
+									<div class="each-col">
+										<i class="country sg"></i>
+									</div>
+									<div class="each-col">
+										<p>Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>A part of distribution copper tube and aluminium goods in trading.</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-1"></a>
+									</div>
+									<div class="each-col">
+										<i class="country id"></i>
+									</div>
+									<div class="each-col">
+										<p>SMK Electronics Pte. Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>Bearings, Powder Metallurgy, Decorative Printed Pater, Photomasks...</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-2"></a>
+									</div>
+									<div class="each-col">
+										<i class="country th"></i>
+									</div>
+									<div class="each-col">
+										<p>Asahi Kokusai Techneion Pte. Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>System Engineering Kokusai Keiso is ready to meet all your requirements with our competent system engineers.</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-3"></a>
+									</div>
+									<div class="each-col">
+										<i class="country sg"></i>
+									</div>
+									<div class="each-col">
+										<p>ARRK Malaysia Sdn. Bhd.</p>									
+									</div>
+									<div class="each-col">
+										<p>Manufacturing of aluminium parts for automobile & motorcycle and aluminium wheel for automobile & motorcycle.</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-1"></a>
+									</div>
+									<div class="each-col">
+										<i class="country id"></i>
+									</div>
+									<div class="each-col">
+										<p>SMK Electronics Pte. Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>Bearings, Powder Metallurgy, Decorative Printed Pater, Photomasks...</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<a href="#" class="category category-1"></a>
+									</div>
+									<div class="each-col">
+										<i class="country id"></i>
+									</div>
+									<div class="each-col">
+										<p>SMK Electronics Pte. Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p>Bearings, Powder Metallurgy, Decorative Printed Pater, Photomasks...</p>
+									</div>
+									<div class="each-col">
+										<ul class="ctas">
+											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+											<li><a href="#" class="download-pdf">Download PDF</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="saved-search">
+					<div class="header">
+						<h3 class="pull-left">saved search</h3>
+						<a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+					</div>
+					<div class="content">					
+						<div class="save-search-table">
+							<ul class="table-head">
+								<li>
+									<div class="each-col">
+										<h5>date</h5>
+									</div>
+									<div class="each-col">
+										<h5>Company <a href="#" class="sort"></a></h5>
+									</div>
+									<div class="each-col">
+										<h5>Keywords</h5>					
+									</div>
+									<div class="each-col">
+										<h5>Shortcut</h5>
+									</div>
+								</li>
+							</ul>
+							<ul class="table-content">
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+								<li>
+									<div class="each-col">
+										<span class="date">09/09/14</span>
+									</div>									
+									<div class="each-col">
+										<p class="company-name">Nalco Co., Ltd.</p>									
+									</div>
+									<div class="each-col">
+										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
+									</div>
+									<div class="each-col">
+										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="recommended">
+					<div class="header">
+						<h3 class="pull-left">recommended for you</h3>						
+					</div>
+					<div class="content">					
+						<div class="recommended-table">
+							<ul class="table-head">
+								<li><p>Based on <span class="keyword">“Wireless Headphone:</span><span class="keyword-2"> Electronic + Wireless + Devices + 15km + Japan</span>”</p></li>	
+							</ul>
+							<ul class="table-content">
+								<li><a href="#"><i class="no">1</i><span>DNP Singapore</span></a></li>
+								<li><a href="#"><i class="no">2</i><span>Idemitsu Lube</span></a></li>
+								<li><a href="#"><i class="no">3</i><span>Systems</span></a></li>
+								<li><a href="#"><i class="no">4</i><span>hitachi automotive</span></a></li>
+								<li><a href="#"><i class="no">5</i><span>Smk electronics</span></a></li>								
+							</ul>
+						</div>
+
+						<div class="recommended-table">
+							<ul class="table-head">
+								<li><p>Based on <span class="keyword">“Wireless Headphone:</span><span class="keyword-2"> Electronic + Wireless + Devices + 15km + Japan</span>”</p></li>	
+							</ul>
+							<ul class="table-content">
+								<li><a href="#"><i class="no">1</i><span>DNP Singapore</span></a></li>
+								<li><a href="#"><i class="no">2</i><span>Idemitsu Lube</span></a></li>
+								<li><a href="#"><i class="no">3</i><span>Systems</span></a></li>
+								<li><a href="#"><i class="no">4</i><span>hitachi automotive</span></a></li>
+								<li><a href="#"><i class="no">5</i><span>Smk electronics</span></a></li>								
+							</ul>
+						</div>
+
+						<div class="recommended-table">
+							<ul class="table-head">
+								<li><p>Based on <span class="keyword">“Wireless Headphone:</span><span class="keyword-2"> Electronic + Wireless + Devices + 15km + Japan</span>”</p></li>	
+							</ul>
+							<ul class="table-content">
+								<li><a href="#"><i class="no">1</i><span>DNP Singapore</span></a></li>
+								<li><a href="#"><i class="no">2</i><span>Idemitsu Lube</span></a></li>
+								<li><a href="#"><i class="no">3</i><span>Systems</span></a></li>
+								<li><a href="#"><i class="no">4</i><span>hitachi automotive</span></a></li>
+								<li><a href="#"><i class="no">5</i><span>Smk electronics</span></a></li>								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@stop

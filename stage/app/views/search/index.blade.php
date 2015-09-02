@@ -259,12 +259,6 @@
 			        @else
 			        	<h5>Result on:</h5><a href="#" class="save-search"><i class="plus"></i> <span>Save Search</span></a>
 			        @endif
-
-			        <ul>
-				        @foreach($errors->all() as $error)
-				            <li>{{ $error }}</li>
-				        @endforeach
-				    </ul>
 					
 					<div class="clear"></div>
 					
@@ -285,6 +279,12 @@
 						@if(Input::has('origin_country'))
 							{{ code_to_country(Input::get('origin_country', null)) }}
 						@endif
+
+						@foreach($errors->all() as $error)
+				            @if(!empty($error))
+				            	{{ $error }}
+				            @endif
+				        @endforeach
 					</h1>
 				</div>
 
@@ -326,7 +326,8 @@
 			                  		'category' => Input::get('category', null),
 			                  		'subcategory' => Input::get('subcategory', null),
 			                  		'location' => Input::get('location', null),
-			                  		'country' => Input::get('country', null)			                  		
+			                  		'country' => Input::get('country', null),			                  		
+			                  		'list_page' => Input::get('list_page', null)			                  		
 		                  		); 
 		                  	?>
 
@@ -413,7 +414,8 @@
 		                  		'category' => Input::get('category', null),
 		                  		'subcategory' => Input::get('subcategory', null),
 		                  		'location' => Input::get('location', null),
-		                  		'country' => Input::get('country', null)			                  		
+		                  		'country' => Input::get('country', null),                 		
+		                  		'premium_page' => Input::get('premium_page', null)		                  		
 		                  		); ?>
 							
 							{{ Paginator::setPageName('list_page'); }}

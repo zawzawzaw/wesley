@@ -17,6 +17,7 @@ Route::resource('login', 'LoginController', array('only' => array('index', 'stor
 Route::resource('list', 'ListController', array('only' => array('index', 'store')));
 // Route::resource('search', 'SearchController');
 Route::resource('message', 'MessageController');
+Route::resource('myaccount', 'MyaccountController');
 
 /* Search Index */
 Route::get('search', array(
@@ -42,11 +43,36 @@ Route::get('search/company/{id}', array(
   'as' => 'search.company'
 ));
 
+/* Search Result Error */
+Route::get('mysearch', array(
+  'uses' => 'MysearchController@index',
+  'as' => 'mysearch.index'
+));
+
 /* Detail Search Result */
 Route::get('search/{id}', array(
   'uses' => 'SearchController@show',
   'as' => 'search.show'
 ));
+
+/* Advanced Search Result */
+Route::get('advancedsearch', array(
+  'uses' => 'AdvancedsearchController@index',
+  'as' => 'advancedsearch.index'
+));
+
+/* Search Result */
+Route::get('advancedsearch/result', array(
+  'uses' => 'AdvancedsearchController@store',
+  'as' => 'advancedsearch.store'
+));
+
+/* First Search Result */
+Route::post('advancedsearch/result', array(
+  'uses' => 'AdvancedsearchController@store',
+  'as' => 'advancedsearch.store'
+));
+
 
 Route::post('generic/uploadfiles', array(
   'uses' => 'GenericController@uploadfiles',

@@ -60,14 +60,25 @@
 		.content {
 			border-bottom: 1px solid #dbdbdb;
 			padding-bottom: 10px;
-
+			
+			.first-col {
+				input[type=text], .dropdown {
+					width: 95%!important;
+				}
+			}
 			.second-col {
 				padding-left: 30px;
     			padding-right: 0px;
+    			input[type=text], .dropdown {
+					width: 95%!important;
+				}
 			}
 			.last-col {
 				padding-right: 0px;
 				padding-left: 55px;
+				input[type=text], .dropdown {
+					width: 95%!important;
+				}
 			}
 
 			label {
@@ -85,7 +96,7 @@
 				p {
 					display: inline-block;
 				    vertical-align: middle;
-				    margin-bottom: 5px;
+				    margin-bottom: -3px;
 				}
 			}
 
@@ -99,6 +110,7 @@
 
 			.each-input {
 				height: 80px;
+				position: relative;
 
 				#lbl_type {
 					display: block;
@@ -122,8 +134,8 @@
 					line-height: 36px;
 					letter-spacing: 0.01em;
 					color: @dark-grey-2;
-					display: block;
-					width: 95%;
+					display: block;			
+					width: 100%;		
 				}
 				img {
 					border: 1px solid #d7d7d7;
@@ -136,12 +148,56 @@
 				input#links {
 					width: 100%;
 				}
+
+				.dropdown {
+					width: 100%;
+					&:before {
+						background:url(../images/icons/dropdown-2.png) no-repeat 0px 0px;
+						height: 37px;
+					}
+					select {
+						background-color: #f9f9f9;
+						border: 1px solid #d6d6d6;
+						height: 37px;
+						.alright-sans-regular;
+						font-size: 14px;
+						line-height: 36px;
+						letter-spacing: 0.01em;
+						color: @dark-grey-2;
+					}
+				}
+
+				.uploadifive-button {
+					border: none!important;
+					.gradient(#00c7dd, #00a3c4)!important;
+					.alright-sans-medium;
+					font-size: 14px;
+					letter-spacing: 0.05em;
+					color: @milky-white;	
+					text-transform: uppercase;
+					height: auto!important;
+					cursor: pointer;
+					border-radius: 6px;					
+				}
+				input[type="file"] {
+					cursor: pointer;
+				}
+				span.uploaded_product_image {
+					.alright-sans-regular;
+					font-size: 14px;
+					line-height: 36px;
+					letter-spacing: 0.01em;
+					color: @dark-grey-2;
+					position: absolute;
+				    top: 27px;
+				    left: 110px;
+				}
 			}
 		}
 
 		.extra-content {
 			padding-top: 30px;
-			input[type=submit] {
+			input[type=submit], button {
 				border: none;
 				.alright-sans-medium;
 				font-size: 14px;
@@ -154,6 +210,22 @@
 				border-radius: 5px;										
 			}
 		}
+		.key-product-seperator {
+			border-top: 1px solid #dbdbdb;
+			margin-top: 5px;
+			margin-bottom: 15px;
+		}
+		.add-more-key-product {
+			.alright-sans-regular;
+			font-size: 11px;
+			letter-spacing: 0.05em;			
+			text-transform: uppercase;
+			color: @new-grey;
+			&:hover {
+				color: @dark-grey-2;
+				text-decoration: none;
+			}
+		}		
 	}
 	.sidebar {
 		display: inline-block;

@@ -21,6 +21,8 @@ class CreateUserTable extends Migration {
 			$table->string('last_name');
 			$table->string('email');
 			$table->string('password');
+			$table->string('city');
+			$table->string('state');
 			$table->string('country');
 			$table->string('company');
 			$table->string('job_title');

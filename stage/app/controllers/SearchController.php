@@ -158,7 +158,7 @@ class SearchController extends \BaseController {
 					
 				}
 
-				// if no result found
+				// if no result found (list is including premium so only check on list)
 				if(isset($lists) && $lists->isEmpty()) {
 					return Redirect::to('/search')
 			        	->with('text_search_message', 'No list was found!')->withInput();

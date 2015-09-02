@@ -3,3 +3,12 @@ To Do
 can't connect ftp
 sync with local and stage
 legal fonts..
+
+
+pagi for both premium and list or remove pagi for premium
+add alphabet filter
+product catalogs
+geolocation proximity
+save search
+fav search
+rec search

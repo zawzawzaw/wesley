@@ -299,13 +299,13 @@
 									</div>
 									<div class="each-col">										
 										@if($premium_list->logo)
-											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" alt="">
+											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" class="img-responsive" alt="">
 										@else
 											{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}											
 										@endif
 									</div>
 									<div class="each-col">
-										<h5><span>{{ $premium_list->company_name }}</span> <i class="country {{ strtolower($premium_list->origin_country) }}"></i></h5>
+										<h5><span>{{ $premium_list->company_name }}</span> <i class="country {{ strtolower($premium_list->country) }}"></i></h5>
 										<p>{{ $premium_list->business_nature }}</p>
 									</div>
 									<div class="each-col">
@@ -326,7 +326,8 @@
 			                  		'category' => Input::get('category', null),
 			                  		'subcategory' => Input::get('subcategory', null),
 			                  		'location' => Input::get('location', null),
-			                  		'country' => Input::get('country', null)			                  		
+			                  		'country' => Input::get('country', null),		                  		
+			                  		'list_page' => Input::get('list_page', null)			                  		
 		                  		); 
 		                  	?>
 
@@ -385,7 +386,7 @@
 												<span class="category category-1 {{ strtolower($list->category) }}"></span>
 											</div>
 											<div class="each-col">
-												<span class="country {{ strtolower($list->origin_country) }}"></span>
+												<span class="country {{ strtolower($list->country) }}"></span>
 											</div>
 											<div class="each-col">
 												<p>{{ $list->company_name }}</p>
@@ -412,7 +413,8 @@
 		                  		'category' => Input::get('category', null),
 		                  		'subcategory' => Input::get('subcategory', null),
 		                  		'location' => Input::get('location', null),
-		                  		'country' => Input::get('country', null)			                  		
+		                  		'country' => Input::get('country', null),
+		                  		'premium_page' => Input::get('premium_page', null)
 		                  		); ?>
 							
 							{{ Paginator::setPageName('list_page'); }}

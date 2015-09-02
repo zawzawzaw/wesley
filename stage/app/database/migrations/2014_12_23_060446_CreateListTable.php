@@ -25,7 +25,8 @@ class CreateListTable extends Migration {
 			$table->string('address_1');
 			$table->string('address_2');
 			$table->string('city');
-			$table->string('post_code');
+			$table->string('industry_estate');
+			$table->string('post_code');			
 			$table->string('state');
 			$table->string('country');
 			$table->string('origin_country');

@@ -30,11 +30,11 @@
 
         <nav class="logged-in-menu">
           <ul>
-            <li class="search"><a href="my-search.html">My Search</a></li>
-            <li class="list"><a href="listings.html">Listings</a></li>
-            <li class="messages"><a href="messages.html">Messages</a></li>
-            <li class="account"><a href="account.html">Account</a></li>
-            <li class="country"><a href="country.html">Country</a></li>          
+            <li class="search"><a href="{{ URL::to('mysearch') }}">My Search</a></li>
+            <li class="list"><a href="{{ URL::to('list') }}">Listings</a></li>
+            <li class="messages"><a href="{{ URL::to('messages') }}">Messages</a></li>
+            <li class="account"><a href="{{ URL::to('myaccount') }}">Account</a></li>
+            <li class="country"><a href="{{ URL::to('myaccount') }}">Country</a></li>          
           </ul>
         </nav>
       @else
