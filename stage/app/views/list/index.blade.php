@@ -16,7 +16,7 @@
 								<div class="row">
 									<div class="col-md-12">
 										@if(Session::has('list_message'))
-										    <p class="alert">{{ Session::get('list_message') }}</p>
+										    <p>{{ Session::get('list_message') }}</p>
 										@endif
 										<ul>
 									        @foreach($errors->all() as $error)
@@ -717,15 +717,17 @@
 								</div>
 							</div>						
 							<div class="extra-content">
-								{{ Form::button('Next', array('id'=>'next', 'class'=>'pull-right')) }}								
+								{{ Form::button('Next', array('id'=>'list-1-next', 'class'=>'pull-right')) }}								
 							</div>
 						</div>
 						<div id="list-2">
 							<div class="header">
 								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
-								<a href="#" id="prev" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT LIST</span></a>
+								<a href="#" id="list-2-prev" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
 							</div>						
 							<div class="content">
+								{{ Form::hidden('key_product_count', null, array('class'=>'text-input', 'id'=>'key_product_count')) }}
+								{{ Form::hidden('key_product_ids', null, array('class'=>'text-input', 'id'=>'key_product_ids')) }}
 								<div class="row">
 									<div id="all-products" class="col-md-12">
 										<div class="each-product row" data-product="1">
@@ -767,9 +769,9 @@
 											<div class="fieldset">
 												<div class="col-md-6">
 													<div class="each-input">
-														{{ Form::label('key_product_category_1', 'Category') }}
+														{{ Form::label('key_product_category_2', 'Category') }}
 														<div class="dropdown">
-															{{ Form::select('key_product_category_1', array('advertising' => 'Advertising', 'property' => 'Property')); }}						
+															{{ Form::select('key_product_category_2', array('advertising' => 'Advertising', 'property' => 'Property')); }}						
 														</div>
 													</div>
 													<div class="each-input">
@@ -802,7 +804,61 @@
 							</div>
 							<div class="extra-content">
 								<a href="#" class="add-more-key-product">Add More Key Product +</a>
-								{{ Form::submit('Save changes', array('id'=>'form-submit','class'=>'pull-right')) }}							
+								{{ Form::button('Next', array('id'=>'list-2-next', 'class'=>'pull-right')) }}									
+							</div>
+						</div>
+						<div id="list-3">
+							<div class="header">
+								<h3 class="pull-left">List - Product Catalogs</h3>
+								<a href="#" id="list-3-prev" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT KEY PRODUCTS</span></a>
+							</div>						
+							<div class="content">
+								{{ Form::hidden('product_catalog_count', null, array('class'=>'text-input', 'id'=>'product_catalog_count')) }}
+								{{ Form::hidden('product_catalog_ids', null, array('class'=>'text-input', 'id'=>'product_catalog_ids')) }}
+								<div class="row">
+									<div id="all-catalogs" class="col-md-12">
+										<div class="each-catalog row" data-catalog="1">
+											<div class="fieldset">
+												<div class="col-md-6">
+													<div class="each-input">
+														{{ Form::label('catalog_title_1', 'Catalog Title') }}
+														{{ Form::text('product_catalog_title_1', null, array('class'=>'product_catalog_title','id'=>'product_catalog_title_1')); }}
+													</div>																									
+												</div>
+												<div class="col-md-6">
+													<div class="each-input">								
+														{{ Form::label('catalog_1', 'Catalog File') }}
+														{{ Form::hidden('product_catalog_1', null, array('class'=>'product_catalog','id'=>'product_catalog_1')); }}
+														{{ Form::file('catalog_1', array('class'=>'catalog_upload','id'=>'catalog_1')); }}
+														<span class="uploaded_product_catalog"></span>
+													</div>														
+												</div>										
+											</div>
+										</div>
+										<div class="each-catalog row" data-catalog="2">
+											<div class="fieldset">
+												<div class="col-md-6">
+													<div class="each-input">
+														{{ Form::label('catalog_title_2', 'Catalog Title') }}
+														{{ Form::text('product_catalog_title_2', null, array('class'=>'product_catalog_title','id'=>'product_catalog_title_2')); }}
+													</div>																											
+												</div>
+												<div class="col-md-6">
+													<div class="each-input">								
+														{{ Form::label('catalog_2', 'Catalog File') }}
+														{{ Form::hidden('product_catalog_2', null, array('class'=>'product_catalog','id'=>'product_catalog_2')); }}
+														{{ Form::file('catalog_2', array('class'=>'catalog_upload','id'=>'catalog_2')); }}
+														<span class="uploaded_product_catalog"></span>
+													</div>	
+												</div>
+											</div>
+										</div>
+									</div>									
+								</div>
+							</div>
+							<div class="extra-content">
+								<a href="#" class="add-more-product-catalog">Add More Product Catalog +</a>
+								{{ Form::submit('Save changes', array('id'=>'list-form-submit','class'=>'pull-right')) }}							
 							</div>
 						</div>
 					</div>
@@ -853,23 +909,39 @@
 <script type="text/javascript">
   $(document).ready(function(){
   	$('#list-2').hide();
-    $('#next').on('click', function(e){
+  	$('#list-3').hide();
+    $('#list-1-next').on('click', function(e){
     	e.preventDefault();
     	$('#list-2').show();
     	$('#list-1').hide();
+    	$('#list-3').hide();
     });
-    $('#prev').on('click', function(e){
+    $('#list-2-next').on('click', function(e){
     	e.preventDefault();
+    	$('#list-3').show();
+    	$('#list-1').hide();
     	$('#list-2').hide();
+    });
+    $('#list-2-prev').on('click', function(e){
+    	e.preventDefault();    	
     	$('#list-1').show();
+    	$('#list-2').hide();
+    	$('#list-3').hide();
+    });
+    $('#list-3-prev').on('click', function(e){
+    	e.preventDefault();    	
+    	$('#list-2').show();
+    	$('#list-1').hide();
+    	$('#list-3').hide();
     });
 
-    $('#form-submit').on('click', function(e){
+    $('#list-form-submit').on('click', function(e){
     	e.preventDefault();
+
     	var key_product_count = $('.product_name').filter(function(){
 		    return $(this).val();
 		}).length;
-		var product_catalog_count = $('.product_catalog').filter(function(){
+		var product_catalog_count = $('.product_catalog_title').filter(function(){
 		    return $(this).val();
 		}).length;
 
@@ -885,15 +957,15 @@
 		});
 
 		var product_catalog_ids = [];
-		$('.product_catalog').each(function(index, each_catalog){
+		$('.product_catalog_title').each(function(index, each_catalog){		
 			if($(each_catalog).val()!=='') {
 				product_catalog_ids.push(index+1);
 				$('#product_catalog_ids').val(product_catalog_ids.join());
 			}
-		});
+		});		
 
 		$(this).closest('form').submit();
-    });
+    });    
 
     var tags = [];
 
@@ -1009,6 +1081,7 @@
     product_image_upload();
 
 	$('.catalog_upload').each(function(index, each_catalog_upload) {
+		var $catalog_upload = $(this);
 		$(each_catalog_upload).uploadifive({
 	        'auto'      : true,
 	        'fileType'     : false,
@@ -1033,7 +1106,7 @@
 	            var id = index + 1;
 
 	            $('input[name=product_catalog_'+id+']').val(data[0]);
-
+	            $catalog_upload.parent().parent().find('.uploaded_product_catalog').text(shortText);
 	        }
 	    });
 	});
@@ -1101,6 +1174,61 @@
 	    });
 
 		// product_image_upload();
+	});
+	
+	var catalog_cloneIndex = $('.each-catalog').length;
+	$('.add-more-product-catalog').on('click', function(e){
+		e.preventDefault();
+		catalog_cloneIndex++;
+		$('.each-catalog').first().clone(false).addClass('catalog_cloned_'+catalog_cloneIndex).appendTo('#all-catalogs');
+
+		var $cloned_catalog = $('.catalog_cloned_'+catalog_cloneIndex);
+
+		$cloned_catalog.find('label[for="catalog_title_1"]').attr('for', 'catalog_title_'+catalog_cloneIndex);
+		$cloned_catalog.find('#product_catalog_title_1').attr('id', 'product_catalog_title_'+catalog_cloneIndex).attr('name', 'product_catalog_title_'+catalog_cloneIndex);
+
+		$cloned_catalog.find('label[for="catalog_1"]').attr('for', 'catalog_'+catalog_cloneIndex);
+		$cloned_catalog.find('#product_catalog_1').attr('id', 'product_catalog_'+catalog_cloneIndex).attr('name', 'product_catalog_'+catalog_cloneIndex);
+		
+		$cloned_catalog.find('#catalog_1').remove();
+		$cloned_catalog.find('.uploadifive-button').remove();
+		$cloned_catalog.find('.uploadifive-queue').remove();
+
+		var input = document.createElement('input')
+		input.type = "file";
+		input.name = "catalog_"+catalog_cloneIndex;
+		input.id = "catalog_"+catalog_cloneIndex;
+
+		$cloned_catalog.find('.uploaded_product_catalog').before(input);
+
+		var $that = $(input);
+		$(input).uploadifive({
+	        'auto'      : true,
+	        'fileType'     : 'image/*',
+	        'fileSizeLimit' : '5MB',
+	        'buttonText'   : 'Upload',
+	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+	        'formData'         : {'type' : 'product_catalogs'},
+	        'onError'      : function(errorType) {
+	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+	            // $uploadResponse.text(errorType).css('color','red');
+	        },
+	        'onUploadComplete' : function(file, data) {
+	            console.log(data);
+
+	            var data = data.split("||").concat();
+
+	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+	            console.log(data[0])
+	            console.log(data[1])
+	            console.log(shortText)
+
+	            $('input[name=product_catalog_'+catalog_cloneIndex+']').val(data[0]);
+	            $that.parent().parent().find('.uploaded_product_catalog').text(shortText);
+
+	        }
+	    });
+
 	});
 
   });

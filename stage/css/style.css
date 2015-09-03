@@ -887,6 +887,30 @@ div.pagi ul li.active span:hover {
   background: none;
   border: none;
 }
+.uploadifive-button {
+  border: none!important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00c7dd), to(#00a3c4)) !important;
+  background-image: -webkit-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  background-image: -moz-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  background-image: -o-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  background-image: linear-gradient(to bottom, #00c7dd, #00a3c4) !important;
+  background-color: #00c7dd !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00c7dd), to(#00a3c4)) !important;
+  background: -webkit-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  background: -moz-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  background: -ms-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  background: -o-linear-gradient(top, #00c7dd, #00a3c4) !important;
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #f1f2f2;
+  text-transform: uppercase;
+  height: auto!important;
+  cursor: pointer;
+  border-radius: 6px;
+}
 #wesley-header {
   background-color: #142136;
   color: #ffffff;
@@ -1525,8 +1549,406 @@ div.pagi ul li.active span:hover {
   color: #555555;
   text-align: center;
 }
-#main-content #message-widget {
-  padding-top: 100px;
+#home-logged-in {
+  padding-top: 209px;
+  padding-bottom: 200px;
+  background-color: #eaeced;
+}
+#home-logged-in .each-row {
+  margin-bottom: 20px;
+}
+#home-logged-in .widget {
+  vertical-align: top;
+}
+#home-logged-in .widget .heading {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+#home-logged-in .widget .heading a.analytics {
+  background: url('../images/icons/analytics.png') no-repeat;
+  width: 28px;
+  height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#home-logged-in .widget .heading a.message {
+  background: url('../images/icons/envalope.png') no-repeat;
+  width: 25px;
+  height: 19px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#home-logged-in .widget .heading a.favourite {
+  background: url('../images/icons/favourite-companies.png') no-repeat;
+  width: 28px;
+  height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#home-logged-in .widget .heading a.recently-view {
+  background: url('../images/icons/recently-viewed.png') no-repeat;
+  width: 28px;
+  height: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#home-logged-in .widget .heading a.saved-search {
+  background: url('../images/icons/save-search.png') no-repeat;
+  width: 28px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#home-logged-in .widget .heading .header-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+#home-logged-in .widget .heading .header-text h3 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#home-logged-in .widget .heading .header-text span,
+#home-logged-in .widget .heading .header-text a {
+  font-family: 'alright_sanslight', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  color: #959595;
+}
+#home-logged-in .widget .heading .view-all {
+  font-family: 'alright_sanslight', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  color: #959595;
+  vertical-align: bottom;
+  float: right;
+  margin-top: 18px;
+}
+#home-logged-in .widget .heading ul {
+  display: inline-block;
+  float: right;
+  margin-top: 18px;
+}
+#home-logged-in .widget .heading ul li {
+  display: inline-block;
+  font-family: 'alright_sanslight', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  color: #959595;
+  vertical-align: bottom;
+}
+#home-logged-in #message-widget {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 33.35%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#home-logged-in #message-widget .content .message-table li {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+#home-logged-in #message-widget .content .message-table li:last-child {
+  border-bottom: 0px;
+  padding-bottom: 0px;
+}
+#home-logged-in #message-widget .content .message-table li div.left,
+#home-logged-in #message-widget .content .message-table li div.middle,
+#home-logged-in #message-widget .content .message-table li div.right {
+  display: inline-block;
+  vertical-align: top;
+}
+#home-logged-in #message-widget .content .message-table li div.left {
+  width: 5%;
+}
+#home-logged-in #message-widget .content .message-table li div.middle {
+  width: 65%;
+}
+#home-logged-in #message-widget .content .message-table li div.right {
+  width: 25%;
+}
+#home-logged-in #message-widget .content .message-table li span.from {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 23px;
+  color: #555555;
+}
+#home-logged-in #message-widget .content .message-table li span.subj {
+  display: block;
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 23px;
+  color: #555555;
+}
+#home-logged-in #message-widget .content .message-table li span.date {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  color: #555555;
+  text-align: right;
+  display: block;
+}
+#home-logged-in #message-widget .content .message-table li p.short-msg {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  color: #959595;
+  padding-left: 6%;
+}
+#home-logged-in #analytics-widget {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 64%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-left: 14px;
+}
+#home-logged-in #analytics-details-widget {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#home-logged-in #analytics-details-widget .content .each-analytics {
+  display: inline-block;
+  width: 33%;
+  border-right: 1px solid #ccc;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+#home-logged-in #analytics-details-widget .content .each-analytics:last-child {
+  border: 0px;
+}
+#home-logged-in #analytics-details-widget .content .each-analytics h5 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#home-logged-in #recently-viewed-widget {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 32.7%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-right: 14px;
+}
+#home-logged-in #recently-viewed-widget ul li {
+  border-bottom: 1px solid #ccc;
+}
+#home-logged-in #recently-viewed-widget ul li:last-child {
+  border-bottom: 1px solid #ccc;
+}
+#home-logged-in #recently-viewed-widget ul li .each-col {
+  display: inline-block;
+}
+#home-logged-in #recently-viewed-widget ul li .each-col:last-child {
+  float: right;
+}
+#home-logged-in #recently-viewed-widget ul li .each-col p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 44px;
+}
+#home-logged-in #favourite-companies-widget {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 31%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-right: 14px;
+}
+#home-logged-in #favourite-companies-widget li {
+  border-bottom: 1px solid #ccc;
+}
+#home-logged-in #favourite-companies-widget li:last-child {
+  border-bottom: 0px;
+}
+#home-logged-in #favourite-companies-widget .each-col {
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+}
+#home-logged-in #favourite-companies-widget .each-col:last-child {
+  width: 55%;
+}
+#home-logged-in #favourite-companies-widget .each-col h5 {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 44px;
+  letter-spacing: 0.05em;
+  color: #555555;
+}
+#home-logged-in #favourite-companies-widget .each-col p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 44px;
+  color: #555555;
+}
+#home-logged-in #saved-search-widget {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 33.1%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#home-logged-in #saved-search-widget li {
+  border-bottom: 1px solid #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#home-logged-in #saved-search-widget li:last-child {
+  border-bottom: 0px;
+}
+#home-logged-in #saved-search-widget li h5 {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 23px;
+  color: #555555;
+}
+#home-logged-in #saved-search-widget li p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  color: #959595;
+}
+#home-logged-in #recommended-for-you {
+  background-color: #ffffff;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#home-logged-in #recommended-for-you .each-recommendation {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+#home-logged-in #recommended-for-you .each-recommendation:last-child {
+  border-bottom: 0px;
+}
+#home-logged-in #recommended-for-you .each-recommendation h5 {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 44px;
+  color: #555555;
+}
+#home-logged-in #recommended-for-you .each-recommendation h5 span.first-keyword {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 44px;
+  color: #555555;
+}
+#home-logged-in #recommended-for-you .each-recommendation h5 span.other-keywords {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 44px;
+  color: #959595;
+}
+#home-logged-in #recommended-for-you .each-recommendation ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+#home-logged-in #recommended-for-you .each-recommendation ul li i {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50px;
+  background-color: #00c7de;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 14px;
+  color: #ffffff;
+  margin-right: 5px;
+}
+#home-logged-in #recommended-for-you .each-recommendation ul li span {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 36px;
+  color: #555555;
+  vertical-align: middle;
+  text-transform: uppercase;
 }
 #list {
   padding-top: 189px;
@@ -1724,7 +2146,8 @@ div.pagi ul li.active span:hover {
 #list .listing-details .content .each-input input[type="file"] {
   cursor: pointer;
 }
-#list .listing-details .content .each-input span.uploaded_product_image {
+#list .listing-details .content .each-input span.uploaded_product_image,
+#list .listing-details .content .each-input span.uploaded_product_catalog {
   font-family: 'alright_sansregular', Verdana, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -1764,12 +2187,14 @@ div.pagi ul li.active span:hover {
   background: -o-linear-gradient(top, #00c7dd, #00a3c4);
   border-radius: 5px;
 }
-#list .listing-details .key-product-seperator {
+#list .listing-details .key-product-seperator,
+#list .listing-details .key-catalog-seperator {
   border-top: 1px solid #dbdbdb;
   margin-top: 5px;
   margin-bottom: 15px;
 }
-#list .listing-details .add-more-key-product {
+#list .listing-details .add-more-key-product,
+#list .listing-details .add-more-product-catalog {
   font-family: 'alright_sansregular', Verdana, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -1778,7 +2203,8 @@ div.pagi ul li.active span:hover {
   text-transform: uppercase;
   color: #959595;
 }
-#list .listing-details .add-more-key-product:hover {
+#list .listing-details .add-more-key-product:hover,
+#list .listing-details .add-more-product-catalog:hover {
   color: #555555;
   text-decoration: none;
 }
@@ -4768,7 +5194,10 @@ div.pagi ul li.active span:hover {
   font-size: 12px;
   line-height: 16px;
   color: #959595;
-  padding-top: 33px;
+  padding-top: 40px;
+}
+#my-account .account-details .content .second-inputs-container {
+  margin-bottom: 45px;
 }
 #my-account .account-details .content .newsletter-container {
   margin-top: 30px;
@@ -4784,6 +5213,15 @@ div.pagi ul li.active span:hover {
 }
 #my-account .account-details .content .each-input {
   height: 80px;
+}
+#my-account .account-details .content .each-input #lbl_type {
+  display: block;
+}
+#my-account .account-details .content .each-input .each-type {
+  display: inline-block;
+  width: 30%;
+  position: relative;
+  vertical-align: middle;
 }
 #my-account .account-details .content .each-input .dropdown {
   width: 100%;
@@ -4804,7 +5242,8 @@ div.pagi ul li.active span:hover {
   letter-spacing: 0.01em;
   color: #555555;
 }
-#my-account .account-details .content .each-input input[type=text] {
+#my-account .account-details .content .each-input input[type=text],
+#my-account .account-details .content .each-input input[type=password] {
   background-color: #f9f9f9;
   border: 1px solid #d6d6d6;
   border-radius: 5px;
@@ -7480,4 +7919,275 @@ div.pagi ul li.active span:hover {
   border: 0px;
   border-radius: 6px;
   width: 50%;
+}
+#sign-up {
+  padding-top: 98px;
+  padding-bottom: 200px;
+  position: relative;
+}
+#sign-up .bg {
+  width: 35.5%;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  background-color: #f4f5f6;
+  z-index: 0;
+  top: 0px;
+}
+#sign-up .account-details {
+  display: inline-block;
+  width: 74%;
+  vertical-align: top;
+  padding-right: 75px;
+}
+#sign-up .account-details .header {
+  border-bottom: 1px solid #dbdbdb;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 6px;
+  padding-top: 55px;
+  margin-bottom: 10px;
+}
+#sign-up .account-details .header h3 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#sign-up .account-details .header a.edit-btn {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #959595;
+}
+#sign-up .account-details .header a.edit-btn i.edit-icon {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: url(../images/icons/edit.png) no-repeat;
+  vertical-align: middle;
+}
+#sign-up .account-details .header a.edit-btn span {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+#sign-up .account-details .header a.edit-btn:hover {
+  color: #00c7de;
+  text-decoration: none;
+}
+#sign-up .account-details .header a.edit-btn:hover i.edit-icon {
+  background: url(../images/icons/edit.png) no-repeat 0 -12px;
+}
+#sign-up .account-details .content {
+  border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+#sign-up .account-details .content .seperator {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#sign-up .account-details .content .second-col {
+  padding-left: 30px;
+  padding-right: 0px;
+}
+#sign-up .account-details .content .last-col {
+  padding-right: 0px;
+  padding-left: 55px;
+}
+#sign-up .account-details .content .last-col .each-input input[type=text] {
+  width: 93%;
+}
+#sign-up .account-details .content .last-col .each-input .dropdown {
+  width: 93%;
+}
+#sign-up .account-details .content .last-col p {
+  width: 93%;
+}
+#sign-up .account-details .content label {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  color: #959595;
+  text-transform: uppercase;
+}
+#sign-up .account-details .content label[for="country"] {
+  display: block;
+}
+#sign-up .account-details .content .second-inputs-container {
+  margin-bottom: 45px;
+}
+#sign-up .account-details .content .newsletter-container {
+  margin-top: 30px;
+}
+#sign-up .account-details .content .newsletter-container .each-input {
+  height: auto;
+}
+#sign-up .account-details .content .newsletter-container .each-input #newsletter {
+  width: 12px;
+  height: 12px;
+  margin: 0px;
+  margin-right: 10px;
+}
+#sign-up .account-details .content .each-input {
+  height: 80px;
+}
+#sign-up .account-details .content .each-input #lbl_type {
+  display: block;
+}
+#sign-up .account-details .content .each-input .each-type {
+  display: inline-block;
+  width: 16%;
+  position: relative;
+  vertical-align: middle;
+}
+#sign-up .account-details .content .each-input .dropdown {
+  width: 100%;
+}
+#sign-up .account-details .content .each-input .dropdown:before {
+  background: url(../images/icons/dropdown-2.png) no-repeat 0px 0px;
+  height: 37px;
+}
+#sign-up .account-details .content .each-input .dropdown select {
+  background-color: #f9f9f9;
+  border: 1px solid #d6d6d6;
+  height: 37px;
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+  color: #555555;
+}
+#sign-up .account-details .content .each-input input[type=text],
+#sign-up .account-details .content .each-input input[type=password] {
+  background-color: #f9f9f9;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  min-height: 35px;
+  padding-left: 13px;
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+  color: #555555;
+  display: block;
+  width: 100%;
+}
+#sign-up .account-details .content .each-input img {
+  border: 1px solid #d7d7d7;
+}
+#sign-up .account-details .content .each-input p {
+  padding-top: 0px;
+  display: inline-block;
+  padding-left: 5px;
+  vertical-align: middle;
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 25px;
+  text-transform: none;
+}
+#sign-up .account-details .extra-content p.disclaimer {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #959595;
+  width: 52%;
+}
+#sign-up .account-details .extra-content input[type=submit] {
+  border: none;
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #f1f2f2;
+  text-transform: uppercase;
+  padding: 6px 24px;
+  text-decoration: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00c7dd), to(#00a3c4));
+  background-image: -webkit-linear-gradient(top, #00c7dd, #00a3c4);
+  background-image: -moz-linear-gradient(top, #00c7dd, #00a3c4);
+  background-image: -o-linear-gradient(top, #00c7dd, #00a3c4);
+  background-image: linear-gradient(to bottom, #00c7dd, #00a3c4);
+  background-color: #00c7dd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00c7dd), to(#00a3c4));
+  background: -webkit-linear-gradient(top, #00c7dd, #00a3c4);
+  background: -moz-linear-gradient(top, #00c7dd, #00a3c4);
+  background: -ms-linear-gradient(top, #00c7dd, #00a3c4);
+  background: -o-linear-gradient(top, #00c7dd, #00a3c4);
+  border-radius: 5px;
+}
+#sign-up .sidebar {
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  padding-left: 20px;
+  background-color: #f4f5f6;
+}
+#sign-up .sidebar .header {
+  border-bottom: 1px solid #dbdbdb;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 6px;
+  padding-top: 55px;
+  padding-left: 10px;
+}
+#sign-up .sidebar .header h3 {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  text-transform: uppercase;
+}
+#sign-up .sidebar .content {
+  padding-left: 10px;
+}
+#sign-up .sidebar .content .account-type-info {
+  border-bottom: 1px solid #d5d6d6;
+  padding-top: 18px;
+  padding-bottom: 21px;
+}
+#sign-up .sidebar .content h4 {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: 0.01em;
+  color: #555555;
+}
+#sign-up .sidebar .content h4 span.price {
+  font-family: 'alright_sansmedium', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 19px;
+  letter-spacing: 0.01em;
+  color: #02c4db;
+}
+#sign-up .sidebar .content p {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  color: #555555;
 }

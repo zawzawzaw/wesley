@@ -12,245 +12,283 @@
 @stop
 @section('content')
 	@if(Auth::check())
-		<div id="message-widget">
-			<div class="heading">
-				<a href="#" class="message"><i class="msg"></i><span>New Messages</span><span class="updated-time">Last update 12:34 pm | 20 Dec 2014</span></a>
-				<a href="#" class="view-all">View all</a>
-			</div>
-			<div class="content">
-				<ul class="message-table">
-					<li>
-						<div class="left">
-							<span class="status"></span>
+		<div id="home-logged-in">
+			<div class="container">
+				<div class="row each-row">
+					<div class="col-md-12">
+						<div id="message-widget" class="widget">
+							<div class="heading">
+								<a href="#" class="message"></a>
+								<div class="header-text">
+									<h3>New Messages</h3><span class="updated-time">Last update 12:34 pm | 20 Dec 2014</span>
+								</div>
+								<a href="#" class="view-all">View all</a>
+							</div>
+							<div class="content">
+								<ul class="message-table">
+									<li>
+										<div class="left">
+											<span class="status"></span>
+										</div>
+										<div class="middle">
+											<span class="from">Hitachi Cables Pte Ltd</span>
+											<span class="subj">Request for quotation by Hitachi</span>	
+										</div>
+										<div class="right">
+											<span class="date">20/12/14</span>
+										</div>
+										<p class="short-msg">Dear sir, I would like to invite you to submit but we could probably wrap it up by next week</p>
+									</li>
+									<li>
+										<div class="left">
+											<span class="status"></span>
+										</div>
+										<div class="middle">
+											<span class="from">Hitachi Cables Pte Ltd</span>
+											<span class="subj">Request for quotation by Hitachi</span>	
+										</div>
+										<div class="right">
+											<span class="date">20/12/14</span>
+										</div>
+										<p class="short-msg">Dear sir, I would like to invite you to submit but we could probably wrap it up by next week</p>
+									</li>
+									<li>
+										<div class="left">
+											<span class="status"></span>
+										</div>
+										<div class="middle">
+											<span class="from">Hitachi Cables Pte Ltd</span>
+											<span class="subj">Request for quotation by Hitachi</span>	
+										</div>
+										<div class="right">
+											<span class="date">20/12/14</span>
+										</div>
+										<p class="short-msg">Dear sir, I would like to invite you to submit but we could probably wrap it up by next week</p>
+									</li>
+								</ul>
+							</div>
 						</div>
-						<div class="middle">
-							<span class="from">Hitachi Cables Pte Ltd</span>
-							<span class="subj">Request for quotation by Hitachi</span>	
-						</div>
-						<div class="right">
-							<span class="date">20/12/14</span>
-						</div>
-						<p class="shot-msg">Dear sir, I would like to invite you to submit but we could probably wrap it up by next week</p>
-					</li>
-					<li>
-						<div class="left">
-							<span class="status"></span>
-						</div>
-						<div class="middle">
-							<span class="from">Hitachi Cables Pte Ltd</span>
-							<span class="subj">Request for quotation by Hitachi</span>	
-						</div>
-						<div class="right">
-							<span class="date">20/12/14</span>
-						</div>
-						<p class="shot-msg">Dear sir, I would like to invite you to submit but we could probably wrap it up by next week</p>
-					</li>
-					<li>
-						<div class="left">
-							<span class="status"></span>
-						</div>
-						<div class="middle">
-							<span class="from">Hitachi Cables Pte Ltd</span>
-							<span class="subj">Request for quotation by Hitachi</span>	
-						</div>
-						<div class="right">
-							<span class="date">20/12/14</span>
-						</div>
-						<p class="shot-msg">Dear sir, I would like to invite you to submit but we could probably wrap it up by next week</p>
-					</li>
-				</ul>
-			</div>
-		</div>
 
-		<div id="analytics-widget">
-			<div class="heading">
-				<a href="#" class="message"><i class="analytics"></i><span>overall analytics</span><span class="updated-time">Last update 12:34 pm | 10 Sep 2014</span></a>
-				<ul>
-					<li>Today</li>
-					<li>Week</li>
-					<li>Month</li>
-				</ul>			
-			</div>		
-		</div>
-
-		<div id="analytics-details-widget">
-			<div class="heading">
-				<a href="#" class="message"><i></i><span>analytics</span><span class="updated-time">Update Weekly, Last Updated 12:00 am | 10 Dec 2014</span></a>
-				<a href="#">View all</a>			
-			</div>
-			<div class="content">
-				<div class="col-md-4">
-					<h5>no. of paged viewed</h5>
+						<div id="analytics-widget" class="widget">
+							<div class="heading">
+								<a href="#" class="analytics"></a>
+								<div class="header-text">
+									<h3>overall analytics</h3><span class="updated-time">Last update 12:34 pm | 10 Sep 2014</span>
+								</div>
+								<ul>
+									<li>Today</li>
+									<li>Week</li>
+									<li>Month</li>
+								</ul>
+							</div>							
+						</div>
+					</div>
 				</div>
-				<div class="col-md-4">
-					<h5>no. of pdf downloaded</h5>
+				<div class="row each-row">
+					<div class="col-md-12">
+						<div id="analytics-details-widget" class="widget">
+							<div class="heading">
+								<a href="#" class="analytics"></a>
+								<div class="header-text">
+									<h3>analytics</h3><span class="updated-time">Update Weekly, Last Updated 12:00 am | 10 Dec 2014</span>
+								</div>
+								<a href="#" class="view-all">View all</a>
+							</div>							
+							<div class="content">
+								<div class="each-analytics">
+									<h5>no. of paged viewed</h5>
+								</div>
+								<div class="each-analytics">
+									<h5>no. of pdf downloaded</h5>
+								</div>
+								<div class="each-analytics">
+									<h5>no. of messages received</h5>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="col-md-4">
-					<h5>no. of messages received</h5>
+				<div class="row each-row">
+					<div class="col-md-12">
+						<div id="recently-viewed-widget" class="widget">
+							<div class="heading">
+								<a href="#" class="recently-view"></a>
+								<div class="header-text">
+									<h3>Recently Viewed</h3><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span>
+								</div>
+								<a href="#" class="view-all">View all</a>
+							</div>								
+							<div class="content">
+								<ul>
+									<li>
+										<div class="each-col">
+											<i class="category category-1"></i>
+										</div>
+										<div class="each-col">
+											<p>Hitachi Powdered Metal</p>
+										</div>
+										<div class="each-col">
+											<p class="date">10/12/14</p>
+										</div>
+									</li>
+									<li>
+										<div class="each-col">
+											<i class="category category-1"></i>
+										</div>
+										<div class="each-col">
+											<p>Hitachi Powdered Metal</p>
+										</div>
+										<div class="each-col">
+											<p class="date">10/12/14</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div id="favourite-companies-widget" class="widget">
+							<div class="heading">
+								<a href="#" class="favourite"></a>
+								<div class="header-text">
+									<h3>Favourite Companies</h3><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span>
+								</div>
+								<a href="#" class="view-all">View all</a>
+							</div>								
+							<div class="content">
+								<ul>
+									<li class="header">
+										<div class="each-col">
+											<h5>Company</h5>
+										</div>
+										<div class="each-col">
+											<h5>Key Products</h5>
+										</div>
+									</li>
+									<li>
+										<div class="each-col">
+											<p>Idemitsu Lube</p>
+										</div>
+										<div class="each-col">
+											<p>Lubricants, Oil - Petrleum</p>
+										</div>
+									</li>
+									<li>
+										<div class="each-col">
+											<p>Idemitsu Lube</p>
+										</div>
+										<div class="each-col">
+											<p>Lubricants, Oil - Petrleum</p>
+										</div>
+									</li>
+									<li>
+										<div class="each-col">
+											<p>Idemitsu Lube</p>
+										</div>
+										<div class="each-col">
+											<p>Lubricants, Oil - Petrleum</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div id="saved-search-widget" class="widget">
+							<div class="heading">
+								<a href="#" class="saved-search"></a>
+								<div class="header-text">
+									<h3>Saved Search</h3><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span>
+								</div>
+								<a href="#" class="view-all">View all</a>
+							</div>							
+							<div class="content">
+								<ul>
+									<li>
+										<h5>Wireless Headphone</h5>
+										<p>Electronic + Wireless + Devices + 15km + Japan</p>
+									</li>
+									<li>
+										<h5>Lorem Ipsum Electronic Parts</h5>
+										<p>Electronic + Wireless + Devices + 15km + Japan</p>
+									</li>
+									<li>
+										<h5>Wireless Headphone</h5>
+										<p>Electronic + Wireless + Devices + 15km + Japan</p>
+									</li>
+									<li>
+										<h5>Lorem Ipsum Electronic Parts</h5>
+										<p>Electronic + Wireless + Devices + 15km + Japan</p>
+									</li>
+									<li>
+										<h5>Wireless Headphone</h5>
+										<p>Electronic + Wireless + Devices + 15km + Japan</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-
-		<div id="recently-viewed-widget">
-			<div class="heading">
-				<a href="#" class="message"><i></i><span>Recently Viewed</span><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span></a>
-				<a href="#">View all</a>			
-			</div>
-			<div class="content">
-				<ul>
-					<li>
-						<div class="each-col">
-							<i class="category category-1"></i>
+				<div class="row each-row">
+					<div class="col-md-12">
+						<div id="recommended-for-you" class="widget">
+							<div class="heading">
+								<a href="#" class="recently-view"></a>
+								<div class="header-text">
+									<h3>recommended for you</h3><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span>
+								</div>
+								<a href="#" class="view-all">View all</a>
+							</div>							
+							<div class="content">
+								<div class="each-recommendation">
+									<h5>Based on <span class="first-keyword">“Wireless Headphone:</span> <span class="other-keywords">Electronic + Wireless + Devices + 15km + Japan</span>”</h5>
+									<ul>
+										<li><i class="no">1</i><span>DNP Singapore</span></li>
+										<li><i class="no">2</i><span>Idemitsu Lube</span></li>
+										<li><i class="no">3</i><span>Systems</span></li>
+										<li><i class="no">4</i><span>hitachi automotive</span></li>
+										<li><i class="no">5</i><span>Smk electronics</span></li>				
+									</ul>
+								</div>
+								<div class="each-recommendation">
+									<h5>Based on <span class="first-keyword">“Wireless Headphone:</span> <span class="other-keywords">Electronic + Wireless + Devices + 15km + Japan</span>”</h5>
+									<ul>
+										<li><i class="no">1</i><span>DNP Singapore</span></li>
+										<li><i class="no">2</i><span>Idemitsu Lube</span></li>
+										<li><i class="no">3</i><span>Systems</span></li>
+										<li><i class="no">4</i><span>hitachi automotive</span></li>
+										<li><i class="no">5</i><span>Smk electronics</span></li>				
+									</ul>
+								</div>
+								<div class="each-recommendation">
+									<h5>Based on <span class="first-keyword">“Wireless Headphone:</span> <span class="other-keywords">Electronic + Wireless + Devices + 15km + Japan</span>”</h5>
+									<ul>
+										<li><i class="no">1</i><span>DNP Singapore</span></li>
+										<li><i class="no">2</i><span>Idemitsu Lube</span></li>
+										<li><i class="no">3</i><span>Systems</span></li>
+										<li><i class="no">4</i><span>hitachi automotive</span></li>
+										<li><i class="no">5</i><span>Smk electronics</span></li>				
+									</ul>
+								</div>
+							</div>
 						</div>
-						<div class="each-col">
-							<p>Hitachi Powdered Metal</p>
-						</div>
-						<div class="each-col">
-							<p class="date">10/12/14</p>
-						</div>
-					</li>
-					<li>
-						<div class="each-col">
-							<i class="category category-1"></i>
-						</div>
-						<div class="each-col">
-							<p>Hitachi Powdered Metal</p>
-						</div>
-						<div class="each-col">
-							<p class="date">10/12/14</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div id="recently-viewed-widget">
-			<div class="heading">
-				<a href="#" class="recently-viewed"><i></i><span>Favourite Companies</span><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span></a>
-				<a href="#">View all</a>			
-			</div>
-			<div class="content">
-				<ul>
-					<li class="header">
-						<div class="each-col">
-							<h5>Company</h5>
-						</div>
-						<div class="each-col">
-							<h5>Key Products</h5>
-						</div>
-					</li>
-					<li>
-						<div class="each-col">
-							<p>Idemitsu Lube</p>
-						</div>
-						<div class="each-col">
-							<p>Lubricants, Oil - Petrleum</p>
-						</div>
-					</li>
-					<li>
-						<div class="each-col">
-							<p>Idemitsu Lube</p>
-						</div>
-						<div class="each-col">
-							<p>Lubricants, Oil - Petrleum</p>
-						</div>
-					</li>
-					<li>
-						<div class="each-col">
-							<p>Idemitsu Lube</p>
-						</div>
-						<div class="each-col">
-							<p>Lubricants, Oil - Petrleum</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div id="saved-search-widget">
-			<div class="heading">
-				<a href="#" class="saved-search"><i></i><span>Saved Search</span><span class="updated-time">Lorem ipsum lor de ilpes io</span></a>
-				<a href="#">View all</a>		
-			</div>
-			<div class="content">
-				<ul>
-					<li>
-						<h5>Wireless Headphone</h5>
-						<p>Electronic + Wireless + Devices + 15km + Japan</p>
-					</li>
-					<li>
-						<h5>Lorem Ipsum Electronic Parts</h5>
-						<p>Electronic + Wireless + Devices + 15km + Japan</p>
-					</li>
-					<li>
-						<h5>Wireless Headphone</h5>
-						<p>Electronic + Wireless + Devices + 15km + Japan</p>
-					</li>
-					<li>
-						<h5>Lorem Ipsum Electronic Parts</h5>
-						<p>Electronic + Wireless + Devices + 15km + Japan</p>
-					</li>
-					<li>
-						<h5>Wireless Headphone</h5>
-						<p>Electronic + Wireless + Devices + 15km + Japan</p>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<div id="recommended-for-you">
-			<div class="heading">
-				<a href="#" class="recommend-for-you"><i></i><span>recommended for you</span><span class="updated-time">Last update 12:34 pm | 10 Dec 2014 </span></a>
-				<a href="#">View all</a>
-			</div>
-			<div class="content">
-				<div class="each-recommendation">
-					<h5>Based on “Wireless Headphone: <span>Electronic + Wireless + Devices + 15km + Japan</span>”</h5>
-					<ul>
-						<li><i class="no">1</i><span>DNP Singapore</span></li>
-						<li><i class="no">2</i><span>Idemitsu Lube</span></li>
-						<li><i class="no">3</i><span>Systems</span></li>
-						<li><i class="no">4</i><span>hitachi automotive</span></li>
-						<li><i class="no">5</i><span>Smk electronics</span></li>				
-					</ul>
+					</div>
 				</div>
-				<div class="each-recommendation">
-					<h5>Based on “Wireless Headphone: <span>Electronic + Wireless + Devices + 15km + Japan</span>”</h5>
-					<ul>
-						<li><i class="no">1</i><span>DNP Singapore</span></li>
-						<li><i class="no">2</i><span>Idemitsu Lube</span></li>
-						<li><i class="no">3</i><span>Systems</span></li>
-						<li><i class="no">4</i><span>hitachi automotive</span></li>
-						<li><i class="no">5</i><span>Smk electronics</span></li>				
-					</ul>
-				</div>
-				<div class="each-recommendation">
-					<h5>Based on “Wireless Headphone: <span>Electronic + Wireless + Devices + 15km + Japan</span>”</h5>
-					<ul>
-						<li><i class="no">1</i><span>DNP Singapore</span></li>
-						<li><i class="no">2</i><span>Idemitsu Lube</span></li>
-						<li><i class="no">3</i><span>Systems</span></li>
-						<li><i class="no">4</i><span>hitachi automotive</span></li>
-						<li><i class="no">5</i><span>Smk electronics</span></li>				
-					</ul>
-				</div>
-			</div>
-		</div>
 
-		<!--@if(!empty($name))
-			<p>Welcome {{ $name }}, <a href="{{ route('message.index') }}">Inbox</a></p>
+				<!--@if(!empty($name))
+					<p>Welcome {{ $name }}, <a href="{{ route('message.index') }}">Inbox</a></p>
+						
+					{{ Form::open(array('route' => array('login.destroy', 0), 'method' => 'delete')) }}
+					    <button type="submit" >Log Out</button>
+					{{ Form::close() }}
+				@endif
 				
-			{{ Form::open(array('route' => array('login.destroy', 0), 'method' => 'delete')) }}
-			    <button type="submit" >Log Out</button>
-			{{ Form::close() }}
-		@endif
-		
-		@if(Session::has('message'))
-		    <p class="alert">{{ Session::get('message') }}</p>
-		@endif
-		@if(Session::has('signup_message'))
-		    <p class="alert">{{ Session::get('signup_message') }}</p>
-		@endif-->
+				@if(Session::has('message'))
+				    <p class="alert">{{ Session::get('message') }}</p>
+				@endif
+				@if(Session::has('signup_message'))
+				    <p class="alert">{{ Session::get('signup_message') }}</p>
+				@endif-->
+			</div>
+		</div>
 	@else
 		<div id="first-content" class="container">
 				<div class="row">

@@ -14,7 +14,19 @@
 						<div class="content">
 							<div class="row">
 								<div class="col-md-6">	
-									<a href="#"></a>															
+									@if(Session::has('message'))
+							        	<h5 class="alert">{{ Session::get('message') }}</h5>					        				        
+							        @endif
+
+							        <ul>
+								        @foreach($errors->all() as $error)
+								            <li>{{ $error }}</li>
+								        @endforeach
+								    </ul>
+
+							     	{{ Form::open(array('route' => array('login.destroy', Auth::user()->id), 'method' => 'delete')) }}
+								        <button type="submit" class="btn">Log Out</button>
+								    {{ Form::close() }}
 								</div>
 								<div class="col-md-6">
 									

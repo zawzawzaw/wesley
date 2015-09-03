@@ -31,7 +31,7 @@ class CreateUserTable extends Migration {
 			$table->string('post_code');
 			$table->string('phone');
 			$table->string('profile_photo');
-			$table->string('subscribe_newsletter');
+			$table->boolean('subscribe_newsletter');
 			
 			$table->timestamps();
 			$table->softDeletes();

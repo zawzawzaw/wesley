@@ -256,7 +256,7 @@
 						<div class="header">
 							{{-- <h3 class="pull-left">Advanced Search Result</h3>		 --}}
 							@if(Session::has('advanced_search_message'))
-					        	<h5 class="alert">{{ Session::get('smart_search_message') }}</h5>					        
+					        	<h5 class="alert">{{ Session::get('advanced_search_message') }}</h5>					        
 					        @else
 					        	<h5>Result on:</h5><a href="#" class="save-search"><i class="plus"></i> <span>Save Search</span></a>
 					        @endif

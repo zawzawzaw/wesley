@@ -75,6 +75,59 @@ class MyaccountController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$id = Auth::user()->id;
+		$user = User::find($id);
+
+		// print_r(Input::all()); exit();
+
+		if($user->email==Input::get('email'))
+			$rules = array(
+			    'first_name'=>'required',
+			    'last_name'=>'required',
+			    'email'=>'required|email',
+			    'password'=>'min:8',
+			    'country'=>'required',
+			    'job_title'=>'required',
+			    'city'=>'required'
+		    );
+		else
+			$rules = array(
+			    'first_name'=>'required',
+			    'last_name'=>'required',
+			    'email'=>'required|email|unique:users',
+			    'password'=>'min:8',
+			    'country'=>'required',
+			    'job_title'=>'required',
+			    'city'=>'required'
+		    );
+		$validator = Validator::make(Input::all(), $rules);
+ 
+	    if ($validator->passes()) {	    	
+			$user->first_name = Input::get('first_name');
+		    $user->last_name = Input::get('last_name');
+	    	$user->email = Input::get('email');
+		    if(Input::has('password')) {
+			    $user->password = Hash::make(Input::get('password'));
+			}
+		    $user->country = Input::get('country');
+		    $user->company = Input::get('company');
+		    $user->job_title = Input::get('job_title');
+		    $user->address_1 = Input::get('address_1');
+		    $user->address_2 = Input::get('address_2');
+		    $user->post_code = Input::get('postal_code');
+		    $user->city = Input::get('city');
+		    $user->state = Input::get('state');
+		    $user->phone = Input::get('phone');
+		    $user->profile_photo = (Input::has('profile_photo')) ? Input::get('profile_photo') : '';
+		    $user->subscribe_newsletter = (Input::has('newsletter')) ? Input::get('newsletter') : false;
+			$user->save();
+
+	    	return Redirect::to('/myaccount')->with('message', 'Account Particular has been updated!');
+
+	    } else {
+	        # validation has failed, display error messages
+	    	return Redirect::to('/myaccount/'.$id.'/edit')->with('message', 'The following errors occurred:')->withErrors($validator)->withInput();
+	    }		
 	}
 
 

@@ -527,7 +527,7 @@
 					</div>
 					<div class="ctas">
 						{{ Form::button('Search', array('type'=>'submit','value'=>'smart','name'=>'form_type','id'=>'form-submit','class'=>'search')) }}
-						<a href="#" class="switch-advance-search"><span>Advanced search</span></a>          
+						<a href="{{ URL::to('advancedsearch') }}" class="switch-advance-search"><span>Advanced search</span></a>          
 					</div>
 					
 				{{ Form::close() }}
