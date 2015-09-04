@@ -9,6 +9,7 @@
 <!-- Bootstrap core CSS -->
 {{ HTML::style('//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css') }}
 {{ HTML::style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css') }}
+{{ HTML::style('//vjs.zencdn.net/4.12/video-js.css') }}
 {{ HTML::style('css/bootstrap.min.css') }}
 {{ HTML::style('css/uploadifive.css') }}
 {{ HTML::style('css/style.css') }}
@@ -18,4 +19,5 @@
 {{ HTML::script('js/libs/jquery.validate.min.js') }}
 {{ HTML::script('js/libs/jquery.uploadifive.min.js') }}
 {{ HTML::script('js/libs/placeholders.min.js') }}
+{{ HTML::script('//vjs.zencdn.net/4.12/video.js') }}
 {{ HTML::script('js/wesley/main.js') }}

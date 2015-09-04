@@ -706,12 +706,11 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="each-input">
-											{{ Form::label('video', 'Upload Video') }}
-											{{ Form::text('upload_video', null, array('class'=>'text-input')) }}																		<!--		
+											{{ Form::label('video', 'Upload Video') }}														
 											{{ Form::file('video', null, array('id'=>'video')); }}
 											{{ Form::hidden('upload_video', null, array('id'=>'upload_video')); }}
 											<span class="video-preview"></span>
-											-->
+											
 										</div>
 									</div>								
 								</div>

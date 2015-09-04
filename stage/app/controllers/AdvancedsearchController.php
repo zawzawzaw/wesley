@@ -68,7 +68,7 @@ class AdvancedsearchController extends \BaseController {
 			// print_r($query->get()->toJSON());			
 			
 		}
-		if(Input::has('industry_estate') && !empty(Input::get('industry_estate'))) {			
+		if(Input::has('industry_estate')) {			
 
 			// free listings
 			$query = $query->where('industry_estate', 'LIKE', '%' . Input::get('industry_estate') .'%');
@@ -77,7 +77,7 @@ class AdvancedsearchController extends \BaseController {
 			$premium_query = $premium_query->where('industry_estate', 'LIKE', '%' . Input::get('industry_estate') .'%')->where('type', '=', 'Paid');
 
 		}
-		if(Input::has('post_code') && !empty(Input::get('post_code'))) {
+		if(Input::has('post_code')) {
 
 			// free listings
 			$query = $query->where('post_code', '=', Input::get('post_code'));
@@ -86,7 +86,7 @@ class AdvancedsearchController extends \BaseController {
 			$premium_query = $premium_query->where('post_code', '=', Input::get('post_code'))->where('type', '=', 'Paid');	
 
 		}
-		if(Input::has('multiple_countries') && !empty(Input::get('multiple_countries'))) {
+		if(Input::has('multiple_countries')) {
 
 			$multiple_countries = Input::get('multiple_countries');
 

@@ -5,10 +5,15 @@ sync with local and stage
 legal fonts..
 
 
-pagi for both premium and list or remove pagi for premium
 add alphabet filter
-product catalogs
+check all laravel errors and style
+form tabs
+
+assign admin to list
 geolocation proximity
 save search
 fav search
 rec search
+
+
+free premium user type

@@ -108,7 +108,11 @@
 				font-size: 12px;
 				line-height: 16px;
 				color: @new-grey;
-				padding-top: 33px;
+				padding-top: 40px;
+			}
+
+			.second-inputs-container {
+			    margin-bottom: 45px;
 			}
 
 			.newsletter-container {
@@ -126,6 +130,17 @@
 
 			.each-input {
 				height: 80px;
+
+				#lbl_type {
+					display: block;
+				}
+
+				.each-type {
+					display: inline-block;
+					width: 30%;
+					position: relative;
+					vertical-align: middle;
+				}
 
 				.dropdown {
 					width: 100%;
@@ -145,7 +160,7 @@
 					}
 				}
 				
-				input[type=text] {
+				input[type=text], input[type=password] {
 					background-color: #f9f9f9;
 					border: 1px solid #d6d6d6;
 					border-radius: 5px;

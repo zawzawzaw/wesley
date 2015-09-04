@@ -1,641 +1,173 @@
 @section('content')
-	<div class="container">
-		<div class="row">
-			{{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
-				<div class="col-md-3">
-					<div class="smart-search">
-						<h1>Smart Search:</h1>	
-						{{ Form::label('smart_search', 'Select one or more:') }}
-						@if(Session::has('smart_search_message'))
-				        	<p class="alert">{{ Session::get('smart_search_message') }}</p>
-				        @endif				
-						<div class="inputs">
-							{{ 
-								Form::select('category', array(							
-									'Oil & Gas' => 'Oil & Gas', 
-									'Chemicals' => 'Chemicals', 
-									'Basic Resources' => 'Basic Resources', 
-									'Construction & Materials' => 'Construction & Materials', 
-									'Industrial Goods & Services' => 'Industrial Goods & Services', 
-									'Automobiles & Parts' => 'Automobiles & Parts', 
-									'Food & Beverage' => 'Food & Beverage', 
-									'Personal & Household Goods' => 'Personal & Household Goods', 
-									'Health Care' => 'Health Care', 
-									'Retail' => 'Retail', 
-									'Media' => 'Media', 
-									'Travel & Leisure' => 'Travel & Leisure', 
-									'Telecommunications' => 'Telecommunications', 
-									'Utilities' => 'Utilities', 
-									'Banks' => 'Banks', 
-									'Insurance' => 'Insurance', 
-									'Real Estate' => 'Real Estate', 
-									'Financial Services' => 'Financial Services', 
-									'Technology' => 'Technology'
-								), Input::get('category', null), array('id' => 'category'));							
-							}}
+	<div id="company-detail">
+		<div class="bg"></div>
+
+		<div class="container">
+			<div class="company-details">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3 class="pull-left">Search ><a href="javascript:window.history.back();"> Result ></a> <span class="current">{{ ucfirst($list->company_name) }}</span></h3>							
+							{{-- <a href="#" class="save-search pull-right"><i class="plus"></i> <span>Save Search</span></a> --}}
 						</div>
-						<div class="inputs">
-							{{ 
-								Form::select('subcategory', array(							
-									'Exploration & Production' => 'Exploration & Production', 
-									'Integrated Oil & Gas' => 'Integrated Oil & Gas',
-									'Oil Equipment & Services' => 'Oil Equipment & Services',
-									'Pipelines' => 'Pipelines',
-									'Renewable Energy Equipment' => 'Renewable Energy Equipment',
-									'Alternative Fuels' => 'Alternative Fuels'									
-								), Input::get('subcategory', null), array('id' => 'subcategory')); 
-							}}
+						<div class="first-content">
+							@if(!empty($list->logo))
+								<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
+							@else
+								{{ HTML::image('images/contents/company-logo.png', '', array('class' => 'img-responsive')) }}							
+							@endif
+							<div class="company-detail">
+								<h1>{{ $list->company_name }}</h1>
+
+								<h5>Address</h5>
+								<p>{{ $list->address_1 }} {{ $list->address_2 }}</p>
+
+								<h5>telephone</h5>
+								<p></p>
+
+								<h5>fax</h5>
+								<p></p>
+
+								<h5>website</h5>
+								<p></p>
+							</div>
 						</div>
-						<div class="inputs">
-							{{ 
-								Form::select('country', array(
-									''=>'Country:',
-								    'Afghanistan'=>'Afghanistan',
-								    'Albania'=>'Albania',
-								    'Algeria'=>'Algeria',
-								    'American Samoa'=>'American Samoa',
-								    'Andorra'=>'Andorra',
-								    'Angola'=>'Angola',
-								    'Anguilla'=>'Anguilla',
-								    'Antarctica'=>'Antarctica',
-								    'Antigua And Barbuda'=>'Antigua And Barbuda',
-								    'Argentina'=>'Argentina',
-								    'Armenia'=>'Armenia',
-								    'Aruba'=>'Aruba',
-								    'Australia'=>'Australia',
-								    'Austria'=>'Austria',
-								    'Azerbaijan'=>'Azerbaijan',
-								    'Bahamas'=>'Bahamas',
-								    'Bahrain'=>'Bahrain',
-								    'Bangladesh'=>'Bangladesh',
-								    'Barbados'=>'Barbados',
-								    'Belarus'=>'Belarus',
-								    'Belgium'=>'Belgium',
-								    'Belize'=>'Belize',
-								    'Benin'=>'Benin',
-								    'Bermuda'=>'Bermuda',
-								    'Bhutan'=>'Bhutan',
-								    'Bolivia'=>'Bolivia',
-								    'Bosnia And Herzegovina'=>'Bosnia And Herzegovina',
-								    'Botswana'=>'Botswana',
-								    'Bouvet Island'=>'Bouvet Island',
-								    'Brazil'=>'Brazil',
-								    'British Indian Ocean Territory'=>'British Indian Ocean Territory',
-								    'Brunei'=>'Brunei',
-								    'Bulgaria'=>'Bulgaria',
-								    'Burkina Faso'=>'Burkina Faso',
-								    'Burundi'=>'Burundi',
-								    'Cambodia'=>'Cambodia',
-								    'Cameroon'=>'Cameroon',
-								    'Canada'=>'Canada',
-								    'Cape Verde'=>'Cape Verde',
-								    'Cayman Islands'=>'Cayman Islands',
-								    'Central African Republic'=>'Central African Republic',
-								    'Chad'=>'Chad',
-								    'Chile'=>'Chile',
-								    'China'=>'China',
-								    'Christmas Island'=>'Christmas Island',
-								    'Cocos (Keeling) Islands'=>'Cocos (Keeling) Islands',
-								    'Columbia'=>'Columbia',
-								    'Comoros'=>'Comoros',
-								    'Congo'=>'Congo',
-								    'Cook Islands'=>'Cook Islands',
-								    'Costa Rica'=>'Costa Rica',
-								    'Cote D\'Ivorie (Ivory Coast)'=>'Cote D\'Ivorie (Ivory Coast)',
-								    'Croatia (Hrvatska)'=>'Croatia (Hrvatska)',
-								    'Cuba'=>'Cuba',
-								    'Cyprus'=>'Cyprus',
-								    'Czech Republic'=>'Czech Republic',
-								    'Democratic Republic Of Congo (Zaire)'=>'Democratic Republic Of Congo (Zaire)',
-								    'Denmark'=>'Denmark',
-								    'Djibouti'=>'Djibouti',
-								    'Dominica'=>'Dominica',
-								    'Dominican Republic'=>'Dominican Republic',
-								    'East Timor'=>'East Timor',
-								    'Ecuador'=>'Ecuador',
-								    'Egypt'=>'Egypt',
-								    'El Salvador'=>'El Salvador',
-								    'Equatorial Guinea'=>'Equatorial Guinea',
-								    'Eritrea'=>'Eritrea',
-								    'Estonia'=>'Estonia',
-								    'Ethiopia'=>'Ethiopia',
-								    'Falkland Islands (Malvinas)'=>'Falkland Islands (Malvinas)',
-								    'Faroe Islands'=>'Faroe Islands',
-								    'Fiji'=>'Fiji',
-								    'Finland'=>'Finland',
-								    'France'=>'France',
-								    'France, Metropolitan'=>'France, Metropolitan',
-								    'French Guinea'=>'French Guinea',
-								    'French Polynesia'=>'French Polynesia',
-								    'French Southern Territories'=>'French Southern Territories',
-								    'Gabon'=>'Gabon',
-								    'Gambia'=>'Gambia',
-								    'Georgia'=>'Georgia',
-								    'Germany'=>'Germany',
-								    'Ghana'=>'Ghana',
-								    'Gibraltar'=>'Gibraltar',
-								    'Greece'=>'Greece',
-								    'Greenland'=>'Greenland',
-								    'Grenada'=>'Grenada',
-								    'Guadeloupe'=>'Guadeloupe',
-								    'Guam'=>'Guam',
-								    'Guatemala'=>'Guatemala',
-								    'Guinea'=>'Guinea',
-								    'Guinea-Bissau'=>'Guinea-Bissau',
-								    'Guyana'=>'Guyana',
-								    'Haiti'=>'Haiti',
-								    'Heard And McDonald Islands'=>'Heard And McDonald Islands',
-								    'Honduras'=>'Honduras',
-								    'Hong Kong'=>'Hong Kong',
-								    'Hungary'=>'Hungary',
-								    'Iceland'=>'Iceland',
-								    'India'=>'India',
-								    'Indonesia'=>'Indonesia',
-								    'Iran'=>'Iran',
-								    'Iraq'=>'Iraq',
-								    'Ireland'=>'Ireland',
-								    'Israel'=>'Israel',
-								    'Italy'=>'Italy',
-								    'Jamaica'=>'Jamaica',
-								    'Japan'=>'Japan',
-								    'Jordan'=>'Jordan',
-								    'Kazakhstan'=>'Kazakhstan',
-								    'Kenya'=>'Kenya',
-								    'Kiribati'=>'Kiribati',
-								    'Kuwait'=>'Kuwait',
-								    'Kyrgyzstan'=>'Kyrgyzstan',
-								    'Laos'=>'Laos',
-								    'Latvia'=>'Latvia',
-								    'Lebanon'=>'Lebanon',
-								    'Lesotho'=>'Lesotho',
-								    'Liberia'=>'Liberia',
-								    'Libya'=>'Libya',
-								    'Liechtenstein'=>'Liechtenstein',
-								    'Lithuania'=>'Lithuania',
-								    'Luxembourg'=>'Luxembourg',
-								    'Macau'=>'Macau',
-								    'Macedonia'=>'Macedonia',
-								    'Madagascar'=>'Madagascar',
-								    'Malawi'=>'Malawi',
-								    'Malaysia'=>'Malaysia',
-								    'Maldives'=>'Maldives',
-								    'Mali'=>'Mali',
-								    'Malta'=>'Malta',
-								    'Marshall Islands'=>'Marshall Islands',
-								    'Martinique'=>'Martinique',
-								    'Mauritania'=>'Mauritania',
-								    'Mauritius'=>'Mauritius',
-								    'Mayotte'=>'Mayotte',
-								    'Mexico'=>'Mexico',
-								    'Micronesia'=>'Micronesia',
-								    'Moldova'=>'Moldova',
-								    'Monaco'=>'Monaco',
-								    'Mongolia'=>'Mongolia',
-								    'Montserrat'=>'Montserrat',
-								    'Morocco'=>'Morocco',
-								    'Mozambique'=>'Mozambique',
-								    'Myanmar (Burma)'=>'Myanmar (Burma)',
-								    'Namibia'=>'Namibia',
-								    'Nauru'=>'Nauru',
-								    'Nepal'=>'Nepal',
-								    'Netherlands'=>'Netherlands',
-								    'Netherlands Antilles'=>'Netherlands Antilles',
-								    'New Caledonia'=>'New Caledonia',
-								    'New Zealand'=>'New Zealand',
-								    'Nicaragua'=>'Nicaragua',
-								    'Niger'=>'Niger',
-								    'Nigeria'=>'Nigeria',
-								    'Niue'=>'Niue',
-								    'Norfolk Island'=>'Norfolk Island',
-								    'North Korea'=>'North Korea',
-								    'Northern Mariana Islands'=>'Northern Mariana Islands',
-								    'Norway'=>'Norway',
-								    'Oman'=>'Oman',
-								    'Pakistan'=>'Pakistan',
-								    'Palau'=>'Palau',
-								    'Panama'=>'Panama',
-								    'Papua New Guinea'=>'Papua New Guinea',
-								    'Paraguay'=>'Paraguay',
-								    'Peru'=>'Peru',
-								    'Philippines'=>'Philippines',
-								    'Pitcairn'=>'Pitcairn',
-								    'Poland'=>'Poland',
-								    'Portugal'=>'Portugal',
-								    'Puerto Rico'=>'Puerto Rico',
-								    'Qatar'=>'Qatar',
-								    'Reunion'=>'Reunion',
-								    'Romania'=>'Romania',
-								    'Russia'=>'Russia',
-								    'Rwanda'=>'Rwanda',
-								    'Sao Tome And Principe'=>'Sao Tome And Principe',
-								    'Saudi Arabia'=>'Saudi Arabia',
-								    'Senegal'=>'Senegal',
-								    'Seychelles'=>'Seychelles',
-								    'Sierra Leone'=>'Sierra Leone',
-								    'Singapore'=>'Singapore',
-								    'Slovak Republic'=>'Slovak Republic',
-								    'Slovenia'=>'Slovenia',
-								    'Solomon Islands'=>'Solomon Islands',
-								    'Somalia'=>'Somalia',
-								    'South Africa'=>'South Africa',
-								    'South Georgia And South Sandwich Islands'=>'South Georgia And South Sandwich Islands',
-								    'South Korea'=>'South Korea',
-								    'Spain'=>'Spain',
-								    'Sri Lanka'=>'Sri Lanka',
-								    'Sudan'=>'Sudan',
-								    'Suriname'=>'Suriname',
-								    'Svalbard And Jan Mayen'=>'Svalbard And Jan Mayen',
-								    'Swaziland'=>'Swaziland',
-								    'Sweden'=>'Sweden',
-								    'Switzerland'=>'Switzerland',
-								    'Syria'=>'Syria',
-								    'Taiwan'=>'Taiwan',
-								    'Tajikistan'=>'Tajikistan',
-								    'Tanzania'=>'Tanzania',
-								    'Thailand'=>'Thailand',
-								    'Togo'=>'Togo',
-								    'Tokelau'=>'Tokelau',
-								    'Tonga'=>'Tonga',
-								    'Trinidad And Tobago'=>'Trinidad And Tobago',
-								    'Tunisia'=>'Tunisia',
-								    'Turkey'=>'Turkey',
-								    'Turkmenistan'=>'Turkmenistan',
-								    'Turks And Caicos Islands'=>'Turks And Caicos Islands',
-								    'Tuvalu'=>'Tuvalu',
-								    'Uganda'=>'Uganda',
-								    'Ukraine'=>'Ukraine',
-								    'United Arab Emirates'=>'United Arab Emirates',
-								    'United Kingdom'=>'United Kingdom',
-								    'United States'=>'United States',
-								    'United States Minor Outlying Islands'=>'United States Minor Outlying Islands',
-								    'Uruguay'=>'Uruguay',
-								    'Uzbekistan'=>'Uzbekistan',
-								    'Vanuatu'=>'Vanuatu',
-								    'Vatican City (Holy See)'=>'Vatican City (Holy See)',
-								    'Venezuela'=>'Venezuela',
-								    'Vietnam'=>'Vietnam',
-								    'Virgin Islands (British)'=>'Virgin Islands (British)',
-								    'Virgin Islands (US)'=>'Virgin Islands (US)',
-								    'Wallis And Futuna Islands'=>'Wallis And Futuna Islands',
-								    'Western Sahara'=>'Western Sahara',
-								    'Western Samoa'=>'Western Samoa',
-								    'Yemen'=>'Yemen',
-								    'Yugoslavia'=>'Yugoslavia',
-								    'Zambia'=>'Zambia',
-								    'Zimbabwe'=>'Zimbabwe'
-								), Input::get('country', null));
-							}}
-						</div>		
-						<div class="inputs">
-							{{ 
-								Form::select('origin_country', array(
-									''=>'Country of Origin:',
-								    'Afghanistan'=>'Afghanistan',
-								    'Albania'=>'Albania',
-								    'Algeria'=>'Algeria',
-								    'American Samoa'=>'American Samoa',
-								    'Andorra'=>'Andorra',
-								    'Angola'=>'Angola',
-								    'Anguilla'=>'Anguilla',
-								    'Antarctica'=>'Antarctica',
-								    'Antigua And Barbuda'=>'Antigua And Barbuda',
-								    'Argentina'=>'Argentina',
-								    'Armenia'=>'Armenia',
-								    'Aruba'=>'Aruba',
-								    'Australia'=>'Australia',
-								    'Austria'=>'Austria',
-								    'Azerbaijan'=>'Azerbaijan',
-								    'Bahamas'=>'Bahamas',
-								    'Bahrain'=>'Bahrain',
-								    'Bangladesh'=>'Bangladesh',
-								    'Barbados'=>'Barbados',
-								    'Belarus'=>'Belarus',
-								    'Belgium'=>'Belgium',
-								    'Belize'=>'Belize',
-								    'Benin'=>'Benin',
-								    'Bermuda'=>'Bermuda',
-								    'Bhutan'=>'Bhutan',
-								    'Bolivia'=>'Bolivia',
-								    'Bosnia And Herzegovina'=>'Bosnia And Herzegovina',
-								    'Botswana'=>'Botswana',
-								    'Bouvet Island'=>'Bouvet Island',
-								    'Brazil'=>'Brazil',
-								    'British Indian Ocean Territory'=>'British Indian Ocean Territory',
-								    'Brunei'=>'Brunei',
-								    'Bulgaria'=>'Bulgaria',
-								    'Burkina Faso'=>'Burkina Faso',
-								    'Burundi'=>'Burundi',
-								    'Cambodia'=>'Cambodia',
-								    'Cameroon'=>'Cameroon',
-								    'Canada'=>'Canada',
-								    'Cape Verde'=>'Cape Verde',
-								    'Cayman Islands'=>'Cayman Islands',
-								    'Central African Republic'=>'Central African Republic',
-								    'Chad'=>'Chad',
-								    'Chile'=>'Chile',
-								    'China'=>'China',
-								    'Christmas Island'=>'Christmas Island',
-								    'Cocos (Keeling) Islands'=>'Cocos (Keeling) Islands',
-								    'Columbia'=>'Columbia',
-								    'Comoros'=>'Comoros',
-								    'Congo'=>'Congo',
-								    'Cook Islands'=>'Cook Islands',
-								    'Costa Rica'=>'Costa Rica',
-								    'Cote D\'Ivorie (Ivory Coast)'=>'Cote D\'Ivorie (Ivory Coast)',
-								    'Croatia (Hrvatska)'=>'Croatia (Hrvatska)',
-								    'Cuba'=>'Cuba',
-								    'Cyprus'=>'Cyprus',
-								    'Czech Republic'=>'Czech Republic',
-								    'Democratic Republic Of Congo (Zaire)'=>'Democratic Republic Of Congo (Zaire)',
-								    'Denmark'=>'Denmark',
-								    'Djibouti'=>'Djibouti',
-								    'Dominica'=>'Dominica',
-								    'Dominican Republic'=>'Dominican Republic',
-								    'East Timor'=>'East Timor',
-								    'Ecuador'=>'Ecuador',
-								    'Egypt'=>'Egypt',
-								    'El Salvador'=>'El Salvador',
-								    'Equatorial Guinea'=>'Equatorial Guinea',
-								    'Eritrea'=>'Eritrea',
-								    'Estonia'=>'Estonia',
-								    'Ethiopia'=>'Ethiopia',
-								    'Falkland Islands (Malvinas)'=>'Falkland Islands (Malvinas)',
-								    'Faroe Islands'=>'Faroe Islands',
-								    'Fiji'=>'Fiji',
-								    'Finland'=>'Finland',
-								    'France'=>'France',
-								    'France, Metropolitan'=>'France, Metropolitan',
-								    'French Guinea'=>'French Guinea',
-								    'French Polynesia'=>'French Polynesia',
-								    'French Southern Territories'=>'French Southern Territories',
-								    'Gabon'=>'Gabon',
-								    'Gambia'=>'Gambia',
-								    'Georgia'=>'Georgia',
-								    'Germany'=>'Germany',
-								    'Ghana'=>'Ghana',
-								    'Gibraltar'=>'Gibraltar',
-								    'Greece'=>'Greece',
-								    'Greenland'=>'Greenland',
-								    'Grenada'=>'Grenada',
-								    'Guadeloupe'=>'Guadeloupe',
-								    'Guam'=>'Guam',
-								    'Guatemala'=>'Guatemala',
-								    'Guinea'=>'Guinea',
-								    'Guinea-Bissau'=>'Guinea-Bissau',
-								    'Guyana'=>'Guyana',
-								    'Haiti'=>'Haiti',
-								    'Heard And McDonald Islands'=>'Heard And McDonald Islands',
-								    'Honduras'=>'Honduras',
-								    'Hong Kong'=>'Hong Kong',
-								    'Hungary'=>'Hungary',
-								    'Iceland'=>'Iceland',
-								    'India'=>'India',
-								    'Indonesia'=>'Indonesia',
-								    'Iran'=>'Iran',
-								    'Iraq'=>'Iraq',
-								    'Ireland'=>'Ireland',
-								    'Israel'=>'Israel',
-								    'Italy'=>'Italy',
-								    'Jamaica'=>'Jamaica',
-								    'Japan'=>'Japan',
-								    'Jordan'=>'Jordan',
-								    'Kazakhstan'=>'Kazakhstan',
-								    'Kenya'=>'Kenya',
-								    'Kiribati'=>'Kiribati',
-								    'Kuwait'=>'Kuwait',
-								    'Kyrgyzstan'=>'Kyrgyzstan',
-								    'Laos'=>'Laos',
-								    'Latvia'=>'Latvia',
-								    'Lebanon'=>'Lebanon',
-								    'Lesotho'=>'Lesotho',
-								    'Liberia'=>'Liberia',
-								    'Libya'=>'Libya',
-								    'Liechtenstein'=>'Liechtenstein',
-								    'Lithuania'=>'Lithuania',
-								    'Luxembourg'=>'Luxembourg',
-								    'Macau'=>'Macau',
-								    'Macedonia'=>'Macedonia',
-								    'Madagascar'=>'Madagascar',
-								    'Malawi'=>'Malawi',
-								    'Malaysia'=>'Malaysia',
-								    'Maldives'=>'Maldives',
-								    'Mali'=>'Mali',
-								    'Malta'=>'Malta',
-								    'Marshall Islands'=>'Marshall Islands',
-								    'Martinique'=>'Martinique',
-								    'Mauritania'=>'Mauritania',
-								    'Mauritius'=>'Mauritius',
-								    'Mayotte'=>'Mayotte',
-								    'Mexico'=>'Mexico',
-								    'Micronesia'=>'Micronesia',
-								    'Moldova'=>'Moldova',
-								    'Monaco'=>'Monaco',
-								    'Mongolia'=>'Mongolia',
-								    'Montserrat'=>'Montserrat',
-								    'Morocco'=>'Morocco',
-								    'Mozambique'=>'Mozambique',
-								    'Myanmar (Burma)'=>'Myanmar (Burma)',
-								    'Namibia'=>'Namibia',
-								    'Nauru'=>'Nauru',
-								    'Nepal'=>'Nepal',
-								    'Netherlands'=>'Netherlands',
-								    'Netherlands Antilles'=>'Netherlands Antilles',
-								    'New Caledonia'=>'New Caledonia',
-								    'New Zealand'=>'New Zealand',
-								    'Nicaragua'=>'Nicaragua',
-								    'Niger'=>'Niger',
-								    'Nigeria'=>'Nigeria',
-								    'Niue'=>'Niue',
-								    'Norfolk Island'=>'Norfolk Island',
-								    'North Korea'=>'North Korea',
-								    'Northern Mariana Islands'=>'Northern Mariana Islands',
-								    'Norway'=>'Norway',
-								    'Oman'=>'Oman',
-								    'Pakistan'=>'Pakistan',
-								    'Palau'=>'Palau',
-								    'Panama'=>'Panama',
-								    'Papua New Guinea'=>'Papua New Guinea',
-								    'Paraguay'=>'Paraguay',
-								    'Peru'=>'Peru',
-								    'Philippines'=>'Philippines',
-								    'Pitcairn'=>'Pitcairn',
-								    'Poland'=>'Poland',
-								    'Portugal'=>'Portugal',
-								    'Puerto Rico'=>'Puerto Rico',
-								    'Qatar'=>'Qatar',
-								    'Reunion'=>'Reunion',
-								    'Romania'=>'Romania',
-								    'Russia'=>'Russia',
-								    'Rwanda'=>'Rwanda',
-								    'Sao Tome And Principe'=>'Sao Tome And Principe',
-								    'Saudi Arabia'=>'Saudi Arabia',
-								    'Senegal'=>'Senegal',
-								    'Seychelles'=>'Seychelles',
-								    'Sierra Leone'=>'Sierra Leone',
-								    'Singapore'=>'Singapore',
-								    'Slovak Republic'=>'Slovak Republic',
-								    'Slovenia'=>'Slovenia',
-								    'Solomon Islands'=>'Solomon Islands',
-								    'Somalia'=>'Somalia',
-								    'South Africa'=>'South Africa',
-								    'South Georgia And South Sandwich Islands'=>'South Georgia And South Sandwich Islands',
-								    'South Korea'=>'South Korea',
-								    'Spain'=>'Spain',
-								    'Sri Lanka'=>'Sri Lanka',
-								    'Sudan'=>'Sudan',
-								    'Suriname'=>'Suriname',
-								    'Svalbard And Jan Mayen'=>'Svalbard And Jan Mayen',
-								    'Swaziland'=>'Swaziland',
-								    'Sweden'=>'Sweden',
-								    'Switzerland'=>'Switzerland',
-								    'Syria'=>'Syria',
-								    'Taiwan'=>'Taiwan',
-								    'Tajikistan'=>'Tajikistan',
-								    'Tanzania'=>'Tanzania',
-								    'Thailand'=>'Thailand',
-								    'Togo'=>'Togo',
-								    'Tokelau'=>'Tokelau',
-								    'Tonga'=>'Tonga',
-								    'Trinidad And Tobago'=>'Trinidad And Tobago',
-								    'Tunisia'=>'Tunisia',
-								    'Turkey'=>'Turkey',
-								    'Turkmenistan'=>'Turkmenistan',
-								    'Turks And Caicos Islands'=>'Turks And Caicos Islands',
-								    'Tuvalu'=>'Tuvalu',
-								    'Uganda'=>'Uganda',
-								    'Ukraine'=>'Ukraine',
-								    'United Arab Emirates'=>'United Arab Emirates',
-								    'United Kingdom'=>'United Kingdom',
-								    'United States'=>'United States',
-								    'United States Minor Outlying Islands'=>'United States Minor Outlying Islands',
-								    'Uruguay'=>'Uruguay',
-								    'Uzbekistan'=>'Uzbekistan',
-								    'Vanuatu'=>'Vanuatu',
-								    'Vatican City (Holy See)'=>'Vatican City (Holy See)',
-								    'Venezuela'=>'Venezuela',
-								    'Vietnam'=>'Vietnam',
-								    'Virgin Islands (British)'=>'Virgin Islands (British)',
-								    'Virgin Islands (US)'=>'Virgin Islands (US)',
-								    'Wallis And Futuna Islands'=>'Wallis And Futuna Islands',
-								    'Western Sahara'=>'Western Sahara',
-								    'Western Samoa'=>'Western Samoa',
-								    'Yemen'=>'Yemen',
-								    'Yugoslavia'=>'Yugoslavia',
-								    'Zambia'=>'Zambia',
-								    'Zimbabwe'=>'Zimbabwe'
-								), Input::get('origin_country', null));
-							}}
+						<div class="second-content">
+							<div class="more-company-detail">
+								<h5>category</h5>
+								<p>{{ $list->category }}</p>
+
+								<h5>sub-Category</h5>
+								<p>{{ $list->subcategory }}</p>
+
+								<h5>Country of Origin</h5>
+								<p>{{ $list->origin_country }}</p>
+
+								<h5>Nature of Business</h5>
+								<p>{{ $list->business_nature }}</p>
+
+								<h5>Company Background</h5>
+								<p>{{ $list->company_background_info }}</p>
+							</div>
+							<div class="more-company-detail">
+								<h5>Year Established</h5>
+								<p>{{ $list->year_established }}</p>
+
+								<h5>Paid Up Capital</h5>
+								<p>{{ $list->paid_up_capital }}</p>
+
+								<h5>No of employees</h5>
+								<p>{{ $list->no_of_employees }}</p>
+
+								<h5>Quality Certification</h5>
+								<p>{{ $list->quality_certification }}</p>
+
+								<h5>Bankers</h5>
+								<p>{{ $list->bankers }}</p>
+							</div>
+							<div class="more-company-detail">
+								<h5>Markets Established</h5>
+								<p>{{ $list->market_established }}</p>
+
+								<h5>Markets Interested</h5>
+								<p>{{ $list->market_interested }}</p>
+
+								<h5>Main Shareholders</h5>
+								<p>{{ $list->main_shareholders }}</p>
+
+								<h5>No of Offices Worldwide</h5>
+								<p>{{ $list->number_of_offices_worldwide }}</p>
+							</div>
 						</div>
-						<div class="inputs">
-							{{ Form::button('Go', array('type'=>'submit','value'=>'smart','name'=>'form_type','id'=>'form-submit','class'=>'btn btn-large')) }}
-						</div>	
+						<div class="third-content">
+							<div class="text-content pull-left">
+								<h5>Links to related companies</h5>
+								<ul>
+									<li>{{ $list->links_to_related_companies }}</li>									
+								</ul>
+							</div>
+							<div class="video-player pull-right">
+								@if(!empty($list->upload_video))
+								<video id="example_video_1" class="video-js vjs-default-skin"
+								  controls preload="auto" width="400" height="250"
+								  poster="http://video-js.zencoder.com/oceans-clip.png"
+								  data-setup='{"example_option":true}'>
+								 <source src="{{ URL::to('/') }}/uploads/videos/{{ $list->upload_video }}" type='video/mp4' />
+								 {{-- <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+								 <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' /> --}}
+								 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+								</video>
+								@else
+									<span>Video not available</span>
+								@endif
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="fourth-content">
+							<div class="heading">
+								<h5 class="pull-left">see company’s product</h5>
+								<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>
+								<div class="clear"></div>
+							</div>
+							<ul>
+								<?php $i=1; ?>
+								@foreach($list->keyproduct as $pk => $key_product_list)
+									@if($i<=3)
+									<li>
+										<img src="{{ URL::to('/') }}/uploads/key_products/{{ $key_product_list->image }}" class="img-responsive" alt="">
+									</li>
+									<?php $i++; ?>
+									@endif
+								@endforeach								
+							</ul>
+						</div>
 					</div>
-					<div class="text-search">
-						<h1>Text Search:</h1>
-						@if(Session::has('text_search_message'))
-				        	<p class="alert">{{ Session::get('text_search_message') }}</p>
-				        @endif
-						<ul>
-					        @foreach($errors->all() as $error)
-					            <li>{{ $error }}</li>
-					        @endforeach
-					    </ul>
-						
-						<div class="inputs">
-							{{ Form::text('text_search', Input::get('text_search', null), array('class'=>'text-search','id'=>'text_search')); }}
-						</div>
-						<div class="inputs">							
-							{{ Form::radio('text_search_filter', 'company_name', (Input::get('text_search_filter') == 'company_name')) }}
-							{{ Form::label('plan', 'Company Name') }}
-						</div>
-						<div class="inputs">
-							{{ Form::radio('text_search_filter', 'product', (Input::get('text_search_filter') == 'product')) }}
-							{{ Form::label('plan', 'Product') }}
-						</div>
-						<div class="inputs">
-							{{ Form::radio('text_search_filter', 'tags', (Input::get('text_search_filter') == 'tags')) }}
-							{{ Form::label('plan', 'Tags') }}
-						</div>
-						<div class="inputs">
-							{{ Form::button('Go', array('type'=>'submit','value'=>'text','name'=>'form_type','id'=>'form-submit','class'=>'btn btn-large')) }}
-						</div>
-					</div>				
 				</div>
-			{{ Form::close() }}
-			<div class="col-md-6">
-				<h1>Result</h1>	
-				
-				
-				<div class="details">
-					<h2>Company Details:</h2>				
-					<h5>Company Name: {{ $list->company_name }}</h5>
-					<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
-					<br>
-					<ul>
-						<li><p>Category: <a href="#">{{ $list->category }}</a></p></li>
-						<li><p>Sub Category: {{ $list->subcategory }}</p></li>
-						<li><p>Address 1: {{ $list->address_1 }}</p></li>
-						<li><p>Address 2: {{ $list->address_2 }}</p></li>
-						<li><p>Post Code: {{ $list->post_code }}</p></li>
-						<li><p>Country: {{ $list->country }}</p></li>
-						<li><p>Country of origin: {{ $list->origin_country }}</p></li>
-						<li><p>Nature of business: {{ $list->business_nature }}</p></li>
-						<li><p>Company Background / Information: {{ $list->company_background_info }}</p></li>
-						<li><p>Year Established: {{ $list->year_established }}</p></li>
-						<li><p>Paid Up Capital: {{ $list->paid_up_capital }}</p></li>
-						<li><p>No. of Employees: {{ $list->no_of_employees }}</p></li>
-						<li><p>Quality Certification: {{ $list->quality_certification }}</p></li>
-						<li><p>Bankers: {{ $list->bankers }}</p></li>
-						<li><p>Market/s Established: {{ $list->market_established }}</p></li>
-						<li><p>Market/s Interested: {{ $list->market_interested }}</p></li>
-						<li><p>Number of offices worldwide: {{ $list->number_of_offices_worldwide }}</p></li>
-						<li><p>Links to related Companies: {{ $list->links_to_related_companies }}</p></li>
-						<li><p>Uploaded Video: {{ $list->upload_video }}</p></li>						
-					</ul>
-
-					<hr>
-
-					<a href="{{ route('search.company', $list->id) }}">See Company's Product</a>
-
-					<hr>
-
-					<div class="full-info">
-						<ul>
-							<li><p>Major Facilities / Equipment: {{ $list->major_facilities }}</p></li>
-							<li><p>Major Customers / Project History: {{ $list->major_customers }}</p></li>
-						</ul>
-					</div>
-
-					<a href="javascript:window.history.back();">Back to search results</a>
-					
-					<hr>
-                </div>
-                
 			</div>
-			<div class="col-md-3">
-				<h2>Send Message</h2>
-				{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}			
-					{{ Form::textarea('message') }}
-					<div class="each-input">
-					{{ Form::radio('message_subject', 'sales enquiry', true) }}
-					{{ Form::label('message_subject', 'Sales Enquiry') }}
+			
+			<div class="sidebar">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3>MESSAGE</h3>
+						</div>			
+						<div class="content">
+							<div class="each-content">
+							{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}								
+								{{ Form::textarea('message') }}
+								<ul class="inputs">
+									<li>
+										<div class="each-input">																						
+											{{ Form::radio('message_subject', 'sales enquiry', true) }}
+											<label for="subject"><span></span> Sales Enquiry</label>
+										</div>
+									</li>
+									<li>
+										<div class="each-input">
+											{{ Form::radio('message_subject', 'sales enquiry', true) }}
+											<label for="subject"><span></span> Purchasing Enquiry</label>
+										</div>
+									</li>
+								</ul>
+								{{ Form::hidden('list_user_id', $list->user_id) }}
+								{{ Form::button('Send', array('type'=>'submit','value'=>'send','name'=>'form_type','id'=>'send_msg','class'=>'btn btn-large')) }}
+							{{ Form::close() }}
+							</div>
+							<div class="each-content">
+								<ul class="links">
+									<li><a href="#"><i class="request-for-quote"></i> request for quote</a></li>
+									<li><a href="#"><i class="add-to-favourite"></i> add to favorite</a></li>
+									<li><a href="#"><i class="download"></i> download pdf</a></li>
+									<li><a href="#"><i class="request-for-more"></i> request for more info</a></li>
+								</ul>
+							</div>
+							<div class="each-content">
+								{{ HTML::image('images/contents/company-location-map.png', '', array('class' => 'img-responsive')) }}											
+							</div>
+						</div>						
 					</div>
-					<div class="each-input">
-					{{ Form::radio('message_subject', 'purchasing enquiry', false) }}
-					{{ Form::label('message_subject', 'Purchasing Enquiry') }}
-					</div>
-
-					{{ Form::hidden('list_user_id', $list->user_id) }}
-					{{ Form::button('Go', array('type'=>'submit','value'=>'message','name'=>'form_type','id'=>'send_msg','class'=>'btn btn-large')) }}
-				{{ Form::close() }}
-
-				<ul>
-					<li><a href="#">Request for quote</a></li>
-					<li><a href="#">Add to favourites</a></li>
-					<li><a href="#">Download PDF</a></li>
-					<li><a href="#">Request for more info</a></li>
-				</ul>
-			</div>			
+				</div>				
+			</div>
 		</div>
 	</div>
 	<script>

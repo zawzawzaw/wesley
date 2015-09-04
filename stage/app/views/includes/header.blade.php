@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
 
-      <a href="{{ URL::to('/') }}" class="logo middle"><h1>Wesley Search</h1></a>
+      <a href="{{ URL::to('/') }}" class="logo middle"><h1>Specktrm</h1></a>
     
       @if(Auth::check())
         {{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
@@ -32,7 +32,7 @@
           <ul>
             <li class="search"><a href="{{ URL::to('mysearch') }}">My Search</a></li>
             <li class="list"><a href="{{ URL::to('list') }}">Listings</a></li>
-            <li class="messages"><a href="{{ URL::to('messages') }}">Messages</a></li>
+            <li class="messages"><a href="{{ URL::to('message') }}">Messages</a></li>
             <li class="account"><a href="{{ URL::to('myaccount') }}">Account</a></li>
             <li class="country"><a href="{{ URL::to('myaccount') }}">Country</a></li>          
           </ul>
