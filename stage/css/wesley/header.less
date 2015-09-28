@@ -151,26 +151,21 @@
 	.logged-in-menu {
 		display: inline-block;
 		vertical-align: middle;
-		margin-left: 135px;
+		margin-left: 120px;
 		ul {
 			li {
 				display: inline-block;				
-				margin-left: 30px;
+				margin-left: 30px;		
+				position: relative;		
 
-				&.search {
-					background: url(../images/icons/magnifying-glass.png) no-repeat top center;
-				}
-				&.list {
-					background: url(../images/icons/list.png) no-repeat top center;
-				}
-				&.messages {
-					background: url(../images/icons/messages.png) no-repeat top center;
-				}
-				&.account {
-					background: url(../images/icons/account.png) no-repeat top center;
-				}
-				&.country {
-					background: url(../images/icons/sg-flag.png) no-repeat top center;
+				&.parent-menu {
+					&:hover {
+						.sub-menu {
+							visibility: visible;
+							.opacity(1);
+							.transition(0.3s);
+						}
+					}
 				}
 
 				a {
@@ -179,16 +174,78 @@
 					letter-spacing: 0.05em;
 					color: #c4ced4;
 					text-transform: uppercase;									
-					margin-top: 40px;
+					padding-top: 40px;
 				    display: block;
 				    text-align: center;
+
+				    &.search {
+						background: url(../images/icons/magnifying-glass.png) no-repeat top center;
+						&:hover {
+							background: url(../images/icons/magnifying-glass-hovered.png) no-repeat top center;
+						}
+					}
+					&.list {
+						background: url(../images/icons/list.png) no-repeat top center;
+						&:hover {
+							background: url(../images/icons/list-hovered.png) no-repeat top center;
+						}
+					}
+					&.messages {
+						background: url(../images/icons/messages.png) no-repeat top center;
+						&:hover {
+							background: url(../images/icons/messages-hovered.png) no-repeat top center;
+						}
+					}
+					&.account {
+						background: url(../images/icons/account.png) no-repeat top center;
+						&:hover {
+							background: url(../images/icons/account-hovered.png) no-repeat top center;							
+						}
+					}
+					&.country {
+						background: url(../images/icons/flags/SG.png) no-repeat top center/37px 25px;
+					}
+
+					&.sg {
+						background: url(../images/icons/flags/SG.png) no-repeat top center/37px 25px;
+					}
+					&.my {
+						background: url(../images/icons/flags/MY.png) no-repeat top center/37px 25px;
+					}
+					&.us {
+						background: url(../images/icons/flags/US.png) no-repeat top center/37px 25px;
+					}
 
 					&:hover {
 						text-decoration: none;
 						color: @white;
 					}
 				}
-			}
-		}
-	}
+				
+				ul.sub-menu {
+				    position: absolute;
+				    top: 55px;
+				    padding-top: 24px;
+				    display: block;
+				    z-index: 9999;
+				    background-color: #142136;
+				    min-width: 115px;
+				    left: -28px;				    
+				    visibility: hidden;
+				    .opacity(0);
+				    .transition(0.3s);
+					li {
+						display: block;
+						width: 100%;
+						margin: 0px;
+						a {
+							padding: 13px;
+    						border-top: 1px solid #fff;
+						}
+					}
+				}
+
+			} // li
+		} // ul
+	} // logged in menu
 }

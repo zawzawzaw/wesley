@@ -7,6 +7,7 @@
 					<div class="dropdown">
 						{{
 							Form::select('category', array(						
+								'' => 'Industry', 
 								'Oil & Gas' => 'Oil & Gas', 
 								'Chemicals' => 'Chemicals', 
 								'Basic Resources' => 'Basic Resources', 
@@ -32,6 +33,7 @@
 					<div class="dropdown">
 						{{
 							Form::select('subcategory', array(							
+								'' => 'Sector', 
 								'Exploration & Production' => 'Exploration & Production', 
 								'Integrated Oil & Gas' => 'Integrated Oil & Gas',
 								'Oil Equipment & Services' => 'Oil Equipment & Services',
@@ -44,7 +46,7 @@
 					<div class="dropdown">
 						{{ 
 							Form::select('country', array(
-								''=>'Country:',
+								''=>'Location',
 							    "us"=>"United States",
 								"gb"=>"United Kingdom",
 								"af"=>"Afghanistan (&#8235;افغانستان&#8236;&lrm;)",
@@ -286,7 +288,7 @@
 					<div class="dropdown">
 						{{ 
 							Form::select('origin_country', array(
-								''=>'Country of Origin:',
+								''=>'Country of Origin',
 							    "us"=>"United States",
 								"gb"=>"United Kingdom",
 								"af"=>"Afghanistan (&#8235;افغانستان&#8236;&lrm;)",

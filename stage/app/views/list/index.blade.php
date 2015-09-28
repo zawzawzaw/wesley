@@ -47,7 +47,7 @@
 											<div class="dropdown">
 											{{ 
 												Form::select('subcategory', array(
-													'Exploration & Production' => 'Exploration & Production', 
+													'Exploration & Production' => 'Exploration & Production',
 													'Integrated Oil & Gas' => 'Integrated Oil & Gas',
 													'Oil Equipment & Services' => 'Oil Equipment & Services',
 													'Pipelines' => 'Pipelines',
@@ -61,7 +61,7 @@
 											{{ Form::label('post_code', 'Post Code *') }}			
 											{{ Form::text('post_code', null, array('class'=>'text-input')) }}										
 										</div>
-										<div class="each-input">
+										<!--<div class="each-input">
 											{{ Form::label('country', 'Country *') }}
 											<div class="dropdown">
 											{{ Form::select('country', array(
@@ -304,7 +304,7 @@
 											}}					
 											</div>	
 																		
-										</div>									
+										</div>-->
 										<div class="each-input">
 											{{ Form::label('year_established', 'Year Established *') }}
 											{{ Form::text('year_established', null, array('class'=>'text-input')) }}												
@@ -602,11 +602,7 @@
 										<div class="each-input">
 											{{ Form::label('key_personnel', 'Key Personnel') }}
 											{{ Form::text('key_personnel', null, array('class'=>'text-input')) }}											
-										</div>
-										<div class="each-input">
-											{{ Form::label('no_of_employees', 'No. of Employees *') }}
-											{{ Form::text('no_of_employees', null, array('class'=>'text-input')) }}
-										</div>
+										</div>										
 									</div>
 									<div class="col-md-4 last-col">
 										<div class="preview">										
@@ -628,7 +624,11 @@
 										<div class="each-input">
 											{{ Form::label('paid_up_capital', 'Paid Up Capital') }}
 											{{ Form::text('paid_up_capital', null, array('class'=>'text-input')) }}											
-										</div>									
+										</div>	
+										<div class="each-input">
+											{{ Form::label('no_of_employees', 'No. of Employees *') }}
+											{{ Form::text('no_of_employees', null, array('class'=>'text-input')) }}
+										</div>								
 									</div>
 								</div>
 								<div class="row">

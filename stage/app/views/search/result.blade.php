@@ -297,27 +297,30 @@
 									<div class="each-col">										
 										<span class="category category-1 {{ strtolower($premium_list->category) }}"></span>
 									</div>
-									<div class="each-col">										
+									<div class="each-col">		
+										<a href="{{ route('search.show', $premium_list->id) }}">								
 										@if($premium_list->logo)
 											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" class="img-responsive" alt="">
 										@else
-											{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}											
+											{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
 										@endif
+										</a>
 									</div>
 									<div class="each-col">
-										<h5><span>{{ $premium_list->company_name }}</span> <i class="country {{ strtolower($premium_list->country) }}"></i></h5>
+										<h5><a href="{{ route('search.show', $premium_list->id) }}"><span>{{ $premium_list->company_name }}</span> <i class="country {{ strtolower($premium_list->country) }}"></i></a></h5>
 										<p>{{ $premium_list->business_nature }}</p>
 									</div>
 									<div class="each-col">
 										<ul class="ctas">
 											<li><a href="{{ route('search.show', $premium_list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
-											<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourite</span></a></li>
-											<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send messages</span></a></li>
+											<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
+											<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
 										</ul>
 									</div>
 								</li>
 							@endforeach
-
+							
+							<div class="pagi">
 							<?php 
 		                  		$search_params = array(
 			                  		'text_search' => Input::get('text_search', null),
@@ -333,6 +336,7 @@
 
 		                  	{{ Paginator::setPageName('premium_page'); }}
 		                  	{{ $premium_lists->appends($search_params)->links() }} 		
+		                  	</div>
 		                @else
 		                	<li>
 								<span>No premium list was found.</span>
@@ -377,7 +381,7 @@
 								@if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free'))
 									<li>
 										<span>There are a total of {{ $lists->getTotal() }} listings that match your search. <br>
-										Please log in or sign up for premium account to see these listings.</span>
+										Only Premium listings are currently viewable. Please log in or sign up for a subscription to see all available results.</span>
 									</li>
 								@else
 									@foreach($lists as $k => $list)
@@ -389,7 +393,7 @@
 												<span class="country {{ strtolower($list->country) }}"></span>
 											</div>
 											<div class="each-col">
-												<p>{{ $list->company_name }}</p>
+												<p><a href="{{ route('search.show', $list->id) }}">{{ $list->company_name }}</a></p>
 											</div>
 											<div class="each-col">
 												<ul class="ctas">

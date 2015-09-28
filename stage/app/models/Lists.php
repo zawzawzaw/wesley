@@ -17,7 +17,6 @@ class Lists extends Eloquent {
 	    'subcategory'=>'required',
 	    'address_1'=>'required',
 	    'post_code'=>'required',	    
-	    'country'=>'required',
 	    'origin_country'=>'required',	    
 	    'no_of_employees'=>'required|numeric',
 	    'year_established'=>'required|numeric',

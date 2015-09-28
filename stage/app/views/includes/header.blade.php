@@ -7,7 +7,7 @@
       @if(Auth::check())
         {{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
           <div class="search-input">            
-            {{ Form::text('text_search', Input::get('text_search', null), array('class'=>'text-search input-box','id'=>'text_search','placeholder'=>'Packaging material')); }}
+            {{ Form::text('text_search', Input::get('text_search', null), array('class'=>'text-search input-box','id'=>'text_search','placeholder'=>'Sumitomo Corporation')); }}
             {{ Form::button('', array('type'=>'submit','value'=>'text','name'=>'form_type','id'=>'form-submit','class'=>'btn btn-large')) }}
             
             <div class="search-filters">
@@ -30,11 +30,19 @@
 
         <nav class="logged-in-menu">
           <ul>
-            <li class="search"><a href="{{ URL::to('mysearch') }}">My Search</a></li>
-            <li class="list"><a href="{{ URL::to('list') }}">Listings</a></li>
-            <li class="messages"><a href="{{ URL::to('message') }}">Messages</a></li>
-            <li class="account"><a href="{{ URL::to('myaccount') }}">Account</a></li>
-            <li class="country"><a href="{{ URL::to('myaccount') }}">Country</a></li>          
+            <li><a class="search" href="{{ URL::to('mysearch') }}">My Search</a></li>
+            <li><a class="list" href="{{ URL::to('list') }}">My Listing</a></li>
+            <li><a class="messages" href="{{ URL::to('message') }}">Messages</a></li>
+            <li class="parent-menu">
+              <a class="account" href="{{ URL::to('myaccount') }}">Account</a>
+              <ul class="sub-menu">
+                {{-- <li><a href="#">Log out</a></li> --}}
+                {{ Form::open(array('route' => array('login.destroy', Auth::user()->id), 'method' => 'delete')) }}
+                  <li><a href="javascript:void(0);" class="logout-btn">Log out</a></li>                  
+                {{ Form::close() }}
+              </ul>
+            </li>
+            <li><a class="country {{ Auth::user()->country }}" href="{{ URL::to('myaccount') }}">Country</a></li>          
           </ul>
         </nav>
       @else
@@ -57,3 +65,23 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $('.logout-btn').on('click', function(e){
+      e.preventDefault();
+      $(this).parent().parent('form').submit();
+    });
+
+    $('input[name="text_search_filter"]').on('change', function(e){
+      var search_in = $(this).val()
+      if(search_in=='tags') {
+        $('#text_search').attr('placeholder', 'Lubricants');
+      }else if(search_in=='product') {
+        $('#text_search').attr('placeholder', 'Steel Beams');
+      }else {
+        $('#text_search').attr('placeholder', 'Sumitomo Corporation');
+      }
+
+    });
+  });
+</script>

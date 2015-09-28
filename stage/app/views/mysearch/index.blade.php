@@ -17,7 +17,7 @@
 										<h5>Category</h5>
 									</div>
 									<div class="each-col">
-										<h5>Country</h5>
+										<h5>Location</h5>
 									</div>
 									<div class="each-col">
 										<h5>Company <a href="#" class="sort"></a></h5>

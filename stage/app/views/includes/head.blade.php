@@ -12,6 +12,7 @@
 {{ HTML::style('//vjs.zencdn.net/4.12/video-js.css') }}
 {{ HTML::style('css/bootstrap.min.css') }}
 {{ HTML::style('css/uploadifive.css') }}
+{{ HTML::style('css/lib/intlTelInput.css') }}
 {{ HTML::style('css/style.css') }}
 
 {{ HTML::script('js/jquery/jquery-1.9.1.min.js') }}
@@ -19,5 +20,6 @@
 {{ HTML::script('js/libs/jquery.validate.min.js') }}
 {{ HTML::script('js/libs/jquery.uploadifive.min.js') }}
 {{ HTML::script('js/libs/placeholders.min.js') }}
+{{ HTML::script('js/libs/intlTelInput.min.js') }}
 {{ HTML::script('//vjs.zencdn.net/4.12/video.js') }}
 {{ HTML::script('js/wesley/main.js') }}

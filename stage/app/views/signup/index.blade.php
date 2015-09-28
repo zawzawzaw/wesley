@@ -364,14 +364,14 @@
 								</div>															
 								<div class="each-input">
 									{{ Form::label('phone', 'Phone Number') }}
-									{{ Form::text('phone', Input::get('phone')) }}																					
+									{{ Form::text('phone', Input::get('phone'), array('placeholder'=>'')) }}																					
 								</div>			
 							</div>
 						</div>
 						<div class="row newsletter-container">
 							<div class="col-md-6">
 								<div class="each-input">
-									{{ Form::checkbox('newsletter', true, Input::get('newsletter'), array('id'=>'newsletter')); }}
+									{{ Form::checkbox('newsletter', true, Input::get('newsletter'), array('id'=>'newsletter','checked'=>'checked')); }}
 									{{ Form::label('newsletter', 'Sign up for newsletter') }}										
 								</div>
 							</div>								
@@ -444,6 +444,23 @@
 
 	        }
 	    });
+
+		var phoneInput = $('#phone');
+
+		phoneInput.intlTelInput({
+			nationalMode: true,
+			utilsScript: '{{ URL::to("/") }}/js/libs/utils.js',
+		});
+
+		phoneInput.intlTelInput("selectCountry", 'sg')
+
+		// listen to "keyup", but also "change" to update when the user selects a country
+		phoneInput.on("keyup change", function() {
+		  	var intlNumber = phoneInput.intlTelInput("getNumber");		  	
+			if (intlNumber) {
+				$(this).val(intlNumber);
+			}
+		});
 	});
 </script>
 

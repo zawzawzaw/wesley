@@ -297,22 +297,24 @@
 									<div class="each-col">										
 										<span class="category category-1 {{ strtolower($premium_product->lists->category) }}"></span>
 									</div>
-									<div class="each-col">										
-										@if($premium_product->image)
-											<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $premium_product->image }}" alt="">
-										@else
-											{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}											
-										@endif
+									<div class="each-col">
+										<a href="{{ route('search.show', $premium_product->lists->id) }}">										
+											@if($premium_product->image)
+												<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $premium_product->image }}" alt="">
+											@else
+												{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
+											@endif
+										</a>
 									</div>
 									<div class="each-col">
-										<h5><span>{{ $premium_product->product_name }}</span> <i class="country {{ strtolower($premium_product->lists->origin_country) }}"></i></h5>
+										<h5><a href="{{ route('search.show', $premium_product->lists->id) }}"><span>{{ $premium_product->product_name }}</span> <i class="country {{ strtolower($premium_product->lists->origin_country) }}"></i></a></h5>
 										<p>{{ $premium_product->lists->company_name }}</p>
 									</div>
 									<div class="each-col">
 										<ul class="ctas">
 											<li><a href="{{ route('search.show', $premium_product->lists->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
-											<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourite</span></a></li>
-											<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send messages</span></a></li>
+											<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
+											<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
 										</ul>
 									</div>
 								</li>
@@ -378,7 +380,7 @@
 								@if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free'))
 									<li>
 										<span>There are a total of {{ $products->getTotal() }} listings that match your search. <br>
-										Please log in or sign up for premium account to see these listings.</span>
+										Only Premium listings are currently viewable. Please log in or sign up for a subscription to see all available results.</span>
 									</li>
 								@else
 									@foreach($products as $k => $product)
@@ -390,7 +392,7 @@
 												<span class="country {{ strtolower($product->lists->origin_country) }}"></span>
 											</div>
 											<div class="each-col">
-												<p>{{ $product->product_name }}</p>
+												<p><a href="{{ route('search.show', $product->lists->id) }}">{{ $product->product_name }}</a></p>
 											</div>
 											<div class="each-col">
 												<ul class="ctas">
