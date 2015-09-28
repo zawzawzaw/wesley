@@ -86,11 +86,13 @@ class SearchController extends \BaseController {
 
 			}
 
+			$query->orderBy('type','DESC');
+
 			Paginator::setPageName('list_page');
-			$lists = $query->paginate(2);
+			$lists = $query->paginate(5);
 
 			Paginator::setPageName('premium_page');
-			$premium_lists = $premium_query->paginate(2);
+			$premium_lists = $premium_query->paginate(5);
 
 			// if no result found
 			if($lists->isEmpty()) {
@@ -114,47 +116,49 @@ class SearchController extends \BaseController {
 					Paginator::setPageName('list_page');
 					$lists = Lists::with(['tags','keyproduct','productcatalog'])
 							->where('company_name', 'like', '%'.$text_search.'%')
-							->orderBy('created_at','DESC')
-							->paginate(2);
+							->orderBy('type','DESC')
+							->paginate(5);
 
 					Paginator::setPageName('premium_page');
-					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->where('type', '=', 'Paid')->orderBy('created_at','DESC')->paginate(2);
+					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->where('type', '=', 'Paid')->orderBy('created_at','DESC')->paginate(5);
 
 				}else if($filter == 'product') {
 
 					// $lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($query) use( &$text_search) {
 					// 	$query->where('product_name', 'like', '%'.$text_search.'%');
-					// })->orderBy('created_at','DESC')->paginate(2);
+					// })->orderBy('created_at','DESC')->paginate(5);
 
 					// $premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('keyproduct', function($premium_query) use( &$text_search) {
 					// 	$premium_query->where('product_name', 'like', '%'.$text_search.'%');
 					// })->whereHas('users', function($premium_query) {
 					// 	$premium_query->where('type', '=', 'Paid');
-					// })->orderBy('created_at','DESC')->paginate(2);
+					// })->orderBy('created_at','DESC')->paginate(5);
 
 					Paginator::setPageName('list_page');
 					$products = KeyProduct::with(['lists'])
+								->join('lists', 'key_products.lists_id', '=', 'lists.id')       							
 								->where('product_name', 'like', '%'.$text_search.'%')
-								->paginate(2);
+								->orderBy('lists.type', 'DESC')								
+								->paginate(5);
 
 					Paginator::setPageName('premium_page');
 					$premium_products = KeyProduct::with(['lists'])
 										->where('product_name', 'like', '%'.$text_search.'%')
 										->whereHas('lists', function($premium_query) {
 											$premium_query->where('type', '=', 'Paid');
-										})->paginate(2);				
+										})->paginate(5);				
 
 				}else if($filter == 'tags') {
 
 					Paginator::setPageName('list_page');
 					$lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('tags' , function($query) use( &$text_search) {
 						$query->where('name', 'like', '%'.$text_search.'%');
-					})->orderBy('created_at','DESC')->paginate(2);
+					})->orderBy('type','DESC')->paginate(5);
 
 					Paginator::setPageName('premium_page');
 					$premium_lists = Lists::with(['tags','keyproduct','productcatalog'])->whereHas('tags', function($premium_query) use( &$text_search) {
 						$premium_query->where('name', 'like', '%'.$text_search.'%');
-					})->where('type', '=', 'Paid')->orderBy('created_at','DESC')->paginate(2);
+					})->where('type', '=', 'Paid')->orderBy('created_at','DESC')->paginate(5);
 					
 				}
 

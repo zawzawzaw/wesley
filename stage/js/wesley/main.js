@@ -7,6 +7,7 @@ $(document).ready(function(){
 		var subcategoryKey = $(this)[0].selectedIndex;		
 
 		var oilandgas = {
+			"": "Sector",
 			"Exploration & Production": "Exploration & Production",
 		  	"Integrated Oil & Gas": "Integrated Oil & Gas",
 		  	"Oil Equipment & Services": "Oil Equipment & Services",
@@ -16,11 +17,13 @@ $(document).ready(function(){
 		};
 
 		var chemicals = {
+			"": "Sector",
 			"Commodity Chemicals": "Commodity Chemicals",
 		  	"Specialty Chemicals": "Specialty Chemicals"		  	
 		};
 
 		var basicresources = {
+			"": "Sector",
 			"Forestry": "Forestry",
 			"Paper": "Paper",
 			"Aluminum": "Aluminum",
@@ -34,11 +37,13 @@ $(document).ready(function(){
 		};
 
 		var construction = {
+			"": "Sector",
 			"Building Materials & Fixtures": "Building Materials & Fixtures",
 			"Heavy Construction": "Heavy Construction"			
 		};
 
 		var industrial = {
+			"": "Sector",
 			"Aerospace": "Aerospace",
 			"Defense": "Defense",		
 			"Containers & Packaging": "Containers & Packaging",	
@@ -60,12 +65,14 @@ $(document).ready(function(){
 		};
 
 		var automobiles = {
+			"": "Sector",
 			"Automobiles": "Automobiles",
 			"Auto Parts": "Auto Parts",
 			"Tires": "Tires"			
 		};
 
 		var food = {
+			"": "Sector",
 			"Brewers": "Brewers",
 			"Distillers & Vintners": "Distillers & Vintners",
 			"Soft Drinks": "Soft Drinks",		
@@ -74,6 +81,7 @@ $(document).ready(function(){
 		};
 
 		var personal = {
+			"": "Sector",
 			"Durable Household Products": "Durable Household Products",			
 			"Nondurable Household Products": "Nondurable Household Products",			
 			"Furnishings": "Furnishings",			
@@ -88,6 +96,7 @@ $(document).ready(function(){
 		};
 
 		var healthcare = {
+			"": "Sector",
 			"Health Care Providers": "Health Care Providers",			
 			"Medical Equipment": "Medical Equipment",			
 			"Medical Supplies": "Medical Supplies",			
@@ -96,6 +105,7 @@ $(document).ready(function(){
 		};
 
 		var retail = {
+			"": "Sector",
 			"Drug Retailers": "Drug Retailers",			
 			"Food Retailers & Wholesalers": "Food Retailers & Wholesalers",			
 			"Apparel Retailers": "Apparel Retailers",			
@@ -106,12 +116,14 @@ $(document).ready(function(){
 		};
 
 		var media = {
+			"": "Sector",
 			"Broadcasting & Entertainment": "Broadcasting & Entertainment",			
 			"Media Agencies": "Media Agencies",			
 			"Publishing": "Publishing"			
 		};
 
 		var travel = {
+			"": "Sector",
 			"Airlines": "Airlines",			
 			"Gambling": "Gambling",			
 			"Hotels": "Hotels",
@@ -121,11 +133,13 @@ $(document).ready(function(){
 		};
 
 		var telecommunication = {
+			"": "Sector",
 			"Fixed Line Telecommunications": "Fixed Line Telecommunications",			
 			"Mobile Telecommunications": "Mobile Telecommunications"			
 		};
 
 		var utilities = {
+			"": "Sector",
 			"Conventional Electricity": "Conventional Electricity",			
 			"Alternative Electricity": "Alternative Electricity",
 			"Gas Distribution": "Gas Distribution",			
@@ -134,10 +148,12 @@ $(document).ready(function(){
 		};
 
 		var banks = {
+			"": "Sector",
 			"Banks": "Banks"	
 		};
 
 		var insurance = {
+			"": "Sector",
 			"Full Line Insurance": "Full Line Insurance",			
 			"Insurance Brokers": "Insurance Brokers",
 			"Property & Casualty Insurance": "Property & Casualty Insurance",			
@@ -146,6 +162,7 @@ $(document).ready(function(){
 		};
 
 		var realestate = {
+			"": "Sector",
 			"Real Estate Holding & Development": "Real Estate Holding & Development",			
 			"Real Estate Services": "Real Estate Services",
 			"Industrial & Office REITs": "Industrial & Office REITs",			
@@ -158,6 +175,7 @@ $(document).ready(function(){
 		};
 
 		var financial = {
+			"": "Sector",
 			"Asset Managers": "Asset Managers",			
 			"Consumer Finance": "Consumer Finance",
 			"Specialty Finance": "Specialty Finance",			
@@ -168,6 +186,7 @@ $(document).ready(function(){
 		};
 
 		var technology = {
+			"": "Sector",
 			"Computer Services": "Computer Services",			
 			"Internet": "Internet",
 			"Software": "Software",			

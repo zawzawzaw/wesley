@@ -17,10 +17,10 @@ class AdvancedsearchController extends \BaseController {
 		$premium_query = Lists::query()->where('type', '=', 'Paid');
 
 		Paginator::setPageName('list_page');
-		$lists = $query->paginate(2);
+		$lists = $query->paginate(5);
 
 		Paginator::setPageName('premium_page');
-		$premium_lists = $premium_query->paginate(2);
+		$premium_lists = $premium_query->paginate(5);
 
 		$this->layout->content = View::make('advanced.result')
 									->with('lists', $lists)
@@ -110,10 +110,10 @@ class AdvancedsearchController extends \BaseController {
 		// exit();
 
 		Paginator::setPageName('list_page');
-		$lists = $query->paginate(2);
+		$lists = $query->paginate(5);
 
 		Paginator::setPageName('premium_page');
-		$premium_lists = $premium_query->paginate(2);
+		$premium_lists = $premium_query->paginate(5);
 
 		$this->layout->content = View::make('advanced.result')
 									->with('lists', $lists)

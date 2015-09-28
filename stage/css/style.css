@@ -2507,11 +2507,13 @@ div.pagi ul li.active span:hover {
   text-decoration: none;
 }
 #search-result .first-content ul.premium-listings-table {
-  background-color: #fbfbfb;
   margin-top: 17px;
 }
 #search-result .first-content ul.premium-listings-table > li {
   border-bottom: 1px solid #d9d9d9;
+}
+#search-result .first-content ul.premium-listings-table > li.paid {
+  background-color: #fbfbfb;
 }
 #search-result .first-content ul.premium-listings-table > li:first-child {
   border-top: 1px solid #d9d9d9;

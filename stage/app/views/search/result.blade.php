@@ -289,30 +289,30 @@
 				</div>
 
 				<div class="first-content">
-					<h5>Premium listings</h5>
+					<h5>All listings</h5>
 					<ul class="premium-listings-table">
-						@if($premium_lists->getTotal() > 0)
-							@foreach($premium_lists as $k => $premium_list)
-								<li>
+						@if($lists->getTotal() > 0)
+							@foreach($lists as $k => $list)
+								<li class="{{ strtolower($list->type) }}">
 									<div class="each-col">										
-										<span class="category category-1 {{ strtolower($premium_list->category) }}"></span>
+										<span class="category category-1 {{ strtolower($list->category) }}"></span>
 									</div>
 									<div class="each-col">		
-										<a href="{{ route('search.show', $premium_list->id) }}">								
-										@if($premium_list->logo)
-											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" class="img-responsive" alt="">
+										<a href="{{ route('search.show', $list->id) }}">								
+										@if($list->logo)
+											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" class="img-responsive" alt="">
 										@else
 											{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
 										@endif
 										</a>
 									</div>
 									<div class="each-col">
-										<h5><a href="{{ route('search.show', $premium_list->id) }}"><span>{{ $premium_list->company_name }}</span> <i class="country {{ strtolower($premium_list->country) }}"></i></a></h5>
-										<p>{{ $premium_list->business_nature }}</p>
+										<h5><a href="{{ route('search.show', $list->id) }}"><span>{{ $list->company_name }}</span> <i class="country {{ strtolower($list->country) }}"></i></a></h5>
+										<p>{{ $list->business_nature }}</p>
 									</div>
 									<div class="each-col">
 										<ul class="ctas">
-											<li><a href="{{ route('search.show', $premium_list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
+											<li><a href="{{ route('search.show', $list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
 											<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
 											<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
 										</ul>
@@ -334,20 +334,24 @@
 		                  		); 
 		                  	?>
 
-		                  	{{ Paginator::setPageName('premium_page'); }}
-		                  	{{ $premium_lists->appends($search_params)->links() }} 		
+		                  	{{ Paginator::setPageName('list_page'); }}
+		                  	{{ $lists->appends($search_params)->links() }} 		
 		                  	</div>
 		                @else
 		                	<li>
-								<span>No premium list was found.</span>
+								<span>No list was found.</span>
 							</li>					
 		                @endif						
 					</ul>
 				</div>
 
-				<div class="second-content">
+				<!--<div class="second-content">
 					<h5>All listings</h5>
+					@if(Auth::user()->plan == 'free')
 					<div class="all-listing-container">
+					@else
+					<div class="all-listing-container" style="width:100%!important;">
+					@endif
 						<ul class="alphabets">
 							<li><a href="#">A</a></li>
 							<li><a href="#">B</a></li>
@@ -435,12 +439,14 @@
 							<a href="#" class="page-forward"></a> --}}
 						</div>
 					</div>
+					@if(Auth::user()->plan == 'free')
 					<div class="advertisement">
 						<div class="ads-placeholder">
 							<span>Upgrade your plan to fully enjoy Wesley Search</span>
 						</div>
 					</div>
-				</div>
+					@endif
+				</div>-->
 			</div>
 		</div>
 	</div>
