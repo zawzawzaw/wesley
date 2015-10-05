@@ -98,6 +98,12 @@
 				    vertical-align: middle;
 				    margin-bottom: -3px;
 				}
+
+				&.error {
+					color: red;
+				    text-transform: initial;
+				    margin-top: -5px;
+				}
 			}
 
 			#type_free, #type_paid {
@@ -203,6 +209,7 @@
 
 		.extra-content {
 			padding-top: 30px;
+			position: relative;
 			input[type=submit], button {
 				border: none;
 				.alright-sans-medium;
@@ -227,6 +234,8 @@
 			letter-spacing: 0.05em;			
 			text-transform: uppercase;
 			color: @new-grey;
+			position: absolute;
+    		top: 5px;
 			&:hover {
 				color: @dark-grey-2;
 				text-decoration: none;

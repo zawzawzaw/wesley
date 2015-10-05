@@ -15,16 +15,30 @@ class AdvancedsearchController extends \BaseController {
 		//
 		$query = Lists::query();
 		$premium_query = Lists::query()->where('type', '=', 'Paid');
+		$item_limit = Input::get('item_limit', 5);
+		$all_lists_count = 0;
+
+		if($item_limit=='all') $item_limit = 100000;
+
+		// if user is on free account only show paid list but show how many list there are altogether
+		$all_lists_count = $query->count();
+
+		if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free')) {
+			$query->where('type','=', 'Paid');
+		}
+
+		$query->orderBy('type','DESC');
 
 		Paginator::setPageName('list_page');
-		$lists = $query->paginate(5);
+		$lists = $query->paginate($item_limit);
 
 		Paginator::setPageName('premium_page');
-		$premium_lists = $premium_query->paginate(5);
+		$premium_lists = $premium_query->paginate($item_limit);
 
 		$this->layout->content = View::make('advanced.result')
 									->with('lists', $lists)
-									->with('premium_lists', $premium_lists);
+									->with('premium_lists', $premium_lists)
+									->with('all_lists_count', $all_lists_count);
 	}
 
 
@@ -49,6 +63,10 @@ class AdvancedsearchController extends \BaseController {
 		//
 		$query = Lists::query();
 		$premium_query = Lists::query()->where('type', '=', 'Paid');
+		$item_limit = Input::get('item_limit', 5);
+		$all_lists_count = 0;
+
+		if($item_limit=='all') $item_limit = 100000;
 
 		if(Input::has('proximity') && Input::get('proximity')=='yes') {
 
@@ -105,19 +123,29 @@ class AdvancedsearchController extends \BaseController {
 			}
 		}
 
+		// if user is on free account only show paid list but show how many list there are altogether
+		$all_lists_count = $query->count();
+
+		if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free')) {
+			$query->where('type','=', 'Paid');
+		}
+
+		$query->orderBy('type','DESC');
+
 		// print_r($query->get()->toJSON());
 		// print_r($premium_query->get()->toJSON()); 
 		// exit();
 
 		Paginator::setPageName('list_page');
-		$lists = $query->paginate(5);
+		$lists = $query->paginate($item_limit);
 
 		Paginator::setPageName('premium_page');
-		$premium_lists = $premium_query->paginate(5);
+		$premium_lists = $premium_query->paginate($item_limit);
 
 		$this->layout->content = View::make('advanced.result')
 									->with('lists', $lists)
-									->with('premium_lists', $premium_lists);
+									->with('premium_lists', $premium_lists)
+									->with('all_lists_count', $all_lists_count);
 	}
 
 

@@ -3,10 +3,11 @@
   	
 	<div class="bg"></div>
   	<div class="container">
-		{{ Form::open(array('url'=>'list', 'class'=>'form-list')) }}
-			<div class="listing-details">
-				<div class="row">
-					<div class="col-md-12">
+		
+		<div class="listing-details">
+			<div class="row">
+				<div class="col-md-12">
+					{{ Form::open(array('url'=>'list', 'class'=>'form-list', 'id'=>'form-list')) }}
 						<div id="list-1">
 							<div class="header">
 								<h3 class="pull-left">LISTING DETAILS</h3>
@@ -60,9 +61,9 @@
 										<div class="each-input">
 											{{ Form::label('post_code', 'Post Code *') }}			
 											{{ Form::text('post_code', null, array('class'=>'text-input')) }}										
-										</div>
-										<!--<div class="each-input">
-											{{ Form::label('country', 'Country *') }}
+										</div>					
+										<div class="each-input">
+											{{ Form::label('country', 'Location *') }}
 											<div class="dropdown">
 											{{ Form::select('country', array(
 											    "us"=>"United States",
@@ -304,7 +305,7 @@
 											}}					
 											</div>	
 																		
-										</div>-->
+										</div>				
 										<div class="each-input">
 											{{ Form::label('year_established', 'Year Established *') }}
 											{{ Form::text('year_established', null, array('class'=>'text-input')) }}												
@@ -715,7 +716,7 @@
 									</div>								
 								</div>
 							</div>						
-							<div class="extra-content">
+							<div class="extra-content">								
 								{{ Form::button('Next', array('id'=>'list-1-next', 'class'=>'pull-right')) }}								
 							</div>
 						</div>
@@ -803,7 +804,8 @@
 							</div>
 							<div class="extra-content">
 								<a href="#" class="add-more-key-product">Add More Key Product +</a>
-								{{ Form::button('Next', array('id'=>'list-2-next', 'class'=>'pull-right')) }}									
+								{{ Form::button('Next', array('id'=>'list-2-next', 'class'=>'pull-right')) }}	
+								{{ Form::button('Back', array('id'=>'list-2-back', 'class'=>'pull-left')) }}																
 							</div>
 						</div>
 						<div id="list-3">
@@ -857,63 +859,93 @@
 							</div>
 							<div class="extra-content">
 								<a href="#" class="add-more-product-catalog">Add More Product Catalog +</a>
-								{{ Form::submit('Save changes', array('id'=>'list-form-submit','class'=>'pull-right')) }}							
+								{{ Form::submit('Save changes', array('id'=>'list-form-submit','class'=>'pull-right')) }}	
+								{{ Form::button('Back', array('id'=>'list-3-back', 'class'=>'pull-left')) }}																						
 							</div>
 						</div>
+					{{ Form::close() }}
+				</div>
+			</div>
+		</div>
+	
+		<div class="sidebar">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="header">
+						<h3>FOR PAID LISTINGS</h3>
+					</div>			
+					<div class="content">
+						<p>The following administrators have access to this listing to edit information.</p>
+						<ul>
+							<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
+							<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
+							<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
+							<li><span>David McClure</span><a href="#" class="remove">Remove</a></li>								
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="extra-content">
+						<a href="#" class="edit-admins">Edit Admins</a>
+						<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
 					</div>
 				</div>
 			</div>
-		
-			<div class="sidebar">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="header">
-							<h3>FOR PAID LISTINGS</h3>
-						</div>			
-						<div class="content">
-							<p>The following administrators have access to this listing to edit information.</p>
-							<ul>
-								<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
-								<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
-								<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
-								<li><span>David McClure</span><a href="#" class="remove">Remove</a></li>								
-							</ul>
-							<div class="clear"></div>
-						</div>
-						<div class="extra-content">
-							<a href="#" class="edit-admins">Edit Admins</a>
-							<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
-						</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="header">
+						<h3>Add Tags</h3>
+					</div>			
+					<div id="added_tags" class="content">
+						<p class="no-tag">Currently there is no tagg added, please add tags from below.</p>							
+					</div>
+					<div class="extra-content">
+	    				{{ Form::text('tag', null, array('id'=>'tag','class'=>'text-input')) }}
+	    				{{ Form::hidden('tags', null, array('class'=>'text-input', 'id'=>'tags')) }}
+						<a href="#" id="add_tag" class="add_tag">Add Tag</a>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="header">
-							<h3>Add Tags</h3>
-						</div>			
-						<div id="added_tags" class="content">
-							<p class="no-tag">Currently there is no tagg added, please add tags from below.</p>							
-						</div>
-						<div class="extra-content">
-		    				{{ Form::text('tag', null, array('id'=>'tag','class'=>'text-input')) }}
-		    				{{ Form::hidden('tags', null, array('class'=>'text-input', 'id'=>'tags')) }}
-							<a href="#" id="add_tag" class="add_tag">Add Tag</a>
-						</div>
-					</div>
-				</div>
-			</div>		
-		{{ Form::close() }}
+			</div>
+		</div>		
 	</div>
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
   	$('#list-2').hide();
   	$('#list-3').hide();
+
+  	var form = $('#form-list');
+
+  	form.validate({	    
+	    rules: {
+	        company_name: "required",
+	        address_1: "required",
+	        post_code: "required",
+	        year_established: {
+	        	"required" : true,
+	        	"number" : true
+	        },
+	        no_of_employees: {
+	        	"required" : true,
+	        	"number" : true
+	        },
+	        business_nature: "required",
+	        company_background_info: "required",
+	        major_facilities: "required",
+	        major_customers: "required",
+	        quality_certification: "required",
+	        production_capability: "required"	        
+	    }
+	});
+
     $('#list-1-next').on('click', function(e){
     	e.preventDefault();
-    	$('#list-2').show();
-    	$('#list-1').hide();
-    	$('#list-3').hide();
+	 		 	
+	    if(form.valid()) {
+	    	$('#list-2').show();
+	    	$('#list-1').hide();
+	    	$('#list-3').hide();    
+	    }    	
+    	
     });
     $('#list-2-next').on('click', function(e){
     	e.preventDefault();
@@ -921,13 +953,13 @@
     	$('#list-1').hide();
     	$('#list-2').hide();
     });
-    $('#list-2-prev').on('click', function(e){
+    $('#list-2-prev, #list-2-back').on('click', function(e){
     	e.preventDefault();    	
     	$('#list-1').show();
     	$('#list-2').hide();
     	$('#list-3').hide();
     });
-    $('#list-3-prev').on('click', function(e){
+    $('#list-3-prev, #list-3-back').on('click', function(e){
     	e.preventDefault();    	
     	$('#list-2').show();
     	$('#list-1').hide();

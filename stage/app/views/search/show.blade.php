@@ -21,6 +21,7 @@
 
 								<h5>Address</h5>
 								<p>{{ $list->address_1 }} {{ $list->address_2 }}</p>
+								<span id="address" class="hidden">{{ $list->address_1 }} {{ $list->address_2 }} {{ $list->city }} {{ $list->post_code }} {{ $list->country }}</span>
 
 								<h5>telephone</h5>
 								<p></p>
@@ -35,10 +36,10 @@
 						<div class="second-content">
 							<div class="more-company-detail">
 								<h5>category</h5>
-								<p>{{ $list->category }}</p>
+								<p class="category">{{ $list->category }}</p>
 
 								<h5>sub-Category</h5>
-								<p>{{ $list->subcategory }}</p>
+								<p class="category">{{ $list->subcategory }}</p>
 
 								<h5>Country of Origin</h5>
 								<p>{{ $list->origin_country }}</p>
@@ -162,7 +163,8 @@
 								</ul>
 							</div>
 							<div class="each-content">
-								{{ HTML::image('images/contents/company-location-map.png', '', array('class' => 'img-responsive')) }}											
+								{{-- {{ HTML::image('images/contents/company-location-map.png', '', array('class' => 'img-responsive')) }}											 --}}
+								<iframe id="map" width="265" height="256"></iframe>
 							</div>
 						</div>						
 					</div>
@@ -232,6 +234,10 @@
 					// }
 				});
 			});
+
+			var q=encodeURIComponent($('#address').text());
+			console.log(q);
+		    $('#map').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBp8lNSnZzkMSjNvok9H1aADuR6txxNajk&q='+q);		    
 		});
 	</script>	
 @stop

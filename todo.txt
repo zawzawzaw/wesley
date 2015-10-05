@@ -17,3 +17,61 @@ rec search
 
 
 free premium user type
+
+
+Overall:
+
+1. Nav bar icons need to be clickable - done
+2. We need a log out button - done
+
+Sign up form:
+
+"Phone Number" - Add "please include country code” - done
+
+"Sign up for newsletter" should be ticked by default - done
+
+"Email" - add a verifier to ensure email has not be registered prior
+
+List 2
+
+Remove Country - done
+
+"Listings" change to "My Listing” - done
+
+Search bar examples need to suit each selected button i.e. "Sumitomo Corporation" for Company / "Steel Beams" for Product etc - done
+
+Change default display on "Smart Search" to "Industry" / "Sector" / "Location" / "Country of Origin” - done
+
+Video upload should be some sort of feature where they can upload on youtube then add link to our site
+
+User should not be able to proceed to next page without filling in all complusory info - done
+
+Error messages if boxes are not filled, should not appear at the top of the page, maybe the boxes in question should be highlighted in a different color - done
+
+Add a "Back” Button - done
+
+Results
+
+The way the listings are displayed need to be altered - presently the premium listings and free listings are displayed on separate boxes each with their own page count. The premium listings should be displayed alongside the free listings on the same list, however they should appear first. i.e if there are 100 listings with 50 listings each, and 10 listings per page, then the premium listings shall take up the first 5 pages. Also besides a slightly different background, I would like for the same level of information to appear for all listings. (Basically what is already present in the premium listing). - done
+
+Clicking on the Company Name / Photo should bring you to details page - done
+
+Rename Add to favourite = Add to Favourites - done
+
+Rename Send messages = Send Message - done
+
+User should be able to customize how many results appear per-page (10/25/50/100 etc) via dropdown - done
+
+Text at bottom should read: There are a total of <X> listings that match your search. Only Premium listings are currently viewable. Please log in or sign up for a subscription to see all available results. - done
+
+My Search
+
+In "Favourite Companies" change "Country" to "Location", and add a "Country of Origin” - done
+
+Details
+
+Message should be shifted down slightly - done
+
+Map should be a google-map link - done
+
+The categories titles need to stand out from the main body text more - done

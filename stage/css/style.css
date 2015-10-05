@@ -2174,6 +2174,11 @@ div.pagi ul li.active span:hover {
   vertical-align: middle;
   margin-bottom: -3px;
 }
+#list .listing-details .content label.error {
+  color: red;
+  text-transform: initial;
+  margin-top: -5px;
+}
 #list .listing-details .content #type_free,
 #list .listing-details .content #type_paid {
   text-transform: none;
@@ -2285,6 +2290,7 @@ div.pagi ul li.active span:hover {
 }
 #list .listing-details .extra-content {
   padding-top: 30px;
+  position: relative;
 }
 #list .listing-details .extra-content input[type=submit],
 #list .listing-details .extra-content button {
@@ -2326,6 +2332,8 @@ div.pagi ul li.active span:hover {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #959595;
+  position: absolute;
+  top: 5px;
 }
 #list .listing-details .add-more-key-product:hover,
 #list .listing-details .add-more-product-catalog:hover {
@@ -2506,56 +2514,93 @@ div.pagi ul li.active span:hover {
 #search-result .first-content h5 a:hover {
   text-decoration: none;
 }
-#search-result .first-content ul.premium-listings-table {
+#search-result .first-content .all-listing-container {
+  width: 68%;
+  display: inline-block;
+  vertical-align: top;
+}
+#search-result .first-content .all-listing-container > h5 {
+  float: left;
+}
+#search-result .first-content .all-listing-container > .dropdown {
+  float: right;
+  width: 110px;
+}
+#search-result .first-content .all-listing-container ul.alphabets {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+#search-result .first-content .all-listing-container ul.alphabets li {
+  display: inline-block;
+  margin-right: 14.8px;
+}
+#search-result .first-content .all-listing-container ul.alphabets li a {
+  font-family: 'alright_sansregular', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0.625px;
+  color: #959595;
+}
+#search-result .first-content .all-listing-container ul.alphabets li a:hover {
+  text-decoration: none;
+  color: #363636;
+}
+#search-result .first-content .all-listing-container ul.premium-listings-table {
   margin-top: 17px;
 }
-#search-result .first-content ul.premium-listings-table > li {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li {
   border-bottom: 1px solid #d9d9d9;
 }
-#search-result .first-content ul.premium-listings-table > li.paid {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li.paid {
   background-color: #fbfbfb;
 }
-#search-result .first-content ul.premium-listings-table > li:first-child {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li:first-child {
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
+  padding: 15px;
 }
-#search-result .first-content ul.premium-listings-table > li:last-child {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li:last-child {
   border-top: 0px;
   border-bottom: 1px solid #d9d9d9;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li span {
+  font-size: 12px;
+}
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col {
   padding-top: 22px;
   padding-bottom: 29px;
   display: inline-block;
   vertical-align: middle;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:first-child {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:first-child {
   width: 5%;
   text-align: center;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:first-child .category {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:first-child .category {
   display: inline-block;
   width: 22px;
   height: 17px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:first-child .category.category-1 {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:first-child .category.category-1 {
   background: url(../images/icons/category-1.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:first-child .category.category-2 {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:first-child .category.category-2 {
   background: url(../images/icons/category-2.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:first-child .category.category-3 {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:first-child .category.category-3 {
   background: url(../images/icons/category-3.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(2) {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(2) {
   width: 16%;
   text-align: center;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) {
-  width: 55%;
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) {
+  width: 54%;
   padding-left: 40px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 {
   font-family: 'alright_sansmedium', Verdana, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -2565,1046 +2610,1046 @@ div.pagi ul li.active span:hover {
   color: #555555;
   text-transform: none;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 span {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 span {
   vertical-align: middle;
   margin-right: 5px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country {
   display: inline-block;
   width: 20px;
   height: 13px;
   vertical-align: middle;
   background: url(../images/icons/flags.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ac {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ac {
   height: 10px;
   background-position: -189px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ad {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ad {
   height: 14px;
   background-position: -63px -32px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ae {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ae {
   height: 10px;
   background-position: -247px -77px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.af {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.af {
   height: 13px;
   background-position: -147px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ag {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ag {
   height: 13px;
   background-position: -63px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ai {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ai {
   height: 10px;
   background-position: -247px -132px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.al {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.al {
   height: 14px;
   background-position: -42px -32px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.am {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.am {
   height: 10px;
   background-position: -210px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ao {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ao {
   height: 13px;
   background-position: -84px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.aq {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.aq {
   height: 13px;
   background-position: -21px -78px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ar {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ar {
   height: 12px;
   background-position: -100px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.as {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.as {
   height: 10px;
   background-position: -84px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.at {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.at {
   height: 13px;
   background-position: -126px -87px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.au {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.au {
   height: 10px;
   background-position: -247px -33px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.aw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.aw {
   height: 13px;
   background-position: 0px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ax {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ax {
   height: 13px;
   background-position: -37px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.az {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.az {
   height: 10px;
   background-position: -42px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ba {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ba {
   height: 10px;
   background-position: -268px -33px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bb {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bb {
   height: 13px;
   background-position: -147px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bd {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bd {
   height: 12px;
   background-position: -210px -118px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.be {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.be {
   height: 15px;
   background-position: 0px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bf {
   height: 13px;
   background-position: -168px -102px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bg {
   height: 12px;
   background-position: -210px -66px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bh {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bh {
   height: 12px;
   background-position: -210px -79px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bi {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bi {
   height: 12px;
   background-position: -210px -144px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bj {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bj {
   height: 13px;
   background-position: -21px -63px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bl {
   height: 13px;
   background-position: -42px -63px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bm {
   height: 10px;
   background-position: -210px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bn {
   height: 10px;
   background-position: -21px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bo {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bo {
   height: 13px;
   background-position: -63px -63px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bq {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bq {
   height: 13px;
   background-position: -84px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.br {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.br {
   height: 14px;
   background-position: -63px -47px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bs {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bs {
   height: 10px;
   background-position: -247px -55px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bt {
   height: 13px;
   background-position: -84px -29px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bv {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bv {
   height: 14px;
   background-position: 0px -32px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bw {
   height: 13px;
   background-position: -84px -58px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.by {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.by {
   height: 10px;
   background-position: -84px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.bz {
   height: 13px;
   background-position: 0px -78px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ca {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ca {
   height: 10px;
   background-position: -268px -55px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cc {
   height: 10px;
   background-position: -268px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cd {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cd {
   height: 15px;
   background-position: -42px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cf {
   height: 13px;
   background-position: -42px -78px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cg {
   height: 13px;
   background-position: -63px -78px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ch {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ch {
   height: 15px;
   background-position: -231px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ci {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ci {
   height: 13px;
   background-position: -105px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ck {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ck {
   height: 10px;
   background-position: -247px -22px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cl {
   height: 13px;
   background-position: -105px -15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cm {
   height: 13px;
   background-position: -105px -29px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cn {
   height: 13px;
   background-position: -105px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.co {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.co {
   height: 13px;
   background-position: -105px -58px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cp {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cp {
   height: 13px;
   background-position: -105px -73px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cr {
   height: 12px;
   background-position: -84px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cu {
   height: 10px;
   background-position: -126px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cv {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cv {
   height: 12px;
   background-position: -63px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cw {
   height: 13px;
   background-position: -42px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cx {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cx {
   height: 10px;
   background-position: -268px -77px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cy {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cy {
   height: 13px;
   background-position: -63px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.cz {
   height: 13px;
   background-position: -84px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.de {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.de {
   height: 12px;
   background-position: -42px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dg {
   height: 10px;
   background-position: 0px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dj {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dj {
   height: 13px;
   background-position: 0px -107px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dk {
   height: 15px;
   background-position: -21px -16px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dm {
   height: 10px;
   background-position: -189px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.do {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.do {
   height: 12px;
   background-position: -210px -14px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.dz {
   height: 13px;
   background-position: -63px -107px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ea {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ea {
   height: 13px;
   background-position: -84px -107px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ec {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ec {
   height: 13px;
   background-position: -105px -107px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ee {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ee {
   height: 12px;
   background-position: -210px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.eg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.eg {
   height: 13px;
   background-position: -126px -15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.eh {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.eh {
   height: 10px;
   background-position: -247px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.er {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.er {
   height: 10px;
   background-position: -247px -209px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.es {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.es {
   height: 13px;
   background-position: -126px -29px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.et {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.et {
   height: 10px;
   background-position: -189px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.eu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.eu {
   height: 13px;
   background-position: -126px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fi {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fi {
   height: 12px;
   background-position: -210px -183px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fj {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fj {
   height: 10px;
   background-position: -210px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fk {
   height: 10px;
   background-position: -268px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fm {
   height: 10px;
   background-position: -21px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fo {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fo {
   height: 14px;
   background-position: -21px -32px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.fr {
   height: 13px;
   background-position: -126px -102px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ga {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ga {
   height: 15px;
   background-position: 0px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gb {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gb {
   height: 10px;
   background-position: -268px -132px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gd {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gd {
   height: 12px;
   background-position: -210px -157px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ge {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ge {
   height: 13px;
   background-position: -42px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gf {
   height: 13px;
   background-position: -63px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gg {
   height: 13px;
   background-position: -84px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gh {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gh {
   height: 13px;
   background-position: -105px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gi {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gi {
   height: 10px;
   background-position: -105px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gl {
   height: 13px;
   background-position: -126px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gm {
   height: 13px;
   background-position: -147px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gn {
   height: 13px;
   background-position: -147px -15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gp {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gp {
   height: 13px;
   background-position: -147px -29px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gq {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gq {
   height: 13px;
   background-position: -147px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gr {
   height: 13px;
   background-position: -147px -58px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gs {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gs {
   height: 10px;
   background-position: -247px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gt {
   height: 12px;
   background-position: -163px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gu {
   height: 10px;
   background-position: -42px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gw {
   height: 10px;
   background-position: -247px -198px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gy {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.gy {
   height: 12px;
   background-position: -105px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hk {
   height: 13px;
   background-position: -147px -116px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hm {
   height: 10px;
   background-position: -63px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hn {
   height: 10px;
   background-position: -84px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hr {
   height: 10px;
   background-position: -168px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ht {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ht {
   height: 12px;
   background-position: -210px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.hu {
   height: 10px;
   background-position: -231px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ic {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ic {
   height: 13px;
   background-position: -21px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.id {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.id {
   height: 13px;
   background-position: -42px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ie {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ie {
   height: 10px;
   background-position: -189px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.il {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.il {
   height: 14px;
   background-position: 0px -48px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.im {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.im {
   height: 10px;
   background-position: -231px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.in {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.in {
   height: 13px;
   background-position: -84px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.io {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.io {
   height: 10px;
   background-position: -268px -11px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.iq {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.iq {
   height: 13px;
   background-position: -105px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ir {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ir {
   height: 11px;
   background-position: -126px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.is {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.is {
   height: 14px;
   background-position: -21px -48px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.it {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.it {
   height: 13px;
   background-position: 0px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.je {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.je {
   height: 12px;
   background-position: -210px -53px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.jm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.jm {
   height: 10px;
   background-position: -268px -154px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.jo {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.jo {
   height: 10px;
   background-position: -268px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.jp {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.jp {
   height: 13px;
   background-position: -42px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ke {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ke {
   height: 13px;
   background-position: -63px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kg {
   height: 12px;
   background-position: -210px -40px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kh {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kh {
   height: 13px;
   background-position: -58px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ki {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ki {
   height: 10px;
   background-position: -63px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.km {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.km {
   height: 12px;
   background-position: -21px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kn {
   height: 13px;
   background-position: 0px -63px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kp {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kp {
   height: 10px;
   background-position: -147px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kr {
   height: 13px;
   background-position: -168px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kw {
   height: 10px;
   background-position: -105px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ky {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ky {
   height: 10px;
   background-position: -247px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.kz {
   height: 10px;
   background-position: -247px -11px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.la {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.la {
   height: 13px;
   background-position: -168px -29px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lb {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lb {
   height: 13px;
   background-position: -168px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lc {
   height: 10px;
   background-position: -247px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.li {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.li {
   height: 12px;
   background-position: -210px -196px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lk {
   height: 10px;
   background-position: -247px -66px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lr {
   height: 10px;
   background-position: -63px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ls {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ls {
   height: 13px;
   background-position: -168px -87px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lt {
   height: 12px;
   background-position: -210px -131px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lu {
   height: 12px;
   background-position: -210px -105px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lv {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.lv {
   height: 10px;
   background-position: -247px -176px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ly {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ly {
   height: 10px;
   background-position: -247px -187px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ma {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ma {
   height: 13px;
   background-position: -168px -131px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mc {
   height: 15px;
   background-position: -63px -16px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.md {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.md {
   height: 10px;
   background-position: -247px -220px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.me {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.me {
   height: 10px;
   background-position: -247px -231px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mf {
   height: 13px;
   background-position: 0px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mg {
   height: 13px;
   background-position: -21px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mh {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mh {
   height: 10px;
   background-position: -84px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mk {
   height: 10px;
   background-position: -105px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ml {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ml {
   height: 13px;
   background-position: -63px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mm {
   height: 13px;
   background-position: -84px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mn {
   height: 10px;
   background-position: -210px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mo {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mo {
   height: 13px;
   background-position: -105px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mp {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mp {
   height: 10px;
   background-position: -63px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mq {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mq {
   height: 13px;
   background-position: -126px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mr {
   height: 13px;
   background-position: -147px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ms {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ms {
   height: 10px;
   background-position: -147px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mt {
   height: 13px;
   background-position: -168px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mu {
   height: 13px;
   background-position: -189px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mv {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mv {
   height: 13px;
   background-position: -189px -15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mw {
   height: 13px;
   background-position: -189px -29px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mx {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mx {
   height: 11px;
   background-position: -168px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.my {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.my {
   height: 10px;
   background-position: -268px -22px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.mz {
   height: 13px;
   background-position: -189px -58px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.na {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.na {
   height: 13px;
   background-position: -189px -73px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nc {
   height: 10px;
   background-position: -268px -66px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ne {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ne {
   height: 15px;
   background-position: -19px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nf {
   height: 10px;
   background-position: -268px -99px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ng {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ng {
   height: 10px;
   background-position: -268px -110px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ni {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ni {
   height: 12px;
   background-position: -210px -27px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nl {
   height: 13px;
   background-position: -189px -116px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.no {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.no {
   height: 14px;
   background-position: -42px -48px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.np {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.np {
   height: 15px;
   background-position: -268px -198px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nr {
   height: 10px;
   background-position: -268px -176px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nu {
   height: 10px;
   background-position: -126px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.nz {
   height: 10px;
   background-position: -147px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.om {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.om {
   height: 10px;
   background-position: -168px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pa {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pa {
   height: 13px;
   background-position: -189px -160px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pe {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pe {
   height: 13px;
   background-position: 0px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pf {
   height: 13px;
   background-position: -21px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pg {
   height: 15px;
   background-position: -21px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ph {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ph {
   height: 10px;
   background-position: -42px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pk {
   height: 13px;
   background-position: -63px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pl {
   height: 12px;
   background-position: -142px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pm {
   height: 13px;
   background-position: -105px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pn {
   height: 10px;
   background-position: -126px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pr {
   height: 13px;
   background-position: -126px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ps {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ps {
   height: 10px;
   background-position: -168px -234px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pt {
   height: 13px;
   background-position: -147px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.pw {
   height: 12px;
   background-position: -184px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.py {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.py {
   height: 11px;
   background-position: -189px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.qa {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.qa {
   height: 8px;
   background-position: -268px -214px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.re {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.re {
   height: 13px;
   background-position: -168px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ro {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ro {
   height: 13px;
   background-position: -84px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.rs {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.rs {
   height: 13px;
   background-position: -189px -102px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ru {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ru {
   height: 13px;
   background-position: -189px -87px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.rw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.rw {
   height: 13px;
   background-position: -189px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sa {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sa {
   height: 13px;
   background-position: -42px -165px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sb {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sb {
   height: 10px;
   background-position: -247px -88px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sc {
   height: 10px;
   background-position: -247px -99px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sd {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sd {
   height: 10px;
   background-position: -247px -110px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.se {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.se {
   height: 12px;
   background-position: -121px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sg {
   height: 13px;
   background-position: -168px -116px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sh {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sh {
   height: 10px;
   background-position: -247px -143px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.si {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.si {
   height: 10px;
   background-position: -247px -154px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sj {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sj {
   height: 14px;
   background-position: -63px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sk {
   height: 13px;
   background-position: -168px -73px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sl {
   height: 13px;
   background-position: -168px -58px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sm {
   height: 15px;
   background-position: 0px -16px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sn {
   height: 13px;
   background-position: -105px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.so {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.so {
   height: 13px;
   background-position: -84px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sr {
   height: 13px;
   background-position: -21px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ss {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ss {
   height: 10px;
   background-position: 0px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.st {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.st {
   height: 10px;
   background-position: -21px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sv {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sv {
   height: 11px;
   background-position: -147px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sx {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sx {
   height: 13px;
   background-position: -126px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sy {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sy {
   height: 13px;
   background-position: 0px -136px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.sz {
   height: 13px;
   background-position: -147px -102px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ta {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ta {
   height: 10px;
   background-position: -126px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tc {
   height: 10px;
   background-position: -147px -245px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.td {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.td {
   height: 13px;
   background-position: -147px -87px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tf {
   height: 13px;
   background-position: -147px -73px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tg {
   height: 12px;
   background-position: -79px -194px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.th {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.th {
   height: 13px;
   background-position: -21px -121px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tj {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tj {
   height: 10px;
   background-position: 0px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tk {
   height: 10px;
   background-position: -21px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tl {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tl {
   height: 10px;
   background-position: -42px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tm {
   height: 13px;
   background-position: -126px -73px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tn {
   height: 13px;
   background-position: -126px -58px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.to {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.to {
   height: 10px;
   background-position: -105px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tr {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tr {
   height: 13px;
   background-position: -126px 0px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tt {
   height: 12px;
   background-position: 0px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tv {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tv {
   height: 10px;
   background-position: -168px -256px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tw {
   height: 13px;
   background-position: -42px -107px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.tz {
   height: 13px;
   background-position: -105px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ua {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ua {
   height: 13px;
   background-position: -21px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ug {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ug {
   height: 13px;
   background-position: 0px -92px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.um {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.um {
   height: 10px;
   background-position: 0px -223px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.us {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.us {
   height: 10px;
   background-position: -210px -210px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.uy {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.uy {
   height: 13px;
   background-position: -84px -78px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.uz {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.uz {
   height: 10px;
   background-position: -268px -44px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.va {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.va {
   height: 15px;
   background-position: -231px -16px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vc {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vc {
   height: 13px;
   background-position: -42px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ve {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ve {
   height: 13px;
   background-position: -189px -131px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vg {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vg {
   height: 10px;
   background-position: -268px -88px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vi {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vi {
   height: 13px;
   background-position: -168px -145px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vn {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vn {
   height: 13px;
   background-position: -168px -15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vu {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.vu {
   height: 12px;
   background-position: -210px -170px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.wf {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.wf {
   height: 13px;
   background-position: -126px -150px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ws {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ws {
   height: 10px;
   background-position: -268px -143px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.xk {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.xk {
   height: 14px;
   background-position: -42px -16px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ye {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.ye {
   height: 13px;
   background-position: -21px -107px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.yt {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.yt {
   height: 13px;
   background-position: -84px -15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.za {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.za {
   height: 13px;
   background-position: -189px -179px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.zm {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.zm {
   height: 13px;
   background-position: -189px -145px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.zw {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) h5 i.country.zw {
   height: 10px;
   background-position: -268px -187px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(3) p {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(3) p {
   font-family: 'alright_sansregular', Verdana, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -3613,10 +3658,10 @@ div.pagi ul li.active span:hover {
   color: #555555;
   max-width: 80%;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) {
   width: 22.8%;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a {
   font-family: 'alright_sansregular', Verdana, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -3624,7 +3669,7 @@ div.pagi ul li.active span:hover {
   line-height: 23px;
   color: #959595;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i {
   background: url(../images/icons/view-details.png) no-repeat;
   display: inline-block;
   width: 18px;
@@ -3632,30 +3677,49 @@ div.pagi ul li.active span:hover {
   vertical-align: middle;
   margin-right: 15px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i.view-details {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i.view-details {
   background: url(../images/icons/view-details.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i.add-to-favourite {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i.add-to-favourite {
   background: url(../images/icons/add-to-favourite.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i.messages {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a i.messages {
   background: url(../images/icons/send-message.png) no-repeat;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a span {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a span {
   vertical-align: middle;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover {
   color: #00c7de;
   text-decoration: none;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover i.view-details {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover i.view-details {
   background: url(../images/icons/view-details.png) no-repeat 0px -12px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover i.add-to-favourite {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover i.add-to-favourite {
   background: url(../images/icons/add-to-favourite.png) no-repeat 0px -12px;
 }
-#search-result .first-content ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover i.messages {
+#search-result .first-content .all-listing-container ul.premium-listings-table > li .each-col:nth-child(4) .ctas li a:hover i.messages {
   background: url(../images/icons/send-message.png) no-repeat 0px -12px;
+}
+#search-result .first-content .advertisement {
+  display: inline-block;
+  vertical-align: top;
+  width: 27%;
+  float: right;
+}
+#search-result .first-content .advertisement .ads-placeholder {
+  background-color: #fafafa;
+  padding: 215px 55px;
+}
+#search-result .first-content .advertisement .ads-placeholder span {
+  font-family: 'alright_sansbold', Verdana, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 31px;
+  line-height: 48px;
+  color: #959595;
+  text-transform: uppercase;
 }
 #search-result .second-content {
   padding-top: 100px;
@@ -5617,20 +5681,33 @@ div.pagi ul li.active span:hover {
 #advanced-search .advanced-search-result .first-content h5 a:hover {
   text-decoration: none;
 }
+#advanced-search .advanced-search-result .first-content > h5 {
+  float: left;
+}
+#advanced-search .advanced-search-result .first-content > .dropdown {
+  float: right;
+  width: 110px;
+}
 #advanced-search .advanced-search-result .first-content ul.premium-listings-table {
-  background-color: #fbfbfb;
   margin-top: 17px;
 }
 #advanced-search .advanced-search-result .first-content ul.premium-listings-table > li {
   border-bottom: 1px solid #d9d9d9;
 }
+#advanced-search .advanced-search-result .first-content ul.premium-listings-table > li.paid {
+  background-color: #fbfbfb;
+}
 #advanced-search .advanced-search-result .first-content ul.premium-listings-table > li:first-child {
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
+  padding: 15px;
 }
 #advanced-search .advanced-search-result .first-content ul.premium-listings-table > li:last-child {
   border-top: 0px;
   border-bottom: 1px solid #d9d9d9;
+}
+#advanced-search .advanced-search-result .first-content ul.premium-listings-table > li span {
+  font-size: 12px;
 }
 #advanced-search .advanced-search-result .first-content ul.premium-listings-table > li .each-col {
   padding-top: 22px;
@@ -8501,6 +8578,10 @@ div.pagi ul li.active span:hover {
   color: #555555;
   margin-bottom: 20px;
 }
+#company-detail .company-details .second-content .more-company-detail p.category {
+  font-size: 18px;
+  color: #00B5D1;
+}
 #company-detail .company-details .third-content {
   padding-top: 30px;
   border-bottom: 1px solid #dfdfdf;
@@ -8593,7 +8674,7 @@ div.pagi ul li.active span:hover {
   display: inline-block;
   width: 100%;
   padding-bottom: 6px;
-  padding-top: 55px;
+  padding-top: 60px;
   padding-left: 10px;
 }
 #company-detail .sidebar .header h3 {

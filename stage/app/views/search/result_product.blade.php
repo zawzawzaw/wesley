@@ -269,176 +269,130 @@
 					<div class="clear"></div>
 					
 					<h1 class="keywords">
+						<?php $no_filter = true; ?>
 						@if(Input::has('text_search'))
-							{{ Input::get('text_search', null) }}
-						@endif
-
+							{{ Input::get('text_search', null) }}							
+							<?php $no_filter = false; ?>
+						@endif								
 						@if(Input::has('category'))
-							{{ Input::get('category', null) }} @if(Input::has('subcategory'))+@endif
+							{{ Input::get('category', null) }}
+							@if(Input::has('subcategory'))+
+							@elseif(Input::has('country'))+
+							@elseif(Input::has('origin_country'))+
+							@endif
+							<?php $no_filter = false; ?>
 						@endif
 						@if(Input::has('subcategory'))
-							{{ Input::get('subcategory', null) }} @if(Input::has('country'))+@endif
+							{{ Input::get('subcategory', null) }}									
+							@if(Input::has('country'))+
+							@elseif(Input::has('origin_country'))+
+							@endif
+							<?php $no_filter = false; ?>
 						@endif
-						@if(Input::has('country'))							
-							{{ code_to_country(Input::get('country', null)) }} @if(Input::has('origin_country'))+@endif
+						@if(Input::has('country'))
+							{{ code_to_country(Input::get('country', null)) }}							
+							@if(Input::has('origin_country'))+							
+							@endif
+							<?php $no_filter = false; ?>
 						@endif
 						@if(Input::has('origin_country'))
 							{{ code_to_country(Input::get('origin_country', null)) }}
+						@endif
+
+						@if($no_filter)
+							All
 						@endif
 					</h1>
 				</div>
 
 				<div class="first-content">
-					<h5>All Products</h5>
-					<ul class="premium-listings-table">
-						@if($products->getTotal() > 0)
-							@foreach($products as $k => $product)
-								<li class="{{ strtolower($product->lists->type) }}">
-									<div class="each-col">										
-										<span class="category category-1 {{ strtolower($product->lists->category) }}"></span>
-									</div>
-									<div class="each-col">
-										<a href="{{ route('search.show', $product->lists->id) }}">										
-											@if($product->image)
-												<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product->image }}" alt="">
-											@else
-												{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
-											@endif
-										</a>
-									</div>
-									<div class="each-col">
-										<h5><a href="{{ route('search.show', $product->lists->id) }}"><span>{{ $product->product_name }}</span> <i class="country {{ strtolower($product->lists->origin_country) }}"></i></a></h5>
-										<p>{{ $product->lists->company_name }}</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="{{ route('search.show', $product->lists->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
-											<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
-											<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
-										</ul>
-									</div>
-								</li>
-							@endforeach
-							
-							<div class="pagi">
-								<?php 
-			                  		$search_params = array(
-				                  		'text_search' => Input::get('text_search', null),
-				                  		'text_search_filter' => Input::get('text_search_filter', null),
-				                  		'form_type' => Input::get('form_type', null),
-				                  		'category' => Input::get('category', null),
-				                  		'subcategory' => Input::get('subcategory', null),
-				                  		'location' => Input::get('location', null),
-				                  		'country' => Input::get('country', null)			                  		
-			                  		); 
-			                  	?>
-								
-			                  	{{ Paginator::setPageName('list_page'); }}
-			                  	{{ $products->appends($search_params)->links() }}
-		                  	</div>
-		                @else
-		                	<li>
-								<span>No list was found.</span>
-							</li>					
-		                @endif						
-					</ul>
-				</div>
-
-				<!--<div class="second-content">
-					<h5>All Products</h5>
+					@if(Auth::user()->plan == 'free')
 					<div class="all-listing-container">
-						<ul class="alphabets">
-							<li><a href="#">A</a></li>
-							<li><a href="#">B</a></li>
-							<li><a href="#">C</a></li>
-							<li><a href="#">D</a></li>
-							<li><a href="#">E</a></li>
-							<li><a href="#">F</a></li>
-							<li><a href="#">G</a></li>
-							<li><a href="#">H</a></li>
-							<li><a href="#">I</a></li>
-							<li><a href="#">J</a></li>
-							<li><a href="#">K</a></li>
-							<li><a href="#">L</a></li>
-							<li><a href="#">M</a></li>
-							<li><a href="#">N</a></li>
-							<li><a href="#">O</a></li>
-							<li><a href="#">P</a></li>
-							<li><a href="#">Q</a></li>
-							<li><a href="#">R</a></li>
-							<li><a href="#">S</a></li>
-							<li><a href="#">T</a></li>
-							<li><a href="#">U</a></li>
-							<li><a href="#">V</a></li>
-							<li><a href="#">W</a></li>
-							<li><a href="#">X</a></li>
-							<li><a href="#">Y</a></li>
-							<li><a href="#">Z</a></li>
-						</ul>					
-						<ul class="list-table">
+					@else
+					<div class="all-listing-container" style="width:100%!important;">
+					@endif
+						<h5>All Products</h5>
+						<div class="dropdown">
+							{{
+								Form::select('item_limit', array(
+								    'all' => 'All',
+								    '5' => '5',
+								    '10' => '10',
+								    '25' => '25',
+								    '50' => '50',
+								    '100' => '100'
+								), Input::get('item_limit', null), array('id' => 'item_limit'));
+							}}
+						</div>
+						<div class="clear"></div>				
+						<ul class="premium-listings-table">
 							@if($products->getTotal() > 0)
-								@if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free'))
-									<li>
-										<span>There are a total of {{ $products->getTotal() }} listings that match your search. <br>
-										Only Premium listings are currently viewable. Please log in or sign up for a subscription to see all available results.</span>
-									</li>
-								@else
-									@foreach($products as $k => $product)
-										<li>
-											<div class="each-col">
-												<span class="category category-1 {{ strtolower($product->lists->category) }}"></span>
-											</div>
-											<div class="each-col">
-												<span class="country {{ strtolower($product->lists->origin_country) }}"></span>
-											</div>
-											<div class="each-col">
-												<p><a href="{{ route('search.show', $product->lists->id) }}">{{ $product->product_name }}</a></p>
-											</div>
-											<div class="each-col">
-												<ul class="ctas">
-													<li><a href="{{ route('search.show', $product->lists->id) }}" class="view-details"><i class="view-details"></i></a></li>
-													<li><a href="#" class="favourite"><i class="add-to-favourite"></i></a></li>
-													<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-												</ul>
-											</div>
-										</li>
-									@endforeach
+								@if((!Auth::check() || (Auth::check() && Auth::user()->plan == 'free')) && $all_products_count > $products->getTotal() )
+								<li>
+									<span>There are a total of {{ $all_products_count }} products that match your search. <br>
+									Only Premium list products are currently viewable. Please log in or sign up for a subscription to see all available results.</span>
+								</li>
 								@endif
-							@else
-								<li>No list was found.</li>              								
-			                @endif												
+								@foreach($products as $k => $product)
+									<li class="{{ strtolower($product->lists->type) }}">
+										<div class="each-col">										
+											<span class="category category-1 {{ strtolower($product->lists->category) }}"></span>
+										</div>
+										<div class="each-col">
+											<a href="{{ route('search.show', $product->lists->id) }}">										
+												@if($product->image)
+													<img src="{{ URL::to('/') }}/uploads/product_catalogs/{{ $product->image }}" alt="">
+												@else
+													{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
+												@endif
+											</a>
+										</div>
+										<div class="each-col">
+											<h5><a href="{{ route('search.show', $product->lists->id) }}"><span>{{ $product->product_name }}</span> <i class="country {{ strtolower($product->lists->origin_country) }}"></i></a></h5>
+											<p>{{ $product->lists->company_name }}</p>
+										</div>
+										<div class="each-col">
+											<ul class="ctas">
+												<li><a href="{{ route('search.show', $product->lists->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
+												<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
+												<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
+											</ul>
+										</div>
+									</li>
+								@endforeach
+								
+								<div class="pagi">
+									<?php 
+				                  		$search_params = array(
+					                  		'text_search' => Input::get('text_search', null),
+					                  		'text_search_filter' => Input::get('text_search_filter', null),
+					                  		'form_type' => Input::get('form_type', null),
+					                  		'category' => Input::get('category', null),
+					                  		'subcategory' => Input::get('subcategory', null),
+					                  		'location' => Input::get('location', null),
+					                  		'country' => Input::get('country', null),
+					                  		'item_limit' => Input::get('item_limit', null)				                  			
+				                  		); 
+				                  	?>
+									
+				                  	{{ Paginator::setPageName('list_page'); }}
+				                  	{{ $products->appends($search_params)->links() }}
+			                  	</div>
+			                @else
+			                	<li>
+									<span>No product was found.</span>
+								</li>					
+			                @endif						
 						</ul>
-						<div class="pagi">
-							<?php $search_params = array(
-		                  		'text_search' => Input::get('text_search', null),
-		                  		'text_search_filter' => Input::get('text_search_filter', null),
-		                  		'form_type' => Input::get('form_type', null),
-		                  		'category' => Input::get('category', null),
-		                  		'subcategory' => Input::get('subcategory', null),
-		                  		'location' => Input::get('location', null),
-		                  		'country' => Input::get('country', null)			                  		
-		                  		); ?>
-							
-							{{ Paginator::setPageName('list_page'); }}
-		                  	{{ $products->appends($search_params)->links(); }}
-							{{-- <a href="#" class="page-backward"></a>
-							<ul>
-								<li><a href="#" class="current">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">...</a></li>							
-							</ul>
-							<a href="#" class="page-forward"></a> --}}
-						</div>
 					</div>
-					<div class="advertisement">
-						<div class="ads-placeholder">
-							<span>Upgrade your plan to fully enjoy Wesley Search</span>
+					@if(Auth::user()->plan == 'free')
+						<div class="advertisement">
+							<div class="ads-placeholder">
+								<span>Upgrade your plan to fully enjoy Specktrm Search</span>
+							</div>
 						</div>
-					</div>
-				</div>-->
+					@endif
+				</div>				
 			</div>
 		</div>
 	</div>
@@ -448,11 +402,18 @@
 			var old_category = '{{ Input::get("category", null) }}';
 			var sub_category = '{{ Input::get("subcategory", null) }}';
 
-			console.log(old_category); console.log(sub_category)
+			// console.log(old_category); console.log(sub_category)
 			if(old_category) {
 				$("#category").val(old_category).trigger('change');
 				$('#subcategory').val(sub_category);
 			}
+
+			$('select[name="item_limit"]').on('change', function(){
+				var item_limit = $(this).val();
+				var url = '{{ route('search.store', $search_params); }}';
+
+				window.location.href  = url + '&item_limit=' + item_limit;
+			});
 		});
 	</script>
 @stop

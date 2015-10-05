@@ -274,15 +274,15 @@
 								@if(Input::has('proximity'))
 									Proximity 
 									@if(Input::has('industry_estate'))+
-									@elseif(Input::has('post_code'))+
-									@elseif(!empty(Input::has('multiple_countries')[0]))+
+									@elseif(Input::has('post_code'))+ 
+									@elseif(!empty(Input::has('multiple_countries')[0]))+ 
 									@endif
 									<?php $no_filter = false; ?>
 								@endif								
 								@if(Input::has('industry_estate'))
 									{{ Input::get('industry_estate', null) }}
-									@if(Input::has('post_code'))+
-									@elseif(!empty(Input::has('multiple_countries')[0]))+
+									@if(Input::has('post_code'))+ 
+									@elseif(!empty(Input::has('multiple_countries')[0]))+ 
 									@endif
 									<?php $no_filter = false; ?>
 								@endif
@@ -310,30 +310,49 @@
 						</div>
 						<div class="content">
 							<div class="first-content">
-								<h5>Premium listings</h5>
+								<h5>All listings</h5>
+								<div class="dropdown">
+									{{
+										Form::select('item_limit', array(
+										    'all' => 'All',
+										    '5' => '5',
+										    '10' => '10',
+										    '25' => '25',
+										    '50' => '50',
+										    '100' => '100'
+										), Input::get('item_limit', null), array('id' => 'item_limit'));
+									}}
+								</div>
+								<div class="clear"></div>
 								<ul class="premium-listings-table">
-									@if(isset($premium_lists) && $premium_lists->getTotal() > 0)
-										@foreach($premium_lists as $k => $premium_list)
-											<li>
+									@if(isset($lists) && $lists->getTotal() > 0)
+										@if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free'))
+										<li>
+											<span>There are a total of {{ $all_lists_count }} listings that match your search. <br>
+											Only Premium listings are currently viewable. Please log in or sign up for a subscription to see all available results.</span>
+										</li>
+										@endif
+										@foreach($lists as $k => $list)
+											<li class="{{ strtolower($list->type) }}">
 												<div class="each-col">										
-													<span class="category category-1 {{ strtolower($premium_list->category) }}"></span>
+													<span class="category category-1 {{ strtolower($list->category) }}"></span>
 												</div>
 												<div class="each-col">
-													<a href="{{ route('search.show', $premium_list->id) }}">
-													@if($premium_list->logo)
-														<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $premium_list->logo }}" class="img-responsive" alt="">
+													<a href="{{ route('search.show', $list->id) }}">
+													@if($list->logo)
+														<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" class="img-responsive" alt="">
 													@else
 														{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
 													@endif
 													</a>
 												</div>
 												<div class="each-col">
-													<h5><a href="{{ route('search.show', $premium_list->id) }}"><span>{{ $premium_list->company_name }}</span> <i class="country {{ strtolower($premium_list->country) }}"></i></a></h5>
-													<p>{{ $premium_list->business_nature }}</p>
+													<h5><a href="{{ route('search.show', $list->id) }}"><span>{{ $list->company_name }}</span> <i class="country {{ strtolower($list->country) }}"></i></a></h5>
+													<p>{{ $list->business_nature }}</p>
 												</div>
 												<div class="each-col">
 													<ul class="ctas">
-														<li><a href="{{ route('search.show', $premium_list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
+														<li><a href="{{ route('search.show', $list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
 														<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
 														<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
 													</ul>
@@ -347,22 +366,23 @@
 						                  		'industry_estate' => Input::get('industry_estate', null),
 						                  		'post_code' => Input::get('post_code', null),
 						                  		'multiple_countries' => Input::get('multiple_countries', null),
-						                  		'list_page' => Input::get('list_page', null)				                  		
-					                  		); 
+						                  		'item_limit' => Input::get('item_limit', null),
+						                  		'list_page' => Input::get('list_page', null)			                  		
+					                  		);
 					                  	?>
 										<div class="pagi">
-						                  	{{ Paginator::setPageName('premium_page'); }}
-						                  	{{ $premium_lists->appends($search_params)->links() }} 		
+						                  	{{ Paginator::setPageName('list_page'); }}
+						                  	{{ $lists->appends($search_params)->links() }} 		
 					                  	</div>
 					                @else
 					                	<li>
-											<span>No premium list was found.</span>
+											<span>No list was found.</span>
 										</li>					
 					                @endif						
 								</ul>
 							</div>
 
-							<div class="second-content">
+							<!--<div class="second-content">
 								<h5>All listings</h5>
 								<div class="all-listing-container">
 									<ul class="alphabets">
@@ -451,7 +471,7 @@
 										<a href="#" class="page-forward"></a> --}}
 									</div>
 								</div>								
-							</div>
+							</div>-->
 						</div>						
 					</div>
 				</div>
@@ -731,4 +751,24 @@
 				
 		</div>
 	</div>
+	<script>
+		$(document).ready(function(){			
+			<?php 
+          		$search_params = array(						                  		
+              		'proximity' => Input::get('proximity', null),
+              		'industry_estate' => Input::get('industry_estate', null),
+              		'post_code' => Input::get('post_code', null),
+              		'multiple_countries' => Input::get('multiple_countries', null),
+              		'item_limit' => Input::get('item_limit', null)	                  		
+          		);
+          	?>
+
+			$('select[name="item_limit"]').on('change', function(){
+				var item_limit = $(this).val();
+				var url = '{{ route('advancedsearch.store', $search_params); }}';
+
+				window.location.href  = url + '&item_limit=' + item_limit;
+			});
+		});
+	</script>
 @stop

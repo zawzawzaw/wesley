@@ -101,19 +101,36 @@
 					}					
 				}
 			}
+			> h5 {
+    			float: left;
+    		}
+
+    		> .dropdown {
+    			float: right;
+    			width: 110px;
+    		}
+
 			ul.premium-listings-table {
-				background-color: #fbfbfb;
+				// background-color: #fbfbfb;
 				margin-top: 17px;
 				> li {				
 					border-bottom: 1px solid #d9d9d9;
+					&.paid {
+						background-color: #fbfbfb;
+					}
 					&:first-child {
 						border-top: 1px solid #d9d9d9;
 						border-bottom: 1px solid #d9d9d9;
+						padding: 15px; 
 					}
 					&:last-child {
 						border-top: 0px;
 						border-bottom: 1px solid #d9d9d9;
-					}				
+					}		
+
+					span {
+						font-size: 12px;
+					}			
 
 					.each-col {
 						padding-top: 22px;
