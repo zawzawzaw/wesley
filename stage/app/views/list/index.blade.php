@@ -1,5 +1,5 @@
 @section('content')
-<div id="list">
+<div id="list"> 	
   	
 	<div class="bg"></div>
   	<div class="container">

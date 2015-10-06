@@ -73,10 +73,19 @@ Route::post('advancedsearch/result', array(
   'as' => 'advancedsearch.store'
 ));
 
+Route::get('generic', array(
+  'uses' => 'GenericController@index',
+  'as' => 'generic.index'
+));
 
 Route::post('generic/uploadfiles', array(
   'uses' => 'GenericController@uploadfiles',
   'as' => 'generic.uploadfiles'
+));
+
+Route::post('generic/checkemailexists', array(
+  'uses' => 'GenericController@checkemailexists',
+  'as' => 'generic.checkemailexists'
 ));
 
 // admin

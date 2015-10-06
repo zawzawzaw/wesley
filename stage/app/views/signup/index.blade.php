@@ -19,7 +19,7 @@
 				        @endforeach
 				    </ul>
 				
-					{{ Form::open(array('url'=>'sign-up', 'class'=>'form-signup')) }}
+					{{ Form::open(array('url'=>'sign-up', 'class'=>'form-signup', 'id'=>'form-signup')) }}
 					<div class="content">
 						<div class="row">
 							<div class="col-md-8">
@@ -431,9 +431,9 @@
 	            var data = data.split("||").concat();
 
 	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
-	            console.log(data[0])
-	            console.log(data[1])
-	            console.log(shortText)
+	            console.log(data[0]);
+	            console.log(data[1]);
+	            console.log(shortText);
 
 	            // $(':hidden[name=profile_photo]').val(data[0]);
 
@@ -461,6 +461,63 @@
 				$(this).val(intlNumber);
 			}
 		});
+
+		$('#form-signup').validate({
+			rules : {
+				first_name: "required",
+				last_name: "required",
+				email: {
+					required: true,
+					email: true,
+					checkExists: true
+				},
+				password: "required",
+				job_title: "required",
+				city: "required"
+			},
+            messages: {
+                email: {
+                    required: "Please Enter Email!",
+                    email: "This is not a valid email!",
+                    checkExists: "Email already in use!"
+                }
+            }
+		});
+
+		$.validator.addMethod("checkExists", function(value, element)
+		{
+		    var inputElem = $('#form-signup :input[name="email"]'),
+		        data = { "email" : inputElem.val() },
+		        eReport = ''; //error report
+
+		    var isSuccess = false;
+
+		    $.ajax(
+		    {
+		        type: "POST",
+		        url: "{{ route('generic.checkemailexists') }}",
+		        async: false,
+		        dataType: "json",
+		        data: data, 
+		        success: function(returnData)
+		        {		        
+		            if (returnData==true)
+		            {
+		            	console.log('exists');
+		              	isSuccess = false;	            
+		            }
+		            else
+		            {		        
+		            	console.log('not exists');    
+		               	isSuccess = true;	            
+		            }
+		        }
+		    });
+
+		    return isSuccess;
+
+		}, "Sorry, this email is not available");
+
 	});
 </script>
 

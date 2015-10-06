@@ -14,6 +14,19 @@ class ListController extends \BaseController {
 	public function __construct() {
 	    $this->beforeFilter('csrf', array('on'=>'post'));
 	    $this->beforeFilter('auth');
+
+	    $OAUTH2_CLIENT_ID = '1006288385462-uj20kpmmo0ollr0q9dks74deau1l19i2.apps.googleusercontent.com';
+        $OAUTH2_CLIENT_SECRET = 'B5HZWXQEikZGw_UuWU9SeeO_';
+        $this->client = new Google_Client();
+        $this->client->setClientId($OAUTH2_CLIENT_ID);
+        $this->client->setClientSecret($OAUTH2_CLIENT_SECRET);
+        $this->client->setScopes('https://www.googleapis.com/auth/youtube');
+
+        $this->redirect = filter_var('http://' . $_SERVER['HTTP_HOST'] . '/wesley/stage/list',
+            FILTER_SANITIZE_URL);        
+        $this->client->setRedirectUri($this->redirect);
+
+        $this->youtube = new Google_Service_YouTube($this->client);
 	}
 
 	public function index()
@@ -26,7 +39,38 @@ class ListController extends \BaseController {
 			$username = '';
 		}
 
-		$this->layout->content = View::make('list.index')->with('username', $username);		
+		//
+        session_start();        
+
+        if (isset($_GET['code'])) {
+          if (strval($_SESSION['state']) !== strval($_GET['state'])) {
+            die('The session state did not match.');
+          }
+          $this->client->authenticate($_GET['code']);
+          $_SESSION['token'] = $this->client->getAccessToken();
+          header('Location: ' . $this->redirect);
+        }
+
+        if (isset($_SESSION['token'])) {
+          $this->client->setAccessToken($_SESSION['token']);
+        }
+
+        // Check to ensure that the access token was successfully acquired.
+        if ($this->client->getAccessToken()) {
+            $_SESSION['token'] = $this->client->getAccessToken();
+        } else {            
+            // If the user hasn't authorized the app, initiate the OAuth flow
+            $state = mt_rand();
+            $this->client->setState($state);
+            $_SESSION['state'] = $state;
+            $authUrl = $this->client->createAuthUrl();            
+
+            return Redirect::away($authUrl);            
+        }
+
+        // session_destroy(); 
+
+		$this->layout->content = View::make('list.index')->with('username', $username)->with('token', $_SESSION['token']);
 	}
 
 
@@ -50,7 +94,7 @@ class ListController extends \BaseController {
 	{
 		// return Input::all();
 
-		$validator = Validator::make(Input::all(), Lists::$rules);
+		$validator = Validator::make(Input::all(), Lists::$rules);		
  
 	    if ($validator->passes()) {
 
@@ -83,9 +127,78 @@ class ListController extends \BaseController {
 		    $lists->market_interested = is_null(Input::get('market_interested')) ? 'no' : Input::get('market_interested');
 		    $lists->number_of_offices_worldwide = is_null(Input::get('number_of_offices_worldwide')) ? 'no' : Input::get('number_of_offices_worldwide');
 		    $lists->links_to_related_companies = is_null(Input::get('links_to_related_companies')) ? 'no' : Input::get('links_to_related_companies');
-		    $lists->upload_video = is_null(Input::get('upload_video')) ? 'no' : Input::get('upload_video');
+		    $lists->upload_video = is_null(Input::get('upload_video')) ? '' : Input::get('upload_video');		    
 		    $lists->major_facilities = is_null(Input::get('major_facilities')) ? 'no' : Input::get('major_facilities');
 		    $lists->major_customers = is_null(Input::get('major_customers')) ? 'no' : Input::get('major_customers');
+
+		    session_start();
+
+			if (isset($_SESSION['token'])) {
+	          $this->client->setAccessToken($_SESSION['token']);          
+	        }
+
+	        if ($this->client->getAccessToken() && $lists->upload_video!='') {
+				try{
+				    // REPLACE this value with the path to the file you are uploading.
+				    $videoPath = public_path() . "/uploads/videos/".$lists->upload_video;
+				    // Create a snippet with title, description, tags and category ID
+				    // Create an asset resource and set its snippet metadata and type.
+				    // This example sets the video's title, description, keyword tags, and
+				    // video category.
+				    $snippet = new Google_Service_YouTube_VideoSnippet();
+				    $snippet->setTitle($lists->company_name);
+				    $snippet->setDescription('');
+				    $snippet->setTags(array("specktram", $lists->category, $lists->subcategory));
+				    // Numeric video category. See
+				    // https://developers.google.com/youtube/v3/docs/videoCategories/list 
+				    $snippet->setCategoryId("22");
+				    // Set the video's status to "public". Valid statuses are "public",
+				    // "private" and "unlisted".
+				    $status = new Google_Service_YouTube_VideoStatus();
+				    $status->privacyStatus = "public";
+				    // Associate the snippet and status objects with a new video resource.
+				    $video = new Google_Service_YouTube_Video();
+				    $video->setSnippet($snippet);
+				    $video->setStatus($status);
+				    // Specify the size of each chunk of data, in bytes. Set a higher value for
+				    // reliable connection as fewer chunks lead to faster uploads. Set a lower
+				    // value for better recovery on less reliable connections.
+				    $chunkSizeBytes = 1 * 1024 * 1024;
+				    // Setting the defer flag to true tells the client to return a request which can be called
+				    // with ->execute(); instead of making the API call immediately.
+				    $this->client->setDefer(true);
+				    // Create a request for the API's videos.insert method to create and upload the video.
+				    $insertRequest = $this->youtube->videos->insert("status,snippet", $video);
+				    // Create a MediaFileUpload object for resumable uploads.
+				    $media = new Google_Http_MediaFileUpload(
+				        $this->client,
+				        $insertRequest,
+				        'video/*',
+				        null,
+				        true,
+				        $chunkSizeBytes
+				    );
+				    $media->setFileSize(filesize($videoPath));
+				    // Read the media file and upload it chunk by chunk.
+				    $status = false;
+				    $handle = fopen($videoPath, "rb");
+				    while (!$status && !feof($handle)) {
+				      $chunk = fread($handle, $chunkSizeBytes);
+				      $status = $media->nextChunk($chunk);
+				    }
+				    fclose($handle);
+				    // If you want to make other calls after the file upload, set setDefer back to false
+				    $this->client->setDefer(false);
+
+				    $lists->upload_video = $status['id'];
+				    
+			  	} catch (Google_Service_Exception $e) {
+				    return Redirect::to('/list')->with('list_message', 'The following errors occurred:')->withErrors(array('message' => $e));
+			  	} catch (Google_Exception $e) {
+				    return Redirect::to('/list')->with('list_message', 'The following errors occurred:')->withErrors(array('message' => $e));
+			  	}		 
+		  	}
+
 		    $lists->save();
 
 		    if($lists->id) {

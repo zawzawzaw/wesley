@@ -8252,6 +8252,11 @@ div.pagi ul li.active span:hover {
   color: #959595;
   text-transform: uppercase;
 }
+#sign-up .account-details .content label.error {
+  color: red;
+  text-transform: initial;
+  margin-top: -5px;
+}
 #sign-up .account-details .content label[for="country"] {
   display: block;
 }
