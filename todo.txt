@@ -30,7 +30,7 @@ Sign up form:
 
 "Sign up for newsletter" should be ticked by default - done
 
-"Email" - add a verifier to ensure email has not be registered prior
+"Email" - add a verifier to ensure email has not be registered prior - done
 
 List 2
 

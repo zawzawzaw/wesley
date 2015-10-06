@@ -1,7 +1,7 @@
 @section('content')
 <div id="list"> 	
   	
-	<div class="bg"></div>
+	{{-- <div class="bg"></div> --}}
   	<div class="container">
 		
 		<div class="listing-details">
@@ -869,39 +869,41 @@
 		</div>
 	
 		<div class="sidebar">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="header">
-						<h3>FOR PAID LISTINGS</h3>
-					</div>			
-					<div class="content">
-						<p>The following administrators have access to this listing to edit information.</p>
-						<ul>
-							<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
-							<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
-							<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
-							<li><span>David McClure</span><a href="#" class="remove">Remove</a></li>								
-						</ul>
-						<div class="clear"></div>
-					</div>
-					<div class="extra-content">
-						<a href="#" class="edit-admins">Edit Admins</a>
-						<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
+			<div class="sidebar-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3>FOR PAID LISTINGS</h3>
+						</div>			
+						<div class="content">
+							<p>The following administrators have access to this listing to edit information.</p>
+							<ul>
+								<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
+								<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
+								<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
+								<li><span>David McClure</span><a href="#" class="remove">Remove</a></li>								
+							</ul>
+							<div class="clear"></div>
+						</div>
+						<div class="extra-content">
+							<a href="#" class="edit-admins">Edit Admins</a>
+							<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="header">
-						<h3>Add Tags</h3>
-					</div>			
-					<div id="added_tags" class="content">
-						<p class="no-tag">Currently there is no tagg added, please add tags from below.</p>							
-					</div>
-					<div class="extra-content">
-	    				{{ Form::text('tag', null, array('id'=>'tag','class'=>'text-input')) }}
-	    				{{ Form::hidden('tags', null, array('class'=>'text-input', 'id'=>'tags')) }}
-						<a href="#" id="add_tag" class="add_tag">Add Tag</a>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3>Add Tags</h3>
+						</div>			
+						<div id="added_tags" class="content">
+							<p class="no-tag">Currently there is no tagg added, please add tags from below.</p>							
+						</div>
+						<div class="extra-content">
+		    				{{ Form::text('tag', null, array('id'=>'tag','class'=>'text-input')) }}
+		    				{{ Form::hidden('tags', null, array('class'=>'text-input', 'id'=>'tags')) }}
+							<a href="#" id="add_tag" class="add_tag">Add Tag</a>
+						</div>
 					</div>
 				</div>
 			</div>

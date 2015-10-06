@@ -1,6 +1,6 @@
 @section('content')
 <div id="product-detail">
-	<div class="bg"></div>
+	<!--<div class="bg"></div>-->
 
 	<div class="container">
 		<div class="product-details">
@@ -50,47 +50,49 @@
 		</div>
 	
 		<div class="sidebar">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="header">
-						<h3>MESSAGE</h3>
-					</div>			
-					<div class="content">
-						<div class="each-content">
-						{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}								
-							{{ Form::textarea('message') }}
-							<ul class="inputs">
-								<li>
-									<div class="each-input">																						
-										{{ Form::radio('message_subject', 'sales enquiry', true) }}
-										<label for="subject"><span></span> Sales Enquiry</label>
-									</div>
-								</li>
-								<li>
-									<div class="each-input">
-										{{ Form::radio('message_subject', 'sales enquiry', true) }}
-										<label for="subject"><span></span> Purchasing Enquiry</label>
-									</div>
-								</li>
-							</ul>
-							{{ Form::hidden('list_user_id', $list->user_id) }}
-							{{ Form::button('Send', array('type'=>'submit','value'=>'send','name'=>'form_type','id'=>'send_msg','class'=>'btn btn-large')) }}
-						{{ Form::close() }}
-						</div>
-						<div class="each-content">
-							<ul class="links">
-								<li><a href="#"><i class="request-for-quote"></i> request for quote</a></li>
-								<li><a href="#"><i class="add-to-favourite"></i> add to favorite</a></li>
-								<li><a href="#"><i class="download"></i> download pdf</a></li>
-								<li><a href="#"><i class="request-for-more"></i> request for more info</a></li>
-							</ul>
-						</div>
-						<div class="each-content">
-							{{ HTML::image('images/contents/company-location-map.png', '', array('class' => 'img-responsive')) }}											
-						</div>
-					</div>						
-				</div>
-			</div>				
+			<div class="sidebar-content">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header">
+							<h3>MESSAGE</h3>
+						</div>			
+						<div class="content">
+							<div class="each-content">
+							{{ Form::open(array('url'=>'message', 'class'=>'form-list', 'id'=>'message')) }}								
+								{{ Form::textarea('message') }}
+								<ul class="inputs">
+									<li>
+										<div class="each-input">																						
+											{{ Form::radio('message_subject', 'sales enquiry', true) }}
+											<label for="subject"><span></span> Sales Enquiry</label>
+										</div>
+									</li>
+									<li>
+										<div class="each-input">
+											{{ Form::radio('message_subject', 'sales enquiry', true) }}
+											<label for="subject"><span></span> Purchasing Enquiry</label>
+										</div>
+									</li>
+								</ul>
+								{{ Form::hidden('list_user_id', $list->user_id) }}
+								{{ Form::button('Send', array('type'=>'submit','value'=>'send','name'=>'form_type','id'=>'send_msg','class'=>'btn btn-large')) }}
+							{{ Form::close() }}
+							</div>
+							<div class="each-content">
+								<ul class="links">
+									<li><a href="#"><i class="request-for-quote"></i> request for quote</a></li>
+									<li><a href="#"><i class="add-to-favourite"></i> add to favorite</a></li>
+									<li><a href="#"><i class="download"></i> download pdf</a></li>
+									<li><a href="#"><i class="request-for-more"></i> request for more info</a></li>
+								</ul>
+							</div>
+							<div class="each-content">
+								{{ HTML::image('images/contents/company-location-map.png', '', array('class' => 'img-responsive')) }}											
+							</div>
+						</div>						
+					</div>
+				</div>		
+			</div>		
 		</div>
 	</div>
 </div>
