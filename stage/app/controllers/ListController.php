@@ -22,7 +22,7 @@ class ListController extends \BaseController {
         $this->client->setClientSecret($OAUTH2_CLIENT_SECRET);
         $this->client->setScopes('https://www.googleapis.com/auth/youtube');
 
-        $this->redirect = filter_var('http://' . $_SERVER['HTTP_HOST'] . '/wesley/stage/list',
+        $this->redirect = filter_var('http://' . $_SERVER['HTTP_HOST'] . '/wesley/stage/list?upload_youtube=yes',
             FILTER_SANITIZE_URL);        
         $this->client->setRedirectUri($this->redirect);
 
@@ -39,38 +39,45 @@ class ListController extends \BaseController {
 			$username = '';
 		}
 
-		//
-        session_start();        
+		$authorized = false;
 
-        if (isset($_GET['code'])) {
-          if (strval($_SESSION['state']) !== strval($_GET['state'])) {
-            die('The session state did not match.');
-          }
-          $this->client->authenticate($_GET['code']);
-          $_SESSION['token'] = $this->client->getAccessToken();
-          header('Location: ' . $this->redirect);
-        }
+		session_start();     
 
-        if (isset($_SESSION['token'])) {
-          $this->client->setAccessToken($_SESSION['token']);
-        }
+		if(Input::get('upload_youtube')) {	        
 
-        // Check to ensure that the access token was successfully acquired.
-        if ($this->client->getAccessToken()) {
-            $_SESSION['token'] = $this->client->getAccessToken();
-        } else {            
-            // If the user hasn't authorized the app, initiate the OAuth flow
-            $state = mt_rand();
-            $this->client->setState($state);
-            $_SESSION['state'] = $state;
-            $authUrl = $this->client->createAuthUrl();            
+	        if (isset($_GET['code'])) {
+	          if (strval($_SESSION['state']) !== strval($_GET['state'])) {
+	            die('The session state did not match.');
+	          }
+	          $this->client->authenticate($_GET['code']);
+	          $_SESSION['token'] = $this->client->getAccessToken();
+	          header('Location: ' . $this->redirect);
+	        }
 
-            return Redirect::away($authUrl);            
-        }
+	        if (isset($_SESSION['token'])) {
+	        	$authorized = true;
+	        	
+	          	$this->client->setAccessToken($_SESSION['token']);
+	        }
 
-        // session_destroy(); 
+	        // Check to ensure that the access token was successfully acquired.
+	        if ($this->client->getAccessToken()) {
+	        	$authorized = true;
+	            $_SESSION['token'] = $this->client->getAccessToken();
+	        } else {            
+	            // If the user hasn't authorized the app, initiate the OAuth flow
+	            $state = mt_rand();
+	            $this->client->setState($state);
+	            $_SESSION['state'] = $state;
+	            $authUrl = $this->client->createAuthUrl();            
 
-		$this->layout->content = View::make('list.index')->with('username', $username)->with('token', $_SESSION['token']);
+	            return Redirect::away($authUrl);            
+	        }
+	        
+		}
+		// session_destroy();
+
+		$this->layout->content = View::make('list.index')->with('username', $username)->with('authorized', $authorized);
 	}
 
 
@@ -131,13 +138,15 @@ class ListController extends \BaseController {
 		    $lists->major_facilities = is_null(Input::get('major_facilities')) ? 'no' : Input::get('major_facilities');
 		    $lists->major_customers = is_null(Input::get('major_customers')) ? 'no' : Input::get('major_customers');
 
+
+
 		    session_start();
 
 			if (isset($_SESSION['token'])) {
-	          $this->client->setAccessToken($_SESSION['token']);          
+	          $this->client->setAccessToken($_SESSION['token']);	          
 	        }
 
-	        if ($this->client->getAccessToken() && $lists->upload_video!='') {
+	        if ($this->client->getAccessToken() && $lists->upload_video!='' && Input::get('upload_youtube')=='yes') {
 				try{
 				    // REPLACE this value with the path to the file you are uploading.
 				    $videoPath = public_path() . "/uploads/videos/".$lists->upload_video;

@@ -22,4 +22,5 @@
 {{ HTML::script('js/libs/placeholders.min.js') }}
 {{ HTML::script('js/libs/intlTelInput.min.js') }}
 {{ HTML::script('//vjs.zencdn.net/4.12/video.js') }}
+{{ HTML::script('js/libs/jquery.cookie.js') }}
 {{ HTML::script('js/wesley/main.js') }}

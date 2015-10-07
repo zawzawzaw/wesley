@@ -1001,7 +1001,6 @@ div.pagi ul li.active span:hover {
 }
 #wesley-header .main-menu {
   display: inline-block;
-  margin-left: 120px;
   vertical-align: top;
 }
 #wesley-header .main-menu ul li {
@@ -1141,7 +1140,6 @@ div.pagi ul li.active span:hover {
 #wesley-header .logged-in-menu {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 120px;
 }
 #wesley-header .logged-in-menu ul li {
   display: inline-block;
@@ -2214,9 +2212,15 @@ div.pagi ul li.active span:hover {
   width: 100%;
 }
 #list .listing-details .content .each-input span.video-preview {
+  margin-top: 4px;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+#list .listing-details .content .each-input .youtube-upload {
   position: absolute;
-  top: 27px;
-  left: 110px;
+  bottom: 18px;
+  right: 35px;
 }
 #list .listing-details .content .each-input input#links {
   width: 100%;

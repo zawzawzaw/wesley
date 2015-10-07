@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-
-      <a href="{{ URL::to('/') }}" class="logo middle"><h1>Specktrm</h1></a>
+    <div class="col-md-12">     
     
       @if(Auth::check())
+      <div class="pull-left">
+
+        <a href="{{ URL::to('/') }}" class="logo middle"><h1>Specktrm</h1></a>
         {{ Form::open(array('url'=>'search/result', 'class'=>'form-list')) }}
           <div class="search-input">            
             {{ Form::text('text_search', Input::get('text_search', null), array('class'=>'text-search input-box','id'=>'text_search','placeholder'=>'Sumitomo Corporation')); }}
@@ -28,6 +29,10 @@
           </div>
         {{ Form::close() }}
 
+      </div>
+
+      <div class="pull-right">
+
         <nav class="logged-in-menu">
           <ul>
             <li><a class="search" href="{{ URL::to('mysearch') }}">My Search</a></li>
@@ -45,21 +50,30 @@
             <li><a class="country {{ Auth::user()->country }}" href="{{ URL::to('myaccount') }}">Country</a></li>          
           </ul>
         </nav>
-      @else
-        <nav class="main-menu">
-          <ul>
-            <li><a href="{{ URL::to('tour') }}">Tour</a></li>
-            <li><a href="{{ URL::to('pricing') }}">Pricing</a></li>
-            <li><a href="{{ URL::to('advertise') }}">Advertise</a></li>
-            <li><a href="{{ URL::to('contact') }}">Contact</a></li>
-            <li><a href="{{ URL::to('faq') }}">FAQ</a></li>          
-          </ul>
-        </nav>
 
-        <ul class="login-ctas pull-right">
-          <li><a href="{{ route('login.index') }}">LOG IN</a></li>
-          <li><a href="{{ route('sign-up.index') }}" class="active">SIGN UP</a></li>
-        </ul>
+      </div>
+      @else
+      <div class="pull-left">
+      <a href="{{ URL::to('/') }}" class="logo middle"><h1>Specktrm</h1></a>
+      </div>
+
+        <div class="pull-right">
+          <nav class="main-menu">
+            <ul>
+              <li><a href="{{ URL::to('tour') }}">Tour</a></li>
+              <li><a href="{{ URL::to('pricing') }}">Pricing</a></li>
+              <li><a href="{{ URL::to('advertise') }}">Advertise</a></li>
+              <li><a href="{{ URL::to('contact') }}">Contact</a></li>
+              <li><a href="{{ URL::to('faq') }}">FAQ</a></li>          
+            </ul>
+          </nav>
+        
+
+          <ul class="login-ctas pull-right">
+            <li><a href="{{ route('login.index') }}">LOG IN</a></li>
+            <li><a href="{{ route('sign-up.index') }}" class="active">SIGN UP</a></li>
+          </ul>
+        </div>
       @endif
 
     </div>

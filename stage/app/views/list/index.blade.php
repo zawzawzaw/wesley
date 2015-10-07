@@ -44,17 +44,18 @@
 											{{ Form::text('company_name', null, array('class'=>'text-input')) }}										
 										</div>
 										<div class="each-input">
-											{{ Form::label('subcategory', 'Sub-Category *') }}
+											{{ Form::label('subcategory', 'Sector *') }}
 											<div class="dropdown">
 											{{ 
 												Form::select('subcategory', array(
+													'' => 'Sector', 
 													'Exploration & Production' => 'Exploration & Production',
 													'Integrated Oil & Gas' => 'Integrated Oil & Gas',
 													'Oil Equipment & Services' => 'Oil Equipment & Services',
 													'Pipelines' => 'Pipelines',
 													'Renewable Energy Equipment' => 'Renewable Energy Equipment',
 													'Alternative Fuels' => 'Alternative Fuels'									
-												));
+												), 'default', array('class'=>'subcategory', 'id'=>'list-subcategory'));
 											}}
 											</div>
 										</div>
@@ -322,10 +323,11 @@
 											{{ Form::hidden('logo', null, array('id'=>'logo')); }}										
 										</div>
 										<div class="each-input">										
-											{{ Form::label('category', 'Category *') }}
+											{{ Form::label('category', 'Industry *') }}
 											<div class="dropdown">
 												{{ 
 													Form::select('category', array(
+														'' => 'Industry', 
 														'Oil & Gas' => 'Oil & Gas', 
 														'Chemicals' => 'Chemicals', 
 														'Basic Resources' => 'Basic Resources', 
@@ -345,7 +347,7 @@
 														'Real Estate' => 'Real Estate', 
 														'Financial Services' => 'Financial Services', 
 														'Technology' => 'Technology'
-													)); 
+													), 'default', array('class'=>'category', 'id'=>'list-category')); 
 												}}
 											</div>
 										</div>
@@ -705,13 +707,18 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-5">
 										<div class="each-input">
 											{{ Form::label('video', 'Upload Video') }}														
 											{{ Form::file('video', null, array('id'=>'video')); }}
 											{{ Form::hidden('upload_video', null, array('id'=>'upload_video')); }}
 											<span class="video-preview"></span>
-											
+											<div class="youtube-upload {{ $authorized }}">
+
+												{{ Form::checkbox('upload_youtube', 'yes', $authorized); }}
+												
+												{{ Form::label('video', 'Upload To YouTube') }}														
+											</div>
 										</div>
 									</div>								
 								</div>
@@ -1262,6 +1269,36 @@
 	        }
 	    });
 
+	});
+
+	if($.cookie("formValueCookie")) {
+		var formValueArr = JSON.parse($.cookie('formValueCookie'));
+		$.each(formValueArr, function(counter,field) {
+
+			if(field.name=='category' || field.name=='subcategory' || field.name=='country' || field.name=='origin_country') {				
+				$('select[name='+field.name+']').val(field.value);
+			}else if(field.name=='type') {
+				$('input[value='+field.value+']').prop('checked', true);
+			}else
+				$('input[name='+field.name+']').val(field.value);
+			
+		});
+	}
+
+	$('input[name="upload_youtube"]').on('click', function(e){
+		if($(this).prop('checked')) {
+			
+
+			$.cookie('formValueCookie', JSON.stringify(form.serializeArray()), {
+	            expires: 365
+	        });	        
+
+			window.location.href = "{{ route('list.index', array('upload_youtube' => true)) }}";
+
+
+		}else {
+			$.removeCookie('formValueCookie'); 
+		}
 	});
 
   });
