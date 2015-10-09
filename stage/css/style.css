@@ -2079,6 +2079,9 @@ div.pagi ul li.active span:hover {
   vertical-align: top;
   padding-right: 75px;
 }
+#list .listing-details .all-list {
+  display: none;
+}
 #list .listing-details .header {
   border-bottom: 1px solid #dbdbdb;
   display: inline-block;
@@ -2124,7 +2127,7 @@ div.pagi ul li.active span:hover {
 }
 #list .listing-details .content {
   border-bottom: 1px solid #dbdbdb;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 #list .listing-details .content .first-col input[type=text],
 #list .listing-details .content .first-col .dropdown {
@@ -2167,7 +2170,8 @@ div.pagi ul li.active span:hover {
 #list .listing-details .content label.error {
   color: red;
   text-transform: initial;
-  margin-top: -5px;
+  position: absolute;
+  bottom: -25px;
 }
 #list .listing-details .content #type_free,
 #list .listing-details .content #type_paid {
@@ -2177,8 +2181,8 @@ div.pagi ul li.active span:hover {
   height: 160px;
 }
 #list .listing-details .content .each-input {
-  height: 80px;
   position: relative;
+  margin-bottom: 15px;
 }
 #list .listing-details .content .each-input #lbl_type {
   display: block;
@@ -2189,7 +2193,8 @@ div.pagi ul li.active span:hover {
   position: relative;
   vertical-align: middle;
 }
-#list .listing-details .content .each-input input[type=text] {
+#list .listing-details .content .each-input input[type=text],
+#list .listing-details .content .each-input textarea {
   background-color: #f9f9f9;
   border: 1px solid #d6d6d6;
   border-radius: 5px;
@@ -2204,6 +2209,9 @@ div.pagi ul li.active span:hover {
   color: #555555;
   display: block;
   width: 100%;
+}
+#list .listing-details .content .each-input textarea {
+  height: 100px;
 }
 #list .listing-details .content .each-input img {
   border: 1px solid #d7d7d7;

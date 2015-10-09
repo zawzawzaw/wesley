@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					{{ Form::open(array('url'=>'list', 'class'=>'form-list', 'id'=>'form-list')) }}
-						<div id="list-1">
+						<div id="list-1" class="all-list">
 							<div class="header">
 								<h3 class="pull-left">LISTING DETAILS</h3>
 								{{-- <a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a> --}}
@@ -304,17 +304,8 @@
 												"zw"=>"Zimbabwe"
 												));
 											}}					
-											</div>	
-																		
-										</div>				
-										<div class="each-input">
-											{{ Form::label('year_established', 'Year Established *') }}
-											{{ Form::text('year_established', null, array('class'=>'text-input')) }}												
-										</div>
-										<div class="each-input">
-											{{ Form::label('bankers', 'Bankers') }}
-											{{ Form::text('bankers', null, array('class'=>'text-input')) }}
-										</div>
+											</div>
+										</div>														
 									</div>
 									<div class="col-md-4 second-col">
 										<div class="each-input">
@@ -601,10 +592,6 @@
 												));
 												}}					
 											</div>							
-										</div>
-										<div class="each-input">
-											{{ Form::label('key_personnel', 'Key Personnel') }}
-											{{ Form::text('key_personnel', null, array('class'=>'text-input')) }}											
 										</div>										
 									</div>
 									<div class="col-md-4 last-col">
@@ -624,6 +611,106 @@
 											{{ Form::label('state', 'State/Province') }}
 											{{ Form::text('state', null, array('class'=>'text-input')) }}			
 										</div>
+									</div>
+								</div>								
+							</div>						
+							<div class="extra-content">								
+								{{ Form::button('Next', array('id'=>'list-1-next', 'class'=>'next-btn pull-right', 'data-list'=>1)) }}								
+							</div>
+						</div>
+						<!-- LIST 1 END -->
+
+						<!-- LIST 2 -->
+						<div id="list-2" class="all-list">
+							<div class="header">
+								<h3 class="pull-left">LISTING DETAILS</h3>
+								<a href="#" id="list-2-prev" class="prev-btn edit-btn pull-right" data-list="2"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
+							</div>
+							<div class="content">								
+								<div class="row">
+									<div class="col-md-4 first-col">													
+										<div class="each-input">
+											{{ Form::label('year_established', 'Year Established *') }}
+											{{ Form::text('year_established', null, array('class'=>'text-input')) }}												
+										</div>
+									</div>
+									<div class="col-md-4 second-col">									
+										<div class="each-input">
+											{{ Form::label('no_of_employees', 'No. of Employees *') }}
+											{{ Form::text('no_of_employees', null, array('class'=>'text-input')) }}
+										</div>																		
+									</div>									
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="each-input">
+											{{ Form::label('business_nature', 'Nature of Business *') }}
+											{{ Form::textarea('business_nature', null, array('class'=>'text-input')) }}										
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="each-input">
+											{{ Form::label('company_background_info', 'Company Background / Information *') }}
+											{{ Form::textarea('company_background_info', null, array('class'=>'text-input')) }}
+										</div>
+									</div>								
+								</div>								
+								<div class="row">
+									<div class="col-md-12">
+										<div class="each-input">
+											{{ Form::label('quality_certification', 'Quality Certification *') }}
+											{{ Form::textarea('quality_certification', null, array('class'=>'text-input')) }}						
+										</div>
+									</div>									
+								</div>								
+							</div>	
+							<div class="extra-content">
+								<a href="#" class="add-more-key-product">Add More Key Product +</a>
+								{{ Form::button('Next', array('id'=>'list-2-next', 'class'=>'next-btn pull-right', 'data-list'=>2)) }}	
+								{{ Form::button('Back', array('id'=>'list-2-prev', 'class'=>'prev-btn pull-left', 'data-list'=>2)) }}												
+							</div>
+						</div>
+						<!-- LIST-2 END -->
+	
+						<!-- LIST-3 -->						
+						<div id="list-3" class="all-list">
+							<div class="header">
+								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
+								<a href="#" id="list-3-prev" class="prev-btn edit-btn pull-right" data-list="3"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
+							</div>
+							<div class="content">
+								<div class="row">
+									<div class="col-md-12">
+										@if(Session::has('list_message'))
+										    <p>{{ Session::get('list_message') }}</p>
+										@endif
+										<ul>
+									        @foreach($errors->all() as $error)
+									            <li>{{ $error }}</li>
+									        @endforeach
+									    </ul>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 first-col">													
+										<div class="each-input">
+											{{ Form::label('year_established', 'Year Established *') }}
+											{{ Form::text('year_established', null, array('class'=>'text-input')) }}												
+										</div>
+										<div class="each-input">
+											{{ Form::label('bankers', 'Bankers') }}
+											{{ Form::text('bankers', null, array('class'=>'text-input')) }}
+										</div>
+									</div>
+									<div class="col-md-4 second-col">									
+										<div class="each-input">
+											{{ Form::label('key_personnel', 'Key Personnel') }}
+											{{ Form::text('key_personnel', null, array('class'=>'text-input')) }}											
+										</div>										
+									</div>
+									<div class="col-md-4 last-col">										
 										<div class="each-input">
 											{{ Form::label('paid_up_capital', 'Paid Up Capital') }}
 											{{ Form::text('paid_up_capital', null, array('class'=>'text-input')) }}											
@@ -722,15 +809,28 @@
 										</div>
 									</div>								
 								</div>
-							</div>						
-							<div class="extra-content">								
-								{{ Form::button('Next', array('id'=>'list-1-next', 'class'=>'pull-right')) }}								
+							</div>	
+							<div class="extra-content">
+								<a href="#" class="add-more-key-product">Add More Key Product +</a>
+								{{ Form::button('Next', array('id'=>'list-3-next', 'class'=>'next-btn pull-right', 'data-list'=>3)) }}	
+								{{ Form::button('Back', array('id'=>'list-3-prev', 'class'=>'prev-btn pull-left', 'data-list'=>3)) }}												
 							</div>
 						</div>
-						<div id="list-2">
+						<div id="list-4" class="all-list">
 							<div class="header">
 								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
-								<a href="#" id="list-2-prev" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
+								<a href="#" id="list-4-prev" class="prev-btn edit-btn pull-right" data-list="4"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
+							</div>
+							<div class="extra-content">
+								<a href="#" class="add-more-key-product">Add More Key Product +</a>
+								{{ Form::button('Next', array('id'=>'list-4-next', 'class'=>'next-btn pull-right', 'data-list'=>4)) }}	
+								{{ Form::button('Back', array('id'=>'list-4-prev', 'class'=>'prev-btn pull-left', 'data-list'=>4)) }}												
+							</div>
+						</div>
+						<div id="list-5" class="all-list">
+							<div class="header">
+								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
+								<a href="#" id="list-6-prev" class="prev-btn edit-btn pull-right" data-list="5"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
 							</div>						
 							<div class="content">
 								{{ Form::hidden('key_product_count', null, array('class'=>'text-input', 'id'=>'key_product_count')) }}
@@ -811,14 +911,14 @@
 							</div>
 							<div class="extra-content">
 								<a href="#" class="add-more-key-product">Add More Key Product +</a>
-								{{ Form::button('Next', array('id'=>'list-2-next', 'class'=>'pull-right')) }}	
-								{{ Form::button('Back', array('id'=>'list-2-back', 'class'=>'pull-left')) }}																
+								{{ Form::button('Next', array('id'=>'list-5-next', 'class'=>'next-btn pull-right', 'data-list'=>5)) }}	
+								{{ Form::button('Back', array('id'=>'list-5-prev', 'class'=>'prev-btn pull-left', 'data-list'=>5)) }}																
 							</div>
 						</div>
-						<div id="list-3">
+						<div id="list-6" class="all-list">
 							<div class="header">
 								<h3 class="pull-left">List - Product Catalogs</h3>
-								<a href="#" id="list-3-prev" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT KEY PRODUCTS</span></a>
+								<a href="#" id="list-6-prev" class="prev-btn edit-btn pull-right" data-list="6"><i class="edit-icon"></i><span>EDIT KEY PRODUCTS</span></a>
 							</div>						
 							<div class="content">
 								{{ Form::hidden('product_catalog_count', null, array('class'=>'text-input', 'id'=>'product_catalog_count')) }}
@@ -867,7 +967,7 @@
 							<div class="extra-content">
 								<a href="#" class="add-more-product-catalog">Add More Product Catalog +</a>
 								{{ Form::submit('Save changes', array('id'=>'list-form-submit','class'=>'pull-right')) }}	
-								{{ Form::button('Back', array('id'=>'list-3-back', 'class'=>'pull-left')) }}																						
+								{{ Form::button('Back', array('id'=>'list-6-prev', 'class'=>'prev-btn pull-left', 'data-list'=>6)) }}																						
 							</div>
 						</div>
 					{{ Form::close() }}
@@ -919,8 +1019,7 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
-  	$('#list-2').hide();
-  	$('#list-3').hide();
+  	$('#list-1').show();  	
 
   	var form = $('#form-list');
 
@@ -946,34 +1045,34 @@
 	    }
 	});
 
-    $('#list-1-next').on('click', function(e){
-    	e.preventDefault();
-	 		 	
-	    if(form.valid()) {
-	    	$('#list-2').show();
-	    	$('#list-1').hide();
-	    	$('#list-3').hide();    
-	    }    	
-    	
-    });
-    $('#list-2-next').on('click', function(e){
-    	e.preventDefault();
-    	$('#list-3').show();
-    	$('#list-1').hide();
-    	$('#list-2').hide();
-    });
-    $('#list-2-prev, #list-2-back').on('click', function(e){
-    	e.preventDefault();    	
-    	$('#list-1').show();
-    	$('#list-2').hide();
-    	$('#list-3').hide();
-    });
-    $('#list-3-prev, #list-3-back').on('click', function(e){
-    	e.preventDefault();    	
-    	$('#list-2').show();
-    	$('#list-1').hide();
-    	$('#list-3').hide();
-    });
+	$('.next-btn').on('click', function(e){
+		e.preventDefault();
+		var nextList = $(this).data('list') + 1;
+
+		if(form.valid()) {
+			$('.all-list').hide();
+			$('#list-'+nextList).show();
+		}
+	});
+
+	$('.prev-btn').on('click', function(e){
+		e.preventDefault();
+		var prevList = $(this).data('list') - 1;
+
+		$('.all-list').hide();
+		$('#list-'+prevList).show();
+	});
+    
+    // $('#list-2-prev, #list-2-back').on('click', function(e){
+    // 	e.preventDefault();    	
+    // 	$('#list-1').show();
+    // 	$('.all-list').hide();
+    // });
+    // $('#list-3-prev, #list-3-back').on('click', function(e){
+    // 	e.preventDefault();    	
+    // 	$('#list-2').show();
+    // 	$('.all-list').hide();
+    // });
 
     $('#list-form-submit').on('click', function(e){
     	e.preventDefault();

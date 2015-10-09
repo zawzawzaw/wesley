@@ -17,6 +17,11 @@
 		width: 74%;
 		vertical-align: top;
 		padding-right: 75px;
+
+		.all-list {
+			display: none; 
+		}
+
 		.header {
 			border-bottom: 1px solid #dbdbdb;
 			display: inline-block;
@@ -59,7 +64,7 @@
 		}
 		.content {
 			border-bottom: 1px solid #dbdbdb;
-			padding-bottom: 10px;
+			padding-bottom: 30px;
 			
 			.first-col {
 				input[type=text], .dropdown {
@@ -102,7 +107,9 @@
 				&.error {
 					color: red;
 				    text-transform: initial;
-				    margin-top: -5px;
+				    // margin-top: -5px;
+				    position: absolute;
+    				bottom: -25px;
 				}
 			}
 
@@ -115,8 +122,9 @@
 			}			
 
 			.each-input {
-				height: 80px;
+				// height: 80px;
 				position: relative;
+				margin-bottom: 15px;
 
 				#lbl_type {
 					display: block;
@@ -129,7 +137,7 @@
 					vertical-align: middle;
 				}
 				
-				input[type=text] {
+				input[type=text], textarea {
 					background-color: #f9f9f9;
 					border: 1px solid #d6d6d6;
 					border-radius: 5px;
@@ -142,6 +150,9 @@
 					color: @dark-grey-2;
 					display: block;			
 					width: 100%;		
+				}
+				textarea {
+					height: 100px;
 				}
 				img {
 					border: 1px solid #d7d7d7;

@@ -75,3 +75,21 @@ Message should be shifted down slightly - done
 Map should be a google-map link - done
 
 The categories titles need to stand out from the main body text more - done
+
+=============
+
+
+
+1. Listing structure needs to be split up in to several more pages with the following structure: General Info / Mandatory Info / Optional Info / Private Info with the option of skipping the last entire page. A progress bar should also be added to the top so the user knows how much more they have to go. (Also I've highlighted Green for large input boxes / Blue for single line). User should not be able to proceed to next page without filling in all complusory info
+
+General Info: Company Name / Category (rename to Industry) / Sub-category (rename to Sector) / Address 1 / Address 2 / Post Code / City / State Province / Country (rename to Location) / Country of Origin
+
+Mandatory Info: Nature of Business / Year Established / Company Background and Information / No. of Employees / Quality Certification 
+
+Optional Info: Bankers / Main Shareholders or Parent Company / Market/s Established / Market/s Interested /  Number of Offices world wide / Links to related Companies / Upload Video / Upload Catalogue
+
+Private Info: Major Facilities / Major Customers / Project History / Paid Up Capital 
+
+2. Search results listings
+
+There needs to be a way of sorting the results via: Name (A-Z) / Name (Z-A) / Proximity
