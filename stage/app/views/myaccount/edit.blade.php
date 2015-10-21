@@ -9,7 +9,7 @@
 					<div class="col-md-12">
 						<div class="header">
 							<h3 class="pull-left">ACCOUNT PARTICULARS</h3>
-							<a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+							<a href="{{ URL::to('myaccount/') }}" class="edit-btn pull-right"><span>BACK TO MY ACCOUNT</span></a>
 						</div>
 						@if(Session::has('message'))
 				        	<h5>{{ Session::get('message') }}</h5>					        				        

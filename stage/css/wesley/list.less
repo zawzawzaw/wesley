@@ -18,6 +18,18 @@
 		vertical-align: top;
 		padding-right: 75px;
 
+		.progress-bar {
+			width: 20%;
+		    height: 10px;
+		    background-color: #00c7dd;
+		    box-shadow: none;
+		}
+
+		.progress-bar > svg {
+		    width: 100%;
+		    display: block;
+		}
+
 		.all-list {
 			display: none; 
 		}
@@ -171,7 +183,7 @@
 
 				.youtube-upload {
 					position: absolute;
-				    bottom: 18px;
+				    bottom: 0px;
 				    right: 35px;
 				}
 
@@ -181,6 +193,7 @@
 
 				.dropdown {
 					width: 100%;
+					display: block;
 					&:before {
 						background:url(../images/icons/dropdown-2.png) no-repeat 0px 0px;
 						height: 37px;

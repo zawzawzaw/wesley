@@ -12,7 +12,8 @@ class MyaccountController extends \BaseController {
 	public function index()
 	{
 		//
-		$this->layout->content = View::make('myaccount.index');
+		$lists = Lists::where('user_id', '=', Auth::user()->id)->get();
+		$this->layout->content = View::make('myaccount.index')->with('lists', $lists);
 	}
 
 

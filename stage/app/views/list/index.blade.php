@@ -8,6 +8,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					{{ Form::open(array('url'=>'list', 'class'=>'form-list', 'id'=>'form-list')) }}
+						<div class="progress-bar"></div>
+						<!-- LIST 1 -->
 						<div id="list-1" class="all-list">
 							<div class="header">
 								<h3 class="pull-left">LISTING DETAILS</h3>
@@ -666,8 +668,7 @@
 									</div>									
 								</div>								
 							</div>	
-							<div class="extra-content">
-								<a href="#" class="add-more-key-product">Add More Key Product +</a>
+							<div class="extra-content">								
 								{{ Form::button('Next', array('id'=>'list-2-next', 'class'=>'next-btn pull-right', 'data-list'=>2)) }}	
 								{{ Form::button('Back', array('id'=>'list-2-prev', 'class'=>'prev-btn pull-left', 'data-list'=>2)) }}												
 							</div>
@@ -677,7 +678,7 @@
 						<!-- LIST-3 -->						
 						<div id="list-3" class="all-list">
 							<div class="header">
-								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
+								<h3 class="pull-left">LISTING DETAILS</h3>
 								<a href="#" id="list-3-prev" class="prev-btn edit-btn pull-right" data-list="3"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
 							</div>
 							<div class="content">
@@ -694,77 +695,31 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-4 first-col">													
-										<div class="each-input">
-											{{ Form::label('year_established', 'Year Established *') }}
-											{{ Form::text('year_established', null, array('class'=>'text-input')) }}												
-										</div>
+									<div class="col-md-6">																							
 										<div class="each-input">
 											{{ Form::label('bankers', 'Bankers') }}
 											{{ Form::text('bankers', null, array('class'=>'text-input')) }}
 										</div>
 									</div>
-									<div class="col-md-4 second-col">									
+									<div class="col-md-6">									
 										<div class="each-input">
+											{{ Form::label('number_of_offices_worldwide', 'Number of Offices World Wide') }}
+											{{ Form::text('number_of_offices_worldwide', null, array('class'=>'text-input')) }}
+										</div>
+										{{-- <div class="each-input">
 											{{ Form::label('key_personnel', 'Key Personnel') }}
 											{{ Form::text('key_personnel', null, array('class'=>'text-input')) }}											
-										</div>										
-									</div>
-									<div class="col-md-4 last-col">										
-										<div class="each-input">
-											{{ Form::label('paid_up_capital', 'Paid Up Capital') }}
-											{{ Form::text('paid_up_capital', null, array('class'=>'text-input')) }}											
-										</div>	
-										<div class="each-input">
-											{{ Form::label('no_of_employees', 'No. of Employees *') }}
-											{{ Form::text('no_of_employees', null, array('class'=>'text-input')) }}
-										</div>								
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="each-input">
-											{{ Form::label('business_nature', 'Nature of Business *') }}
-											{{ Form::text('business_nature', null, array('class'=>'text-input')) }}										
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="each-input">
-											{{ Form::label('company_background_info', 'Company Background / Information *') }}
-											{{ Form::text('company_background_info', null, array('class'=>'text-input')) }}
-										</div>
-									</div>								
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="each-input">
-											{{ Form::label('major_facilities', 'Major Facilities / Equipment *') }}
-											{{ Form::text('major_facilities', null, array('class'=>'text-input')) }}	
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="each-input">
-											{{ Form::label('major_customers', 'Major Customers / Project History *') }}
-											{{ Form::text('major_customers', null, array('class'=>'text-input')) }}
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="each-input">
-											{{ Form::label('quality_certification', 'Quality Certification *') }}
-											{{ Form::text('quality_certification', null, array('class'=>'text-input')) }}						
-										</div>
-									</div>
+										</div>	 --}}			
+									</div>									
+								</div>																
+								<!--<div class="row">									
 									<div class="col-md-6">
 										<div class="each-input">
 											{{ Form::label('production_capability', 'Production Capability *') }}
 											{{ Form::text('production_capability', null, array('class'=>'text-input')) }}
 										</div>
 									</div>
-								</div>
+								</div>-->
 								<div class="row">
 									<div class="col-md-6">
 										<div class="each-input">
@@ -801,32 +756,134 @@
 											{{ Form::hidden('upload_video', null, array('id'=>'upload_video')); }}
 											<span class="video-preview"></span>
 											<div class="youtube-upload {{ $authorized }}">
-
-												{{ Form::checkbox('upload_youtube', 'yes', $authorized); }}
-												
+												{{ Form::checkbox('upload_youtube', 'yes', $authorized); }}												
 												{{ Form::label('video', 'Upload To YouTube') }}														
 											</div>
 										</div>
 									</div>								
 								</div>
+								{{ Form::hidden('product_catalog_count', null, array('class'=>'text-input', 'id'=>'product_catalog_count')) }}
+								{{ Form::hidden('product_catalog_ids', null, array('class'=>'text-input', 'id'=>'product_catalog_ids')) }}
+								<div class="row">
+									<div id="all-catalogs" class="col-md-12">
+										<div class="each-catalog row" data-catalog="1">
+											<div class="fieldset">
+												<div class="col-md-6">
+													<div class="each-input">
+														{{ Form::label('catalog_title_1', 'Catalog Title') }}
+														{{ Form::text('product_catalog_title_1', null, array('class'=>'product_catalog_title','id'=>'product_catalog_title_1')); }}
+													</div>																									
+												</div>
+												<div class="col-md-6">
+													<div class="each-input">								
+														{{ Form::label('catalog_1', 'Catalog File') }}
+														{{ Form::hidden('product_catalog_1', null, array('class'=>'product_catalog','id'=>'product_catalog_1')); }}
+														{{ Form::file('catalog_1', array('class'=>'catalog_upload','id'=>'catalog_1')); }}
+														<span class="uploaded_product_catalog"></span>
+													</div>														
+												</div>										
+											</div>
+										</div>
+										<div class="each-catalog row" data-catalog="2">
+											<div class="fieldset">
+												<div class="col-md-6">
+													<div class="each-input">
+														{{ Form::label('catalog_title_2', 'Catalog Title') }}
+														{{ Form::text('product_catalog_title_2', null, array('class'=>'product_catalog_title','id'=>'product_catalog_title_2')); }}
+													</div>																											
+												</div>
+												<div class="col-md-6">
+													<div class="each-input">								
+														{{ Form::label('catalog_2', 'Catalog File') }}
+														{{ Form::hidden('product_catalog_2', null, array('class'=>'product_catalog','id'=>'product_catalog_2')); }}
+														{{ Form::file('catalog_2', array('class'=>'catalog_upload','id'=>'catalog_2')); }}
+														<span class="uploaded_product_catalog"></span>
+													</div>	
+												</div>
+											</div>
+										</div>
+									</div>									
+								</div>
 							</div>	
-							<div class="extra-content">
-								<a href="#" class="add-more-key-product">Add More Key Product +</a>
+							<div class="extra-content">				
+								<a href="#" class="add-more-product-catalog">Add More Product Catalog +</a>				
 								{{ Form::button('Next', array('id'=>'list-3-next', 'class'=>'next-btn pull-right', 'data-list'=>3)) }}	
 								{{ Form::button('Back', array('id'=>'list-3-prev', 'class'=>'prev-btn pull-left', 'data-list'=>3)) }}												
 							</div>
 						</div>
+						<!-- LIST-3 END -->
+
+						<!-- LIST-4 -->						
 						<div id="list-4" class="all-list">
 							<div class="header">
-								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
+								<h3 class="pull-left">LISTING DETAILS</h3>
 								<a href="#" id="list-4-prev" class="prev-btn edit-btn pull-right" data-list="4"><i class="edit-icon"></i><span>EDIT LISTING DETAILS</span></a>
 							</div>
-							<div class="extra-content">
-								<a href="#" class="add-more-key-product">Add More Key Product +</a>
+							<div class="content">
+								<div class="row">
+									<div class="col-md-12">
+										@if(Session::has('list_message'))
+										    <p>{{ Session::get('list_message') }}</p>
+										@endif
+										<ul>
+									        @foreach($errors->all() as $error)
+									            <li>{{ $error }}</li>
+									        @endforeach
+									    </ul>
+									</div>
+								</div>
+								<div class="row">									
+									<div class="col-md-6">									
+										<div class="each-input">
+											{{ Form::label('key_personnel', 'Key Personnel') }}
+											{{ Form::text('key_personnel', null, array('class'=>'text-input')) }}											
+										</div>										
+									</div>
+									<div class="col-md-6">										
+										<div class="each-input">
+											{{ Form::label('paid_up_capital', 'Paid Up Capital') }}
+											{{ Form::text('paid_up_capital', null, array('class'=>'text-input')) }}											
+										</div>	
+																		
+									</div>
+								</div>																
+								<div class="row">
+									<div class="col-md-6">
+										<div class="each-input">
+											{{ Form::label('major_facilities', 'Major Facilities / Equipment *') }}
+											{{ Form::text('major_facilities', null, array('class'=>'text-input')) }}	
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="each-input">
+											{{ Form::label('major_customers', 'Major Customers / Project History *') }}
+											{{ Form::text('major_customers', null, array('class'=>'text-input')) }}
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="each-input">
+											{{ Form::label('quality_certification', 'Quality Certification *') }}
+											{{ Form::text('quality_certification', null, array('class'=>'text-input')) }}						
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="each-input">
+											{{ Form::label('production_capability', 'Production Capability *') }}
+											{{ Form::text('production_capability', null, array('class'=>'text-input')) }}
+										</div>
+									</div>
+								</div>								
+							</div>
+							<div class="extra-content">								
 								{{ Form::button('Next', array('id'=>'list-4-next', 'class'=>'next-btn pull-right', 'data-list'=>4)) }}	
 								{{ Form::button('Back', array('id'=>'list-4-prev', 'class'=>'prev-btn pull-left', 'data-list'=>4)) }}												
 							</div>
 						</div>
+						<!-- LIST-4 END -->
+
+						<!-- LIST-5 -->													
 						<div id="list-5" class="all-list">
 							<div class="header">
 								<h3 class="pull-left">List - Key Products (Non-compulsory)</h3>
@@ -878,7 +935,7 @@
 													<div class="each-input">
 														{{ Form::label('key_product_category_2', 'Category') }}
 														<div class="dropdown">
-															{{ Form::select('key_product_category_2', array('advertising' => 'Advertising', 'property' => 'Property')); }}						
+															{{ Form::select('key_product_category_2', array('advertising' => 'Advertising', 'property' => 'Property')); }}	
 														</div>
 													</div>
 													<div class="each-input">
@@ -911,65 +968,12 @@
 							</div>
 							<div class="extra-content">
 								<a href="#" class="add-more-key-product">Add More Key Product +</a>
-								{{ Form::button('Next', array('id'=>'list-5-next', 'class'=>'next-btn pull-right', 'data-list'=>5)) }}	
-								{{ Form::button('Back', array('id'=>'list-5-prev', 'class'=>'prev-btn pull-left', 'data-list'=>5)) }}																
+								{{ Form::submit('Save changes', array('id'=>'list-form-submit','class'=>'pull-right')) }}							
+								{{ Form::button('Back', array('id'=>'list-5-prev', 'class'=>'prev-btn pull-left', 'data-list'=>5)) }}
 							</div>
 						</div>
-						<div id="list-6" class="all-list">
-							<div class="header">
-								<h3 class="pull-left">List - Product Catalogs</h3>
-								<a href="#" id="list-6-prev" class="prev-btn edit-btn pull-right" data-list="6"><i class="edit-icon"></i><span>EDIT KEY PRODUCTS</span></a>
-							</div>						
-							<div class="content">
-								{{ Form::hidden('product_catalog_count', null, array('class'=>'text-input', 'id'=>'product_catalog_count')) }}
-								{{ Form::hidden('product_catalog_ids', null, array('class'=>'text-input', 'id'=>'product_catalog_ids')) }}
-								<div class="row">
-									<div id="all-catalogs" class="col-md-12">
-										<div class="each-catalog row" data-catalog="1">
-											<div class="fieldset">
-												<div class="col-md-6">
-													<div class="each-input">
-														{{ Form::label('catalog_title_1', 'Catalog Title') }}
-														{{ Form::text('product_catalog_title_1', null, array('class'=>'product_catalog_title','id'=>'product_catalog_title_1')); }}
-													</div>																									
-												</div>
-												<div class="col-md-6">
-													<div class="each-input">								
-														{{ Form::label('catalog_1', 'Catalog File') }}
-														{{ Form::hidden('product_catalog_1', null, array('class'=>'product_catalog','id'=>'product_catalog_1')); }}
-														{{ Form::file('catalog_1', array('class'=>'catalog_upload','id'=>'catalog_1')); }}
-														<span class="uploaded_product_catalog"></span>
-													</div>														
-												</div>										
-											</div>
-										</div>
-										<div class="each-catalog row" data-catalog="2">
-											<div class="fieldset">
-												<div class="col-md-6">
-													<div class="each-input">
-														{{ Form::label('catalog_title_2', 'Catalog Title') }}
-														{{ Form::text('product_catalog_title_2', null, array('class'=>'product_catalog_title','id'=>'product_catalog_title_2')); }}
-													</div>																											
-												</div>
-												<div class="col-md-6">
-													<div class="each-input">								
-														{{ Form::label('catalog_2', 'Catalog File') }}
-														{{ Form::hidden('product_catalog_2', null, array('class'=>'product_catalog','id'=>'product_catalog_2')); }}
-														{{ Form::file('catalog_2', array('class'=>'catalog_upload','id'=>'catalog_2')); }}
-														<span class="uploaded_product_catalog"></span>
-													</div>	
-												</div>
-											</div>
-										</div>
-									</div>									
-								</div>
-							</div>
-							<div class="extra-content">
-								<a href="#" class="add-more-product-catalog">Add More Product Catalog +</a>
-								{{ Form::submit('Save changes', array('id'=>'list-form-submit','class'=>'pull-right')) }}	
-								{{ Form::button('Back', array('id'=>'list-6-prev', 'class'=>'prev-btn pull-left', 'data-list'=>6)) }}																						
-							</div>
-						</div>
+						<!-- LIST-5 END -->						
+
 					{{ Form::close() }}
 				</div>
 			</div>
@@ -1026,7 +1030,9 @@
   	form.validate({	    
 	    rules: {
 	        company_name: "required",
-	        address_1: "required",
+	        category: "required",
+	        subcategory: "required",
+	        address_1: "required",	        
 	        post_code: "required",
 	        year_established: {
 	        	"required" : true,
@@ -1042,14 +1048,24 @@
 	        major_customers: "required",
 	        quality_certification: "required",
 	        production_capability: "required"	        
-	    }
+	    },
+	    errorPlacement: function(error, element) {
+		    if (element.attr("name") == "category" || element.attr("name") == "subcategory" ) {
+		      // element.parent('.dropdown').after(error);
+		      element.parent('.dropdown').after(error);
+		    } else {
+		      error.insertAfter(element);
+		    }
+	  	}
 	});
 
 	$('.next-btn').on('click', function(e){
 		e.preventDefault();
-		var nextList = $(this).data('list') + 1;
+		var nextList = $(this).data('list') + 1;	
+		var progress = parseInt(nextList * 20);
 
-		if(form.valid()) {
+		if(form.valid()) {			
+			$('.progress-bar').css('width', progress + '%');
 			$('.all-list').hide();
 			$('#list-'+nextList).show();
 		}
@@ -1057,8 +1073,10 @@
 
 	$('.prev-btn').on('click', function(e){
 		e.preventDefault();
-		var prevList = $(this).data('list') - 1;
+		var prevList = $(this).data('list') - 1;	
+		var progress = parseInt($(this).data('list') * 20) - 20;
 
+		$('.progress-bar').css('width', progress + '%');
 		$('.all-list').hide();
 		$('#list-'+prevList).show();
 	});

@@ -41,6 +41,7 @@ class SearchController extends \BaseController {
 		$filter = Input::get('text_search_filter');
 		$form_type = Input::get('form_type');
 		$item_limit = Input::get('item_limit', 5);
+		$sort_by = Input::get('sort_by', '');
 		$all_lists_count = 0;
 
 		if($item_limit=='all') $item_limit = 100000;
@@ -98,6 +99,8 @@ class SearchController extends \BaseController {
 			}
 			
 			$query->orderBy('type','DESC');
+			if($sort_by)
+				$query->orderBy('company_name',$sort_by);
 
 			// paginate
 			Paginator::setPageName('list_page');
@@ -122,11 +125,19 @@ class SearchController extends \BaseController {
 					Paginator::setPageName('list_page');
 					if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free')) {
 
-						$lists = Lists::with(['tags','keyproduct','productcatalog'])
+						if($sort_by) {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
+									->where('company_name', 'like', '%'.$text_search.'%')
+									->where('type','=', 'Paid')
+									->orderBy('type','DESC')
+									->orderBy('company_name',$sort_by)
+									->paginate($item_limit);
+						}else {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
 								->where('company_name', 'like', '%'.$text_search.'%')
-								->where('type','=', 'Paid')
 								->orderBy('type','DESC')
 								->paginate($item_limit);
+						}
 
 						$lists_count = Lists::with(['tags','keyproduct','productcatalog'])->where('company_name', 'like', '%'.$text_search.'%')->get();
 
@@ -134,10 +145,18 @@ class SearchController extends \BaseController {
 
 					}else {
 
-						$lists = Lists::with(['tags','keyproduct','productcatalog'])
+						if($sort_by) {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
+								->where('company_name', 'like', '%'.$text_search.'%')
+								->orderBy('type','DESC')
+								->orderBy('company_name',$sort_by)
+								->paginate($item_limit);
+						}else {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
 								->where('company_name', 'like', '%'.$text_search.'%')
 								->orderBy('type','DESC')
 								->paginate($item_limit);
+						}					
 								
 					}
 
@@ -151,13 +170,24 @@ class SearchController extends \BaseController {
 					Paginator::setPageName('list_page');
 					if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free')) {
 
-						$products = KeyProduct::with(['lists'])
-										->join('lists', 'key_products.lists_id', '=', 'lists.id')
-										->where('product_name', 'like', '%'.$text_search.'%')
-										->whereHas('lists', function($premium_query) {
-											$premium_query->where('type', '=', 'Paid');
-										})->orderBy('lists.type', 'DESC')
-										->paginate($item_limit);
+						if($sort_by) {
+							$products = KeyProduct::with(['lists'])
+											->join('lists', 'key_products.lists_id', '=', 'lists.id')
+											->where('product_name', 'like', '%'.$text_search.'%')
+											->whereHas('lists', function($premium_query) {
+												$premium_query->where('type', '=', 'Paid');
+											})->orderBy('lists.type', 'DESC')
+											->orderBy('company_name',$sort_by)
+											->paginate($item_limit);
+						}else {
+							$products = KeyProduct::with(['lists'])
+											->join('lists', 'key_products.lists_id', '=', 'lists.id')
+											->where('product_name', 'like', '%'.$text_search.'%')
+											->whereHas('lists', function($premium_query) {
+												$premium_query->where('type', '=', 'Paid');
+											})->orderBy('lists.type', 'DESC')
+											->paginate($item_limit);
+						}
 
 						$products_count = KeyProduct::with(['lists'])
 											->join('lists', 'key_products.lists_id', '=', 'lists.id')
@@ -168,11 +198,20 @@ class SearchController extends \BaseController {
 
 					}else {
 
-						$products = KeyProduct::with(['lists'])
-									->join('lists', 'key_products.lists_id', '=', 'lists.id')       							
-									->where('product_name', 'like', '%'.$text_search.'%')
-									->orderBy('lists.type', 'DESC')								
-									->paginate($item_limit);
+						if($sort_by) {
+							$products = KeyProduct::with(['lists'])
+										->join('lists', 'key_products.lists_id', '=', 'lists.id')       							
+										->where('product_name', 'like', '%'.$text_search.'%')
+										->orderBy('lists.type', 'DESC')
+										->orderBy('company_name',$sort_by)						
+										->paginate($item_limit);
+						}else {
+							$products = KeyProduct::with(['lists'])
+										->join('lists', 'key_products.lists_id', '=', 'lists.id')       							
+										->where('product_name', 'like', '%'.$text_search.'%')
+										->orderBy('lists.type', 'DESC')								
+										->paginate($item_limit);
+						}
 								
 					}
 
@@ -189,12 +228,22 @@ class SearchController extends \BaseController {
 
 					if(!Auth::check() || (Auth::check() && Auth::user()->plan == 'free')) {
 
-						$lists = Lists::with(['tags','keyproduct','productcatalog'])
-									->whereHas('tags', function($premium_query) use( &$text_search) {
-										$premium_query->where('name', 'like', '%'.$text_search.'%');
-									})->where('type', '=', 'Paid')
-									->orderBy('type','DESC')
-									->paginate($item_limit);
+						if($sort_by) {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
+										->whereHas('tags', function($premium_query) use( &$text_search) {
+											$premium_query->where('name', 'like', '%'.$text_search.'%');
+										})->where('type', '=', 'Paid')
+										->orderBy('type','DESC')
+										->orderBy('company_name',$sort_by)
+										->paginate($item_limit);
+						}else {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
+										->whereHas('tags', function($premium_query) use( &$text_search) {
+											$premium_query->where('name', 'like', '%'.$text_search.'%');
+										})->where('type', '=', 'Paid')
+										->orderBy('type','DESC')
+										->paginate($item_limit);
+						}
 
 						$lists_count = Lists::with(['tags','keyproduct','productcatalog'])
 										->whereHas('tags' , function($query) use( &$text_search) {
@@ -205,10 +254,17 @@ class SearchController extends \BaseController {
 
 					}else {
 
-						$lists = Lists::with(['tags','keyproduct','productcatalog'])
-									->whereHas('tags' , function($query) use( &$text_search) {
-										$query->where('name', 'like', '%'.$text_search.'%');
-									})->orderBy('type','DESC')->paginate($item_limit);
+						if($sort_by) {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
+										->whereHas('tags' , function($query) use( &$text_search) {
+											$query->where('name', 'like', '%'.$text_search.'%');
+										})->orderBy('type','DESC')->paginate($item_limit);
+						}else {
+							$lists = Lists::with(['tags','keyproduct','productcatalog'])
+										->whereHas('tags' , function($query) use( &$text_search) {
+											$query->where('name', 'like', '%'.$text_search.'%');
+										})->orderBy('type','DESC')->orderBy('company_name',$sort_by)->paginate($item_limit);
+						}
 								
 					}
 

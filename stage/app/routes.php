@@ -18,6 +18,9 @@ Route::resource('list', 'ListController', array('only' => array('index', 'store'
 // Route::resource('search', 'SearchController');
 Route::resource('message', 'MessageController');
 Route::resource('myaccount', 'MyaccountController');
+Route::resource('favourite', 'FavouriteController');
+Route::resource('mysearch', 'MysearchController');
+Route::resource('listadmin', 'ListAdminController');
 
 /* Search Index */
 Route::get('search', array(
@@ -44,10 +47,10 @@ Route::get('search/company/{id}', array(
 ));
 
 /* Search Result Error */
-Route::get('mysearch', array(
-  'uses' => 'MysearchController@index',
-  'as' => 'mysearch.index'
-));
+// Route::get('mysearch', array(
+//   'uses' => 'MysearchController@index',
+//   'as' => 'mysearch.index'
+// ));
 
 /* Detail Search Result */
 Route::get('search/{id}', array(
@@ -73,19 +76,28 @@ Route::post('advancedsearch/result', array(
   'as' => 'advancedsearch.store'
 ));
 
+/* Generic */
 Route::get('generic', array(
   'uses' => 'GenericController@index',
   'as' => 'generic.index'
 ));
 
+/* Generic */
 Route::post('generic/uploadfiles', array(
   'uses' => 'GenericController@uploadfiles',
   'as' => 'generic.uploadfiles'
 ));
 
+/* Generic */
 Route::post('generic/checkemailexists', array(
   'uses' => 'GenericController@checkemailexists',
   'as' => 'generic.checkemailexists'
+));
+
+/* My List */
+Route::get('mylist', array(
+  'uses' => 'MyListController@index',
+  'as' => 'mylist.index'
 ));
 
 // admin

@@ -11,225 +11,106 @@
 					</div>
 					<div class="content">					
 						<div class="favourite-companies-table">
-							<ul class="table-head">
-								<li>
-									<div class="each-col">
-										<h5>Category</h5>
-									</div>
-									<div class="each-col">
-										<h5>Location</h5>
-									</div>
-									<div class="each-col">
-										<h5>Company <a href="#" class="sort"></a></h5>
-									</div>
-									<div class="each-col">
-										<h5>Key Products/ Services</h5>					
-									</div>
-									<div class="each-col">
-										<h5>Shortcut</h5>
-									</div>
-								</li>
-							</ul>
-							<ul class="table-content">
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-1"></a>
-									</div>
-									<div class="each-col">
-										<i class="country sg"></i>
-									</div>
-									<div class="each-col">
-										<p>Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>A part of distribution copper tube and aluminium goods in trading.</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-2"></a>
-									</div>
-									<div class="each-col">
-										<i class="country th"></i>
-									</div>
-									<div class="each-col">
-										<p>Asahi Kokusai Techneion Pte. Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>System Engineering Kokusai Keiso is ready to meet all your requirements with our competent system engineers.</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-3"></a>
-									</div>
-									<div class="each-col">
-										<i class="country sg"></i>
-									</div>
-									<div class="each-col">
-										<p>ARRK Malaysia Sdn. Bhd.</p>									
-									</div>
-									<div class="each-col">
-										<p>Manufacturing of aluminium parts for automobile & motorcycle and aluminium wheel for automobile & motorcycle.</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-1"></a>
-									</div>
-									<div class="each-col">
-										<i class="country sg"></i>
-									</div>
-									<div class="each-col">
-										<p>Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>A part of distribution copper tube and aluminium goods in trading.</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-1"></a>
-									</div>
-									<div class="each-col">
-										<i class="country id"></i>
-									</div>
-									<div class="each-col">
-										<p>SMK Electronics Pte. Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>Bearings, Powder Metallurgy, Decorative Printed Pater, Photomasks...</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-2"></a>
-									</div>
-									<div class="each-col">
-										<i class="country th"></i>
-									</div>
-									<div class="each-col">
-										<p>Asahi Kokusai Techneion Pte. Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>System Engineering Kokusai Keiso is ready to meet all your requirements with our competent system engineers.</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-3"></a>
-									</div>
-									<div class="each-col">
-										<i class="country sg"></i>
-									</div>
-									<div class="each-col">
-										<p>ARRK Malaysia Sdn. Bhd.</p>									
-									</div>
-									<div class="each-col">
-										<p>Manufacturing of aluminium parts for automobile & motorcycle and aluminium wheel for automobile & motorcycle.</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-1"></a>
-									</div>
-									<div class="each-col">
-										<i class="country id"></i>
-									</div>
-									<div class="each-col">
-										<p>SMK Electronics Pte. Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>Bearings, Powder Metallurgy, Decorative Printed Pater, Photomasks...</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<a href="#" class="category category-1"></a>
-									</div>
-									<div class="each-col">
-										<i class="country id"></i>
-									</div>
-									<div class="each-col">
-										<p>SMK Electronics Pte. Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p>Bearings, Powder Metallurgy, Decorative Printed Pater, Photomasks...</p>
-									</div>
-									<div class="each-col">
-										<ul class="ctas">
-											<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
-											<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
-											<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
-											<li><a href="#" class="download-pdf">Download PDF</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
+							@if($favourites && count($favourites) > 0)
+								<ul class="table-head">
+									<li>
+										<div class="each-col">
+											<h5>Category</h5>
+										</div>
+										<div class="each-col">
+											<h5>Location</h5>
+										</div>
+										<div class="each-col">
+											<h5>Company <a href="#" class="sort"></a></h5>
+										</div>
+										<div class="each-col">
+											<h5>Key Products/ Services</h5>					
+										</div>
+										<div class="each-col">
+											<h5>Shortcut</h5>
+										</div>
+									</li>
+								</ul>
+								<ul class="table-content">								
+									@foreach($favourites as $favourite)
+										<?php $list = Lists::find($favourite->list_id) ?>
+										<?php $key_products = KeyProduct::where('lists_id', '=', $favourite->list_id)->get() ?>
+										<li>
+											<div class="each-col">
+												<a href="#" class="category category-1"></a>
+											</div>
+											<div class="each-col">
+												<i class="country {{ $list->country }}"></i>
+											</div>
+											<div class="each-col">
+												<p>{{ $list->company_name }}</p>									
+											</div>
+											<div class="each-col">
+												<ul>												
+													@foreach($key_products as $key_product)
+														<li><p>{{ $key_product->product_name }}</p></li>
+													@endforeach
+												</ul>
+											</div>
+											<div class="each-col">
+												<ul class="ctas">
+													<li><a href="{{ route('search.show', $list->id) }}" class="view-details"><i class="view-details"></i></a></li>										
+													<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+													<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+													<li><a href="#" class="download-pdf">Download PDF</a></li>
+												</ul>
+											</div>
+										</li>
+									@endforeach								
+									{{-- <li>
+										<div class="each-col">
+											<a href="#" class="category category-2"></a>
+										</div>
+										<div class="each-col">
+											<i class="country th"></i>
+										</div>
+										<div class="each-col">
+											<p>Asahi Kokusai Techneion Pte. Ltd.</p>									
+										</div>
+										<div class="each-col">
+											<p>System Engineering Kokusai Keiso is ready to meet all your requirements with our competent system engineers.</p>
+										</div>
+										<div class="each-col">
+											<ul class="ctas">
+												<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+												<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+												<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
+												<li><a href="#" class="download-pdf">Download PDF</a></li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<div class="each-col">
+											<a href="#" class="category category-3"></a>
+										</div>
+										<div class="each-col">
+											<i class="country sg"></i>
+										</div>
+										<div class="each-col">
+											<p>ARRK Malaysia Sdn. Bhd.</p>									
+										</div>
+										<div class="each-col">
+											<p>Manufacturing of aluminium parts for automobile & motorcycle and aluminium wheel for automobile & motorcycle.</p>
+										</div>
+										<div class="each-col">
+											<ul class="ctas">
+												<li><a href="#" class="view-details"><i class="view-details"></i></a></li>										
+												<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+												<li><a href="#" class="download-pdf"><i class="download-pdf"></i></a></li>
+												<li><a href="#" class="download-pdf">Download PDF</a></li>
+											</ul>
+										</div>
+									</li> --}}
+									
+								</ul>
+							@else
+								<li><span>No favourites was found.</span></li>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -258,146 +139,91 @@
 								</li>
 							</ul>
 							<ul class="table-content">
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
-								<li>
-									<div class="each-col">
-										<span class="date">09/09/14</span>
-									</div>									
-									<div class="each-col">
-										<p class="company-name">Nalco Co., Ltd.</p>									
-									</div>
-									<div class="each-col">
-										<p class="keywords">Electronic + Wireless + Headphone + Devices + 16km</p>
-									</div>
-									<div class="each-col">
-										<a href="#" class="view-pdf"><i class="view-pdf"></i> Go to the page</a>
-									</div>
-								</li>
+								@foreach($my_searches as $mysearch)
+									<li>
+										<div class="each-col">
+											<span class="date">{{ date('d/m/y', strtotime($mysearch->created_at)) }}</span>
+										</div>									
+										<div class="each-col">
+											<p class="company-name">{{ $mysearch->name }}</p>									
+										</div>
+										<div class="each-col">
+											<?php $keywords = json_decode($mysearch->search_params); ?>
+											<p class="keywords">
+											<?php $keyword_exists = false; ?>
+											<?php $form_type = $keywords->form_type; ?>
+											@if($keywords->form_type=='smart')												
+												@if(!empty($keywords->category))
+													{{ $keywords->category }}
+													<?php $keyword_exists = true; ?>
+													@if(!empty($keywords->subcategory) || !empty($keywords->country) || !empty($keywords->origin_country))
+														{{ '+' }}
+													@endif
+												@endif
+												@if(!empty($keywords->subcategory))
+													{{ $keywords->subcategory }}
+													<?php $keyword_exists = true; ?>
+													@if(!empty($keywords->country) || !empty($keywords->origin_country))
+														{{ '+' }}
+													@endif
+												@endif
+												@if(!empty($keywords->country))
+													{{ Helper::code_to_country($keywords->country) }}
+													<?php $keyword_exists = true; ?>
+													@if(!empty($keywords->origin_country))
+														{{ '+' }}
+													@endif
+												@endif
+												@if(!empty($keywords->origin_country))
+													{{ Helper::code_to_country($keywords->origin_country) }}													
+													<?php $keyword_exists = true; ?>
+												@endif
+
+												@if($keyword_exists==false)
+													{{ "All" }}
+												@endif
+											@elseif($keywords->form_type=='text')
+												@if(!empty($keywords->text_search))
+													{{ $keywords->text_search }}
+												@endif
+											@elseif($keywords->form_type=='advanced')
+												@if(!empty($keywords->industry_estate))
+													{{ $keywords->industry_estate }}
+													<?php $keyword_exists = true; ?>
+													@if(!empty($keywords->post_code) || !empty($keywords->multiple_countries))
+														{{ '+' }}
+													@endif
+												@endif
+												@if(!empty($keywords->post_code))
+													{{ $keywords->post_code }}
+													<?php $keyword_exists = true; ?>
+													@if(!empty($keywords->multiple_countries))
+														{{ '+' }}
+													@endif
+												@endif
+												@if(!empty($keywords->multiple_countries))
+													@foreach($keywords->multiple_countries as $country)
+														@if(!empty($country))
+															{{ Helper::code_to_country($country) }}
+															<?php $keyword_exists = true; ?>
+														@endif
+													@endforeach													
+												@endif
+
+												@if($keyword_exists==false)
+													{{ "All" }}
+												@endif
+											@endif
+
+											</p>
+										</div>
+										<div class="each-col">
+											<?php $keywords = json_decode($mysearch->search_params, true); unset($keywords['_token']); $urlEncodedString = http_build_query($keywords); ?>
+
+											<a href="{{ ($form_type!=='advanced') ? route('search.store').'?'.$urlEncodedString : route('advancedsearch.store').'?'.$urlEncodedString }}" class="go-to-search"><i class="view-pdf"></i> Go to the page</a>
+										</div>
+									</li>
+								@endforeach
 							</ul>
 						</div>
 					</div>

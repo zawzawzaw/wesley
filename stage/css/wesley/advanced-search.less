@@ -54,6 +54,51 @@
 					text-decoration: none;
 				}
 			}
+			.save-search-form {
+			    width: 200px;
+			    background-color: #eee;
+			    display: block;
+			    padding: 20px;
+			    position: absolute;
+			    right: 0;
+			    top: 90px;
+			    z-index: 999;
+			    visibility: hidden;
+			    .opacity(0);
+			    .transition(.5s);
+			    &.show-hide {
+			    	visibility: visible;
+			    	.opacity(1);
+			    }
+
+				input[type=text] {
+					background-color: #f9f9f9;
+					border: 1px solid #d6d6d6;
+					border-radius: 5px;
+					min-height: 35px;
+					padding-left: 13px;
+					.alright-sans-regular;
+					font-size: 14px;
+					line-height: 36px;
+					letter-spacing: 0.01em;
+					color: @dark-grey-2;
+					display: block;			
+					margin-bottom: 20px;		
+				}
+				#save-search {
+					border: none;
+					.alright-sans-medium;
+					font-size: 14px;
+					letter-spacing: 0.05em;
+					color: @milky-white;	
+					text-transform: uppercase;
+					padding: 6px 24px;
+					text-decoration: none;
+					.gradient(#00c7dd, #00a3c4);
+					border-radius: 5px;	
+					width: 100%;	
+				}
+			}
 			h1 {
 				.alright-sans-regular;
 				font-size: 31px;
@@ -105,10 +150,23 @@
     			float: left;
     		}
 
-    		> .dropdown {
-    			float: right;
-    			width: 110px;
+    		>.dropdown-fitler {
+    			text-align: right;
+				.dropdown {
+	    			// float: right;
+	    			width: 160px;
+	    			margin-right: 10px;
+	    			&:last-child {
+	    				width: 120px;
+	    				margin-right: 0px;
+	    			}
+	    		}
     		}
+
+    		// > .dropdown {
+    		// 	float: right;
+    		// 	width: 110px;
+    		// } 
 
 			ul.premium-listings-table {
 				// background-color: #fbfbfb;

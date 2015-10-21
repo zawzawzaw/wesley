@@ -1,0 +1,215 @@
+#list-admin {
+	padding-top: 98+91px;
+    padding-bottom: 500px;
+	position: relative;
+
+    .listing-details {
+		display: inline-block;
+		width: 74%;
+		vertical-align: top;
+		padding-right: 75px;
+
+		.header {
+			display: inline-block;
+		    width: 100%;	  
+		    padding-bottom: 15px;
+		    padding-top: 55px;
+			h3 {
+				.alright-sans-bold;
+				font-size: 15px;
+				letter-spacing: 0.05em;
+				color: @dark-grey-2;	
+				text-transform: uppercase;		
+			}
+			a.edit-btn {
+				.alright-sans-medium;
+				font-size: 13px;
+				letter-spacing: 0.05em;
+				color: @new-grey;
+
+				i.edit-icon {
+					width: 12px;
+					height: 12px;
+					display: inline-block;
+					background: url(../images/icons/edit.png) no-repeat;
+					vertical-align: middle;
+				}
+				span {
+					vertical-align: middle;
+					margin-left: 5px;
+				}
+				&:hover {
+					color: @light-blue;
+					text-decoration: none;
+					i.edit-icon {					
+						background: url(../images/icons/edit.png) no-repeat 0 -12px;				
+					}
+				}
+			}
+		}
+		.content {
+			label {
+				.alright-sans-medium;
+				font-size: 11px;
+				line-height: 30px;
+				letter-spacing: 0.05em;
+				color: @new-grey;
+				text-transform: uppercase;
+
+				span {
+					margin-right: 5px;
+				}
+
+				p {
+					display: inline-block;
+				    vertical-align: middle;
+				    margin-bottom: -3px;
+				}
+
+				&.error {
+					color: red;
+				    text-transform: initial;
+				    // margin-top: -5px;
+				    position: absolute;
+					bottom: -25px;
+				}
+			}
+
+			.each-input {
+				// height: 80px;
+				position: relative;
+				margin-bottom: 15px;
+
+				#lbl_type {
+					display: block;
+				}
+
+				label[for="permissions"] {
+					display: block;
+				}
+
+				.each-type {
+					display: inline-block;
+					position: relative;
+					vertical-align: middle;
+					width: 85%;
+
+					label {
+						.alright-sans-regular;						
+					}
+				}
+				
+				input[type=text], textarea {
+					background-color: #f9f9f9;
+					border: 1px solid #d6d6d6;
+					border-radius: 5px;
+					min-height: 35px;
+					padding-left: 13px;
+					.alright-sans-regular;
+					font-size: 14px;
+					line-height: 36px;
+					letter-spacing: 0.01em;
+					color: @dark-grey-2;
+					display: block;			
+					width: 100%;		
+				}				
+
+				.dropdown {
+					width: 100%;
+					display: block;
+					&:before {
+						background:url(../images/icons/dropdown-2.png) no-repeat 0px 0px;
+						height: 37px;
+					}
+					select {
+						background-color: #f9f9f9;
+						border: 1px solid #d6d6d6;
+						height: 37px;
+						.alright-sans-regular;
+						font-size: 14px;
+						line-height: 36px;
+						letter-spacing: 0.01em;
+						color: @dark-grey-2;
+					}
+				}
+			}
+		}
+		.extra-content {
+			padding-top: 30px;
+			position: relative;
+			input[type=submit], button {
+				border: none;
+				.alright-sans-medium;
+				font-size: 14px;
+				letter-spacing: 0.05em;
+				color: @milky-white;	
+				text-transform: uppercase;
+				padding: 6px 24px;
+				text-decoration: none;
+				.gradient(#00c7dd, #00a3c4);
+				border-radius: 5px;										
+			}
+		}
+	}
+
+	.sidebar {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		vertical-align: top;
+		padding-left: 20px;
+		background-color: #f4f5f6;
+		.sidebar-content {
+			width: 15%;
+			.header {
+				border-bottom: 1px solid #dbdbdb;
+				display: inline-block;
+			    width: 100%;
+			    padding-bottom: 6px;
+			    padding-top: 55px;
+			    padding-left: 10px;
+				h3 {
+					.alright-sans-bold;
+					font-size: 15px;
+					letter-spacing: 0.05em;
+					color: @dark-grey-2;	
+					text-transform: uppercase;	
+				}
+			}
+			.content {
+				padding-left: 10px;
+				.extra-info {
+					margin-bottom: 30px;
+					.updated-date-time {
+						.alright-sans-regular;
+						font-size: 11px;
+						line-height: 18px;
+						letter-spacing: 0.01em;
+						color: #668ec4;
+					}
+				}
+
+				.account-info {
+					margin-bottom: 30px;
+					h5 {
+						.alright-sans-medium;
+						font-size: 11px;
+						// line-height: 40px;
+						letter-spacing: 0.05em;
+						color: @new-grey;
+						text-transform: uppercase;
+					}
+					p {
+						.proxima_nova-semibold;
+						font-size: 14px;
+						line-height: 20px;
+						letter-spacing: 0.01em;
+						color: @dark-grey-2;
+					}
+				}
+			}
+		}
+		
+	}
+}

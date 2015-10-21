@@ -1,251 +1,4 @@
 @section('content')
-<?php 
- function code_to_country( $code ){
-
-    $code = strtolower($code);
-
-    $countryList = array(
-        "us"=>"United States",
-		"gb"=>"United Kingdom",
-		"af"=>"Afghanistan (&#8235;افغانستان&#8236;&lrm;)",
-		"al"=>"Albania (Shqipëri)",
-		"dz"=>"Algeria (&#8235;الجزائر&#8236;&lrm;)",
-		"as"=>"American Samoa",
-		"ad"=>"Andorra",
-		"ao"=>"Angola",
-		"ai"=>"Anguilla",
-		"ag"=>"Antigua and Barbuda",
-		"ar"=>"Argentina",
-		"am"=>"Armenia (Հայաստան)",
-		"aw"=>"Aruba",
-		"au"=>"Australia",
-		"at"=>"Austria (Österreich)",
-		"az"=>"Azerbaijan (Azərbaycan)",
-		"bs"=>"Bahamas",
-		"bh"=>"Bahrain (&#8235;البحرين&#8236;&lrm;)",
-		"bd"=>"Bangladesh (বাংলাদেশ)",
-		"bb"=>"Barbados",
-		"by"=>"Belarus (Беларусь)",
-		"be"=>"Belgium (België)",
-		"bz"=>"Belize",
-		"bj"=>"Benin (Bénin)",
-		"bm"=>"Bermuda",
-		"bt"=>"Bhutan (འབྲུག)",
-		"bo"=>"Bolivia",
-		"ba"=>"Bosnia and Herzegovina (Босна и Херцеговина)",
-		"bw"=>"Botswana",
-		"br"=>"Brazil (Brasil)",
-		"io"=>"British Indian Ocean Territory",
-		"vg"=>"British Virgin Islands",
-		"bn"=>"Brunei",
-		"bg"=>"Bulgaria (България)",
-		"bf"=>"Burkina Faso",
-		"bi"=>"Burundi (Uburundi)",
-		"kh"=>"Cambodia (កម្ពុជា)",
-		"cm"=>"Cameroon (Cameroun)",
-		"ca"=>"Canada",
-		"cv"=>"Cape Verde (Kabu Verdi)",
-		"bq"=>"Caribbean Netherlands",
-		"ky"=>"Cayman Islands",
-		"cf"=>"Central African Republic (République centrafricaine)",
-		"td"=>"Chad (Tchad)",
-		"cl"=>"Chile",
-		"cn"=>"China (中国)",
-		"co"=>"Colombia",
-		"km"=>"Comoros (&#8235;جزر القمر&#8236;&lrm;)",
-		"cd"=>"Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)",
-		"cg"=>"Congo (Republic) (Congo-Brazzaville)",
-		"ck"=>"Cook Islands",
-		"cr"=>"Costa Rica",
-		"ci"=>"Côte d’Ivoire",
-		"hr"=>"Croatia (Hrvatska)",
-		"cu"=>"Cuba",
-		"cw"=>"Curaçao",
-		"cy"=>"Cyprus (Κύπρος)",
-		"cz"=>"Czech Republic (Česká republika)",
-		"dk"=>"Denmark (Danmark)",
-		"dj"=>"Djibouti",
-		"dm"=>"Dominica",
-		"do"=>"Dominican Republic (República Dominicana)",
-		"ec"=>"Ecuador",
-		"eg"=>"Egypt (&#8235;مصر&#8236;&lrm;)",
-		"sv"=>"El Salvador",
-		"gq"=>"Equatorial Guinea (Guinea Ecuatorial)",
-		"er"=>"Eritrea",
-		"ee"=>"Estonia (Eesti)",
-		"et"=>"Ethiopia",
-		"fk"=>"Falkland Islands (Islas Malvinas)",
-		"fo"=>"Faroe Islands (Føroyar)",
-		"fj"=>"Fiji",
-		"fi"=>"Finland (Suomi)",
-		"fr"=>"France",
-		"gf"=>"French Guiana (Guyane française)",
-		"pf"=>"French Polynesia (Polynésie française)",
-		"ga"=>"Gabon",
-		"gm"=>"Gambia",
-		"ge"=>"Georgia (საქართველო)",
-		"de"=>"Germany (Deutschland)",
-		"gh"=>"Ghana (Gaana)",
-		"gi"=>"Gibraltar",
-		"gr"=>"Greece (Ελλάδα)",
-		"gl"=>"Greenland (Kalaallit Nunaat)",
-		"gd"=>"Grenada",
-		"gp"=>"Guadeloupe",
-		"gu"=>"Guam",
-		"gt"=>"Guatemala",
-		"gn"=>"Guinea (Guinée)",
-		"gw"=>"Guinea-Bissau (Guiné Bissau)",
-		"gy"=>"Guyana",
-		"ht"=>"Haiti",
-		"hn"=>"Honduras",
-		"hk"=>"Hong Kong (香港)",
-		"hu"=>"Hungary (Magyarország)",
-		"is"=>"Iceland (Ísland)",
-		"in"=>"India (भारत)",
-		"id"=>"Indonesia",
-		"ir"=>"Iran (&#8235;ایران&#8236;&lrm;)",
-		"iq"=>"Iraq (&#8235;العراق&#8236;&lrm;)",
-		"ie"=>"Ireland",
-		"il"=>"Israel (&#8235;ישראל&#8236;&lrm;)",
-		"it"=>"Italy (Italia)",
-		"jm"=>"Jamaica",
-		"jp"=>"Japan (日本)",
-		"jo"=>"Jordan (&#8235;الأردن&#8236;&lrm;)",
-		"kz"=>"Kazakhstan (Казахстан)",
-		"ke"=>"Kenya",
-		"ki"=>"Kiribati",
-		"kw"=>"Kuwait (&#8235;الكويت&#8236;&lrm;)",
-		"kg"=>"Kyrgyzstan (Кыргызстан)",
-		"la"=>"Laos (ລາວ)",
-		"lv"=>"Latvia (Latvija)",
-		"lb"=>"Lebanon (&#8235;لبنان&#8236;&lrm;)",
-		"ls"=>"Lesotho",
-		"lr"=>"Liberia",
-		"ly"=>"Libya (&#8235;ليبيا&#8236;&lrm;)",
-		"li"=>"Liechtenstein",
-		"lt"=>"Lithuania (Lietuva)",
-		"lu"=>"Luxembourg",
-		"mo"=>"Macau (澳門)",
-		"mk"=>"Macedonia (FYROM) (Македонија)",
-		"mg"=>"Madagascar (Madagasikara)",
-		"mw"=>"Malawi",
-		"my"=>"Malaysia",
-		"mv"=>"Maldives",
-		"ml"=>"Mali",
-		"mt"=>"Malta",
-		"mh"=>"Marshall Islands",
-		"mq"=>"Martinique",
-		"mr"=>"Mauritania (&#8235;موريتانيا&#8236;&lrm;)",
-		"mu"=>"Mauritius (Moris)",
-		"mx"=>"Mexico (México)",
-		"fm"=>"Micronesia",
-		"md"=>"Moldova (Republica Moldova)",
-		"mc"=>"Monaco",
-		"mn"=>"Mongolia (Монгол)",
-		"me"=>"Montenegro (Crna Gora)",
-		"ms"=>"Montserrat",
-		"ma"=>"Morocco (&#8235;المغرب&#8236;&lrm;)",
-		"mz"=>"Mozambique (Moçambique)",
-		"mm"=>"Myanmar (Burma) (မြန်မာ)",
-		"na"=>"Namibia (Namibië)",
-		"nr"=>"Nauru",
-		"np"=>"Nepal (नेपाल)",
-		"nl"=>"Netherlands (Nederland)",
-		"nc"=>"New Caledonia (Nouvelle-Calédonie)",
-		"nz"=>"New Zealand",
-		"ni"=>"Nicaragua",
-		"ne"=>"Niger (Nijar)",
-		"ng"=>"Nigeria",
-		"nu"=>"Niue",
-		"nf"=>"Norfolk Island",
-		"kp"=>"North Korea (조선 민주주의 인민 공화국)",
-		"mp"=>"Northern Mariana Islands",
-		"no"=>"Norway (Norge)",
-		"om"=>"Oman (&#8235;عُمان&#8236;&lrm;)",
-		"pk"=>"Pakistan (&#8235;پاکستان&#8236;&lrm;)",
-		"pw"=>"Palau",
-		"ps"=>"Palestine (&#8235;فلسطين&#8236;&lrm;)",
-		"pa"=>"Panama (Panamá)",
-		"pg"=>"Papua New Guinea",
-		"py"=>"Paraguay",
-		"pe"=>"Peru (Perú)",
-		"ph"=>"Philippines",
-		"pl"=>"Poland (Polska)",
-		"pt"=>"Portugal",
-		"pr"=>"Puerto Rico",
-		"qa"=>"Qatar (&#8235;قطر&#8236;&lrm;)",
-		"re"=>"Réunion (La Réunion)",
-		"ro"=>"Romania (România)",
-		"ru"=>"Russia (Россия)",
-		"rw"=>"Rwanda",
-		"bl"=>"Saint Barthélemy (Saint-Barthélemy)",
-		"sh"=>"Saint Helena",
-		"kn"=>"Saint Kitts and Nevis",
-		"lc"=>"Saint Lucia",
-		"mf"=>"Saint Martin (Saint-Martin (partie française))",
-		"pm"=>"Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)",
-		"vc"=>"Saint Vincent and the Grenadines",
-		"ws"=>"Samoa",
-		"sm"=>"San Marino",
-		"st"=>"São Tomé and Príncipe (São Tomé e Príncipe)",
-		"sa"=>"Saudi Arabia (&#8235;المملكة العربية السعودية&#8236;&lrm;)",
-		"sn"=>"Senegal (Sénégal)",
-		"rs"=>"Serbia (Србија)",
-		"sc"=>"Seychelles",
-		"sl"=>"Sierra Leone",
-		"sg"=>"Singapore",
-		"sx"=>"Sint Maarten",
-		"sk"=>"Slovakia (Slovensko)",
-		"si"=>"Slovenia (Slovenija)",
-		"sb"=>"Solomon Islands",
-		"so"=>"Somalia (Soomaaliya)",
-		"za"=>"South Africa",
-		"kr"=>"South Korea (대한민국)",
-		"ss"=>"South Sudan (&#8235;جنوب السودان&#8236;&lrm;)",
-		"es"=>"Spain (España)",
-		"lk"=>"Sri Lanka (ශ්&zwj;රී ලංකාව)",
-		"sd"=>"Sudan (&#8235;السودان&#8236;&lrm;)",
-		"sr"=>"Suriname",
-		"sz"=>"Swaziland",
-		"se"=>"Sweden (Sverige)",
-		"ch"=>"Switzerland (Schweiz)",
-		"sy"=>"Syria (&#8235;سوريا&#8236;&lrm;)",
-		"tw"=>"Taiwan (台灣)",
-		"tj"=>"Tajikistan",
-		"tz"=>"Tanzania",
-		"th"=>"Thailand (ไทย)",
-		"tl"=>"Timor-Leste",
-		"tg"=>"Togo",
-		"tk"=>"Tokelau",
-		"to"=>"Tonga",
-		"tt"=>"Trinidad and Tobago",
-		"tn"=>"Tunisia (&#8235;تونس&#8236;&lrm;)",
-		"tr"=>"Turkey (Türkiye)",
-		"tm"=>"Turkmenistan",
-		"tc"=>"Turks and Caicos Islands",
-		"tv"=>"Tuvalu",
-		"vi"=>"U.S. Virgin Islands",
-		"ug"=>"Uganda",
-		"ua"=>"Ukraine (Україна)",
-		"ae"=>"United Arab Emirates (&#8235;الإمارات العربية المتحدة&#8236;&lrm;)",
-		"gb"=>"United Kingdom",
-		"us"=>"United States",
-		"uy"=>"Uruguay",
-		"uz"=>"Uzbekistan (Oʻzbekiston)",
-		"vu"=>"Vanuatu",
-		"va"=>"Vatican City (Città del Vaticano)",
-		"ve"=>"Venezuela",
-		"vn"=>"Vietnam (Việt Nam)",
-		"wf"=>"Wallis and Futuna",
-		"ye"=>"Yemen (&#8235;اليمن&#8236;&lrm;)",
-		"zm"=>"Zambia",
-		"zw"=>"Zimbabwe");
-
-    if( !$countryList[$code] ) return $code;
-    else return $countryList[$code];
-}
-?>
-
 
 <div id="search-result">
 	<div class="container">
@@ -257,7 +10,13 @@
 			        @elseif(Session::has('text_search_message'))
 			        	<h5 class="keywords">{{ Session::get('text_search_message') }}</h5>
 			        @else
-			        	<h5>Result on:</h5><a href="#" class="save-search"><i class="plus"></i> <span>Save Search</span></a>
+			        	<h5>Result on:</h5>
+			        	<a href="#" class="save-search"><i class="plus"></i> <span>Save Search</span></a>
+			        	<div class="save-search-form">
+				        	{{ Form::text('search_name', null, array('class'=>'search_name text-input', 'placeholder'=> 'Search Name')) }}
+				        	{{ Form::text('remarks', null, array('class'=>'remarks text-input', 'placeholder'=> 'Remarks')) }}
+				        	<a href="{{ route('mysearch.store') }}" id="save-search">Save Search</a>
+			        	</div>
 			        @endif
 
 			        <ul>
@@ -289,14 +48,14 @@
 							@endif
 							<?php $no_filter = false; ?>
 						@endif
-						@if(Input::has('country'))
-							{{ code_to_country(Input::get('country', null)) }}
+						@if(Input::has('country'))							
+							{{ Helper::code_to_country(Input::get('country', null)) }}
 							@if(Input::has('origin_country'))+							
 							@endif
 							<?php $no_filter = false; ?>
 						@endif
 						@if(Input::has('origin_country'))
-							{{ code_to_country(Input::get('origin_country', null)) }}
+							{{ Helper::code_to_country(Input::get('origin_country', null)) }}
 						@endif
 
 						@if($no_filter)
@@ -312,17 +71,29 @@
 					<div class="all-listing-container" style="width:100%!important;">
 					@endif
 						<h5>All listings</h5>
-						<div class="dropdown">
-							{{
-								Form::select('item_limit', array(
-								    'all' => 'All',
-								    '5' => '5',
-								    '10' => '10',
-								    '25' => '25',
-								    '50' => '50',
-								    '100' => '100'
-								), Input::get('item_limit', null), array('id' => 'item_limit'));
-							}}
+						<div class="dropdown-fitler">
+							<div class="dropdown">
+								{{
+									Form::select('sort_by', array(
+									    '' => 'Sort by',
+									    'asc' => 'Name (A - Z)',
+									    'desc' => 'Name (Z - A)',
+									    'proximity' => 'Proximity'
+									), Input::get('sort_by', null), array('id' => 'sort_by'));
+								}}
+							</div>
+							<div class="dropdown">
+								{{
+									Form::select('item_limit', array(
+									    'all' => 'All',
+									    '5' => '5',
+									    '10' => '10',
+									    '25' => '25',
+									    '50' => '50',
+									    '100' => '100'
+									), Input::get('item_limit', null), array('id' => 'item_limit'));
+								}}
+							</div>
 						</div>
 						<div class="clear"></div>
 						<ul class="premium-listings-table">
@@ -354,7 +125,7 @@
 										<div class="each-col">
 											<ul class="ctas">
 												<li><a href="{{ route('search.show', $list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
-												<li><a href="#" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
+												<li><a href="{{ route('favourite.store') }}" data-list-id="{{ $list->id }}" class="favourite"><i class="add-to-favourite"></i> <span>Add to favourites</span></a></li>
 												<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
 											</ul>
 										</div>
@@ -371,7 +142,8 @@
 				                  		'subcategory' => Input::get('subcategory', null),
 				                  		'location' => Input::get('location', null),
 				                  		'country' => Input::get('country', null),		                  		
-				                  		'item_limit' => Input::get('item_limit', null),			                  		
+				                  		'item_limit' => Input::get('item_limit', null),
+				                  		'sort_by' => Input::get('sort_by', null),		                  		
 				                  		'list_page' => Input::get('list_page', null)			                  		
 			                  		); 
 			                  	?>
@@ -418,7 +190,9 @@
               		'category' => Input::get('category', null),
               		'subcategory' => Input::get('subcategory', null),
               		'location' => Input::get('location', null),
-              		'country' => Input::get('country', null)			                  		
+              		'country' => Input::get('country', null),			                  		
+              		'item_limit' => Input::get('item_limit', null),			                  		
+              		'sort_by' => Input::get('sort_by', null)			                  		
           		); 
           	?>
 
@@ -428,6 +202,135 @@
 
 				window.location.href  = url + '&item_limit=' + item_limit;
 			});
+
+			$('select[name="sort_by"]').on('change', function(){
+				var sort_by = $(this).val();
+				var url = '{{ route('search.store', $search_params); }}';
+
+				window.location.href  = url + '&sort_by=' + sort_by;
+			});
+
+			//////
+
+			var request;
+			var makeRequest = function(Data, URL, Method) {
+
+		    	var request = $.ajax({
+				    url: URL,
+				    type: Method,
+				    data: Data,
+				    success: function(response) {
+				        // if success remove current item
+				        // console.log(response);
+				    },
+		            error: function( error ){
+		                // Log any error.
+		                // console.log( "ERROR:", error );
+		            }
+				});
+
+				return request;
+			};
+
+			var postRequest = false;
+			$('.favourite').on('click', function(e){
+				e.preventDefault();
+				var current_url = $(this).attr('href');
+
+				var list_id = $(this).data('list-id');
+				var data = { 
+					'list_id' : list_id
+				};
+
+				if(postRequest) {
+					request.abort();
+				}
+
+				postRequest = makeRequest(data, current_url, 'POST');				
+
+				postRequest.done(function(data, textStatus, jqXHR){
+		        	
+		        	if(jqXHR.status==200) {
+		        		
+		        		alert('Successfully added to your favourite list.');
+
+		        		postRequest = false;
+
+		        	}
+
+		        });
+
+		        postRequest.always(function(data, textStatus, jqXHR){
+
+		        	if(jqXHR.status!=200) {
+		        		var returnData = $.parseJSON(data.responseText);
+			        	if(returnData.status=='duplicate')
+			        		alert('This company is already in your favourite!');
+			        	else
+			        		console.log(returnData.message);
+
+			        	postRequest = false;	
+		        	}		        	
+
+		        });
+
+			});
+
+			////////////
+
+			var postRequest = false;
+			$('#save-search').on('click', function(e){
+				e.preventDefault();
+				var current_url = $(this).attr('href');
+				var search_params = '{{ json_encode(Input::all()) }}';
+				var search_name = ($('.search_name').val()) ? $('.search_name').val() : 'your search';				
+				var remarks = ($('.remarks').val()) ? $('.remarks').val() : '';
+				var that = $(this);
+
+				var data = {
+					'search_params' : search_params,
+					'name' : search_name,
+					'remarks' : remarks
+				};
+
+				if(postRequest) {
+					request.abort();
+				}
+
+				postRequest = makeRequest(data, current_url, 'POST');				
+
+				postRequest.done(function(data, textStatus, jqXHR){
+		        	
+		        	if(jqXHR.status==200) {		        		
+		        		alert('Successfully saved this search.');
+		        		console.log(data);
+
+		        		postRequest = false;
+		        	}
+
+		        });
+
+		        postRequest.always(function(data, textStatus, jqXHR){
+
+		        	if(jqXHR.status!=200) {
+		        		var returnData = $.parseJSON(data.responseText);
+		        		if(returnData.status=='duplicate')
+			        		alert('This search is already saved!');
+			        	else			        	
+			        		console.log(returnData.message);
+
+			        	postRequest = false;	
+		        	}		        	
+
+		        });
+
+			});
+
+			$('.save-search').on('click', function(e){
+				e.preventDefault();
+				$('.save-search-form').toggleClass( "show-hide" );
+			});
 		});
 	</script>
+
 @stop

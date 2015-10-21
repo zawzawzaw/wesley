@@ -64,6 +64,7 @@ class AdvancedsearchController extends \BaseController {
 		$query = Lists::query();
 		$premium_query = Lists::query()->where('type', '=', 'Paid');
 		$item_limit = Input::get('item_limit', 5);
+		$sort_by = Input::get('sort_by', '');
 		$all_lists_count = 0;
 
 		if($item_limit=='all') $item_limit = 100000;
@@ -131,6 +132,8 @@ class AdvancedsearchController extends \BaseController {
 		}
 
 		$query->orderBy('type','DESC');
+		if($sort_by)
+			$query->orderBy('company_name',$sort_by);
 
 		// print_r($query->get()->toJSON());
 		// print_r($premium_query->get()->toJSON()); 

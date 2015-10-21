@@ -158,7 +158,7 @@
 								<div class="each-content">
 									<ul class="links">
 										<li><a href="#"><i class="request-for-quote"></i> request for quote</a></li>
-										<li><a href="#"><i class="add-to-favourite"></i> add to favorite</a></li>
+										<li><a href="{{ route('favourite.store') }}" data-list-id="{{ $list->id }}" class="favourite"><i class="add-to-favourite"></i> add to favorite</a></li>
 										<li><a href="#"><i class="download"></i> download pdf</a></li>
 										<li><a href="#"><i class="request-for-more"></i> request for more info</a></li>
 									</ul>
@@ -184,22 +184,14 @@
 				$('#subcategory').val(sub_category);
 			}
 
+			var request;
 			var makeRequest = function(Data, URL, Method) {
 
 		        var request = $.ajax({
 					url: URL,
 					type: Method,
 					data: Data,
-					dataType: "JSON",
-					// processData: false,
-					success: function(response) {
-					  // if success remove current item
-					  // console.log(response);
-					},
-					error: function( error ){
-					  // Log any error.
-					  console.log( "ERROR:", error );
-					}
+					dataType: "JSON"					
 		      });
 
 		      return request;
@@ -239,7 +231,53 @@
 
 			var q=encodeURIComponent($('#address').text());
 			console.log(q);
-		    $('#map').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBp8lNSnZzkMSjNvok9H1aADuR6txxNajk&q='+q);		    
+		    $('#map').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBp8lNSnZzkMSjNvok9H1aADuR6txxNajk&q='+q);
+
+		    /////		    
+
+			var postRequest = false;
+			$('.favourite').on('click', function(e){
+				e.preventDefault();
+				var current_url = $(this).attr('href');
+
+				var list_id = $(this).data('list-id');
+				var data = { 
+					'list_id' : list_id
+				};
+
+				if(postRequest) {
+					request.abort();
+				}
+
+				postRequest = makeRequest(data, current_url, 'POST');				
+
+				postRequest.done(function(data, textStatus, jqXHR){
+		        	
+		        	if(jqXHR.status==200) {
+		        		
+		        		alert('Successfully added to your favourite list.');
+
+		        		postRequest = false;
+
+		        	}
+
+		        });
+
+		        postRequest.always(function(data, textStatus, jqXHR){
+
+		        	if(jqXHR.status!=200) {
+		        		var returnData = $.parseJSON(data.responseText);
+			        	if(returnData.status=='duplicate')
+			        		alert('This company is already in your favourite!');
+			        	else
+			        		console.log(returnData.message);
+
+			        	postRequest = false;	
+		        	}		        	
+
+		        });
+
+			});    
 		});
 	</script>	
 @stop
