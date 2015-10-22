@@ -139,6 +139,7 @@
 
 			.each-input {
 				height: 80px;
+				position: relative;
 
 				#lbl_type {
 					display: block;
@@ -196,6 +197,23 @@
 					color: @dark-grey-2;
 					text-transform: none;
 				}
+
+				label.error {
+					.alright-sans-medium;
+					font-size: 11px;
+					line-height: 30px;
+					letter-spacing: 0.05em;
+					color: @new-grey;
+					text-transform: uppercase;					
+
+					&.error {
+						color: red;
+					    text-transform: initial;
+					    // margin-top: -5px;
+					    position: absolute;
+						bottom: -18px;
+					}
+				}	
 			}				
 		}
 

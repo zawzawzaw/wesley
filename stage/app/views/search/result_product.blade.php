@@ -326,6 +326,7 @@
 
 			$('.save-search').on('click', function(e){
 				e.preventDefault();
+				$(this).children('i').toggleClass('plus');
 				$('.save-search-form').toggleClass( "show-hide" );
 			});
 		});

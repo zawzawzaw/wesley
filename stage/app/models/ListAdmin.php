@@ -10,6 +10,7 @@ class ListAdmin extends Eloquent {
 
 	public static $rules = array(
 	    'list_id'=>'required',
+	    'email'=>'required|email',
 	    'admin_permissions'=>'required'
     );
 

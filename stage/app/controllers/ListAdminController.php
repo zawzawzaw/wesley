@@ -12,7 +12,10 @@ class ListAdminController extends \BaseController {
 	public function index()
 	{
 		//
-		$user_id = Auth::user()->id;
+		if (Auth::check())
+        {
+            $user_id = Auth::user()->id;
+        }
 		$lists = Lists::where('user_id', '=', $user_id)->get();
 		$this->layout->content = View::make('listadmin.index')->with('lists', $lists);		
 	}
@@ -37,7 +40,39 @@ class ListAdminController extends \BaseController {
 	public function store()
 	{
 		//
-		return Input::all();
+		$validator = Validator::make(Input::all(), Listadmin::$rules);
+
+		if($validator->passes()) {
+
+			$user = User::where('email', '=', Input::get('email'))->first();			
+
+			$count = ListAdmin::where('list_id', '=', Input::get('list_id'))->count();
+
+			if($count < 5) {
+
+				try {
+
+					$admin_permissions = Input::get('admin_permissions');
+
+					$listadmin = new ListAdmin;
+					$listadmin->user_id = $user->id;
+					$listadmin->list_id = Input::get('list_id');
+					$listadmin->admin_permissions = json_encode($admin_permissions);
+					$listadmin->save();
+
+					$insertedId = $listadmin->id;
+
+					return Redirect::intended('/listadmin')->with('message', 'Successfully added admin to list ' . Lists::find(Input::get('list_id'))->company_name);
+
+				}catch ( Illuminate\Database\QueryException $e ) {
+					return Redirect::to('/listadmin')->with('message', 'This user is already added as admin to your list');			
+				}
+
+			}else 
+				return Redirect::to('/listadmin')->with('message', 'Maxium no of admin has been added to this list');							
+
+		}else 
+			return Redirect::to('/listadmin')->with('message', 'The following errors occurred:')->withErrors($validator)->withInput();
 	}
 
 
@@ -62,6 +97,9 @@ class ListAdminController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		$listadmin = ListAdmin::with(['users'])->where('list_id', '=', $id)->get();
+
+		return $listadmin;
 	}
 
 
@@ -86,6 +124,14 @@ class ListAdminController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		if(isset($id) && !empty($id)) {
+			
+			ListAdmin::destroy($id);	
+
+			return Response::json(['status' => 'success', 'message' => $id], 200);
+
+		}else 
+			return Response::json(['status' => 'validation error', 'message' => 'empty'], 400);
 	}
 
 

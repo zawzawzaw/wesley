@@ -12,7 +12,7 @@
           @if(Session::has('login_message'))
             <p>{{ Session::get('login_message') }}</p>
           @endif
-          {{ Form::open(array('url'=>'login', 'class'=>'form-signin')) }}
+          {{ Form::open(array('url'=>'login', 'class'=>'form-signin', 'id'=>'form-signin')) }}
           <div class="content">
             <div class="row">
               <div class="col-md-6">
@@ -61,6 +61,21 @@
       </div>     
     </div>  
   </div>
+  <script>
+  $(document).ready(function(){
+      var form = $('#form-signin');
+
+      form.validate({     
+        rules: {                    
+            email: {
+              "required" : true,
+              "email" : true
+            },               
+            password: "required"
+        }
+    });
+  });
+  </script>
 @stop
 
 
@@ -82,7 +97,7 @@
           @if(Session::has('login_message'))
             <p class="alert">{{ Session::get('login_message') }}</p>
           @endif
-          {{ Form::open(array('url'=>'login', 'class'=>'form-signin')) }}
+          {{ Form::open(array('url'=>'login', 'class'=>'form-signin', 'id'=>'form-signin')) }}
             <div class="each-input">
             {{ Form::text('email', null, array('class'=>'input-block-level', 'placeholder'=>'Email')) }}
             </div>

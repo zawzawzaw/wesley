@@ -17,8 +17,8 @@ class CreateListAdminTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer("user_id")->unsigned();
-			$table->integer('list_id')->unsigned();			
-			$table->integer('admin_permissions')->unsigned();
+			$table->integer('list_id')->unsigned();
+			$table->string('admin_permissions');
 			$table->timestamps();
 		});
 

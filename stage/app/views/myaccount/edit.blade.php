@@ -21,7 +21,7 @@
 					        @endforeach
 					    </ul>
 
-						{{ Form::open( array('route' => array('myaccount.update', $user->id), 'method' => 'PUT' )) }}
+						{{ Form::open( array('route' => array('myaccount.update', $user->id), 'method' => 'PUT', 'id' => 'my-account-edit' )) }}
 						<div class="content">							
 							<div class="row">
 								<div class="col-md-4">
@@ -415,8 +415,8 @@
 		</div>
 	</div>
 	<script>
-	var $profile_image = $('#profile_image');
-	$('#profile_image').uploadifive({
+		var $profile_image = $('#profile_image');
+		$('#profile_image').uploadifive({
 	        'auto'      : true,
 	        'fileType'     : 'image/*',
 	        'fileSizeLimit' : '5MB',
@@ -442,5 +442,23 @@
 
 	        }
 	    });
+
+		///////
+
+		var form = $('#my-account-edit');
+
+	  	form.validate({	    
+		    rules: {
+		        first_name: "required",
+		        last_name: "required",		        	        
+		        country: "required",		        	        
+		        email: {
+		        	"required" : true,
+		        	"email" : true
+		        },		        	 
+		        job_title: "required",
+		        city: "required"
+		    }
+		});
 	</script>
 @stop

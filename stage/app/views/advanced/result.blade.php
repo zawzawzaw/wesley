@@ -625,6 +625,10 @@
 				e.preventDefault();
 				var current_url = $(this).attr('href');
 				var search_params = '{{ json_encode(Input::all()) }}';
+
+				if(search_params.length <= 2)
+					search_params = '{"industry_estate":"","post_code":"","multiple_countries":[""],"form_type":"advanced"}';
+
 				var search_name = ($('.search_name').val()) ? $('.search_name').val() : 'your search';				
 				var remarks = ($('.remarks').val()) ? $('.remarks').val() : '';
 				var that = $(this);
@@ -634,6 +638,8 @@
 					'name' : search_name,
 					'remarks' : remarks
 				};
+
+				// console.log(data); return false;
 
 				if(postRequest) {
 					request.abort();
@@ -670,6 +676,7 @@
 
 			$('.save-search').on('click', function(e){
 				e.preventDefault();
+				$(this).children('i').toggleClass('plus');
 				$('.save-search-form').toggleClass( "show-hide" );
 			});
 		});

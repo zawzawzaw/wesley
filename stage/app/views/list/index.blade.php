@@ -988,7 +988,7 @@
 						</div>			
 						<div class="content">
 							<p>The following administrators have access to this listing to edit information.</p>
-							<ul>
+							<ul class="list-of-admin">
 								<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
 								<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
 								<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
@@ -999,6 +999,73 @@
 						<div class="extra-content">
 							<a href="#" class="edit-admins">Edit Admins</a>
 							<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
+							<!--<div class="list-admin-form">
+								{{ Form::text('email', null, array('id'=>'email','class'=>'text-input','placeholder'=>'Email address')) }}
+								<a href="#" id="save_admin" class="save_admin">save</a>
+
+								<div class="each-input">
+									{{ Form::label('permissions', 'Permissions *') }}
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'logo', Input::get('admin_permissions'), array('id'=>'logo', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions', 'Logo') }}										
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'category', Input::get('admin_permissions'), array('id'=>'category', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Category') }}							
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'address_1', Input::get('admin_permissions'), array('id'=>'address_1', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Address 1') }}										
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'address_2', Input::get('admin_permissions'), array('id'=>'address_2', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Address 2') }}										
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'post_code', Input::get('admin_permissions'), array('id'=>'post_code', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Post Code') }}										
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'location', Input::get('admin_permissions'), array('id'=>'location', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Location') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'origin_country', Input::get('admin_permissions'), array('id'=>'origin_country', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Country of Origin') }}									
+									</div>																		
+								</div>
+
+								<div class="each-input">
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'business_nature', Input::get('admin_permissions'), array('id'=>'business_nature', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Nature of Business') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'year_established', Input::get('admin_permissions'), array('id'=>'year_established', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Year Established') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'paid_up_capital', Input::get('admin_permissions'), array('id'=>'paid_up_capital', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Paid Up Capital') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'no_of_employees', Input::get('admin_permissions'), array('id'=>'no_of_employees', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'No of Employees') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'main_shareholders', Input::get('admin_permissions'), array('id'=>'main_shareholders', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Main shareholders/parent company') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('admin_permissions[]', 'links_to_related_companies', Input::get('admin_permissions'), array('id'=>'links', 'class'=>'permission_checkboxes')); }}
+										{{ Form::label('admin_permissions[]', 'Links to related companies') }}									
+									</div>
+									<div class="each-type">
+										{{ Form::checkbox('all', true, Input::get('all'), array('id'=>'all')); }}
+										{{ Form::label('all', 'Select All / None') }}									
+									</div>		
+								</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -1416,6 +1483,11 @@
 		}else {
 			$.removeCookie('formValueCookie'); 
 		}
+	});
+
+
+	$('.add-administrator').on('click', function(e){
+
 	});
 
   });
