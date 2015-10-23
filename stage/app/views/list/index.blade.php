@@ -972,7 +972,9 @@
 								{{ Form::button('Back', array('id'=>'list-5-prev', 'class'=>'prev-btn pull-left', 'data-list'=>5)) }}
 							</div>
 						</div>
-						<!-- LIST-5 END -->						
+						<!-- LIST-5 END -->		
+
+						{{ Form::hidden('list_admin_1') }}				
 
 					{{ Form::close() }}
 				</div>
@@ -999,12 +1001,32 @@
 						<div class="extra-content">
 							<a href="#" class="edit-admins">Edit Admins</a>
 							<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
-							<!--<div class="list-admin-form">
-								{{ Form::text('email', null, array('id'=>'email','class'=>'text-input','placeholder'=>'Email address')) }}
+							<div class="list-admin-form">
+								{{ Form::label('email', 'Email address') }}
+								{{ Form::text('email', null, array('id'=>'email','class'=>'text-input')) }}								
+								
+								{{ Form::label('permissions', 'Permissions') }}						
+								{{ 
+									Form::select('permissions[]', array(
+										''=>'Country:',
+									    "logo"=>"Logo",
+										"category"=>"Category",
+										"address_1"=>"Address 1",
+										"address_2"=>"Address 2",
+										"post_code"=>"Post Code",
+										"location"=>"Location",
+										"origin_country"=>"Country of Origin",
+										"business_nature"=>"Nature of Business",
+										"year_established"=>"Year Established",
+										"paid_up_capital"=>"Paid Up Capital",
+										"no_of_employees"=>"No of Employees",
+										"main_shareholders"=>"Main shareholders/parent company",
+										"links_to_related_companies"=>"Links to related companies"
+									), Input::get('permissions', null), array('id' => 'permissions', 'multiple' => 'multiple' ))
+								}}
 								<a href="#" id="save_admin" class="save_admin">save</a>
 
-								<div class="each-input">
-									{{ Form::label('permissions', 'Permissions *') }}
+								<!--<div class="each-input">									
 									<div class="each-type">
 										{{ Form::checkbox('admin_permissions[]', 'logo', Input::get('admin_permissions'), array('id'=>'logo', 'class'=>'permission_checkboxes')); }}
 										{{ Form::label('admin_permissions', 'Logo') }}										
@@ -1064,8 +1086,8 @@
 										{{ Form::checkbox('all', true, Input::get('all'), array('id'=>'all')); }}
 										{{ Form::label('all', 'Select All / None') }}									
 									</div>		
-								</div>
-							</div>-->
+								</div>-->
+							</div>
 						</div>
 					</div>
 				</div>
@@ -1485,8 +1507,24 @@
 		}
 	});
 
+	///////
 
 	$('.add-administrator').on('click', function(e){
+		$('.list-admin-form').fadeToggle('slow');
+	});
+
+	var data = [];
+	$('#save_admin').on('click', function(e){
+		var email = $('input[name="email"]').val();
+		var permissions = $('#permissions').val();
+
+		data = { 
+			"email": email, 
+			"permissions" : permissions 
+		};
+
+		console.log(data);
+
 
 	});
 

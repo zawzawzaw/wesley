@@ -1,6 +1,6 @@
 #list {
 	padding-top: 98+91px;
-    padding-bottom: 200px;
+    padding-bottom: 400px;
 	position: relative;
 	// .bg {		
 	// 	width: 35.5%;
@@ -343,6 +343,7 @@
 			.extra-content {
 				padding-top: 15px;
 				padding-left: 10px;
+				position: relative;
 				a {
 					.alright-sans-regular;
 					font-size: 12px;
@@ -361,18 +362,93 @@
 					    vertical-align: middle;
 					}
 				}
-				#tag {
+				#tag, #email {
 					background-color: #fff;
 					border-radius: 5px;
 					border: 1px solid #cecfcf;
 					min-height: 30px;
 					padding-left: 13px;
 					width: 185px;
+					font-size: 12px;
+				}
+				#email {
+					width: 100%;
 				}
 				.add_tag {
 					text-transform: uppercase;
-					padding-left: 10px;				
+					padding-left: 10px;		
 				}
+				.save_admin {
+					display: inline-block;
+					text-align: center;
+					margin-top: 20px;
+		            .alright-sans-bold;
+		            font-size: 14px;
+		            letter-spacing: 0.05em;
+		            color: @white;  
+		            text-transform: uppercase;
+		            padding: 9px 12px;
+		            .gradient(#00c7dd, #00a3c4);
+		            border: 0px;
+		            border-radius: 6px;
+		            width: 50%;
+		            &:hover {
+		            	color: @white;
+		            }
+		        }
+				.list-admin-form {
+					margin-top: 20px;
+				    border-top: 1px solid #DBDBDB;
+				    border-bottom: 1px solid #DBDBDB;
+				    padding: 15px 0px;
+				    display: none;
+				    
+					label {
+						.alright-sans-regular;
+						font-size: 14px;
+						line-height: 36px;
+						letter-spacing: 0.01em;
+						color: @dark-grey-2;
+						text-transform: none;
+					}
+					// label[for="permissions"] {
+					// 	display: block;
+					// 	.alright-sans-medium;
+					// }
+					select[multiple] {
+						width: 100%;
+						background-color: #f9f9f9;
+						border: 1px solid #d6d6d6;
+						border-radius: 5px;
+						min-height: 171px;
+						padding-left: 13px;
+						.alright-sans-regular;
+						font-size: 14px;
+						line-height: 36px;
+						letter-spacing: 0.01em;
+						color: @dark-grey-2;
+						padding-top: 10px;
+					}
+					.each-input {
+						// height: 80px;
+						position: relative;
+						margin-bottom: 15px;					
+
+						.each-type {
+							display: inline-block;
+							position: relative;
+							vertical-align: middle;
+							width: 85%;
+
+							label {
+								line-height: 25px;
+							    display: inline-block;
+							    width: 85%;
+							    vertical-align: top;		
+							}
+						}
+					}
+				}				
 			}
 		}
 		
