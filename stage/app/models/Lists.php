@@ -44,4 +44,8 @@ class Lists extends Eloquent {
 		return $this->belongsTo('User', 'user_id');
 	}
 
+	public function listadmin() {
+		return $this->belongsToMany('ListAdmin');
+	}
+
 }

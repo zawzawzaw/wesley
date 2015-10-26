@@ -355,7 +355,7 @@
 						color: @dark-grey-2;
 					}
 					&:first-child {
-						border-right: 1px solid #668ec4;
+						// border-right: 1px solid #668ec4;
 					    padding-right: 5px;
 					    line-height: 13px;
 					    display: inline-block;
@@ -411,6 +411,22 @@
 						color: @dark-grey-2;
 						text-transform: none;
 					}
+
+					label.error {
+						.alright-sans-medium;
+						font-size: 11px;
+						line-height: 13px;
+						letter-spacing: 0.05em;
+						color: red;					    
+					    position: absolute;
+						bottom: -15px;
+						left: 0px;
+					}
+					
+					.each-input {
+						position: relative;
+					}
+
 					// label[for="permissions"] {
 					// 	display: block;
 					// 	.alright-sans-medium;

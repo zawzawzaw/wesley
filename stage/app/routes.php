@@ -94,6 +94,12 @@ Route::post('generic/checkemailexists', array(
   'as' => 'generic.checkemailexists'
 ));
 
+/* Generic */
+Route::post('generic/checkuserexistsbyemail', array(
+  'uses' => 'GenericController@checkuserexistsbyemail',
+  'as' => 'generic.checkuserexistsbyemail'
+));
+
 /* My List */
 Route::get('mylist', array(
   'uses' => 'MyListController@index',

@@ -109,5 +109,18 @@ class GenericController extends \BaseController {
 
     }
 
+    public function checkuserexistsbyemail()
+    {
+        $email = Input::get('email');
+
+        $user = User::where('email', '=', $email)->first();
+
+        if(!is_null($user))
+            return Response::json(['status' => 'success', 'user' => $user], 200);
+        else
+            return Response::json(['status' => 'validation error', 'message' => 'User not found.'], 400);
+
+    }
+
 
 }

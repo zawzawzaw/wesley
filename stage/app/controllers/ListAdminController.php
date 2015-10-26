@@ -97,9 +97,18 @@ class ListAdminController extends \BaseController {
 	public function edit($id)
 	{
 		//
-		$listadmin = ListAdmin::with(['users'])->where('list_id', '=', $id)->get();
+		if (Request::ajax()) {
 
-		return $listadmin;
+			$listadmin = ListAdmin::with(['users'])->where('list_id', '=', $id)->get();
+			return $listadmin;
+
+		}else {
+
+			$listadmin = ListAdmin::with(['users'])->find($id);
+			
+			$this->layout->content = View::make('listadmin.edit')->with('listadmin', $listadmin);
+
+		}
 	}
 
 
@@ -112,6 +121,28 @@ class ListAdminController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$validator = Validator::make(Input::all(), Listadmin::$rules);
+
+		if($validator->passes()) {
+			$admin_permissions = Input::get('admin_permissions');
+			$user = User::where('email', '=', Input::get('email'))->first();			
+
+			try {
+				$listadmin = ListAdmin::find($id);
+				$listadmin->user_id = $user->id;
+				$listadmin->list_id = Input::get('list_id');
+				$listadmin->admin_permissions = json_encode($admin_permissions);
+				$listadmin->save();
+			}catch ( Illuminate\Database\QueryException $e ) {
+				return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'This user is already added as admin to your list');			
+			}
+
+
+			return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'List admin has been updated!');
+		}else {
+	        # validation has failed, display error messages
+	    	return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'The following errors occurred:')->withErrors($validator)->withInput();
+	    }	
 	}
 
 

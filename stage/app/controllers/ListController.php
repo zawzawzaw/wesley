@@ -127,7 +127,7 @@ class ListController extends \BaseController {
 		    $lists->paid_up_capital = Input::get('paid_up_capital');
 		    $lists->no_of_employees = Input::get('no_of_employees');
 		    $lists->quality_certification = Input::get('quality_certification');
-		    $lists->production_capability = Input::get('production_capability');
+		    $lists->production_capability = Input::get('production_capability');		    
 		    $lists->bankers = Input::get('bankers');
 		    $lists->market_established = Input::get('market_established');
 		    $lists->main_shareholders = is_null(Input::get('main_shareholders')) ? 'no' : Input::get('main_shareholders');
@@ -137,8 +137,6 @@ class ListController extends \BaseController {
 		    $lists->upload_video = is_null(Input::get('upload_video')) ? '' : Input::get('upload_video');		    
 		    $lists->major_facilities = is_null(Input::get('major_facilities')) ? 'no' : Input::get('major_facilities');
 		    $lists->major_customers = is_null(Input::get('major_customers')) ? 'no' : Input::get('major_customers');
-
-
 
 		    session_start();
 
@@ -255,6 +253,28 @@ class ListController extends \BaseController {
 			    		$product_catalog->save();
 			    	}	
 		    	}
+
+		    	$inputed_list_admins = Input::get('list_admins');
+		    	if($inputed_list_admins) {
+			    	$inputed_list_admins = json_decode($inputed_list_admins);
+
+			    	foreach ($inputed_list_admins as $key => $inputed_list_admin) {
+
+			    		$user = User::where('email', '=', $inputed_list_admin->email)->first();
+
+			    		$permissions = [];
+			    		foreach ($inputed_list_admin->permissions as $key => $permission) {
+			    			$permissions[] = $permission;
+			    		}
+
+			    		$list_admin = new ListAdmin;
+			    		$list_admin->user_id = $user->id;
+			    		$list_admin->list_id = $lists->id;
+			    		$list_admin->admin_permissions = json_encode($permissions);
+			    		$list_admin->save();
+			    	}
+			    }
+
 		    }
 		 
 		    return Redirect::to('/list')->with('list_message', 'Successfully created the list');

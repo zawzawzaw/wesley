@@ -21,6 +21,9 @@
 											<h5>Location</h5>
 										</div>
 										<div class="each-col">
+											<h5>Country of Origin</h5>
+										</div>
+										<div class="each-col">
 											<h5>Company <a href="#" class="sort"></a></h5>
 										</div>
 										<div class="each-col">
@@ -41,6 +44,9 @@
 											</div>
 											<div class="each-col">
 												<i class="country {{ $list->country }}"></i>
+											</div>
+											<div class="each-col">
+												<i class="country {{ $list->origin_country }}"></i>
 											</div>
 											<div class="each-col">
 												<p>{{ $list->company_name }}</p>									

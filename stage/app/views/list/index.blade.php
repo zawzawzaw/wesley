@@ -974,7 +974,7 @@
 						</div>
 						<!-- LIST-5 END -->		
 
-						{{ Form::hidden('list_admin_1') }}				
+						{{ Form::hidden('list_admins', null, array('id'=>'list_admins')) }}				
 
 					{{ Form::close() }}
 				</div>
@@ -991,102 +991,44 @@
 						<div class="content">
 							<p>The following administrators have access to this listing to edit information.</p>
 							<ul class="list-of-admin">
-								<li><span>Meg Whitman</span><a href="#" class="remove">Remove</a></li>
-								<li><span>Sheryl Sandberg</span><a href="#" class="remove">Remove</a></li>
-								<li><span>Fred Wilson</span><a href="#" class="remove">Remove</a></li>
-								<li><span>David McClure</span><a href="#" class="remove">Remove</a></li>								
+																
 							</ul>
 							<div class="clear"></div>
 						</div>
 						<div class="extra-content">
-							<a href="#" class="edit-admins">Edit Admins</a>
-							<a href="#" class="add-administrator">Add Administrator (Max. 5)</a>
+							<!--<a href="javascript:void(0);" class="edit-admins">Edit Admins</a>-->
+							<a href="javascript:void(0);" class="add-administrator">Add Administrator (Max. 5)</a>
 							<div class="list-admin-form">
-								{{ Form::label('email', 'Email address') }}
-								{{ Form::text('email', null, array('id'=>'email','class'=>'text-input')) }}								
-								
-								{{ Form::label('permissions', 'Permissions') }}						
-								{{ 
-									Form::select('permissions[]', array(
-										''=>'Country:',
-									    "logo"=>"Logo",
-										"category"=>"Category",
-										"address_1"=>"Address 1",
-										"address_2"=>"Address 2",
-										"post_code"=>"Post Code",
-										"location"=>"Location",
-										"origin_country"=>"Country of Origin",
-										"business_nature"=>"Nature of Business",
-										"year_established"=>"Year Established",
-										"paid_up_capital"=>"Paid Up Capital",
-										"no_of_employees"=>"No of Employees",
-										"main_shareholders"=>"Main shareholders/parent company",
-										"links_to_related_companies"=>"Links to related companies"
-									), Input::get('permissions', null), array('id' => 'permissions', 'multiple' => 'multiple' ))
-								}}
-								<a href="#" id="save_admin" class="save_admin">save</a>
 
-								<!--<div class="each-input">									
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'logo', Input::get('admin_permissions'), array('id'=>'logo', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions', 'Logo') }}										
+								{{ Form::open([ 'id' => 'list-admin-form' ]) }}
+									<div class="each-input">
+									{{ Form::label('email', 'Email address') }}
+									{{ Form::text('email', null, array('id'=>'email','class'=>'text-input')) }}								
 									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'category', Input::get('admin_permissions'), array('id'=>'category', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Category') }}							
+									
+									<div class="each-input">
+									{{ Form::label('permissions', 'Permissions') }}						
+									{{ 
+										Form::select('permissions[]', array(
+										    "logo"=>"Logo",
+											"category"=>"Category",
+											"address_1"=>"Address 1",
+											"address_2"=>"Address 2",
+											"post_code"=>"Post Code",
+											"location"=>"Location",
+											"origin_country"=>"Country of Origin",
+											"business_nature"=>"Nature of Business",
+											"year_established"=>"Year Established",
+											"paid_up_capital"=>"Paid Up Capital",
+											"no_of_employees"=>"No of Employees",
+											"main_shareholders"=>"Main shareholders/parent company",
+											"links_to_related_companies"=>"Links to related companies"
+										), Input::get('permissions', null), array('id' => 'permissions', 'multiple' => 'multiple' ))
+									}}
 									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'address_1', Input::get('admin_permissions'), array('id'=>'address_1', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Address 1') }}										
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'address_2', Input::get('admin_permissions'), array('id'=>'address_2', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Address 2') }}										
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'post_code', Input::get('admin_permissions'), array('id'=>'post_code', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Post Code') }}										
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'location', Input::get('admin_permissions'), array('id'=>'location', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Location') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'origin_country', Input::get('admin_permissions'), array('id'=>'origin_country', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Country of Origin') }}									
-									</div>																		
-								</div>
+									<a href="javascript:void(0);" id="save_admin" class="save_admin">save</a>
+								{{ Form::close() }}
 
-								<div class="each-input">
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'business_nature', Input::get('admin_permissions'), array('id'=>'business_nature', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Nature of Business') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'year_established', Input::get('admin_permissions'), array('id'=>'year_established', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Year Established') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'paid_up_capital', Input::get('admin_permissions'), array('id'=>'paid_up_capital', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Paid Up Capital') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'no_of_employees', Input::get('admin_permissions'), array('id'=>'no_of_employees', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'No of Employees') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'main_shareholders', Input::get('admin_permissions'), array('id'=>'main_shareholders', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Main shareholders/parent company') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('admin_permissions[]', 'links_to_related_companies', Input::get('admin_permissions'), array('id'=>'links', 'class'=>'permission_checkboxes')); }}
-										{{ Form::label('admin_permissions[]', 'Links to related companies') }}									
-									</div>
-									<div class="each-type">
-										{{ Form::checkbox('all', true, Input::get('all'), array('id'=>'all')); }}
-										{{ Form::label('all', 'Select All / None') }}									
-									</div>		
-								</div>-->
 							</div>
 						</div>
 					</div>
@@ -1112,7 +1054,11 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function(){
-  	$('#list-1').show();  	
+  	$('#list-1').show();
+
+  	//////
+  	// LIST FORM VALIDATION
+  	//////
 
   	var form = $('#form-list');
 
@@ -1148,6 +1094,10 @@
 	  	}
 	});
 
+	///////
+	// NEXT & PREV
+	///////
+
 	$('.next-btn').on('click', function(e){
 		e.preventDefault();
 		var nextList = $(this).data('list') + 1;	
@@ -1170,16 +1120,9 @@
 		$('#list-'+prevList).show();
 	});
     
-    // $('#list-2-prev, #list-2-back').on('click', function(e){
-    // 	e.preventDefault();    	
-    // 	$('#list-1').show();
-    // 	$('.all-list').hide();
-    // });
-    // $('#list-3-prev, #list-3-back').on('click', function(e){
-    // 	e.preventDefault();    	
-    // 	$('#list-2').show();
-    // 	$('.all-list').hide();
-    // });
+   	///////
+   	// LIST FORM SUBMIT
+   	///////
 
     $('#list-form-submit').on('click', function(e){
     	e.preventDefault();
@@ -1208,10 +1151,16 @@
 				product_catalog_ids.push(index+1);
 				$('#product_catalog_ids').val(product_catalog_ids.join());
 			}
-		});		
+		});
+
+		$('#list_admins').val(JSON.stringify(adminPostData));
 
 		$(this).closest('form').submit();
-    });    
+    });
+
+    ////////
+    // TAG
+    ////////
 
     var tags = [];
 
@@ -1229,6 +1178,10 @@
 
     	$('#tag').val('');
     });
+
+    ////////
+    // UPLOADERS
+    ////////
 
     $('#company_logo').uploadifive({
         'auto'      : true,
@@ -1285,6 +1238,10 @@
 
         }
     });
+
+    /////////
+    // CLONE FORM'S UPLOADER
+    /////////
 
     $('#add_more').on('click', function(e){
     	e.preventDefault();
@@ -1356,6 +1313,10 @@
 	        }
 	    });
 	});
+
+	////////
+	// CLONE FORM
+	////////
 
 	var cloneIndex = $('.each-product').length;
 	$('.add-more-key-product').on('click', function(e){
@@ -1477,6 +1438,10 @@
 
 	});
 
+ 	////////
+ 	// YOUTUBE UPLOAD REFRESH PAGE SO COOKIES ARE USED TO SAVE FORM DATA
+ 	////////
+
 	if($.cookie("formValueCookie")) {
 		var formValueArr = JSON.parse($.cookie('formValueCookie'));
 		$.each(formValueArr, function(counter,field) {
@@ -1508,25 +1473,154 @@
 	});
 
 	///////
+	// ADD ADMIN FORM VALIDATION
+	///////
+
+	var listAdminForm = $('#list-admin-form');
+
+  	listAdminForm.validate({ 
+	    rules: {	        
+	        email: {
+	        	"required" : true,
+	        	"email" : true,
+	        	checkExists: true
+	        },
+	        'permissions[]': {
+	        	"required" : true	
+	        }
+	    },
+	    messages: {
+	    	email: {                    
+                checkExists: "This email is not yet registered"
+            },
+			'permissions[]': "Please specify at least one permission"
+		}
+	});
+
+	$.validator.addMethod("checkExists", function(value, element)
+	{
+	    var inputElem = $('#list-admin-form :input[name="email"]'),
+	        data = { "email" : inputElem.val() },
+	        eReport = ''; //error report
+
+	    var isSuccess = false;
+
+	    $.ajax(
+	    {
+	        type: "POST",
+	        url: "{{ route('generic.checkemailexists') }}",
+	        async: false,
+	        dataType: "json",
+	        data: data, 
+	        success: function(returnData)
+	        {		        
+	            if (returnData==true)
+	            {	            	
+	              	isSuccess = true;	            
+	            }
+	            else
+	            {	            
+	               	isSuccess = false;	            
+	            }
+	        }
+	    });
+
+	    return isSuccess;
+
+	}, "Sorry, this email is not available");
+
+	//////
+	// COMMON AJAX FUNC
+	//////
+
+	var request;
+	var makeRequest = function(Data, URL, Method) {
+
+    	var request = $.ajax({
+		    url: URL,
+		    type: Method,
+		    data: Data,
+		    success: function(response) {
+		        // if success remove current item
+		        // console.log(response);
+		    },
+            error: function( error ){
+                // Log any error.
+                // console.log( "ERROR:", error );
+            }
+		});
+
+		return request;
+	};
+
+	//////
+	// ADD LIST ADMIN FUNC
+	//////
 
 	$('.add-administrator').on('click', function(e){
 		$('.list-admin-form').fadeToggle('slow');
 	});
 
-	var data = [];
-	$('#save_admin').on('click', function(e){
-		var email = $('input[name="email"]').val();
-		var permissions = $('#permissions').val();
+	var adminPostData = [];
+	var postRequest = false;
+	var userName = '';	
+	var alreadyExist;
 
-		data = { 
-			"email": email, 
-			"permissions" : permissions 
-		};
+	$('#save_admin').on('click', function(e){	
+		alreadyExist = false;
+		if(listAdminForm.valid()) {
+			if(adminPostData.length<5) {
+				var email = $('#list-admin-form :input[name="email"]').val();
+				var permissions = $('#permissions').val();
+				
+				if (adminPostData[0] != null) {
+					$.each(adminPostData, function(key, value){
+						if(value.email==email) {
+							alreadyExist = true;
+						}				
+					});
 
-		console.log(data);
-
+					if(!alreadyExist) {
+						adminPostData.push({
+							"email": email, 
+							"permissions" : permissions 
+						});
+					}
+				}else {
+					adminPostData.push({
+						"email": email, 
+						"permissions" : permissions 
+					});
+				}
+				        
+				$('.list-of-admin').html('');
+		        $.each(adminPostData, function(key, value){
+		        	$('<li><span>'+value.email+'</span><a href="#" data-index="'+key+'" class="remove">Remove</a></li>').appendTo('.list-of-admin').hide().slideDown();     	
+		        });
+			}else {
+				alert('Max number of admin reached.')
+			}
+			
+	        
+		}
 
 	});
+
+	/////
+	// REMOVE LIST ADMIN FUNC
+	/////
+
+	$('.list-of-admin').on('click', '.remove', function(e){
+		e.preventDefault();
+		
+		var index = $(this).attr('data-index');
+		if (index > -1) {
+		    adminPostData.splice(index, 1);
+		}
+		$('.list-of-admin li').eq(index).remove();
+
+	});
+
 
   });
 </script>

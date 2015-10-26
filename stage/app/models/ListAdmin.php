@@ -19,6 +19,6 @@ class ListAdmin extends Eloquent {
 	}
 
 	public function lists() {
-		return $this->belongsTo('Lists', 'list_id');
+		return $this->belongsToMany('Lists');
 	}
 }
