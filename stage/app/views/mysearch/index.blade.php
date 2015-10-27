@@ -115,7 +115,9 @@
 									
 								</ul>
 							@else
+							<ul>
 								<li><span>No favourites was found.</span></li>
+							</ul>
 							@endif
 						</div>
 					</div>
@@ -128,6 +130,7 @@
 					</div>
 					<div class="content">					
 						<div class="save-search-table">
+							@if($my_searches && count($my_searches) > 0)
 							<ul class="table-head">
 								<li>
 									<div class="each-col">
@@ -231,6 +234,11 @@
 									</li>
 								@endforeach
 							</ul>
+							@else
+							<ul>
+								<li><span>No saved search yet.</span></li>
+							</ul>
+							@endif
 						</div>
 					</div>
 				</div>
