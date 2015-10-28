@@ -6,7 +6,11 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"google/apiclient": "1.0.*@beta"
+		"google/apiclient": "1.0.*@beta",
+		"pragmarx/tracker": "^1.0",
+		"jenssegers/agent": "2.1.*",
+		"geoip/geoip": "~1.14",
+		"ramsey/uuid": "^2.8"
 	},
 	"autoload": {
 		"classmap": [

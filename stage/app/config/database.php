@@ -83,6 +83,17 @@ return array(
 			'prefix'   => '',
 		),
 
+		'tracker' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'wesley',
+			'username'  => 'root',
+			'password'  => 'root',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
 	),
 
 	/*

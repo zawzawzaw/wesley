@@ -320,7 +320,7 @@ class SearchController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		//		
 		$list = Lists::with(array('tags','keyproduct','productcatalog'))->where('id', $id)->orderBy('created_at','DESC')->first();
 
         // return $list;

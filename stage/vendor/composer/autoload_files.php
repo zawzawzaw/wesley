@@ -9,5 +9,10 @@ return array(
     $vendorDir . '/ircmaxell/password-compat/lib/password.php',
     $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
     $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Random.php',
+    $vendorDir . '/symfony/var-dumper/Resources/functions/dump.php',
     $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
+    $vendorDir . '/pragmarx/support/src/helpers.php',
+    $vendorDir . '/geoip/geoip/src/geoip.inc',
+    $vendorDir . '/geoip/geoip/src/geoipcity.inc',
+    $vendorDir . '/geoip/geoip/src/timezone.php',
 );

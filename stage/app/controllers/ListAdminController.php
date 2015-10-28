@@ -40,7 +40,7 @@ class ListAdminController extends \BaseController {
 	public function store()
 	{
 		//
-		$validator = Validator::make(Input::all(), Listadmin::$rules);
+		$validator = Validator::make(Input::all(), ListAdmin::$rules);
 
 		if($validator->passes()) {
 
@@ -121,7 +121,7 @@ class ListAdminController extends \BaseController {
 	public function update($id)
 	{
 		//
-		$validator = Validator::make(Input::all(), Listadmin::$rules);
+		$validator = Validator::make(Input::all(), ListAdmin::$rules);
 
 		if($validator->passes()) {
 			$admin_permissions = Input::get('admin_permissions');

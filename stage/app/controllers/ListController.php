@@ -41,7 +41,9 @@ class ListController extends \BaseController {
 
 		$authorized = false;
 
-		session_start();     
+		if(!isset($_SESSION)){
+		    session_start();
+		}
 
 		if(Input::get('upload_youtube')) {	        
 
@@ -138,7 +140,9 @@ class ListController extends \BaseController {
 		    $lists->major_facilities = is_null(Input::get('major_facilities')) ? 'no' : Input::get('major_facilities');
 		    $lists->major_customers = is_null(Input::get('major_customers')) ? 'no' : Input::get('major_customers');
 
-		    session_start();
+		    if(!isset($_SESSION)){
+		    	session_start();
+		    }
 
 			if (isset($_SESSION['token'])) {
 	          $this->client->setAccessToken($_SESSION['token']);	          

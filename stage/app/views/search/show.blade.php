@@ -106,6 +106,24 @@
 						</div>
 						<div class="fourth-content">
 							<div class="heading">
+								<h5 class="pull-left">see company’s catalog</h5>
+								<!--<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>-->
+								<div class="clear"></div>
+							</div>
+							<ul>
+								<?php $i=1; ?>
+								@foreach($list->productcatalog as $pk => $product_catalog_list)
+									@if($i<=3)
+									<li>
+										<a href="{{ URL::to('/') }}/uploads/key_products/{{ $product_catalog_list->image }}">Download PDF</a>
+									</li>
+									<?php $i++; ?>
+									@endif
+								@endforeach								
+							</ul>
+						</div>
+						<div class="fourth-content">
+							<div class="heading">
 								<h5 class="pull-left">see company’s product</h5>
 								<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>
 								<div class="clear"></div>

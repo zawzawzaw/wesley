@@ -331,6 +331,19 @@
 				$(this).children('i').toggleClass('plus');
 				$('.save-search-form').toggleClass( "show-hide" );
 			});
+
+			$('.view-details').on('click', function(e){
+				e.preventDefault();				
+
+				ga('listpageTracker.send', {
+				  hitType: 'event',
+				  eventCategory: 'Button',
+				  eventAction: 'ViewDetail',
+				  eventLabel: 'ViewDetail'
+				});
+
+				window.location.href = $(this).attr('href');
+			});
 		});
 	</script>
 
