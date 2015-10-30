@@ -74,6 +74,8 @@ class GenericController extends \BaseController {
                 $destinationPath = public_path() . "/uploads/key_products/";
             else if($type=='product_catalog')
                 $destinationPath = public_path() . "/uploads/product_catalogs/";
+            else if($type=='product_catalog_image')
+                $destinationPath = public_path() . "/uploads/product_catalog_images/";
             else
                 $destinationPath = public_path() . "/uploads/";
 
@@ -120,6 +122,18 @@ class GenericController extends \BaseController {
         else
             return Response::json(['status' => 'validation error', 'message' => 'User not found.'], 400);
 
+    }
+
+    public function openpdf($id, $file) 
+    {     
+        Event::fire('open.pdf.'.$id);
+
+        $path = public_path() . "/uploads/product_catalogs/" . $file;
+
+        return Response::make(file_get_contents($path), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; '.$file,
+        ]);
     }
 
 

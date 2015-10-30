@@ -98,7 +98,7 @@ return [
 	/**
 	 * Log events?
 	 */
-	'log_events' => false,
+	'log_events' => true,
 
 	/**
 	 * Which events do you want to log exactly?

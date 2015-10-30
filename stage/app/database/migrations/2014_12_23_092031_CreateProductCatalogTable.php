@@ -19,6 +19,7 @@ class CreateProductCatalogTable extends Migration {
 			$table->integer("lists_id")->unsigned();	
 			$table->string('title');			
 			$table->string('file');			
+			$table->string('image');			
 			
 			$table->timestamps();
 			$table->softDeletes();

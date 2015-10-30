@@ -7,7 +7,7 @@
 				<div class="favourite-companies">
 					<div class="header">
 						<h3 class="pull-left">favourite companies</h3>
-						<a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+						<a href="#" class="edit-favourite edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
 					</div>
 					<div class="content">					
 						<div class="favourite-companies-table">
@@ -40,6 +40,7 @@
 										<?php $key_products = KeyProduct::where('lists_id', '=', $favourite->list_id)->get() ?>
 										<li>
 											<div class="each-col">
+												<a href="{{ route('favourite.destroy', $favourite->id) }}" class="delete-favourite"><i class="fa fa-minus-circle"></i></a>
 												<a href="#" class="category category-1"></a>
 											</div>
 											<div class="each-col">
@@ -126,7 +127,7 @@
 				<div class="saved-search">
 					<div class="header">
 						<h3 class="pull-left">saved search</h3>
-						<a href="#" class="edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+						<a href="#" class="edit-saved-search edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
 					</div>
 					<div class="content">					
 						<div class="save-search-table">
@@ -151,6 +152,7 @@
 								@foreach($my_searches as $mysearch)
 									<li>
 										<div class="each-col">
+											<a href="{{ route('mysearch.destroy', $mysearch->id) }}" class="delete-saved-search"><i class="fa fa-minus-circle"></i></a>
 											<span class="date">{{ date('d/m/y', strtotime($mysearch->created_at)) }}</span>
 										</div>									
 										<div class="each-col">
@@ -292,4 +294,133 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+	$('.edit-favourite').on('click', function(e){
+		e.preventDefault();
+		$(".delete-favourite").toggleClass('show');
+	});
+
+	//////
+
+	var request;
+	var makeRequest = function(Data, URL, Method) {
+
+		var request = $.ajax({
+		    url: URL,
+		    type: Method,
+		    data: Data
+		});
+
+		return request;
+	};
+
+	var deleteRequest = false;
+	$('.delete-favourite').on('click', function(e){
+		e.preventDefault();
+
+		var that = $(this);
+
+		if (confirm('Are you sure you want to delete?')) {				
+
+			var current_url = $(this).attr('href');
+			console.log(current_url)
+
+			if(deleteRequest) {
+				request.abort();
+			}
+
+			data = {};
+
+			deleteRequest = makeRequest(data, current_url, 'DELETE');				
+
+			deleteRequest.done(function(data, textStatus, jqXHR){
+	        	
+	        	if(jqXHR.status==200) {		        			        		
+
+	        		that.parent().parent().remove();
+
+	        		if($('.delete-favourite').length<=0) {
+	        			$('.favourite-companies-table').append('<li><span>No favourites was found.</span></li>');
+	        		}
+
+	        		deleteRequest = false;
+
+	        	}
+
+	        });
+
+	        deleteRequest.always(function(data, textStatus, jqXHR){
+
+	        	if(jqXHR.status!=200) {
+	        		var returnData = $.parseJSON(data.responseText);
+		        	
+		        	console.log(returnData.message);
+
+		        	deleteRequest = false;	
+	        	}		        	
+
+	        });
+		}
+		
+	});
+
+	/////
+
+	$('.edit-saved-search').on('click', function(e){
+		e.preventDefault();
+		$(".delete-saved-search").toggleClass('show');
+	});
+
+	$('.delete-saved-search').on('click', function(e){
+		e.preventDefault();
+
+		var that = $(this);
+
+		if (confirm('Are you sure you want to delete?')) {
+
+			var current_url = $(this).attr('href');
+			console.log(current_url)
+
+			if(deleteRequest) {
+				request.abort();
+			}
+
+			data = {};
+
+			deleteRequest = makeRequest(data, current_url, 'DELETE');				
+
+			deleteRequest.done(function(data, textStatus, jqXHR){
+	        	
+	        	if(jqXHR.status==200) {		        			        		
+
+	        		that.parent().parent().remove();
+
+	        		if($('.delete-saved-search').length<=0) {
+	        			$('.save-search-table').append('<li><span>No favourites was found.</span></li>');
+	        		}
+
+	        		deleteRequest = false;
+
+	        	}
+
+	        });
+
+	        deleteRequest.always(function(data, textStatus, jqXHR){
+
+	        	if(jqXHR.status!=200) {
+	        		var returnData = $.parseJSON(data.responseText);
+		        	
+		        	console.log(returnData.message);
+
+		        	deleteRequest = false;	
+	        	}		        	
+
+	        });
+
+		}
+
+	});
+});
+</script>
 @stop

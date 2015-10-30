@@ -254,6 +254,7 @@ class ListController extends \BaseController {
 			    		$product_catalog->lists_id = $lists->id;
 			    		$product_catalog->title = Input::get('product_catalog_title_'.$product_catalog_id);
 			    		$product_catalog->file = Input::get('product_catalog_'.$product_catalog_id);
+			    		$product_catalog->image = Input::get('product_catalog_image_'.$product_catalog_id);
 			    		$product_catalog->save();
 			    	}	
 		    	}

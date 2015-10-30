@@ -115,7 +115,10 @@
 								@foreach($list->productcatalog as $pk => $product_catalog_list)
 									@if($i<=3)
 									<li>
-										<a href="{{ URL::to('/') }}/uploads/key_products/{{ $product_catalog_list->image }}">Download PDF</a>
+										<p>{{ $product_catalog_list->title }}</p>
+										<img src="{{ URL::to('/') }}/uploads/product_catalog_images/{{ $product_catalog_list->image }}" class="img-responsive" alt="">
+										<p>{{ Helper::formatSizeUnits(filesize(public_path() . "/uploads/product_catalogs/" . $product_catalog_list->file)) }}</p>
+										<a href="{{ URL::to('/generic/openpdf') }}/{{ $list->id }}/{{ $product_catalog_list->file }}">Download PDF</a>
 									</li>
 									<?php $i++; ?>
 									@endif

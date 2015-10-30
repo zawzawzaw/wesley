@@ -100,6 +100,12 @@ Route::post('generic/checkuserexistsbyemail', array(
   'as' => 'generic.checkuserexistsbyemail'
 ));
 
+/* Generic */
+Route::get('generic/openpdf/{id}/{file}', array(
+  'uses' => 'GenericController@openpdf',
+  'as' => 'generic.openpdf'
+));
+
 /* My List */
 Route::get('mylist', array(
   'uses' => 'MyListController@index',

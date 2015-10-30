@@ -58,5 +58,26 @@ class MysearchController extends \BaseController {
 		
 	}
 
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		//
+		if(isset($id) && !empty($id)) {
+			
+			MySearch::destroy($id);	
+
+			return Response::json(['status' => 'success', 'message' => $id], 200);
+
+		}else 
+			return Response::json(['status' => 'validation error', 'message' => 'empty'], 400);
+		
+		
+	}
+
 
 }

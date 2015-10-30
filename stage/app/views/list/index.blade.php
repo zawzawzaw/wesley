@@ -775,12 +775,24 @@
 													</div>																									
 												</div>
 												<div class="col-md-6">
-													<div class="each-input">								
-														{{ Form::label('catalog_1', 'Catalog File') }}
-														{{ Form::hidden('product_catalog_1', null, array('class'=>'product_catalog','id'=>'product_catalog_1')); }}
-														{{ Form::file('catalog_1', array('class'=>'catalog_upload','id'=>'catalog_1')); }}
-														<span class="uploaded_product_catalog"></span>
-													</div>														
+													<div class="row">
+														<div class="col-md-6">
+															<div class="each-input">							
+																{{ Form::label('catalog_1', 'Catalog File') }}
+																{{ Form::hidden('product_catalog_1', null, array('class'=>'product_catalog','id'=>'product_catalog_1')); }}
+																{{ Form::file('catalog_1', array('class'=>'catalog_upload','id'=>'catalog_1')); }}
+																<span class="uploaded_product_catalog"></span>
+															</div>		
+														</div>
+														<div class="col-md-6">
+															<div class="each-input">								
+																{{ Form::label('catalog_image_1', 'Catalog Cover Image') }}
+																{{ Form::hidden('product_catalog_image_1', null, array('class'=>'product_catalog_image','id'=>'product_catalog_image_1')); }}
+																{{ Form::file('catalog_image_1', array('class'=>'catalog_image_upload','id'=>'catalog_image_1')); }}
+																<span class="uploaded_product_catalog_image"></span>
+															</div>
+														</div>
+													</div>
 												</div>										
 											</div>
 										</div>
@@ -793,12 +805,24 @@
 													</div>																											
 												</div>
 												<div class="col-md-6">
-													<div class="each-input">								
-														{{ Form::label('catalog_2', 'Catalog File') }}
-														{{ Form::hidden('product_catalog_2', null, array('class'=>'product_catalog','id'=>'product_catalog_2')); }}
-														{{ Form::file('catalog_2', array('class'=>'catalog_upload','id'=>'catalog_2')); }}
-														<span class="uploaded_product_catalog"></span>
-													</div>	
+													<div class="row">
+														<div class="col-md-6">
+															<div class="each-input">								
+																{{ Form::label('catalog_2', 'Catalog File') }}
+																{{ Form::hidden('product_catalog_2', null, array('class'=>'product_catalog','id'=>'product_catalog_2')); }}
+																{{ Form::file('catalog_2', array('class'=>'catalog_upload','id'=>'catalog_2')); }}
+																<span class="uploaded_product_catalog"></span>
+															</div>			
+														</div>
+														<div class="col-md-6">
+															<div class="each-input">								
+																{{ Form::label('catalog_image_2', 'Catalog Cover Image') }}
+																{{ Form::hidden('product_catalog_image_2', null, array('class'=>'product_catalog_image','id'=>'product_catalog_image_2')); }}
+																{{ Form::file('catalog_image_2', array('class'=>'catalog_image_upload','id'=>'catalog_image_2')); }}
+																<span class="uploaded_product_catalog_image"></span>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -1286,12 +1310,12 @@
 	$('.catalog_upload').each(function(index, each_catalog_upload) {
 		var $catalog_upload = $(this);
 		$(each_catalog_upload).uploadifive({
-	        'auto'      : true,
-	        'fileType'     : false,
-	        'fileSizeLimit' : '5MB',
+	        'auto'         : true,
+	        'fileType'     : 'application/pdf',
+	        'fileSizeLimit': '5MB',
 	        'buttonText'   : 'Upload',
 	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
-	        'formData'         : {'type' : 'product_catalog'},
+	        'formData'     : {'type' : 'product_catalog'},
 	        'onError'      : function(errorType) {
 	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
 	            // $uploadResponse.text(errorType).css('color','red');
@@ -1310,6 +1334,37 @@
 
 	            $('input[name=product_catalog_'+id+']').val(data[0]);
 	            $catalog_upload.parent().parent().find('.uploaded_product_catalog').text(shortText);
+	        }
+	    });
+	});
+
+	$('.catalog_image_upload').each(function(index, each_catalog_image_upload) {
+		var $catalog_image_upload = $(this);
+		$(each_catalog_image_upload).uploadifive({
+	        'auto'         : true,
+	        'fileType'     : 'image/*',
+	        'fileSizeLimit': '5MB',
+	        'buttonText'   : 'Upload',
+	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+	        'formData'     : {'type' : 'product_catalog_image'},
+	        'onError'      : function(errorType) {
+	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+	            // $uploadResponse.text(errorType).css('color','red');
+	        },
+	        'onUploadComplete' : function(file, data) {
+	            console.log(data);
+
+	            var data = data.split("||").concat();
+
+	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+	            console.log(data[0])
+	            console.log(data[1])
+	            console.log(shortText)
+
+	            var id = index + 1;
+
+	            $('input[name=product_catalog_image_'+id+']').val(data[0]);
+	            $catalog_image_upload.parent().parent().find('.uploaded_product_catalog_image').text(shortText);
 	        }
 	    });
 	});
@@ -1395,7 +1450,13 @@
 		$cloned_catalog.find('#product_catalog_title_1').attr('id', 'product_catalog_title_'+catalog_cloneIndex).attr('name', 'product_catalog_title_'+catalog_cloneIndex);
 
 		$cloned_catalog.find('label[for="catalog_1"]').attr('for', 'catalog_'+catalog_cloneIndex);
-		$cloned_catalog.find('#product_catalog_1').attr('id', 'product_catalog_'+catalog_cloneIndex).attr('name', 'product_catalog_'+catalog_cloneIndex);
+		$cloned_catalog.find('#product_catalog_1').attr('id', 'product_catalog_'+catalog_cloneIndex).attr('name', 'product_catalog_'+catalog_cloneIndex).val('');
+
+		$cloned_catalog.find('label[for="catalog_image_1"]').attr('for', 'catalog_image_'+catalog_cloneIndex);
+		$cloned_catalog.find('#product_catalog_image_1').attr('id', 'product_catalog_image_'+catalog_cloneIndex).attr('name', 'product_catalog_image_'+catalog_cloneIndex).val('');
+
+		$cloned_catalog.find('.uploaded_product_catalog').text('');
+		$cloned_catalog.find('.uploaded_product_catalog_image').text('');
 		
 		$cloned_catalog.find('#catalog_1').remove();
 		$cloned_catalog.find('.uploadifive-button').remove();
@@ -1411,7 +1472,7 @@
 		var $that = $(input);
 		$(input).uploadifive({
 	        'auto'      : true,
-	        'fileType'     : 'image/*',
+	        'fileType'     : 'application/pdf',
 	        'fileSizeLimit' : '5MB',
 	        'buttonText'   : 'Upload',
 	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
@@ -1432,6 +1493,41 @@
 
 	            $('input[name=product_catalog_'+catalog_cloneIndex+']').val(data[0]);
 	            $that.parent().parent().find('.uploaded_product_catalog').text(shortText);
+
+	        }
+	    });
+
+		var input = document.createElement('input')
+		input.type = "file";
+		input.name = "catalog_image_"+catalog_cloneIndex;
+		input.id = "catalog_image_"+catalog_cloneIndex;
+
+		$cloned_catalog.find('.uploaded_product_catalog_image').before(input);
+
+		var $that = $(input);
+		$(input).uploadifive({
+	        'auto'      : true,
+	        'fileType'     : 'image/*',
+	        'fileSizeLimit' : '5MB',
+	        'buttonText'   : 'Upload',
+	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+	        'formData'         : {'type' : 'product_catalog_image'},
+	        'onError'      : function(errorType) {
+	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+	            // $uploadResponse.text(errorType).css('color','red');
+	        },
+	        'onUploadComplete' : function(file, data) {
+	            console.log(data);
+
+	            var data = data.split("||").concat();
+
+	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+	            console.log(data[0])
+	            console.log(data[1])
+	            console.log(shortText)
+
+	            $('input[name=product_catalog_image_'+catalog_cloneIndex+']').val(data[0]);
+	            $that.parent().parent().find('.uploaded_product_catalog_image').text(shortText);
 
 	        }
 	    });

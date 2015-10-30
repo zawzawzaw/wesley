@@ -74,15 +74,39 @@
 				li {				
 					.each-col {
 						display: inline-block;	
-						vertical-align: middle;				
+						vertical-align: middle;			
+						position: relative;	
 						&:first-child {
 							width: 8%;
-							text-align: center;						
+							text-align: center;	
+
+							.delete-favourite {
+								position: absolute;
+							    left: 0px;
+							    top: -2px;
+							    .transition(0.3s);
+							    visibility: hidden;
+							    .opacity(0);
+								i {
+									color: #959595;
+								}
+								&:hover {
+									i {
+										color: @light-blue;
+									}
+								}
+								&.show {
+									visibility: visible;
+									.opacity(1);
+									left: 10px;
+								}
+							}					
 
 							.category {							
 								display: inline-block;
 								width: 22px;
-								height: 17px;							
+								height: 17px;	
+								vertical-align: middle;						
 								&.category-1 {
 									background: url(../images/icons/category-1.png) no-repeat;
 								}	
@@ -233,10 +257,34 @@
 				li {				
 					.each-col {
 						display: inline-block;	
-						vertical-align: middle;		
+						vertical-align: middle;	
+						position: relative;	
 						&:first-child {
-							width: 8%;
-							padding-left: 15px;
+							width: 10%;
+							padding-left: 30px;
+							
+							.delete-saved-search {
+								position: absolute;
+							    left: 0px;
+    							top: 1px;
+							    .transition(0.3s);
+							    visibility: hidden;
+							    .opacity(0);
+								i {
+									color: #959595;
+								}
+								&:hover {
+									i {
+										color: @light-blue;
+									}
+								}
+								&.show {
+									visibility: visible;
+									.opacity(1);
+									left: 10px;
+								}
+							}	
+
 							span.date {
 								.alright-sans-regular;
 								font-size: 13px;
