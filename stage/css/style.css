@@ -10918,6 +10918,7 @@ a {
 #company-detail .company-details .first-content img {
   display: inline-block;
   vertical-align: top;
+  max-width: 220px;
 }
 #company-detail .company-details .first-content .company-detail {
   display: inline-block;

@@ -515,9 +515,9 @@ class RepositoryManager implements RepositoryManagerInterface {
 		return $this->sessionRepository->users($minutes, $results);
 	}
 
-	public function events($minutes, $results)
+	public function events($minutes, $results, $lists = array())
 	{
-		return $this->eventRepository->getAll($minutes, $results);
+		return $this->eventRepository->getAll($minutes, $results, $lists);
 	}
 
 	public function errors($minutes, $results)

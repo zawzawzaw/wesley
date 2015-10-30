@@ -135,8 +135,8 @@ class Event extends Repository {
 		return $object;
 	}
 
-	public function getAll($minutes, $results)
+	public function getAll($minutes, $results, $lists = array())
 	{
-		return $this->getModel()->allInThePeriod($minutes, $results);
+		return $this->getModel()->allInThePeriod($minutes, $results, $lists);
 	}
 }

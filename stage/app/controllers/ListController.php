@@ -15,15 +15,13 @@ class ListController extends \BaseController {
 	    $this->beforeFilter('csrf', array('on'=>'post'));
 	    $this->beforeFilter('auth');
 
-	    $OAUTH2_CLIENT_ID = '1006288385462-uj20kpmmo0ollr0q9dks74deau1l19i2.apps.googleusercontent.com';
-        $OAUTH2_CLIENT_SECRET = 'B5HZWXQEikZGw_UuWU9SeeO_';
+	    $OAUTH2_CLIENT_ID = Config::get('custom.OAUTH2_CLIENT_ID');
+        $OAUTH2_CLIENT_SECRET = Config::get('custom.OAUTH2_CLIENT_SECRET');;
         $this->client = new Google_Client();
         $this->client->setClientId($OAUTH2_CLIENT_ID);
         $this->client->setClientSecret($OAUTH2_CLIENT_SECRET);
         $this->client->setScopes('https://www.googleapis.com/auth/youtube');
-
-        $this->redirect = filter_var('http://' . $_SERVER['HTTP_HOST'] . '/wesley/stage/list?upload_youtube=yes',
-            FILTER_SANITIZE_URL);        
+        $this->redirect = filter_var(URL::to('/') . '/list?upload_youtube=yes', FILTER_SANITIZE_URL);
         $this->client->setRedirectUri($this->redirect);
 
         $this->youtube = new Google_Service_YouTube($this->client);
@@ -253,6 +251,7 @@ class ListController extends \BaseController {
 			    		$product_catalog = new ProductCatalog;
 			    		$product_catalog->lists_id = $lists->id;
 			    		$product_catalog->title = Input::get('product_catalog_title_'.$product_catalog_id);
+			    		$product_catalog->description = Input::get('product_catalog_desc_'.$product_catalog_id);
 			    		$product_catalog->file = Input::get('product_catalog_'.$product_catalog_id);
 			    		$product_catalog->image = Input::get('product_catalog_image_'.$product_catalog_id);
 			    		$product_catalog->save();

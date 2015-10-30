@@ -50,6 +50,9 @@ class FavouriteController extends \BaseController {
 				$favourite->user_id = $user_id;
 				$favourite->list_id = Input::get('list_id');
 				$favourite->save();
+
+				$response = Event::fire('favourite.store', array(Input::get('list_id')));
+
 			}catch ( Illuminate\Database\QueryException $e ) {
 			    return Response::json(['status' => 'duplicate', 'message' => $e->errorInfo], 400);
 			}

@@ -22,12 +22,19 @@ class HomeController extends BaseController {
 	{
 		if (Auth::check())
 		{
-		    $name = Auth::user()->first_name;
+		    $name = Auth::user()->first_name;		    
+
+		    $lists = []; //Lists::where('user_id', '=', Auth::user()->id)->get();
+
+		    $events = Tracker::events(60 * 24, true, $lists);
+			return $events;
+		    
 		}else {
 			$name = '';
+			$events = '';
 		}
 
-		$this->layout->content = View::make('home.index')->with('name', $name);				
+		$this->layout->content = View::make('home.index')->with('name', $name)->with('events', $events);				
 	}
 
 }

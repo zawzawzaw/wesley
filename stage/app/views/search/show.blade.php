@@ -118,6 +118,7 @@
 										<p>{{ $product_catalog_list->title }}</p>
 										<img src="{{ URL::to('/') }}/uploads/product_catalog_images/{{ $product_catalog_list->image }}" class="img-responsive" alt="">
 										<p>{{ Helper::formatSizeUnits(filesize(public_path() . "/uploads/product_catalogs/" . $product_catalog_list->file)) }}</p>
+										<p>{{ $product_catalog_list->description }}</p>
 										<a href="{{ URL::to('/generic/openpdf') }}/{{ $list->id }}/{{ $product_catalog_list->file }}">Download PDF</a>
 									</li>
 									<?php $i++; ?>

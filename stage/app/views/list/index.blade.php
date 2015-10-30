@@ -775,6 +775,12 @@
 													</div>																									
 												</div>
 												<div class="col-md-6">
+													<div class="each-input">
+														{{ Form::label('catalog_desc_1', 'Catalog Description') }}
+														{{ Form::text('product_catalog_desc_1', null, array('class'=>'product_catalog_desc','id'=>'product_catalog_desc_1')); }}
+													</div>																									
+												</div>
+												<div class="col-md-12">
 													<div class="row">
 														<div class="col-md-6">
 															<div class="each-input">							
@@ -805,6 +811,12 @@
 													</div>																											
 												</div>
 												<div class="col-md-6">
+													<div class="each-input">
+														{{ Form::label('catalog_desc_2', 'Catalog Description') }}
+														{{ Form::text('product_catalog_desc_2', null, array('class'=>'product_catalog_desc','id'=>'product_catalog_desc_2')); }}
+													</div>																									
+												</div>
+												<div class="col-md-12">
 													<div class="row">
 														<div class="col-md-6">
 															<div class="each-input">								
@@ -1127,11 +1139,11 @@
 		var nextList = $(this).data('list') + 1;	
 		var progress = parseInt(nextList * 20);
 
-		if(form.valid()) {			
+		// if(form.valid()) {			
 			$('.progress-bar').css('width', progress + '%');
 			$('.all-list').hide();
 			$('#list-'+nextList).show();
-		}
+		// }
 	});
 
 	$('.prev-btn').on('click', function(e){
@@ -1449,6 +1461,9 @@
 		$cloned_catalog.find('label[for="catalog_title_1"]').attr('for', 'catalog_title_'+catalog_cloneIndex);
 		$cloned_catalog.find('#product_catalog_title_1').attr('id', 'product_catalog_title_'+catalog_cloneIndex).attr('name', 'product_catalog_title_'+catalog_cloneIndex);
 
+		$cloned_catalog.find('label[for="catalog_desc_1"]').attr('for', 'catalog_desc_'+catalog_cloneIndex);
+		$cloned_catalog.find('#product_catalog_desc_1').attr('id', 'product_catalog_desc_'+catalog_cloneIndex).attr('name', 'product_catalog_desc_'+catalog_cloneIndex);
+
 		$cloned_catalog.find('label[for="catalog_1"]').attr('for', 'catalog_'+catalog_cloneIndex);
 		$cloned_catalog.find('#product_catalog_1').attr('id', 'product_catalog_'+catalog_cloneIndex).attr('name', 'product_catalog_'+catalog_cloneIndex).val('');
 
@@ -1546,9 +1561,12 @@
 				$('select[name='+field.name+']').val(field.value);
 			}else if(field.name=='type') {
 				$('input[value='+field.value+']').prop('checked', true);
+			}else if(field.name=='_token') {
+				// console.log(field.name);
+			}else if(field.name=='business_nature' || field.name=='company_background_info' || field.name=='quality_certification') {
+				$('textarea[name='+field.name+']').val(field.value);		
 			}else
-				$('input[name='+field.name+']').val(field.value);
-			
+				$('input[name='+field.name+']').val(field.value);		
 		});
 	}
 
