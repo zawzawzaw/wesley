@@ -2,112 +2,101 @@
 	<div id="favourite">
 		<div class="container">
 			
-			<div class="favourite-details">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="header">
-							<h3 class="pull-left">Your Favourites</h3>
-							<a href="{{ URL::to('myaccount/') }}" class="edit-btn pull-right"><span>BACK TO MY ACCOUNT</span></a>
-						</div>
-						<div class="content">
-							<div class="row">
-								<div class="col-md-12">
-									<ul class="premium-listings-table">
-										@if($favourites && count($favourites) > 0)
-											@foreach($favourites as $favourite)
-												<?php $list = Lists::find($favourite->list_id) ?>
-												<li class="{{ strtolower($list->type) }} favourite">
-													<div class="each-col">										
-														<span class="category category-1 {{ strtolower($list->category) }}"></span>
-													</div>
-													<div class="each-col">		
-														<a href="{{ route('search.show', $list->id) }}">								
-														@if($list->logo)
-															<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" class="img-responsive" alt="">
-														@else
-															{{ HTML::image('images/contents/company-image-placeholder.png', 'company placeholder', array('class' => 'img-responsive')) }}
-														@endif
-														</a>
-													</div>
-													<div class="each-col">
-														<h5><a href="{{ route('search.show', $list->id) }}"><span>{{ $list->company_name }}</span> <i class="country {{ strtolower($list->country) }}"></i></a></h5>
-														<p>{{ $list->business_nature }}</p>
-													</div>
-													<div class="each-col">
-														<ul class="ctas">
-															<li><a href="{{ route('search.show', $list->id) }}" class="view-details"><i class="view-details"></i> <span>View Details</span></a></li>
-															<li>															
-															    <a href="{{ route('favourite.destroy', $favourite->id) }}" class="remove-favourite">
-															        <i class="remove-favourite"></i> <span>Remove favourite</span></span>
-															    </a>																
-															</li>
-															<li><a href="#" class="send-messages"><i class="messages"></i> <span>Send message</span></a></li>
-														</ul>
-													</div>
-												</li>												
-											@endforeach
-											<div class="pagi">
-							                  	{{ $favourites->links() }} 		
-						                  	</div>
-										@else
-						                	<li><span>No favourites was found.</span></li>					
-						                @endif											
-									</ul>
+			<div class="favourite-companies">
+				<div class="header">
+					<h3 class="pull-left">favourite companies</h3>
+					<!--<a href="#" class="edit-favourite edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>-->
+					<a href="{{ URL::to('/favourite/') }}" class="delete-favourite delete-btn pull-right"><i class="fa fa-minus-circle"></i><span>DELETE</span></a>
+				</div>
+				<div class="content">					
+					<div class="favourite-companies-table">						
+						<ul class="table-head">
+							<li>
+								<div class="each-col">
+									<h5 class="first">Category</h5>
 								</div>
-							</div>
-						</div>
+								<div class="each-col">
+									<h5 class="second">Location</h5>
+								</div>
+								<div class="each-col">
+									<h5>Country of Origin</h5>
+								</div>
+								<div class="each-col">
+									<h5>Company <a href="#" class="sort"></a></h5>
+								</div>
+								<div class="each-col">
+									<h5>Key Products/ Services</h5>					
+								</div>
+								<div class="each-col">
+									<h5>Shortcut</h5>
+								</div>
+							</li>
+						</ul>
+						<ul class="table-content">		
+							@if($favourites && count($favourites) > 0)						
+								@foreach($favourites as $favourite)
+									<?php $list = Lists::find($favourite->list_id) ?>
+									<?php $key_products = KeyProduct::where('lists_id', '=', $favourite->list_id)->get() ?>
+									<li>
+										<div class="each-col">
+											{{ Form::checkbox('delete_favourite', $favourite->id) }}
+											<!--<a href="{{ route('favourite.destroy', $favourite->id) }}" class="delete-favourite"><i class="fa fa-minus-circle"></i></a>-->
+											<a href="#" class="category category-1"></a>
+										</div>
+										<div class="each-col">
+											<i class="country {{ $list->country }}"></i>
+										</div>
+										<div class="each-col">
+											<i class="country {{ $list->origin_country }}"></i>
+										</div>
+										<div class="each-col">
+											<p>{{ $list->company_name }}</p>									
+										</div>
+										<div class="each-col">
+											<ul>												
+												@foreach($key_products as $key_product)
+													<li><p>{{ $key_product->product_name }}</p></li>
+												@endforeach
+											</ul>
+										</div>
+										<div class="each-col">
+											<ul class="ctas">
+												<li><a href="{{ route('search.show', $list->id) }}" class="view-details"><i class="view-details"></i></a></li>										
+												<li><a href="#" class="send-messages"><i class="messages"></i></a></li>
+												<li><a href="#" class="view-pdf"><i class="view-pdf"></i></a></li>
+												<li><a href="#" class="download-pdf">Download PDF</a></li>
+											</ul>
+										</div>
+									</li>
+								@endforeach	
+							@else		
+								<li><span class="not-found">No favourite was found.</span></li>																					
+							@endif
+						</ul>										
 					</div>
+
+					<a href="{{ URL::to('myaccount/') }}" class="back-to-account"><span>BACK TO MY ACCOUNT</span></a>
 				</div>
 			</div>
 
-			<div class="sidebar">
-				<div class="sidebar-content">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="header">
-								<h3>QUICK VIEW</h3>
-							</div>			
-							<div class="content">
-								<div class="extra-info">
-									<span class="updated-date-time">Last updated {{ date('h:i A | d M Y', strtotime(Auth::user()->updated_at) ) }}</a>{{-- 12:34 pm | 10 Sep 2014 --}}
-								</div>
-
-								<div class="account-info">
-									<h5>Account created</h5>
-									<p>{{ date('d M Y', strtotime(Auth::user()->created_at) ) }}</p>
-								</div>
-
-								<div class="account-info">
-									<h5>Type</h5>
-									<p>{{ (Auth::user()->plan=='premium') ? 'Paid: '.ucfirst(Auth::user()->plan) .' Plan' : ucfirst(Auth::user()->plan) .' Plan' }}{{-- Paid: Premium Plan --}}</p>
-								</div>
-
-								<div class="account-info">
-									<h5>industry</h5>
-									<p>{{ Auth::user()->job_title }}</p>
-								</div>
-
-								<div class="account-info">
-									<h5>Renewal Reminder</h5>
-									<p>24 July 2015</p>
-								</div>
-							</div>						
-						</div>
-					</div>				
-				</div>
-			</div>
+			
 
 		</div>
 	</div>
 	<script>
 	$(document).ready(function(){
 
+		$('.edit-favourite').on('click', function(e){
+			e.preventDefault();
+			$(".delete-favourite").toggleClass('show');
+		});
+
 		//////
 
 		var request;
 		var makeRequest = function(Data, URL, Method) {
 
-	    	var request = $.ajax({
+			var request = $.ajax({
 			    url: URL,
 			    type: Method,
 			    data: Data
@@ -117,54 +106,70 @@
 		};
 
 		var deleteRequest = false;
-		$('.remove-favourite').on('click', function(e){
+		$('.delete-favourite').on('click', function(e){
 			e.preventDefault();
 
-			var that = $(this);
+			if ($('input[name="delete_favourite"]:checked').length > 0) {
 
-			if (confirm('Are you sure?')) {				
-
-				var current_url = $(this).attr('href');
-				console.log(current_url)
+				var that = $(this);
 
 				if(deleteRequest) {
 					request.abort();
 				}
 
-				data = {};
+				if (confirm('Are you sure you want to delete?')) {			
 
-				deleteRequest = makeRequest(data, current_url, 'DELETE');				
+					$('input[name="delete_favourite"]').each(function(each_input){
 
-				deleteRequest.done(function(data, textStatus, jqXHR){
-		        	
-		        	if(jqXHR.status==200) {		        			        		
+						if($(this).is(':checked')) {
+							
+							var $delete_input = $(this);
+							var search_id = $delete_input.val()
+							var current_url = that.attr('href') + '/' + search_id;
 
-		        		that.parent().parent().parent().parent().remove();
+							data = {};
 
-		        		if($('.favourite').length<=0) {
-		        			$('.premium-listings-table').append('<li><span>No favourites was found.</span></li>');
-		        		}
+							deleteRequest = makeRequest(data, current_url, 'DELETE');				
 
-		        		deleteRequest = false;
+							deleteRequest.done(function(data, textStatus, jqXHR){
+					        	
+					        	if(jqXHR.status==200) {		        			        		
 
-		        	}
+					        		$delete_input.parent().parent().remove();
 
-		        });
+					        		if($('input[name="delete_favourite"]').length<=0) {
+					        			$('.favourite-companies-table .table-content').append('<li><span class="not-found">No favourites was found.</span></li>');
+					        		}
 
-		        deleteRequest.always(function(data, textStatus, jqXHR){
+					        		deleteRequest = false;
 
-		        	if(jqXHR.status!=200) {
-		        		var returnData = $.parseJSON(data.responseText);
-			        	
-			        	console.log(returnData.message);
+					        	}
 
-			        	deleteRequest = false;	
-		        	}		        	
+					        });
 
-		        });
+					        deleteRequest.always(function(data, textStatus, jqXHR){
+
+					        	if(jqXHR.status!=200) {
+					        		var returnData = $.parseJSON(data.responseText);
+						        	
+						        	console.log(returnData.message);
+
+						        	deleteRequest = false;	
+					        	}		        	
+
+					        });
+
+						}
+
+					});
+										
+				}
+
+			}else {
+				alert('Please choose an item to delete.')
 			}
 			
-		});
+		});		
 		
 	});
 	</script>

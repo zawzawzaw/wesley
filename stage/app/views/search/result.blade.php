@@ -56,6 +56,7 @@
 						@endif
 						@if(Input::has('origin_country'))
 							{{ Helper::code_to_country(Input::get('origin_country', null)) }}
+							<?php $no_filter = false; ?>
 						@endif
 
 						@if($no_filter)
@@ -301,7 +302,9 @@
 
 				postRequest.done(function(data, textStatus, jqXHR){
 		        	
-		        	if(jqXHR.status==200) {		        		
+		        	if(jqXHR.status==200) {
+		        		$('.save-search-form').removeClass( "show-hide" );
+		        		$('.save-search').children('i').addClass("plus");
 		        		alert('Successfully saved this search.');
 		        		console.log(data);
 
@@ -314,6 +317,8 @@
 
 		        	if(jqXHR.status!=200) {
 		        		var returnData = $.parseJSON(data.responseText);
+		        		$('.save-search-form').removeClass( "show-hide" );
+		        		$('.save-search').children('i').addClass("plus");
 		        		if(returnData.status=='duplicate')
 			        		alert('This search is already saved!');
 			        	else			        	

@@ -124,16 +124,30 @@ class GenericController extends \BaseController {
 
     }
 
-    public function openpdf($id, $file) 
+    public function openpdf($id, $file_name) 
     {     
         Event::fire('open.pdf.'.$id);
 
-        $path = public_path() . "/uploads/product_catalogs/" . $file;
+        $file_url = public_path() . "/uploads/product_catalogs/" . $file_name;
 
-        return Response::make(file_get_contents($path), 200, [
+        return Response::make(file_get_contents($file_url), 200, [
             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; '.$file,
+            'Content-Disposition' => 'inline; '.$file_name,
         ]);
+    }
+
+    public function downloadpdf($id, $file_name)
+    {     
+        Event::fire('download.pdf.'.$id);
+
+        $file_url = public_path() . "/uploads/product_catalogs/" . $file_name;
+
+        header('Content-Type: application/pdf');
+        header("Content-Transfer-Encoding: Binary");
+        header("Content-disposition: attachment; filename=".$file_name);
+
+        readfile($file_url);
+
     }
 
 

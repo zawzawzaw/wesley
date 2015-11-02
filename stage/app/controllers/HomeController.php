@@ -27,7 +27,7 @@ class HomeController extends BaseController {
 		    $lists = []; //Lists::where('user_id', '=', Auth::user()->id)->get();
 
 		    $events = Tracker::events(60 * 24, true, $lists);
-			return $events;
+			// return $events;
 		    
 		}else {
 			$name = '';

@@ -1388,64 +1388,72 @@
 	var cloneIndex = $('.each-product').length;
 	$('.add-more-key-product').on('click', function(e){
 		e.preventDefault();
-		cloneIndex++;
-		$('.each-product').first().clone(false).addClass('cloned_'+cloneIndex).appendTo('#all-products');
 
-		var $cloned_product = $('.cloned_'+cloneIndex);
+		if(cloneIndex<5) {
 
-		$cloned_product.find('label[for="key_product_category_1"]').attr('for', 'key_product_category_'+cloneIndex);
-		$cloned_product.find('#key_product_category_1').attr('id', 'key_product_category_'+cloneIndex).attr('name', 'key_product_category_'+cloneIndex);
+			cloneIndex++;
+			$('.each-product').first().clone(false).addClass('cloned_'+cloneIndex).appendTo('#all-products');
 
-		$cloned_product.find('label[for="key_product_name_1"]').attr('for', 'key_product_name_'+cloneIndex);
-		$cloned_product.find('#key_product_name_1').attr('id', 'key_product_name_'+cloneIndex).attr('name', 'key_product_name_'+cloneIndex);
+			var $cloned_product = $('.cloned_'+cloneIndex);
 
-		$cloned_product.find('label[for="key_product_subcategory_1"]').attr('for', 'key_product_subcategory_'+cloneIndex);
-		$cloned_product.find('#key_product_subcategory_1').attr('id', 'key_product_subcategory_'+cloneIndex).attr('name', 'key_product_subcategory_'+cloneIndex);
+			$cloned_product.find('label[for="key_product_category_1"]').attr('for', 'key_product_category_'+cloneIndex);
+			$cloned_product.find('#key_product_category_1').attr('id', 'key_product_category_'+cloneIndex).attr('name', 'key_product_category_'+cloneIndex);
 
-		$cloned_product.find('label[for="key_product_specifics_1"]').attr('for', 'key_product_specifics_'+cloneIndex);
-		$cloned_product.find('#key_product_specifics_1').attr('id', 'key_product_specifics_'+cloneIndex).attr('name', 'key_product_specifics_'+cloneIndex);
+			$cloned_product.find('label[for="key_product_name_1"]').attr('for', 'key_product_name_'+cloneIndex);
+			$cloned_product.find('#key_product_name_1').attr('id', 'key_product_name_'+cloneIndex).attr('name', 'key_product_name_'+cloneIndex);
 
-		$cloned_product.find('label[for="image_1"]').attr('for', 'image_'+cloneIndex);
-		$cloned_product.find('#key_product_image_1').attr('id', 'key_product_image_'+cloneIndex).attr('name', 'key_product_image_'+cloneIndex);
-		
-		$cloned_product.find('#image_1').remove();
-		$cloned_product.find('.uploadifive-button').remove();
-		$cloned_product.find('.uploadifive-queue').remove();
+			$cloned_product.find('label[for="key_product_subcategory_1"]').attr('for', 'key_product_subcategory_'+cloneIndex);
+			$cloned_product.find('#key_product_subcategory_1').attr('id', 'key_product_subcategory_'+cloneIndex).attr('name', 'key_product_subcategory_'+cloneIndex);
 
-		var input = document.createElement('input')
-		input.type = "file";
-		input.name = "image_"+cloneIndex;
-		input.id = "image_"+cloneIndex;
+			$cloned_product.find('label[for="key_product_specifics_1"]').attr('for', 'key_product_specifics_'+cloneIndex);
+			$cloned_product.find('#key_product_specifics_1').attr('id', 'key_product_specifics_'+cloneIndex).attr('name', 'key_product_specifics_'+cloneIndex);
 
-		$cloned_product.find('.uploaded_product_image').before(input);
+			$cloned_product.find('label[for="image_1"]').attr('for', 'image_'+cloneIndex);
+			$cloned_product.find('#key_product_image_1').attr('id', 'key_product_image_'+cloneIndex).attr('name', 'key_product_image_'+cloneIndex);
+			
+			$cloned_product.find('#image_1').remove();
+			$cloned_product.find('.uploadifive-button').remove();
+			$cloned_product.find('.uploadifive-queue').remove();
 
-		var $that = $(input);
-		$(input).uploadifive({
-	        'auto'      : true,
-	        'fileType'     : 'image/*',
-	        'fileSizeLimit' : '5MB',
-	        'buttonText'   : 'Upload',
-	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
-	        'formData'         : {'type' : 'key_product'},
-	        'onError'      : function(errorType) {
-	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
-	            // $uploadResponse.text(errorType).css('color','red');
-	        },
-	        'onUploadComplete' : function(file, data) {
-	            console.log(data);
+			var input = document.createElement('input')
+			input.type = "file";
+			input.name = "image_"+cloneIndex;
+			input.id = "image_"+cloneIndex;
 
-	            var data = data.split("||").concat();
+			$cloned_product.find('.uploaded_product_image').before(input);
 
-	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
-	            console.log(data[0])
-	            console.log(data[1])
-	            console.log(shortText)
+			var $that = $(input);
+			$(input).uploadifive({
+		        'auto'      : true,
+		        'fileType'     : 'image/*',
+		        'fileSizeLimit' : '5MB',
+		        'buttonText'   : 'Upload',
+		        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+		        'formData'         : {'type' : 'key_product'},
+		        'onError'      : function(errorType) {
+		            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+		            // $uploadResponse.text(errorType).css('color','red');
+		        },
+		        'onUploadComplete' : function(file, data) {
+		            console.log(data);
 
-	            $('input[name=key_product_image_'+cloneIndex+']').val(data[0]);
-	            $that.parent().parent().find('.uploaded_product_image').text(shortText);
+		            var data = data.split("||").concat();
 
-	        }
-	    });
+		            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+		            console.log(data[0])
+		            console.log(data[1])
+		            console.log(shortText)
+
+		            $('input[name=key_product_image_'+cloneIndex+']').val(data[0]);
+		            $that.parent().parent().find('.uploaded_product_image').text(shortText);
+
+		        }
+		    });
+		} else {
+
+			alert('Maximum key product is 5.')
+
+		}
 
 		// product_image_upload();
 	});
@@ -1453,100 +1461,108 @@
 	var catalog_cloneIndex = $('.each-catalog').length;
 	$('.add-more-product-catalog').on('click', function(e){
 		e.preventDefault();
-		catalog_cloneIndex++;
-		$('.each-catalog').first().clone(false).addClass('catalog_cloned_'+catalog_cloneIndex).appendTo('#all-catalogs');
 
-		var $cloned_catalog = $('.catalog_cloned_'+catalog_cloneIndex);
+		if(catalog_cloneIndex < 5) {	
 
-		$cloned_catalog.find('label[for="catalog_title_1"]').attr('for', 'catalog_title_'+catalog_cloneIndex);
-		$cloned_catalog.find('#product_catalog_title_1').attr('id', 'product_catalog_title_'+catalog_cloneIndex).attr('name', 'product_catalog_title_'+catalog_cloneIndex);
+			catalog_cloneIndex++;
+			$('.each-catalog').first().clone(false).addClass('catalog_cloned_'+catalog_cloneIndex).appendTo('#all-catalogs');
 
-		$cloned_catalog.find('label[for="catalog_desc_1"]').attr('for', 'catalog_desc_'+catalog_cloneIndex);
-		$cloned_catalog.find('#product_catalog_desc_1').attr('id', 'product_catalog_desc_'+catalog_cloneIndex).attr('name', 'product_catalog_desc_'+catalog_cloneIndex);
+			var $cloned_catalog = $('.catalog_cloned_'+catalog_cloneIndex);
 
-		$cloned_catalog.find('label[for="catalog_1"]').attr('for', 'catalog_'+catalog_cloneIndex);
-		$cloned_catalog.find('#product_catalog_1').attr('id', 'product_catalog_'+catalog_cloneIndex).attr('name', 'product_catalog_'+catalog_cloneIndex).val('');
+			$cloned_catalog.find('label[for="catalog_title_1"]').attr('for', 'catalog_title_'+catalog_cloneIndex);
+			$cloned_catalog.find('#product_catalog_title_1').attr('id', 'product_catalog_title_'+catalog_cloneIndex).attr('name', 'product_catalog_title_'+catalog_cloneIndex);
 
-		$cloned_catalog.find('label[for="catalog_image_1"]').attr('for', 'catalog_image_'+catalog_cloneIndex);
-		$cloned_catalog.find('#product_catalog_image_1').attr('id', 'product_catalog_image_'+catalog_cloneIndex).attr('name', 'product_catalog_image_'+catalog_cloneIndex).val('');
+			$cloned_catalog.find('label[for="catalog_desc_1"]').attr('for', 'catalog_desc_'+catalog_cloneIndex);
+			$cloned_catalog.find('#product_catalog_desc_1').attr('id', 'product_catalog_desc_'+catalog_cloneIndex).attr('name', 'product_catalog_desc_'+catalog_cloneIndex);
 
-		$cloned_catalog.find('.uploaded_product_catalog').text('');
-		$cloned_catalog.find('.uploaded_product_catalog_image').text('');
-		
-		$cloned_catalog.find('#catalog_1').remove();
-		$cloned_catalog.find('.uploadifive-button').remove();
-		$cloned_catalog.find('.uploadifive-queue').remove();
+			$cloned_catalog.find('label[for="catalog_1"]').attr('for', 'catalog_'+catalog_cloneIndex);
+			$cloned_catalog.find('#product_catalog_1').attr('id', 'product_catalog_'+catalog_cloneIndex).attr('name', 'product_catalog_'+catalog_cloneIndex).val('');
 
-		var input = document.createElement('input')
-		input.type = "file";
-		input.name = "catalog_"+catalog_cloneIndex;
-		input.id = "catalog_"+catalog_cloneIndex;
+			$cloned_catalog.find('label[for="catalog_image_1"]').attr('for', 'catalog_image_'+catalog_cloneIndex);
+			$cloned_catalog.find('#product_catalog_image_1').attr('id', 'product_catalog_image_'+catalog_cloneIndex).attr('name', 'product_catalog_image_'+catalog_cloneIndex).val('');
 
-		$cloned_catalog.find('.uploaded_product_catalog').before(input);
+			$cloned_catalog.find('.uploaded_product_catalog').text('');
+			$cloned_catalog.find('.uploaded_product_catalog_image').text('');
+			
+			$cloned_catalog.find('#catalog_1').remove();
+			$cloned_catalog.find('.uploadifive-button').remove();
+			$cloned_catalog.find('.uploadifive-queue').remove();
 
-		var $that = $(input);
-		$(input).uploadifive({
-	        'auto'      : true,
-	        'fileType'     : 'application/pdf',
-	        'fileSizeLimit' : '5MB',
-	        'buttonText'   : 'Upload',
-	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
-	        'formData'         : {'type' : 'product_catalogs'},
-	        'onError'      : function(errorType) {
-	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
-	            // $uploadResponse.text(errorType).css('color','red');
-	        },
-	        'onUploadComplete' : function(file, data) {
-	            console.log(data);
+			var input = document.createElement('input')
+			input.type = "file";
+			input.name = "catalog_"+catalog_cloneIndex;
+			input.id = "catalog_"+catalog_cloneIndex;
 
-	            var data = data.split("||").concat();
+			$cloned_catalog.find('.uploaded_product_catalog').before(input);
 
-	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
-	            console.log(data[0])
-	            console.log(data[1])
-	            console.log(shortText)
+			var $that = $(input);
+			$(input).uploadifive({
+		        'auto'      : true,
+		        'fileType'     : 'application/pdf',
+		        'fileSizeLimit' : '5MB',
+		        'buttonText'   : 'Upload',
+		        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+		        'formData'         : {'type' : 'product_catalogs'},
+		        'onError'      : function(errorType) {
+		            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+		            // $uploadResponse.text(errorType).css('color','red');
+		        },
+		        'onUploadComplete' : function(file, data) {
+		            console.log(data);
 
-	            $('input[name=product_catalog_'+catalog_cloneIndex+']').val(data[0]);
-	            $that.parent().parent().find('.uploaded_product_catalog').text(shortText);
+		            var data = data.split("||").concat();
 
-	        }
-	    });
+		            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+		            console.log(data[0])
+		            console.log(data[1])
+		            console.log(shortText)
 
-		var input = document.createElement('input')
-		input.type = "file";
-		input.name = "catalog_image_"+catalog_cloneIndex;
-		input.id = "catalog_image_"+catalog_cloneIndex;
+		            $('input[name=product_catalog_'+catalog_cloneIndex+']').val(data[0]);
+		            $that.parent().parent().find('.uploaded_product_catalog').text(shortText);
 
-		$cloned_catalog.find('.uploaded_product_catalog_image').before(input);
+		        }
+		    });
 
-		var $that = $(input);
-		$(input).uploadifive({
-	        'auto'      : true,
-	        'fileType'     : 'image/*',
-	        'fileSizeLimit' : '5MB',
-	        'buttonText'   : 'Upload',
-	        'uploadScript' : "{{ route('generic.uploadfiles') }}",
-	        'formData'         : {'type' : 'product_catalog_image'},
-	        'onError'      : function(errorType) {
-	            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
-	            // $uploadResponse.text(errorType).css('color','red');
-	        },
-	        'onUploadComplete' : function(file, data) {
-	            console.log(data);
+			var input = document.createElement('input')
+			input.type = "file";
+			input.name = "catalog_image_"+catalog_cloneIndex;
+			input.id = "catalog_image_"+catalog_cloneIndex;
 
-	            var data = data.split("||").concat();
+			$cloned_catalog.find('.uploaded_product_catalog_image').before(input);
 
-	            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
-	            console.log(data[0])
-	            console.log(data[1])
-	            console.log(shortText)
+			var $that = $(input);
+			$(input).uploadifive({
+		        'auto'      : true,
+		        'fileType'     : 'image/*',
+		        'fileSizeLimit' : '5MB',
+		        'buttonText'   : 'Upload',
+		        'uploadScript' : "{{ route('generic.uploadfiles') }}",
+		        'formData'         : {'type' : 'product_catalog_image'},
+		        'onError'      : function(errorType) {
+		            // $uploadBtn.uploadifive('cancel', $('.uploadifive-queue-item').first().data('file'));
+		            // $uploadResponse.text(errorType).css('color','red');
+		        },
+		        'onUploadComplete' : function(file, data) {
+		            console.log(data);
 
-	            $('input[name=product_catalog_image_'+catalog_cloneIndex+']').val(data[0]);
-	            $that.parent().parent().find('.uploaded_product_catalog_image').text(shortText);
+		            var data = data.split("||").concat();
 
-	        }
-	    });
+		            var shortText = jQuery.trim(data[1]).substring(0, 20).trim(this) + "...";
+		            console.log(data[0])
+		            console.log(data[1])
+		            console.log(shortText)
 
+		            $('input[name=product_catalog_image_'+catalog_cloneIndex+']').val(data[0]);
+		            $that.parent().parent().find('.uploaded_product_catalog_image').text(shortText);
+
+		        }
+		    });
+
+		}else {
+
+			alert('Maximum catalogs is 5.');
+
+		}
 	});
 
  	////////

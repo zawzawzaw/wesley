@@ -10,140 +10,189 @@
 							<h3 class="pull-left">Search ><a href="javascript:window.history.back();"> Result ></a> <span class="current">{{ ucfirst($list->company_name) }}</span></h3>							
 							{{-- <a href="#" class="save-search pull-right"><i class="plus"></i> <span>Save Search</span></a> --}}
 						</div>
-						<div class="first-content">
-							@if(!empty($list->logo))
-								<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
-							@else
-								{{ HTML::image('images/contents/company-logo.png', '', array('class' => 'img-responsive')) }}							
-							@endif
-							<div class="company-detail">
-								<h1>{{ $list->company_name }}</h1>
+						
 
-								<h5>Address</h5>
-								<p>{{ $list->address_1 }} {{ $list->address_2 }}</p>
-								<span id="address" class="hidden">{{ $list->address_1 }} {{ $list->address_2 }} {{ $list->city }} {{ $list->post_code }} {{ $list->country }}</span>
+						
+						
+						
+						<div class="tab-container">
+							<!-- Nav tabs -->
+						  	<ul class="nav nav-tabs" role="tablist">
+							    <li role="presentation" class="active"><a href="#companydetail" aria-controls="companydetail" role="tab" data-toggle="tab">Company Details</a></li>
+							    <li role="presentation"><a href="#productcatalog" aria-controls="productcatalog" role="tab" data-toggle="tab">Product Catalog</a></li>
+							    <li role="presentation"><a href="#keyproduct" aria-controls="keyproduct" role="tab" data-toggle="tab">Key Product</a></li>
+						  	</ul>
 
-								<h5>telephone</h5>
-								<p></p>
+						  	<!-- Tab panes -->
+							<div class="tab-content">
+							    <div role="tabpanel" class="tab-pane active" id="companydetail">
+									<div class="first-content">
+										@if(!empty($list->logo))
+											<img src="{{ URL::to('/') }}/uploads/company_logos/{{ $list->logo }}" alt="">
+										@else
+											{{ HTML::image('images/contents/company-logo.png', '', array('class' => 'img-responsive')) }}							
+										@endif
+										<div class="company-detail">
+											<h1>{{ $list->company_name }}</h1>
 
-								<h5>fax</h5>
-								<p></p>
+											<h5>Address</h5>
+											<p>{{ $list->address_1 }} {{ $list->address_2 }}</p>
+											<span id="address" class="hidden">{{ $list->address_1 }} {{ $list->address_2 }} {{ $list->city }} {{ $list->post_code }} {{ $list->country }}</span>
 
-								<h5>website</h5>
-								<p></p>
-							</div>
+											<h5>telephone</h5>
+											<p></p>
+
+											<h5>fax</h5>
+											<p></p>
+
+											<h5>website</h5>
+											<p></p>
+										</div>
+									</div>
+									<div class="second-content">
+										<div class="more-company-detail">
+											<h5>category</h5>
+											<p class="category">{{ $list->category }}</p>
+
+											<h5>sub-Category</h5>
+											<p class="category">{{ $list->subcategory }}</p>
+
+											<h5>Country of Origin</h5>
+											<p>{{ $list->origin_country }}</p>
+
+											<h5>Nature of Business</h5>
+											<p>{{ $list->business_nature }}</p>
+
+											<h5>Company Background</h5>
+											<p>{{ $list->company_background_info }}</p>
+										</div>
+										<div class="more-company-detail">
+											<h5>Year Established</h5>
+											<p>{{ $list->year_established }}</p>
+
+											<h5>Paid Up Capital</h5>
+											<p>{{ $list->paid_up_capital }}</p>
+
+											<h5>No of employees</h5>
+											<p>{{ $list->no_of_employees }}</p>
+
+											<h5>Quality Certification</h5>
+											<p>{{ $list->quality_certification }}</p>
+
+											<h5>Bankers</h5>
+											<p>{{ $list->bankers }}</p>
+										</div>
+										<div class="more-company-detail">
+											<h5>Markets Established</h5>
+											<p>{{ $list->market_established }}</p>
+
+											<h5>Markets Interested</h5>
+											<p>{{ $list->market_interested }}</p>
+
+											<h5>Main Shareholders</h5>
+											<p>{{ $list->main_shareholders }}</p>
+
+											<h5>No of Offices Worldwide</h5>
+											<p>{{ $list->number_of_offices_worldwide }}</p>
+										</div>
+									</div>
+									<div class="third-content">
+										<div class="text-content pull-left">
+											<h5>Links to related companies</h5>
+											<ul>
+												<li>{{ $list->links_to_related_companies }}</li>									
+											</ul>
+										</div>
+										<div class="video-player pull-right">
+										@if(!empty($list->upload_video))
+										<?php 
+										$video_format = ['3g2','3gp','3gpp','3gp2','amv','asf','avi','avs','dat','divx','dv','dvr-ms','f4v','flv','m1v','m2p','m2t','m2ts','m2v','m4v','mkv','mod','mov','mp4','mpe','mpeg','mpeg1','mpeg2','mpeg4','mpg','mpv','mts','mxf','nsv','ogg','ogm','ogv','qt','rm','rmvb','rv','tod','trp','tp','ts','vob','vro','wmv','webm'];
+										$ext = substr(strrchr($list->upload_video,'.'),1);
+										?>
+											@if(in_array($ext, $video_format))											
+												<video id="example_video_1" class="video-js vjs-default-skin"
+												  controls preload="auto" width="400" height="250"
+												  poster="http://video-js.zencoder.com/oceans-clip.png"
+												  data-setup='{"example_option":true}'>
+												 <source src="{{ URL::to('/') }}/uploads/videos/{{ $list->upload_video }}" type='video/mp4' />
+												 {{-- <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+												 <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' /> --}}
+												 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+												</video>											
+											@else
+												<div class="videoWrapper">
+												    <!-- Copy & Pasted from YouTube -->
+												    <iframe width="400" height="250" src="http://www.youtube.com/embed/{{ $list->upload_video }}?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
+												</div>
+											@endif
+										@else
+											<span>Video not available</span>
+										@endif
+										</div>
+										<div class="clear"></div>
+									</div>
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="keyproduct">
+							    	<div class="fourth-content">
+										<!--<div class="heading">
+											<h5 class="pull-left">see company’s product</h5>
+											<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>
+											<div class="clear"></div>
+										</div>-->
+										<ul>
+											<?php $i=1; ?>
+											@foreach($list->keyproduct as $pk => $key_product_list)
+												<li>
+													<p>{{ $key_product_list->product_name }}</p>
+													<?php if (file_exists(URL::to('/')."/uploads/key_products/".$key_product_list->image)): ?>
+														<img src="{{ URL::to('/') }}/uploads/key_products/{{ $key_product_list->image }}" class="img-responsive" alt="">
+													<?php else: ?>
+														<img src="{{ URL::to('/') }}/images/contents/product-image-placeholder.png" class="img-responsive" alt="">
+													<?php endif; ?>
+													@if(isset($key_product_list->category))<p class="product_category">Category: {{ $key_product_list->category }}</p>@endif
+													@if(isset($key_product_list->subcategory))<p class="product_sub_category">Sub category: {{ $key_product_list->subcategory }}</p>@endif
+													@if(isset($key_product_list->product_specifics))<p class="product_specific">Product specific: {{ $key_product_list->product_specifics }}</p>@endif
+												</li>
+											@endforeach								
+										</ul>
+									</div>
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="productcatalog">
+							    	<div class="fourth-content">
+										<!--<div class="heading">
+											<h5 class="pull-left">see company’s catalog</h5>
+											<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>
+											<div class="clear"></div>
+										</div>-->
+										<ul>
+											<?php $i=1; ?>
+											@foreach($list->productcatalog as $pk => $product_catalog_list)
+												@if($i<=3)
+												<li>
+													<p>{{ $product_catalog_list->title }}</p>
+													<?php if (file_exists(URL::to('/')."/uploads/product_catalog_images/".$product_catalog_list->image)): ?>
+														<img src="{{ URL::to('/') }}/uploads/product_catalog_images/{{ $product_catalog_list->image }}" class="img-responsive" alt="">
+													<?php else: ?>
+														<img src="{{ URL::to('/') }}/images/contents/product-image-placeholder.png" class="img-responsive" alt="">
+													<?php endif; ?>
+													
+													<p>{{ Helper::formatSizeUnits(filesize(public_path() . "/uploads/product_catalogs/" . $product_catalog_list->file)) }}</p>
+													<p>{{ $product_catalog_list->description }}</p>
+													<a href="{{ URL::to('/generic/openpdf') }}/{{ $list->id }}/{{ $product_catalog_list->file }}">Download PDF</a>
+												</li>
+												<?php $i++; ?>
+												@endif
+											@endforeach								
+										</ul>
+									</div>							    	
+							    </div>							    
+						  	</div>
+
 						</div>
-						<div class="second-content">
-							<div class="more-company-detail">
-								<h5>category</h5>
-								<p class="category">{{ $list->category }}</p>
 
-								<h5>sub-Category</h5>
-								<p class="category">{{ $list->subcategory }}</p>
-
-								<h5>Country of Origin</h5>
-								<p>{{ $list->origin_country }}</p>
-
-								<h5>Nature of Business</h5>
-								<p>{{ $list->business_nature }}</p>
-
-								<h5>Company Background</h5>
-								<p>{{ $list->company_background_info }}</p>
-							</div>
-							<div class="more-company-detail">
-								<h5>Year Established</h5>
-								<p>{{ $list->year_established }}</p>
-
-								<h5>Paid Up Capital</h5>
-								<p>{{ $list->paid_up_capital }}</p>
-
-								<h5>No of employees</h5>
-								<p>{{ $list->no_of_employees }}</p>
-
-								<h5>Quality Certification</h5>
-								<p>{{ $list->quality_certification }}</p>
-
-								<h5>Bankers</h5>
-								<p>{{ $list->bankers }}</p>
-							</div>
-							<div class="more-company-detail">
-								<h5>Markets Established</h5>
-								<p>{{ $list->market_established }}</p>
-
-								<h5>Markets Interested</h5>
-								<p>{{ $list->market_interested }}</p>
-
-								<h5>Main Shareholders</h5>
-								<p>{{ $list->main_shareholders }}</p>
-
-								<h5>No of Offices Worldwide</h5>
-								<p>{{ $list->number_of_offices_worldwide }}</p>
-							</div>
-						</div>
-						<div class="third-content">
-							<div class="text-content pull-left">
-								<h5>Links to related companies</h5>
-								<ul>
-									<li>{{ $list->links_to_related_companies }}</li>									
-								</ul>
-							</div>
-							<div class="video-player pull-right">
-								@if(!empty($list->upload_video))
-								<video id="example_video_1" class="video-js vjs-default-skin"
-								  controls preload="auto" width="400" height="250"
-								  poster="http://video-js.zencoder.com/oceans-clip.png"
-								  data-setup='{"example_option":true}'>
-								 <source src="{{ URL::to('/') }}/uploads/videos/{{ $list->upload_video }}" type='video/mp4' />
-								 {{-- <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-								 <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' /> --}}
-								 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-								</video>
-								@else
-									<span>Video not available</span>
-								@endif
-							</div>
-							<div class="clear"></div>
-						</div>
-						<div class="fourth-content">
-							<div class="heading">
-								<h5 class="pull-left">see company’s catalog</h5>
-								<!--<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>-->
-								<div class="clear"></div>
-							</div>
-							<ul>
-								<?php $i=1; ?>
-								@foreach($list->productcatalog as $pk => $product_catalog_list)
-									@if($i<=3)
-									<li>
-										<p>{{ $product_catalog_list->title }}</p>
-										<img src="{{ URL::to('/') }}/uploads/product_catalog_images/{{ $product_catalog_list->image }}" class="img-responsive" alt="">
-										<p>{{ Helper::formatSizeUnits(filesize(public_path() . "/uploads/product_catalogs/" . $product_catalog_list->file)) }}</p>
-										<p>{{ $product_catalog_list->description }}</p>
-										<a href="{{ URL::to('/generic/openpdf') }}/{{ $list->id }}/{{ $product_catalog_list->file }}">Download PDF</a>
-									</li>
-									<?php $i++; ?>
-									@endif
-								@endforeach								
-							</ul>
-						</div>
-						<div class="fourth-content">
-							<div class="heading">
-								<h5 class="pull-left">see company’s product</h5>
-								<a href="{{ route('search.company', $list->id) }}" class="pull-right">see more</a>
-								<div class="clear"></div>
-							</div>
-							<ul>
-								<?php $i=1; ?>
-								@foreach($list->keyproduct as $pk => $key_product_list)
-									@if($i<=3)
-									<li>
-										<img src="{{ URL::to('/') }}/uploads/key_products/{{ $key_product_list->image }}" class="img-responsive" alt="">
-									</li>
-									<?php $i++; ?>
-									@endif
-								@endforeach								
-							</ul>
-						</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
@@ -181,7 +230,7 @@
 									<ul class="links">
 										<li><a href="#"><i class="request-for-quote"></i> request for quote</a></li>
 										<li><a href="{{ route('favourite.store') }}" data-list-id="{{ $list->id }}" class="favourite"><i class="add-to-favourite"></i> add to favorite</a></li>
-										<li><a href="#"><i class="download"></i> download pdf</a></li>
+										<!--<li><a href="#"><i class="download"></i> download pdf</a></li>-->
 										<li><a href="#"><i class="request-for-more"></i> request for more info</a></li>
 									</ul>
 								</div>
@@ -300,6 +349,7 @@
 		        });
 
 			});    
+			
 		});
 	</script>	
 @stop
