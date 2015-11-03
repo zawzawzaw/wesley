@@ -59,6 +59,36 @@ class MysearchController extends \BaseController {
 	}
 
 	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		//
+		$validator = Validator::make(Input::all(), MySearch::$rules);
+
+		if($validator->passes()) {
+
+			try {
+				$mysearch = MySearch::find($id);
+				$mysearch->name = Input::get('name');
+				$mysearch->search_params = Input::get('search_params');
+				$mysearch->save();
+			}catch ( Illuminate\Database\QueryException $e ) {
+				return Response::json(['status' => 'duplicate', 'message' => $e->errorInfo], 400);
+			}
+
+			return Response::json(['status' => 'success', 'message' => Input::get('name')], 200);
+
+		}else {
+	        # validation has failed, display error messages
+	    	return Response::json(['status' => 'validation error', 'message' => $validator->messages()], 400);
+	    }	
+	}
+
+	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id

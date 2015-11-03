@@ -93,3 +93,14 @@ Private Info: Major Facilities / Major Customers / Project History / Paid Up Cap
 2. Search results listings
 
 There needs to be a way of sorting the results via: Name (A-Z) / Name (Z-A) / Proximity
+
+
+
+- company detail tab - done
+- save search title - done
+- limit add more product catalog - done
+- youtube player - done
+- remove download pdf from detail page - done
+- hide pop up after saved - save search - done
+- edit search name and keyword and checkbox for deletes
+- favourite to have separate page

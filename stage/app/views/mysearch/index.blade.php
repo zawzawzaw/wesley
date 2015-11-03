@@ -6,8 +6,7 @@
 
 				<div class="saved-search">
 					<div class="header">
-						<h3 class="pull-left">saved search</h3>
-						<a href="#" class="edit-saved-search edit-btn pull-right"><i class="edit-icon"></i><span>EDIT</span></a>
+						<h3 class="pull-left">saved search</h3>						
 						<a href="{{ URL::to('/mysearch/') }}" class="delete-saved-search delete-btn pull-right"><i class="fa fa-minus-circle"></i><span>DELETE</span></a>
 					</div>
 					<div class="content">					
@@ -39,7 +38,7 @@
 											</div>									
 											<div class="each-col">
 												<p class="search_title edit-search-title">{{ $mysearch->name }}</p>
-												{{ Form::hidden('search_title', $mysearch->name, ['class'=>'search_title_input']) }}
+												{{ Form::hidden('search_title', $mysearch->name, ['class'=>'search_title_input', 'id'=>$mysearch->id]) }}
 											</div>
 											<div class="each-col">
 												<?php $keywords = json_decode($mysearch->search_params); ?>
@@ -270,58 +269,93 @@ $(document).ready(function(){
 	var $editSearchTitle = $(".search_title"),
 		$editSearchTitleInput = $(".search_title_input"),
 		$keywords = $(".keywords"),
-		$keywordsInput = $(".keywords_input");
+		$keywordsInput = $(".keywords_input"),
+		putRequest = false;
 
 	var categories = [
-		'oilandgas',
-		'chemicals',
-		'basicresources',
-		'construction',
-		'industrial',
-		'automobiles',
-		'food',
-		'personal',
-		'healthcare',
-		'retail',
-		'media',
-		'travel',
-		'telecommunication',
-		'utilities',
-		'banks',
-		'insurance',
-		'realestate',
-		'financial',
-		'technology'
+		'Oil & Gas',
+		'Chemicals',
+		'Basic Resources',
+		'Construction & Materials',
+		'Industrial Goods & Services',
+		'Automobiles & Parts',
+		'Food & Beverage',
+		'Personal & Household Goods',
+		'Health Care',
+		'Retail',
+		'Media',
+		'Travel & Leisure',
+		'Telecommunications',
+		'Utilities',
+		'Banks',
+		'Insurance',
+		'Real Estate',
+		'Financial Services',
+		'Technology'
+	];
+
+	var subcategories = [
+		"Exploration & Production",
+	  	"Integrated Oil & Gas",
+	  	"Oil Equipment & Services",
+	  	"Pipelines",
+	  	"Renewable Energy Equipment",
+	  	"Alternative Fuels",
+	  	"Commodity Chemicals",
+	  	"Specialty Chemicals",
+	  	"Forestry",
+		"Paper",
+		"Aluminum",
+		"Nonferrous Metals",
+		"Iron & Steel",
+		"Coal",
+		"Diamonds & Gemstones",
+		"General Mining",
+		"Gold Mining",
+		"Platinum & Precious Metals",
+		"Building Materials & Fixtures",
+		"Heavy Construction"
 	];
 
 	function whichKeywords(keyword) {
-		if(jQuery.inArray( keyword, categories )){
+		if(jQuery.inArray( keyword, categories ) !== -1){
 			return 'category';
-		}
-		if(jQuery.inArray( keyword, subcatarr )){
+		}		
+		if(jQuery.inArray( keyword, subcategories ) !== -1){
 			return 'subcategory';	
 		}
-		if(jQuery.inArray( keyword, countryarr )){
-			return 'country';
-		}
+		return 'country';
 	}
 
 	function KeywordsToJson(keywords, $that) {
+		var prev_json_val = $that.next('input').val();
+		var obj = $.parseJSON(prev_json_val);
+
 		var keywordsarr = keywords.split("+");
 
+		var jsonArr = {};
+		var completeArr = {
+			"category":"",
+			"subcategory":"",
+			"country":"",
+			"origin_country":"",
+			"form_type":obj.form_type
+		};
+
+		var smartkeyArr = ['category','subcategory','country','origin_country','form_type'];
 		for(var i=0; i<keywordsarr.length; i++) {
-			console.log(whichKeywords(keywordsarr[i].trim()));
+			var key = whichKeywords(keywordsarr[i].trim());
+			jsonArr[key] = keywordsarr[i].trim();			
 		}
 
-		// {
-		// 	"category":"Oil & Gas",
-		// 	"subcategory":"Exploration & Production",
-		// 	"country":"us",
-		// 	"origin_country":"",
-		// 	"form_type":"smart"
-		// }
+		$.each(completeArr, function(each_val){
+			if(typeof jsonArr[each_val] != 'undefined') {
+				completeArr[each_val] = jsonArr[each_val];
+			}
+		});
 
-		// console.log($that.next('input').val());
+		return JSON.stringify(completeArr);
+		
 	}
 
 	function JsonToKeywords(json_val) {
@@ -378,19 +412,60 @@ $(document).ready(function(){
 			value = input_val;
 
 		$(that).next('input').attr('type', 'text').val(value);
-	}	
+	}		
 
 	function hideInputAndUpdate($that, json) {	
 		var input_val = $that.val();
 		var value = '';
+		var current_url = '{{ URL::to("/mysearch/") }}/'+$that.attr('id');
+		var keywords_json = $that.parent().parent().find('.keywords_input').val();
 
-		if(json)
+		if(json) {
+			// keywords
 			value = KeywordsToJson(input_val, $that);
-		else
-			value = input_val;
 
-		$that.prev('p').html(value).show();
-		$that.attr('type', 'hidden');
+			$that.attr('type', 'hidden').val(value);
+		}
+		else {
+			// search title
+			value = input_val;		
+
+			data = {
+				"name" : input_val,
+				"search_params" : keywords_json
+			};
+
+			putRequest = makeRequest(data, current_url, 'PUT');
+
+			putRequest.done(function(data, textStatus, jqXHR){			
+	        	
+	        	if(jqXHR.status==200) {
+
+	        		console.log(data);
+
+	        		putRequest = false;
+
+	        	}
+
+	        });
+
+	        putRequest.always(function(data, textStatus, jqXHR){
+
+	        	if(jqXHR.status!=200) {
+	        		var returnData = $.parseJSON(data.responseText);
+		        	
+		        	console.log(returnData.message);
+
+		        	putRequest = false;	
+	        	}		        	
+
+	        });
+
+	        $that.attr('type', 'hidden');
+		}
+
+		$that.prev('p').html(input_val).show();
+		
 	}
 
 	function editSearchTitle() {
