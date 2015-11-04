@@ -17,6 +17,7 @@
 
 {{ HTML::script('js/jquery/jquery-1.9.1.min.js') }}
 {{ HTML::script('js/libs/bootstrap/bootstrap.min.js') }}
+{{ HTML::script('js/libs/jquery.blockUI.js') }}
 {{ HTML::script('js/libs/jquery.maskedinput.min.js') }}
 {{ HTML::script('js/libs/jquery.validate.min.js') }}
 {{ HTML::script('js/libs/jquery.uploadifive.min.js') }}

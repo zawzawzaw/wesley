@@ -152,7 +152,7 @@
 								<div class="header-text">
 									<h3>Favourite Companies</h3><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span>
 								</div>
-								<a href="#" class="view-all">View all</a>
+								<a href="{{ route('favourite.index') }}" class="view-all">View all</a>
 							</div>								
 							<div class="content">
 								<ul>
@@ -198,7 +198,7 @@
 								<div class="header-text">
 									<h3>Saved Search</h3><span class="updated-time">Last update 12:34 pm | 10 Dec 2014</span>
 								</div>
-								<a href="#" class="view-all">View all</a>
+								<a href="{{ route('mysearch.index') }}" class="view-all">View all</a>
 							</div>							
 							<div class="content">
 								<ul>

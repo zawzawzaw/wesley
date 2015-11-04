@@ -22,6 +22,12 @@ Route::resource('favourite', 'FavouriteController');
 Route::resource('mysearch', 'MysearchController');
 Route::resource('listadmin', 'ListAdminController');
 
+/* Generic */
+Route::get('listadmin/getlistadmin/{id}', array(
+  'uses' => 'ListAdminController@getlistadmin',
+  'as' => 'listadmin.getlistadmin'
+));
+
 /* Search Index */
 Route::get('search', array(
   'uses' => 'SearchController@index',

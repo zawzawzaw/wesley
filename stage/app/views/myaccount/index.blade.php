@@ -29,10 +29,10 @@
 								    {{ Form::close() }}
 
 
-								    <a href="{{ route('favourite.index') }}"><button class="btn">View Saved Favourites</button></a>
-								    <a href="#"><button class="btn">View RFQs</button></a>
-								    <a href="{{ route('mysearch.index') }}"><button class="btn">View Saved Searches</button></a>
-								    <a href="#"><button class="btn">View Messages</button></a>								    
+								    <!--<a href="{{ route('favourite.index') }}"><button class="btn">View Saved Favourites</button></a>-->
+								    <!--<a href="#"><button class="btn">View RFQs</button></a>-->
+								    <!--<a href="{{ route('mysearch.index') }}"><button class="btn">View Saved Searches</button></a>-->
+								    <!--<a href="#"><button class="btn">View Messages</button></a>-->
 								    @if(count($lists) <= 0)
 								    	<a href="{{ URL::to('list') }}"><button class="btn">Create Listing</button></a>
 								    @else
@@ -41,7 +41,7 @@
 								    <a href="#"><button class="btn">Renew / Upgrade Listing</button></a>
 								    <a href="#"><button class="btn">Manage Subscription</button></a>
 								    @if(Auth::check() && Auth::user()->plan == 'premium')
-								    <a href="#"><button class="btn">Analytics & Reports</button></a>
+								    <!--<a href="#"><button class="btn">Analytics & Reports</button></a>-->
 								    <a href="{{ route('listadmin.index') }}"><button class="btn">Assign Admins</button></a>
 								    @endif
 								    

@@ -508,3 +508,116 @@ div.pagi {
   a {
     text-decoration: none!important;
   }
+
+
+  .blockUI {
+    #add_admin, #result {
+      text-align: left;
+
+      h5 {
+        .alright-sans-medium;
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        color: @dark-grey-2;  
+        text-transform: uppercase;
+        margin-bottom: 15px;
+      }
+    
+
+      label {
+        .alright-sans-medium;
+        font-size: 11px;
+        line-height: 30px;
+        letter-spacing: 0.05em;
+        color: @new-grey;
+        text-transform: uppercase;
+
+        span {
+          margin-right: 5px;
+        }
+
+        p {
+          display: inline-block;
+            vertical-align: middle;
+            margin-bottom: -3px;
+        }
+
+        &.error {
+          color: red;
+            text-transform: initial;
+            // margin-top: -5px;
+            position: absolute;
+          bottom: -25px;
+        }
+      }     
+
+      .each-input {
+        // height: 80px;
+        position: relative;
+        margin-bottom: 15px;
+
+        #lbl_type {
+          display: block;
+        }
+
+        label[for="permissions"] {
+          display: block;
+        }
+
+        .each-type {
+          display: inline-block;
+          position: relative;
+          vertical-align: middle;
+          width: 85%;
+
+          label {
+            .alright-sans-regular;            
+          }
+        }
+        .email-check {
+          position: relative;
+          input[type=text] {
+            background-color: #f9f9f9;
+            border: 1px solid #d6d6d6;
+            border-radius: 5px;
+            min-height: 35px;
+            padding-left: 13px;
+            .alright-sans-regular;
+            font-size: 14px;
+            line-height: 36px;
+            letter-spacing: 0.01em;
+            color: @dark-grey-2;
+            display: block;     
+            width: 100%;              
+          }
+          #email-check {
+            position: absolute;
+            z-index: 1;
+            right: 25px;
+            top: 10px;
+            color: red;
+            cursor:pointer;
+            width: 0;
+            &.fa-check {
+              color: #555;
+            }
+          }  
+        }
+             
+      }
+
+      input[type=submit], button {
+        border: none;
+        .alright-sans-medium;
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        color: @milky-white;  
+        text-transform: uppercase;
+        padding: 6px 24px;
+        text-decoration: none;
+        .gradient(#00c7dd, #00a3c4);
+        border-radius: 5px;                   
+      }
+
+    }
+  }

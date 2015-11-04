@@ -97,18 +97,23 @@ class ListAdminController extends \BaseController {
 	public function edit($id)
 	{
 		//
-		if (Request::ajax()) {
+		// if (Request::ajax()) {
 
-			$listadmin = ListAdmin::with(['users'])->where('list_id', '=', $id)->get();
-			return $listadmin;
+			// $listadmin = ListAdmin::with(['users'])->where('list_id', '=', $id)->get();
+			// return $listadmin;
 
-		}else {
+		// }else {
 
-			$listadmin = ListAdmin::with(['users'])->find($id);
+		// 	$listadmin = ListAdmin::with(['users'])->find($id);
 			
-			$this->layout->content = View::make('listadmin.edit')->with('listadmin', $listadmin);
+		// 	$this->layout->content = View::make('listadmin.edit')->with('listadmin', $listadmin);
 
-		}
+		// }
+
+		$listadmin = ListAdmin::with(['users'])->find($id);
+		
+		$this->layout->content = View::make('listadmin.edit')->with('listadmin', $listadmin);
+
 	}
 
 
@@ -134,14 +139,15 @@ class ListAdminController extends \BaseController {
 				$listadmin->admin_permissions = json_encode($admin_permissions);
 				$listadmin->save();
 			}catch ( Illuminate\Database\QueryException $e ) {
-				return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'This user is already added as admin to your list');			
+				// return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'This user is already added as admin to your list');			
+				return Redirect::to('/listadmin/')->with('message', 'This user is already added as admin to your list');			
 			}
 
 
-			return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'List admin has been updated!');
+			return Redirect::to('/listadmin/')->with('message', 'List admin has been updated!');
 		}else {
 	        # validation has failed, display error messages
-	    	return Redirect::to('/listadmin/'.$id.'/edit')->with('message', 'The following errors occurred:')->withErrors($validator)->withInput();
+	    	return Redirect::to('/listadmin/')->with('message', 'The following errors occurred:')->withErrors($validator)->withInput();
 	    }	
 	}
 
@@ -163,6 +169,12 @@ class ListAdminController extends \BaseController {
 
 		}else 
 			return Response::json(['status' => 'validation error', 'message' => 'empty'], 400);
+	}
+
+
+	public function getlistadmin($id) {
+		$listadmin = ListAdmin::with(['users'])->where('list_id', '=', $id)->get();
+		return $listadmin;
 	}
 
 
