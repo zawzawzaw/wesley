@@ -103,4 +103,11 @@ There needs to be a way of sorting the results via: Name (A-Z) / Name (Z-A) / Pr
 - remove download pdf from detail page - done
 - hide pop up after saved - save search - done
 - edit search name and keyword and checkbox for deletes
-- favourite to have separate page
+- favourite to have separate page - done
+
+
+
+- remove listing dropdown and pop up for assign admin form - done
+- removed duplicated items from my account - done
+- image resize after upload - done
+- update dashboard

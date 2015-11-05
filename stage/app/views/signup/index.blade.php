@@ -464,7 +464,7 @@
 			}
 		});
 
-		$('#form-signup').validate({
+		$('#form-signup').validate({			
 			rules : {
 				first_name: "required",
 				last_name: "required",

@@ -131,9 +131,32 @@
 
 			.preview {
 				height: 160px;
-				img {
-					max-height: 115px;
-				}
+				.fileupload-preview {
+					max-width: 195px;
+					height: 111px;
+					border: 1px solid #ccc;
+					img {
+						display: block;
+						width: 100%;					
+					}	
+				}	
+				#controls {
+					background-color: #1b1b1b;
+    				text-align: center;
+    				max-width: 195px;
+    				a {
+    					display: inline-block;
+					    padding: 5px;
+					    line-height: 50px;
+					    font-size: 14px;
+					    font-weight: 300;
+					    color: #888;
+
+					    &:hover {
+					    	color: @white;
+					    }
+    				}
+				}			
 			}		
 
 			.each-input {

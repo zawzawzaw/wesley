@@ -98,6 +98,77 @@ class GenericController extends \BaseController {
         }            
     }
 
+    public function cropimage() {
+
+        $type = Input::get('type');
+        $org_file = Input::get('org_file');
+
+        if($type=='profile_photo')
+            $path = public_path() . "/uploads/profile_photos/";
+        else if($type=='company_logo')
+            $path = public_path() . "/uploads/company_logos/";
+        else if($type=='video')
+            $path = public_path() . "/uploads/videos/";
+        else if($type=='key_product')
+            $path = public_path() . "/uploads/key_products/";
+        else if($type=='product_catalog')
+            $path = public_path() . "/uploads/product_catalogs/";
+        else if($type=='product_catalog_image')
+            $path = public_path() . "/uploads/product_catalog_images/";
+        else
+            $path = public_path() . "/uploads/";
+
+        $t_width = 195; // Maximum thumbnail width
+        $t_height = 110; // Maximum thumbnail height
+
+        $org_name = pathinfo($org_file, PATHINFO_FILENAME);
+        $org_ext = pathinfo($org_file, PATHINFO_EXTENSION);
+
+        $new_file = $org_name."_crop.".$org_ext;
+
+        $tamanios = getimagesize($path.$org_file);
+
+        $ratio = Input::get('scale');
+        $w = Input::get('w');
+        $h = Input::get('h');
+        $x = Input::get('x');
+        $y = Input::get('y');
+        $rotation = Input::get('angle');
+
+        $nimg = imagecreatetruecolor($t_width, $t_height);
+
+        if(strtolower($org_ext)=='png')
+            $im_src = imagecreatefrompng($path.$org_file);
+        else
+            $im_src = imagecreatefromjpeg($path.$org_file);
+
+        imagealphablending( $im_src, false );
+        imagesavealpha( $im_src, true );
+
+        $im_src = imagerotate($im_src, $rotation * -1, 0);
+        imagecopyresampled($nimg, $im_src, 0, 0, ceil($x/$ratio), ceil($y/$ratio), $t_width, $t_height, $t_width/$ratio, $t_height/$ratio);
+        imagejpeg($nimg, $path.$new_file, 90);
+
+        echo $new_file;
+
+    }
+
+    public function checkalreadyassign()
+    {
+        $email = Input::get('email');
+        $list_id = Input::get('list_id');        
+
+        $users = User::with(['ListAdmin' => function($query) use($list_id){
+            $query->where('list_id', '=', $list_id);
+        }])->where('email', '=', $email)->first();
+
+        if(!is_null($users) && count($users->ListAdmin) == 0)
+            return 'true';
+        else
+            return 'false';
+
+    }
+
     public function checkemailexists()
     {
         $email = Input::get('email');

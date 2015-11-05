@@ -600,8 +600,15 @@
 										<div class="preview">										
 											{{ Form::label('preview', 'Logo Preview') }}		
 											<div class="fileupload-preview">
-													
-											</div>																				
+												
+											</div>
+											<div id="controls" class="">
+										      	<a href="#" id="rotate_left" title="Rotate left"><i class="fa fa-rotate-left"></i></a>
+										      	<a href="#" id="zoom_out" title="Zoom out"><i class="fa fa-search-minus"></i></a>
+										      	<a href="#" id="fit" title="Fit image"><i class="fa fa-arrows-alt"></i></a>
+										      	<a href="#" id="zoom_in" title="Zoom in"><i class="fa fa-search-plus"></i></a>
+										      	<a href="#" id="rotate_right" title="Rotate right"><i class="fa fa-rotate-right"></i></a>
+										    </div>
 										</div>
 
 										<div class="each-input">
@@ -1096,7 +1103,8 @@
   	// LIST FORM VALIDATION
   	//////
 
-  	var form = $('#form-list');
+  	var form = $('#form-list'),
+		PostData;
 
   	form.validate({	    
 	    rules: {
@@ -1139,11 +1147,26 @@
 		var nextList = $(this).data('list') + 1;	
 		var progress = parseInt(nextList * 20);
 
-		// if(form.valid()) {			
+		if(form.valid()) {			
 			$('.progress-bar').css('width', progress + '%');
 			$('.all-list').hide();
 			$('#list-'+nextList).show();
-		// }
+
+			if((this).data('list')==1) {
+				$.ajax({
+			        type: "POST",
+			        url: "{{ route('generic.cropimage') }}",
+			        async: false,
+			        dataType: "json",
+			        data: PostData, 
+			        success: function(returnData)
+			        {		        
+			            $(':hidden[name=logo]').val(data[0]);
+			        }
+			    });	
+			}
+		}		
+		
 	});
 
 	$('.prev-btn').on('click', function(e){
@@ -1218,7 +1241,7 @@
     ////////
     // UPLOADERS
     ////////
-
+    $('#controls').hide();	            
     $('#company_logo').uploadifive({
         'auto'      : true,
         'fileType'     : 'image/*',
@@ -1242,10 +1265,33 @@
 
             $(':hidden[name=logo]').val(data[0]);
 
-            $('.fileupload-preview').html('<img src="{{ URL::to("/") }}/uploads/company_logos/'+data[0]+'" class="img-responsive">');
+            $('.fileupload-preview').html('<img id="companylogo" src="{{ URL::to("/") }}/uploads/company_logos/'+data[0]+'" class="img-responsive">');            
+
+            var picture = $('#companylogo');  // Must be already loaded or cached!
+
+			picture.one('load', function(){
+				picture.guillotine({eventOnChange: 'guillotinechange', width: 195, height: 110});		
+
+		        // Bind button actions
+		        $('#rotate_left').click(function(){ picture.guillotine('rotateLeft'); });
+		        $('#rotate_right').click(function(){ picture.guillotine('rotateRight'); });
+		        $('#fit').click(function(){ picture.guillotine('fit'); });
+		        $('#zoom_in').click(function(){ picture.guillotine('zoomIn'); });
+		        $('#zoom_out').click(function(){ picture.guillotine('zoomOut'); });
+
+			}).each(function() {
+			  if(this.complete) $(this).load();
+			});
+			$('#controls').show();
+
+			picture.on('guillotinechange', function(ev, resizeData, action) {
+				PostData = resizeData;
+				PostData.type = 'company_logo';
+				PostData.org_file = data[0];
+	        });
 
         }
-    });
+    });	
 
     $('#video').uploadifive({
         'auto'      : true,
@@ -1350,6 +1396,7 @@
 	    });
 	});
 
+	
 	$('.catalog_image_upload').each(function(index, each_catalog_image_upload) {
 		var $catalog_image_upload = $(this);
 		$(each_catalog_image_upload).uploadifive({
@@ -1377,6 +1424,7 @@
 
 	            $('input[name=product_catalog_image_'+id+']').val(data[0]);
 	            $catalog_image_upload.parent().parent().find('.uploaded_product_catalog_image').text(shortText);
+
 	        }
 	    });
 	});

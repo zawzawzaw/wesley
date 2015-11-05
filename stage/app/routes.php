@@ -95,6 +95,12 @@ Route::post('generic/uploadfiles', array(
 ));
 
 /* Generic */
+Route::post('generic/checkalreadyassign', array(
+  'uses' => 'GenericController@checkalreadyassign',
+  'as' => 'generic.checkalreadyassign'
+));
+
+/* Generic */
 Route::post('generic/checkemailexists', array(
   'uses' => 'GenericController@checkemailexists',
   'as' => 'generic.checkemailexists'
@@ -110,6 +116,12 @@ Route::post('generic/checkuserexistsbyemail', array(
 Route::get('generic/openpdf/{id}/{file}', array(
   'uses' => 'GenericController@openpdf',
   'as' => 'generic.openpdf'
+));
+
+/* Generic */
+Route::post('generic/cropimage', array(
+  'uses' => 'GenericController@cropimage',
+  'as' => 'generic.cropimage'
 ));
 
 /* My List */

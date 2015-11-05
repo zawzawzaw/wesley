@@ -72,7 +72,7 @@
 													<div class="col-md-6">
 														{{ Form::label('email', 'User Email *') }}
 														<div class="email-check">
-															{{ Form::text('email', null, array('class'=>'text-input')) }}
+															{{ Form::text('email', null, array('class'=>'text-input', 'autocomplete'=>'off')) }}
 															<i id="email-check" class=""></i>															
 														</div>
 													</div>
@@ -85,12 +85,24 @@
 												<div class="row">
 													<div class="col-md-6">
 														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'type', Input::get('admin_permissions'), array('id'=>'type', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions', 'Type') }}										
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'company_name', Input::get('admin_permissions'), array('id'=>'company_name', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions', 'Company Name') }}										
+														</div>
+														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'logo', Input::get('admin_permissions'), array('id'=>'logo', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions', 'Logo') }}										
 														</div>
 														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'category', Input::get('admin_permissions'), array('id'=>'category', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions[]', 'Category') }}							
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'subcategory', Input::get('admin_permissions'), array('id'=>'subcategory', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Sub Category') }}							
 														</div>
 														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'address_1', Input::get('admin_permissions'), array('id'=>'address_1', 'class'=>'permission_checkboxes')); }}
@@ -101,17 +113,37 @@
 															{{ Form::label('admin_permissions[]', 'Address 2') }}										
 														</div>
 														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'city', Input::get('admin_permissions'), array('id'=>'city', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'City') }}										
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'industry_estate', Input::get('admin_permissions'), array('id'=>'industry_estate', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Industry Estate') }}										
+														</div>
+														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'post_code', Input::get('admin_permissions'), array('id'=>'post_code', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions[]', 'Post Code') }}										
 														</div>
 														<div class="each-type">
-															{{ Form::checkbox('admin_permissions[]', 'location', Input::get('admin_permissions'), array('id'=>'location', 'class'=>'permission_checkboxes')); }}
+															{{ Form::checkbox('admin_permissions[]', 'state', Input::get('admin_permissions'), array('id'=>'state', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'State') }}										
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'country', Input::get('admin_permissions'), array('id'=>'country', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions[]', 'Location') }}									
 														</div>
 														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'origin_country', Input::get('admin_permissions'), array('id'=>'origin_country', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions[]', 'Country of Origin') }}									
-														</div>	
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'links_to_related_companies', Input::get('admin_permissions'), array('id'=>'links_to_related_companies', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Links to related companies') }}									
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'upload_video', Input::get('admin_permissions'), array('id'=>'upload_video', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Upload Video') }}									
+														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="each-type">
@@ -123,6 +155,10 @@
 															{{ Form::label('admin_permissions[]', 'Year Established') }}									
 														</div>
 														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'company_background_info', Input::get('admin_permissions'), array('id'=>'company_background_info', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Company Background Info') }}									
+														</div>
+														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'paid_up_capital', Input::get('admin_permissions'), array('id'=>'paid_up_capital', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions[]', 'Paid Up Capital') }}									
 														</div>
@@ -131,12 +167,40 @@
 															{{ Form::label('admin_permissions[]', 'No of Employees') }}									
 														</div>
 														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'quality_certification', Input::get('admin_permissions'), array('id'=>'quality_certification', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Quality Certification') }}									
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'production_capability', Input::get('admin_permissions'), array('id'=>'production_capability', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Production Capability') }}									
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'bankers', Input::get('admin_permissions'), array('id'=>'bankers', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Bankers') }}									
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'market_established', Input::get('admin_permissions'), array('id'=>'market_established', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Market Established') }}									
+														</div>
+														<div class="each-type">
 															{{ Form::checkbox('admin_permissions[]', 'main_shareholders', Input::get('admin_permissions'), array('id'=>'main_shareholders', 'class'=>'permission_checkboxes')); }}
 															{{ Form::label('admin_permissions[]', 'Main shareholders/parent company') }}									
 														</div>
 														<div class="each-type">
-															{{ Form::checkbox('admin_permissions[]', 'links_to_related_companies', Input::get('admin_permissions'), array('id'=>'links', 'class'=>'permission_checkboxes')); }}
-															{{ Form::label('admin_permissions[]', 'Links to related companies') }}									
+															{{ Form::checkbox('admin_permissions[]', 'market_interested', Input::get('admin_permissions'), array('id'=>'market_interested', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Market Interested') }}									
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'number_of_offices_worldwide', Input::get('admin_permissions'), array('id'=>'number_of_offices_worldwide', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Number of offices Worldwide') }}									
+														</div>														
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'major_facilities', Input::get('admin_permissions'), array('id'=>'major_facilities', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Major Facilities') }}									
+														</div>
+														<div class="each-type">
+															{{ Form::checkbox('admin_permissions[]', 'major_customers', Input::get('admin_permissions'), array('id'=>'major_customers', 'class'=>'permission_checkboxes')); }}
+															{{ Form::label('admin_permissions[]', 'Major Customers') }}									
 														</div>
 														<div class="each-type">
 															{{ Form::checkbox('all', true, Input::get('all'), array('id'=>'all')); }}
@@ -223,8 +287,8 @@
 		                    padding:        '25px 45px',
 		                    margin:         0, 
 		                    width:          '41%', 
-		                    top:            '27%',
-		                    left:           '25%',              
+		                    top:            '15%',
+		                    left:           '29%',              
 		                    textAlign:      'center', 
 		                    color:          '#000', 
 		                    border:         '0px', 
@@ -246,8 +310,8 @@
 	                    padding:        '25px 45px',
 	                    margin:         0, 
 	                    width:          '41%', 
-	                    top:            '27%',
-	                    left:           '25%',                
+	                    top:            '15%',
+		                left:           '29%',              
 	                    textAlign:      'center', 
 	                    color:          '#000', 
 	                    border:         '0px', 
@@ -265,6 +329,7 @@
 			var form = $('#assign-admin');
 
 		  	form.validate({	    
+		  		onkeyup: false,
 			    rules: {
 			        email: {
 			        	"required" : true,
@@ -300,15 +365,14 @@
 			$.validator.addMethod("checkExists", function(value, element)
 			{
 			    var inputElem = $('#assign-admin :input[name="email"]'),
-			        data = { "email" : inputElem.val() },
+			        data = { "email" : inputElem.val(), "list_id" : $("#list_id").val() },
 			        eReport = ''; //error report
 
 			    var isSuccess = false;
 
-			    $.ajax(
-			    {
+			    $.ajax({
 			        type: "POST",
-			        url: "{{ route('generic.checkemailexists') }}",
+			        url: "{{ route('generic.checkalreadyassign') }}",
 			        async: false,
 			        dataType: "json",
 			        data: data, 
@@ -409,56 +473,56 @@
 
 			var list_id = $("#list_id").val();
 
-				//////
-				var getlistadmin_url = '{{ URL::to("listadmin/getlistadmin/") }}';
-				var listadmin_url = '{{ URL::to("listadmin/") }}';
+			//////
+			var getlistadmin_url = '{{ URL::to("listadmin/getlistadmin/") }}';
+			var listadmin_url = '{{ URL::to("listadmin/") }}';
 
 
-				var edit_url = getlistadmin_url+'/'+list_id;
+			var edit_url = getlistadmin_url+'/'+list_id;
 
-				if(editRequest) {
-					request.abort();
-				}
+			if(editRequest) {
+				request.abort();
+			}
 
-				data = {};
+			data = {};
 
-				editRequest = makeRequest(data, edit_url, 'GET');
+			editRequest = makeRequest(data, edit_url, 'GET');
 
-				var html_li = '';
+			var html_li = '';
 
-				editRequest.done(function(data, textStatus, jqXHR){
+			editRequest.done(function(data, textStatus, jqXHR){
+	        	
+	        	if(jqXHR.status==200) {
+
+	        		if(data.length <= 0) {
+	        			html_li = '<li><span>No admin found.</span></li>';
+	        		}
+	        		
+	        		$.each(data, function(i, each_data){		
+	        			html_li += '<li style="display:none;"><span>'+each_data.users.first_name+'</span><a href="'+listadmin_url+'/'+each_data.id+'/edit" class="edit">Edit</a> | <a href="'+listadmin_url+'/'+each_data.id+'" class="remove">Remove</a></li>';	        			
+	        		});
+
+	        		$('#admin_listings').html('');
+
+	        		$(html_li).prependTo('#admin_listings').slideDown();
+
+	        		editRequest = false;
+
+	        	}
+
+	        });
+
+	        editRequest.always(function(data, textStatus, jqXHR){
+
+	        	if(jqXHR.status!=200) {
+	        		var returnData = $.parseJSON(data.responseText);
 		        	
-		        	if(jqXHR.status==200) {
+		        	console.log(returnData.message);
 
-		        		if(data.length <= 0) {
-		        			html_li = '<li><span>No admin found.</span></li>';
-		        		}
-		        		
-		        		$.each(data, function(i, each_data){		
-		        			html_li += '<li style="display:none;"><span>'+each_data.users.first_name+'</span><a href="'+listadmin_url+'/'+each_data.id+'/edit" class="edit">Edit</a> | <a href="'+listadmin_url+'/'+each_data.id+'" class="remove">Remove</a></li>';	        			
-		        		});
+		        	editRequest = false;	
+	        	}		        	
 
-		        		$('#admin_listings').html('');
-
-		        		$(html_li).prependTo('#admin_listings').slideDown();
-
-		        		editRequest = false;
-
-		        	}
-
-		        });
-
-		        editRequest.always(function(data, textStatus, jqXHR){
-
-		        	if(jqXHR.status!=200) {
-		        		var returnData = $.parseJSON(data.responseText);
-			        	
-			        	console.log(returnData.message);
-
-			        	editRequest = false;	
-		        	}		        	
-
-		        });	
+	        });	
 
 
 			//////

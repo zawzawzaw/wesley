@@ -202,7 +202,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="header">
-								<h3>MESSAGE</h3>
+								<h3>QUICK MESSAGE</h3>
 							</div>			
 							<div class="content">
 								<div class="each-content">
@@ -224,6 +224,7 @@
 									</ul>
 									{{ Form::hidden('list_user_id', $list->user_id) }}
 									{{ Form::button('Send', array('type'=>'submit','value'=>'send','name'=>'form_type','id'=>'send_msg','class'=>'btn btn-large')) }}
+									<a href="{{ route('message.index') }}" class="advance-msg">Advanced Message</a>
 								{{ Form::close() }}
 								</div>
 								<div class="each-content">
